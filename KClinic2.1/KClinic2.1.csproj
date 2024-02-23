@@ -96,7 +96,7 @@
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Guna.UI2, Version=2.0.4.2, Culture=neutral, PublicKeyToken=8b9d14aa5142e261, processorArchitecture=MSIL">
-      <HintPath>\\14.241.120.229\Packages\Guna.UI2.dll</HintPath>
+      <HintPath>\\14.241.120.229\qlpk\175NguyenChiThanh\Packages\Guna.UI2.dll</HintPath>
     </Reference>
     <Reference Include="Janus.Data.v4, Version=4.0.52.0, Culture=neutral, PublicKeyToken=21d5517571b185bf" />
     <Reference Include="Janus.Windows.ButtonBar.v4, Version=4.0.52.0, Culture=neutral, PublicKeyToken=21d5517571b185bf, processorArchitecture=MSIL" />
@@ -108,13 +108,13 @@
     <Reference Include="Janus.Windows.UI.v4, Version=4.0.52.0, Culture=neutral, PublicKeyToken=21d5517571b185bf, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>\\14.241.120.229\Packages\Newtonsoft.Json.dll</HintPath>
+      <HintPath>\\14.241.120.229\qlpk\175NguyenChiThanh\Packages\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="QRCoder">
-      <HintPath>\\14.241.120.229\Packages\QRCoder.dll</HintPath>
+      <HintPath>\\14.241.120.229\qlpk\175NguyenChiThanh\Packages\QRCoder.dll</HintPath>
     </Reference>
     <Reference Include="RestSharp">
-      <HintPath>\\14.241.120.229\Packages\RestSharp.dll</HintPath>
+      <HintPath>\\14.241.120.229\qlpk\175NguyenChiThanh\Packages\RestSharp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -137,7 +137,7 @@
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="ZaloDotNetSDK, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>\\14.241.120.229\Packages\ZaloDotNetSDK.dll</HintPath>
+      <HintPath>\\14.241.120.229\qlpk\175NguyenChiThanh\Packages\ZaloDotNetSDK.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
