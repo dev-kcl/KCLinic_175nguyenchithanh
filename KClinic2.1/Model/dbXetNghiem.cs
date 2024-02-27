@@ -236,6 +236,8 @@ namespace KClinic2._1.Model
             , string _TiepNhan_Id
             , string _BenhNhan_id
             , string _KTVThucHien_Id
+            , string _LoaiMau_Id
+            , string _ChatLuongMau_Id
             , string _BacSiKetLuan_Id
             , string _KetLuan
             , string _KetQua
@@ -245,6 +247,12 @@ namespace KClinic2._1.Model
             , string _NguoiCapNhat
             , string _NgayCapNhat
             , string _Huy
+            , string _NgayLayMau
+            , string _ThoiGianLayMau
+            , string _NguoiLayMau_Id
+            , string _NgayNhanMau
+            , string _ThoiGianNhanMau
+            , string _NguoiNhanMau_Id
             )
         {
             try
@@ -258,6 +266,8 @@ namespace KClinic2._1.Model
                     + "@TiepNhan_Id = " + _TiepNhan_Id + ","
                     + "@BenhNhan_id = " + _BenhNhan_id + ","
                     + "@KTVThucHien_Id = " + _KTVThucHien_Id + ","
+                    + "@LoaiMau_Id = " + _LoaiMau_Id + ","
+                    + "@ChatLuongMau_Id = " + _ChatLuongMau_Id + ","
                     + "@BacSiKetLuan_Id = " + _BacSiKetLuan_Id + ","
                     + "@KetLuan = " + _KetLuan + ","
                     + "@KetQua = " + _KetQua + ","
@@ -266,7 +276,13 @@ namespace KClinic2._1.Model
                     + "@NgayTao = " + _NgayTao + ","
                     + "@NguoiCapNhat = " + _NguoiCapNhat + ","
                     + "@NgayCapNhat = " + _NgayCapNhat + ","
-                    + "@Huy = " + _Huy
+                    + "@Huy = " + _Huy + ","
+                    + "@NgayLayMau = " + _NgayLayMau + ","
+                    + "@ThoiGianLayMau = " + _ThoiGianLayMau + ","
+                    + "@NguoiLayMau_Id = " + _NguoiLayMau_Id + ","
+                    + "@NgayNhanMau = " + _NgayNhanMau + ","
+                    + "@ThoiGianNhanMau = " + _ThoiGianNhanMau + ","
+                    + "@NguoiNhanMau_Id = " + _NguoiNhanMau_Id
                     ;
                 con.Open();
                 table1.Load(cmd_Show.ExecuteReader(CommandBehavior.CloseConnection));
@@ -284,6 +300,8 @@ namespace KClinic2._1.Model
             , string _TiepNhan_Id
             , string _BenhNhan_id
             , string _KTVThucHien_Id
+            , string _LoaiMau_Id
+            , string _ChatLuongMau_Id
             , string _BacSiKetLuan_Id
             , string _KetLuan
             , string _KetQua
@@ -294,6 +312,12 @@ namespace KClinic2._1.Model
             , string _NgayCapNhat
             , string _Huy
             , string _CLSKetQua_Id
+            , string _NgayLayMau
+            , string _ThoiGianLayMau
+            , string _NguoiLayMau_Id
+            , string _NgayNhanMau
+            , string _ThoiGianNhanMau
+            , string _NguoiNhanMau_Id
             )
         {
             try
@@ -307,6 +331,8 @@ namespace KClinic2._1.Model
                     + "@TiepNhan_Id = " + _TiepNhan_Id + ","
                     + "@BenhNhan_id = " + _BenhNhan_id + ","
                     + "@KTVThucHien_Id = " + _KTVThucHien_Id + ","
+                    + "@LoaiMau_Id = " + _LoaiMau_Id + ","
+                    + "@ChatLuongMau_Id = " + _ChatLuongMau_Id + ","
                     + "@BacSiKetLuan_Id = " + _BacSiKetLuan_Id + ","
                     + "@KetLuan = " + _KetLuan + ","
                     + "@KetQua = " + _KetQua + ","
@@ -316,7 +342,13 @@ namespace KClinic2._1.Model
                     + "@NguoiCapNhat = " + _NguoiCapNhat + ","
                     + "@NgayCapNhat = " + _NgayCapNhat + ","
                     + "@Huy = " + _Huy + ","
-                    + "@CLSKetQua_Id = " + _CLSKetQua_Id
+                    + "@CLSKetQua_Id = " + _CLSKetQua_Id + ","
+                    + "@NgayLayMau = " + _NgayLayMau + ","
+                    + "@ThoiGianLayMau = " + _ThoiGianLayMau + ","
+                    + "@NguoiLayMau_Id = " + _NguoiLayMau_Id + ","
+                    + "@NgayNhanMau = " + _NgayNhanMau + ","
+                    + "@ThoiGianNhanMau = " + _ThoiGianNhanMau + ","
+                    + "@NguoiNhanMau_Id = " + _NguoiNhanMau_Id
                     ;
                 con.Open();
                 table1.Load(cmd_Show.ExecuteReader(CommandBehavior.CloseConnection));
@@ -409,7 +441,7 @@ namespace KClinic2._1.Model
                 return null;
             }
         }
-        public static DataTable UpdateKetQuaCLSYeuCau(string _CLSYeuCau_Id, string _ThoiGianThucHien, string _NgayThucHien, string _KetQua)
+        public static DataTable UpdateKetQuaCLSYeuCau(string _CLSYeuCau_Id, string _ThoiGianThucHien, string _NgayThucHien, string _KetQua, string _SID)
         {
             try
             {
@@ -420,7 +452,8 @@ namespace KClinic2._1.Model
                     + "@CLSYeuCau_Id = " + _CLSYeuCau_Id + ","
                     + "@ThoiGianThucHien = " + _ThoiGianThucHien + ","
                     + "@NgayThucHien = " + _NgayThucHien + ","
-                    + "@KetQua = " + _KetQua
+                    + "@KetQua = " + _KetQua + ","
+                    + "@SID = " + _SID
                     ;
                 con.Open();
                 table1.Load(cmd_Show.ExecuteReader(CommandBehavior.CloseConnection));
@@ -521,6 +554,28 @@ namespace KClinic2._1.Model
                 SqlCommand cmd_Show = con.CreateCommand();
                 cmd_Show.CommandTimeout = timeout_connecttion;
                 cmd_Show.CommandText = "exec SP_004_XetNghiem @Action = N'NhomDichVuViSinh' "
+                    ;
+                con.Open();
+                table1.Load(cmd_Show.ExecuteReader(CommandBehavior.CloseConnection));
+                con.Close();
+                return table1;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public static DataTable LayDanhSachBNChuaXNTrongNgay(string _text, string _PhongBan_Id)
+        {
+            try
+            {
+                DataTable table1 = new DataTable();
+                SqlCommand cmd_Show = con.CreateCommand();
+                cmd_Show.CommandTimeout = timeout_connecttion;
+                cmd_Show.CommandText = "exec SP_004_XetNghiem @Action=N'LayDanhSachBNChuaXNTrongNgay', " +
+                    "@text = " + _text
+                    //+ ","+ "@PhongBan_Id = " + _PhongBan_Id
                     ;
                 con.Open();
                 table1.Load(cmd_Show.ExecuteReader(CommandBehavior.CloseConnection));
