@@ -37,6 +37,7 @@ namespace KClinic2._1.View.XetNghiem
             btnTimKiem.Enabled = true;
             An();
             getdata();
+            getLayDanhSachBNChuaXNTrongNgay(txtTimKiem.Text);
             if (TiepNhan_Id != "")
             {
                 btnThem.Enabled = false;
@@ -60,6 +61,9 @@ namespace KClinic2._1.View.XetNghiem
         DataTable BacSiKetLuan;
         DataTable LoaiMau;
         DataTable ChatLuongMau;
+        DataTable NguoiLayMau;
+        DataTable NguoiNhanMau;
+        DataTable LayDanhSachBNChuaXNTrongNgay;
         void getdata()
         {
             KTVThucHien = Model.dbXetNghiem.KTVThucHien();
@@ -78,7 +82,25 @@ namespace KClinic2._1.View.XetNghiem
             cbbChatLuongMau.DataSource = ChatLuongMau;
             cbbChatLuongMau.ValueMember = "FieldCode";
             cbbChatLuongMau.DisplayMember = "FieldName";
+
+            NguoiLayMau = Model.dbXetNghiem.KTVThucHien();
+            cbbNguoiLayMau.DataSource = NguoiLayMau;
+            cbbNguoiLayMau.ValueMember = "FieldCode";
+            cbbNguoiLayMau.DisplayMember = "FieldName";
+
+            NguoiNhanMau = Model.dbXetNghiem.KTVThucHien();
+            cbbNguoiNhanMau.DataSource = NguoiNhanMau;
+            cbbNguoiNhanMau.ValueMember = "FieldCode";
+            cbbNguoiNhanMau.DisplayMember = "FieldName";
         }
+
+        void getLayDanhSachBNChuaXNTrongNgay(string _text)
+        {
+            string t = "N'" + _text + "'";
+            LayDanhSachBNChuaXNTrongNgay = Model.dbXetNghiem.LayDanhSachBNChuaXNTrongNgay(t, Login.PhongBan_Id);
+            gridDSKham.DataSource = LayDanhSachBNChuaXNTrongNgay;
+        }
+
         private void btnThem_Click(object sender, EventArgs e)
         {
             btnThem.Enabled = false;
@@ -124,8 +146,26 @@ namespace KClinic2._1.View.XetNghiem
                 string KTVThucHien = "null";
                 if (cbbKTVThucHien.SelectedItem != null) { KTVThucHien = cbbKTVThucHien.Value.ToString(); }
                 else { XtraMessageBox.Show("Chưa chọn KTV thực hiện"); }
+
+                string LoaiMau = "null";
+                if (cbbLoaiMau.SelectedItem != null) { LoaiMau = cbbLoaiMau.Value.ToString(); }
+
+                string ChatLuongMau = "null";
+                if (cbbChatLuongMau.SelectedItem != null) { ChatLuongMau = cbbChatLuongMau.Value.ToString(); }
+
                 string NgayThucHien = "'" + txtThoiGianThucHien.Value.ToString("yyyyMMdd") + "'";
                 string ThoiGianThucHien = "'" + txtThoiGianThucHien.Value.ToString("yyyyMMdd HH:mm:ss") + "'";
+
+                string NgayLayMau = "'" + txtThoiGianLayMau.Value.ToString("yyyyMMdd") + "'";
+                string ThoiGianLayMau = "'" + txtThoiGianLayMau.Value.ToString("yyyyMMdd HH:mm:ss") + "'";
+                string NguoiLayMau = "null";
+                if (cbbNguoiLayMau.SelectedItem != null) { NguoiLayMau = cbbNguoiLayMau.Value.ToString(); }
+
+                string NgayNhanMau = "'" + txtThoiGianNhanMau.Value.ToString("yyyyMMdd") + "'";
+                string ThoiGianNhanMau = "'" + txtThoiGianNhanMau.Value.ToString("yyyyMMdd HH:mm:ss") + "'";
+                string NguoiNhanMau = "null";
+                if (cbbNguoiNhanMau.SelectedItem != null) { NguoiNhanMau = cbbNguoiNhanMau.Value.ToString(); }
+
                 string GhiChu = "N'" + txtGhiChu.Text.Replace("'", "''") + "'";
                 string KetLuan = "N'" + txtKetLuan.Text.Replace("'", "''") + "'";
                 string BacSiKetLuan = "null";
@@ -140,6 +180,8 @@ namespace KClinic2._1.View.XetNghiem
                                 , TiepNhan_Id
                                 , "null"
                                 , KTVThucHien
+                                , LoaiMau
+                                , ChatLuongMau
                                 , BacSiKetLuan
                                 , KetLuan
                                 , "null"
@@ -149,6 +191,12 @@ namespace KClinic2._1.View.XetNghiem
                                 , "null"
                                 , "null"
                                 , "0"
+                                , NgayLayMau //ngay lay mau
+                                , ThoiGianLayMau //thoi gian lay mau
+                                , NguoiLayMau //nguoi lay mau
+                                , NgayNhanMau //ngay lay mau
+                                , ThoiGianNhanMau //thoi gian nhan mau
+                                , NguoiNhanMau //nguoi nhan mau
                                 );
                     if (Insert.Rows.Count > 0)
                     {
@@ -158,11 +206,14 @@ namespace KClinic2._1.View.XetNghiem
                         for (int i = 0; i < gridDichVuDaTa.Rows.Count; i++)
                         {
                             string KetQua = gridDichVuDaTa.Rows[i]["KetQua"].ToString();
+                            string SId = gridDichVuDaTa.Rows[i]["SID"].ToString();
+
                             DataTable UpdateKetQuaCLSYeuCau = Model.dbXetNghiem.UpdateKetQuaCLSYeuCau(
                                  gridDichVuDaTa.Rows[i]["CLSYeuCau_Id"].ToString()
                                 , "'" + DateTime.Now.ToString("yyyyMMdd HH:mm:ss") + "'"
                                 , "'" + DateTime.Now.ToString("yyyyMMdd") + "'"
                                 , "N'" + KetQua.Replace("'", "''") + "'"
+                                , "N'" + SId.Replace("'", "''") + "'"
                                 );
                             if (KetQua.Length > 0)
                             {
@@ -196,6 +247,8 @@ namespace KClinic2._1.View.XetNghiem
                                 , TiepNhan_Id
                                 , "null"
                                 , KTVThucHien
+                                , LoaiMau
+                                , ChatLuongMau
                                 , BacSiKetLuan
                                 , KetLuan
                                 , "null"
@@ -206,6 +259,12 @@ namespace KClinic2._1.View.XetNghiem
                                 , "'" + DateTime.Now.ToString("yyyyMMdd HH:mm:ss") + "'"
                                 , "0"
                                 , CLSKetQua_Id
+                                , NgayLayMau //ngay lay mau
+                                , ThoiGianLayMau //thoi gian lay mau
+                                , NguoiLayMau //nguoi lay mau
+                                , NgayNhanMau //ngay lay mau
+                                , ThoiGianNhanMau //thoi gian nhan mau
+                                , NguoiNhanMau //nguoi nhan mau
                                 );
                     if (Update.Rows.Count > 0)
                     {
@@ -215,11 +274,14 @@ namespace KClinic2._1.View.XetNghiem
                         for (int i = 0; i < gridDichVuDaTa.Rows.Count; i++)
                         {
                             string KetQua = gridDichVuDaTa.Rows[i]["KetQua"].ToString();
+                            string SId = gridDichVuDaTa.Rows[i]["SID"].ToString();
+
                             DataTable UpdateKetQuaCLSYeuCau = Model.dbXetNghiem.UpdateKetQuaCLSYeuCau(
                                  gridDichVuDaTa.Rows[i]["CLSYeuCau_Id"].ToString()
                                 , "'" + DateTime.Now.ToString("yyyyMMdd HH:mm:ss") + "'"
                                 , "'" + DateTime.Now.ToString("yyyyMMdd") + "'"
                                 , "N'" + KetQua.Replace("'", "''") + "'"
+                                , "N'" + SId.Replace("'", "''") + "'"
                                 );
                             if (KetQua.Length > 0)
                             {
@@ -448,6 +510,8 @@ namespace KClinic2._1.View.XetNghiem
 
                             txtThoiGianThucHien.Value = DateTime.Now;
                             txtThoiGianNhanMau.Value = DateTime.Now;
+                            txtThoiGianLayMau.Value = DateTime.Now;
+
                             TiepNhan_Id = LoadThongTinBenhNhan.Rows[0]["TiepNhan_Id"].ToString();
                             //
                             DataTable LoadCLSYeuCauTheoTiepNhan_Id = Model.dbXetNghiem.LoadCLSYeuCauTheoTiepNhan_Id(TiepNhan_Id);
@@ -494,6 +558,12 @@ namespace KClinic2._1.View.XetNghiem
                                 DateTime enteredDate = DateTime.Parse(ThoiGianNhanMau);
                                 txtThoiGianNhanMau.Value = enteredDate;
                             }
+                            string ThoiGianLayMau = SuaLoadThongTinBenhNhan.Rows[0]["ThoiGianLayMau"].ToString();
+                            if (!String.IsNullOrEmpty(ThoiGianLayMau))
+                            {
+                                DateTime enteredDate = DateTime.Parse(ThoiGianLayMau);
+                                txtThoiGianLayMau.Value = enteredDate;
+                            }
                             txtGhiChu.Text = SuaLoadThongTinBenhNhan.Rows[0]["GhiChu"].ToString();
                             txtKetLuan.Text = SuaLoadThongTinBenhNhan.Rows[0]["KetLuan"].ToString();
                             string BacSiKetLuan_Id = SuaLoadThongTinBenhNhan.Rows[0]["BacSiKetLuan_Id"].ToString();
@@ -507,6 +577,31 @@ namespace KClinic2._1.View.XetNghiem
                                 cbbKTVThucHien.Value = Int32.Parse(KTVThucHien_Id);
                             }
                             //cbbKTVThucHien.SelectedValue = Int32.Parse(SuaLoadThongTinBenhNhan.Rows[0]["KTVThucHien_Id"].ToString());
+
+                            string LoaiMau_Id = SuaLoadThongTinBenhNhan.Rows[0]["LoaiMau"].ToString();
+                            if (!String.IsNullOrEmpty(LoaiMau_Id))
+                            {
+                                cbbLoaiMau.Value = Int32.Parse(LoaiMau_Id);
+                            }
+
+                            string ChatLuongMau_Id = SuaLoadThongTinBenhNhan.Rows[0]["ChatLuongMau"].ToString();
+                            if (!String.IsNullOrEmpty(ChatLuongMau_Id))
+                            {
+                                cbbChatLuongMau.Value = Int32.Parse(ChatLuongMau_Id);
+                            }
+
+                            string NguoiLayMau_Id = SuaLoadThongTinBenhNhan.Rows[0]["NguoiLayMau_Id"].ToString();
+                            if (!String.IsNullOrEmpty(NguoiLayMau_Id))
+                            {
+                                cbbNguoiLayMau.Value = Int32.Parse(NguoiLayMau_Id);
+                            }
+
+                            string NguoiNhanMau_Id = SuaLoadThongTinBenhNhan.Rows[0]["NguoiNhanMau_Id"].ToString();
+                            if (!String.IsNullOrEmpty(NguoiNhanMau_Id))
+                            {
+                                cbbNguoiNhanMau.Value = Int32.Parse(NguoiNhanMau_Id);
+                            }
+
                             TiepNhan_Id = SuaLoadThongTinBenhNhan.Rows[0]["TiepNhan_Id"].ToString();
                             CLSKetQua_Id = SuaLoadThongTinBenhNhan.Rows[0]["CLSKetQua_Id"].ToString();
 
@@ -553,6 +648,12 @@ namespace KClinic2._1.View.XetNghiem
                     DateTime enteredDate = DateTime.Parse(ThoiGianNhanMau);
                     txtThoiGianNhanMau.Value = enteredDate;
                 }
+                string ThoiGianLayMau = SuaLoadThongTinBenhNhan.Rows[0]["ThoiGianLayMau"].ToString();
+                if (!String.IsNullOrEmpty(ThoiGianLayMau))
+                {
+                    DateTime enteredDate = DateTime.Parse(ThoiGianLayMau);
+                    txtThoiGianLayMau.Value = enteredDate;
+                }
                 txtGhiChu.Text = SuaLoadThongTinBenhNhan.Rows[0]["GhiChu"].ToString();
                 txtKetLuan.Text = SuaLoadThongTinBenhNhan.Rows[0]["KetLuan"].ToString();
                 string BacSiKetLuan_Id = SuaLoadThongTinBenhNhan.Rows[0]["BacSiKetLuan_Id"].ToString();
@@ -560,11 +661,37 @@ namespace KClinic2._1.View.XetNghiem
                 {
                     cbbBacSiKetLuan.Value = Int32.Parse(BacSiKetLuan_Id);
                 }
+
                 string KTVThucHien_Id = SuaLoadThongTinBenhNhan.Rows[0]["KTVThucHien_Id"].ToString();
                 if (!String.IsNullOrEmpty(KTVThucHien_Id))
                 {
                     cbbKTVThucHien.Value = Int32.Parse(KTVThucHien_Id);
                 }
+
+                string LoaiMau_Id = SuaLoadThongTinBenhNhan.Rows[0]["LoaiMau"].ToString();
+                if (!String.IsNullOrEmpty(LoaiMau_Id))
+                {
+                    cbbLoaiMau.Value = Int32.Parse(LoaiMau_Id);
+                }
+
+                string ChatLuongMau_Id = SuaLoadThongTinBenhNhan.Rows[0]["ChatLuongMau"].ToString();
+                if (!String.IsNullOrEmpty(ChatLuongMau_Id))
+                {
+                    cbbChatLuongMau.Value = Int32.Parse(ChatLuongMau_Id);
+                }
+
+                string NguoiLayMau_Id = SuaLoadThongTinBenhNhan.Rows[0]["NguoiLayMau_Id"].ToString();
+                if (!String.IsNullOrEmpty(NguoiLayMau_Id))
+                {
+                    cbbNguoiLayMau.Value = Int32.Parse(NguoiLayMau_Id);
+                }
+
+                string NguoiNhanMau_Id = SuaLoadThongTinBenhNhan.Rows[0]["NguoiNhanMau_Id"].ToString();
+                if (!String.IsNullOrEmpty(NguoiNhanMau_Id))
+                {
+                    cbbNguoiNhanMau.Value = Int32.Parse(NguoiNhanMau_Id);
+                }
+
                 TiepNhan_Id = SuaLoadThongTinBenhNhan.Rows[0]["TiepNhan_Id"].ToString();
                 CLSKetQua_Id = SuaLoadThongTinBenhNhan.Rows[0]["CLSKetQua_Id"].ToString();
 
@@ -585,7 +712,14 @@ namespace KClinic2._1.View.XetNghiem
                 txtNamSinh.Text = LayThongTinSoTiepNhan.Rows[0]["NamSinh"].ToString();
                 txtChanDoan.Text = LayThongTinSoTiepNhan.Rows[0]["ChanDoan"].ToString();
 
+                cbbNguoiLayMau.Text = "";
+                cbbNguoiNhanMau.Text = "";
+                cbbLoaiMau.Text = "";
+                cbbChatLuongMau.Text = "";
+                cbbBacSiKetLuan.Text = "";
+
                 txtThoiGianThucHien.Value = DateTime.Now;
+                txtThoiGianLayMau.Value = DateTime.Now;
                 txtThoiGianNhanMau.Value = DateTime.Now;
                 TiepNhan_Id = LayThongTinSoTiepNhan.Rows[0]["TiepNhan_Id"].ToString();
             }
@@ -612,6 +746,14 @@ namespace KClinic2._1.View.XetNghiem
             //gridDichVu.Enabled = true;
             txtThoiGianThucHien.Enabled = true;
             //cbbNhomDichVu.Enabled = true;
+
+            cbbNguoiLayMau.Enabled = true;
+            txtThoiGianLayMau.Enabled = true;
+            cbbNguoiNhanMau.Enabled = true;
+            txtThoiGianNhanMau.Enabled = true;
+
+            txtMaVachSid.Enabled = true;
+            btnLoadSid.Enabled = true;
         }
         public void An()
         {
@@ -632,6 +774,14 @@ namespace KClinic2._1.View.XetNghiem
             //gridDichVu.Enabled = false;
             txtThoiGianThucHien.Enabled = false;
             //cbbNhomDichVu.Enabled = false;
+
+            cbbNguoiLayMau.Enabled = false;
+            txtThoiGianLayMau.Enabled = false;
+            cbbNguoiNhanMau.Enabled = false;
+            txtThoiGianNhanMau.Enabled = false;
+
+            txtMaVachSid.Enabled = false;
+            btnLoadSid.Enabled = false;
         }
         public void Reset()
         {
@@ -650,6 +800,13 @@ namespace KClinic2._1.View.XetNghiem
             txtKetLuan.Text = "";
             txtThoiGianThucHien.Text = "";
             gridDichVu.DataSource = null;
+
+            cbbNguoiLayMau.Text = "";
+            txtThoiGianLayMau.Text = "";
+            cbbNguoiNhanMau.Text = "";
+            txtThoiGianNhanMau.Text = "";
+
+            txtMaVachSid.Text = "";
         }
 
         private void gridView1_RowCellStyle(object sender, RowCellStyleEventArgs e)
@@ -700,6 +857,57 @@ namespace KClinic2._1.View.XetNghiem
             int previousIndex = (currentIndex - 1 + controls.Length) % controls.Length;
 
             controls[previousIndex].Focus();
+        }
+
+        private void btnLoadSid_Click(object sender, EventArgs e)
+        {
+            if (gridView1.RowCount > 0)
+            {
+                gridView1.BeginDataUpdate();
+                DataTable dt = (DataTable) gridDichVu.DataSource;
+                foreach (DataRow dr in dt.Rows)
+                    dr["SID"] = txtMaVachSid.Text.Trim();
+                gridView1.EndDataUpdate();
+            }
+        }
+
+        private void txtSoTiepNhan_KeyDown_1(object sender, KeyEventArgs e)
+        {
+            TiepNhan_Id = "";
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+            {
+                checkCLSTheoSoTiepNhan(txtSoTiepNhan.Text);
+            }
+        }
+
+        private void btn_S_Click_1(object sender, EventArgs e)
+        {
+            View.XetNghiem.TimKiemBenhNhan tc = new View.XetNghiem.TimKiemBenhNhan(this);
+            tc.ShowDialog();
+        }
+
+        private void btnLamTuoi_Click(object sender, EventArgs e)
+        {
+            txtTimKiem.Text = "";
+            getLayDanhSachBNChuaXNTrongNgay(txtTimKiem.Text);
+        }
+
+        private void gridView2_RowCellClick(object sender, RowCellClickEventArgs e)
+        {
+            int n = e.RowHandle;
+            if (gridView2.RowCount > 0)
+            {
+                TiepNhan_Id = gridView2.GetRowCellValue(n, "TiepNhan_Id").ToString();
+                RefreshForm();
+            }
+        }
+
+        private void txtTimKiem_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+            {
+                getLayDanhSachBNChuaXNTrongNgay(txtTimKiem.Text);
+            }
         }
     }
 }
