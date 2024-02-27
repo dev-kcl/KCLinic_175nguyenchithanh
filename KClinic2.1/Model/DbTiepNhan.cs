@@ -538,6 +538,8 @@ namespace KClinic2._1.Model
             , string _DichVu_Id
             , string _SoLuong
             , string _DonGiaDichVu
+            , string _TyLeChietKhau
+            , string _GiaTriChietKhau
             , string _ThanhTienDichVu
             , string _DuocPhepThucHien
             , string _TrangThai
@@ -565,6 +567,8 @@ namespace KClinic2._1.Model
                     + "@DichVu_Id = " + _DichVu_Id + ","
                     + "@SoLuong = " + _SoLuong + ","
                     + "@DonGiaDichVu = " + _DonGiaDichVu + ","
+                    + "@TyLeChietKhau = " + _TyLeChietKhau + ","
+                    + "@GiaTriChietKhau = " + _GiaTriChietKhau + ","
                     + "@ThanhTienDichVu = " + _ThanhTienDichVu + ","
                     + "@DuocPhepThucHien = " + _DuocPhepThucHien + ","
                     + "@TrangThai = " + _TrangThai + ","

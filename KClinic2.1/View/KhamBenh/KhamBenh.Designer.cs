@@ -82,6 +82,8 @@
             this.label20 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.txtChietKhau = new Guna.UI2.WinForms.Guna2TextBox();
+            this.label53 = new System.Windows.Forms.Label();
             this.label50 = new System.Windows.Forms.Label();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.cbbphongban = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
@@ -95,6 +97,8 @@
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridCol_TyLeChietKhau = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridCol_TienChietKhau = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -236,6 +240,7 @@
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.popupMenu2 = new DevExpress.XtraBars.PopupMenu(this.components);
             this.popupMenu3 = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.cbTiLe = new DevExpress.XtraEditors.CheckEdit();
             this.panelMain.SuspendLayout();
             this.panelContent.SuspendLayout();
             this.pnChiTiet.SuspendLayout();
@@ -276,6 +281,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbTiLe.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // panelMain
@@ -429,7 +435,7 @@
             this.txtGhiChu.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.txtGhiChu.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
             this.txtGhiChu.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtGhiChu.Location = new System.Drawing.Point(115, 857);
+            this.txtGhiChu.Location = new System.Drawing.Point(119, 857);
             this.txtGhiChu.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.txtGhiChu.Multiline = true;
             this.txtGhiChu.Name = "txtGhiChu";
@@ -437,7 +443,7 @@
             this.txtGhiChu.PlaceholderText = "";
             this.txtGhiChu.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtGhiChu.SelectedText = "";
-            this.txtGhiChu.Size = new System.Drawing.Size(1288, 84);
+            this.txtGhiChu.Size = new System.Drawing.Size(1233, 84);
             this.txtGhiChu.TabIndex = 15;
             // 
             // label47
@@ -468,7 +474,7 @@
             this.txtDieuTri.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.txtDieuTri.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
             this.txtDieuTri.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtDieuTri.Location = new System.Drawing.Point(115, 763);
+            this.txtDieuTri.Location = new System.Drawing.Point(119, 763);
             this.txtDieuTri.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.txtDieuTri.Multiline = true;
             this.txtDieuTri.Name = "txtDieuTri";
@@ -476,7 +482,7 @@
             this.txtDieuTri.PlaceholderText = "";
             this.txtDieuTri.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtDieuTri.SelectedText = "";
-            this.txtDieuTri.Size = new System.Drawing.Size(1288, 84);
+            this.txtDieuTri.Size = new System.Drawing.Size(1233, 84);
             this.txtDieuTri.TabIndex = 14;
             // 
             // label46
@@ -507,7 +513,7 @@
             this.txtTomTatKetQuaCLS.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.txtTomTatKetQuaCLS.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
             this.txtTomTatKetQuaCLS.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtTomTatKetQuaCLS.Location = new System.Drawing.Point(115, 615);
+            this.txtTomTatKetQuaCLS.Location = new System.Drawing.Point(119, 615);
             this.txtTomTatKetQuaCLS.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.txtTomTatKetQuaCLS.Multiline = true;
             this.txtTomTatKetQuaCLS.Name = "txtTomTatKetQuaCLS";
@@ -515,7 +521,7 @@
             this.txtTomTatKetQuaCLS.PlaceholderText = "";
             this.txtTomTatKetQuaCLS.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtTomTatKetQuaCLS.SelectedText = "";
-            this.txtTomTatKetQuaCLS.Size = new System.Drawing.Size(1288, 138);
+            this.txtTomTatKetQuaCLS.Size = new System.Drawing.Size(1233, 138);
             this.txtTomTatKetQuaCLS.TabIndex = 13;
             // 
             // label45
@@ -549,7 +555,7 @@
             this.txtLyDoKham.PasswordChar = '\0';
             this.txtLyDoKham.PlaceholderText = "";
             this.txtLyDoKham.SelectedText = "";
-            this.txtLyDoKham.Size = new System.Drawing.Size(1291, 44);
+            this.txtLyDoKham.Size = new System.Drawing.Size(1234, 44);
             this.txtLyDoKham.TabIndex = 9;
             // 
             // label44
@@ -580,7 +586,7 @@
             this.txtKham.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.txtKham.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
             this.txtKham.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtKham.Location = new System.Drawing.Point(115, 468);
+            this.txtKham.Location = new System.Drawing.Point(119, 468);
             this.txtKham.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.txtKham.Multiline = true;
             this.txtKham.Name = "txtKham";
@@ -588,7 +594,7 @@
             this.txtKham.PlaceholderText = "";
             this.txtKham.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtKham.SelectedText = "";
-            this.txtKham.Size = new System.Drawing.Size(1288, 138);
+            this.txtKham.Size = new System.Drawing.Size(1233, 138);
             this.txtKham.TabIndex = 12;
             // 
             // txtTrieuChung
@@ -609,7 +615,7 @@
             this.txtTrieuChung.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.txtTrieuChung.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
             this.txtTrieuChung.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtTrieuChung.Location = new System.Drawing.Point(118, 370);
+            this.txtTrieuChung.Location = new System.Drawing.Point(119, 370);
             this.txtTrieuChung.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.txtTrieuChung.Multiline = true;
             this.txtTrieuChung.Name = "txtTrieuChung";
@@ -617,7 +623,7 @@
             this.txtTrieuChung.PlaceholderText = "";
             this.txtTrieuChung.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtTrieuChung.SelectedText = "";
-            this.txtTrieuChung.Size = new System.Drawing.Size(1287, 87);
+            this.txtTrieuChung.Size = new System.Drawing.Size(1233, 87);
             this.txtTrieuChung.TabIndex = 11;
             // 
             // txtTienSu
@@ -638,7 +644,7 @@
             this.txtTienSu.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.txtTienSu.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
             this.txtTienSu.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtTienSu.Location = new System.Drawing.Point(115, 255);
+            this.txtTienSu.Location = new System.Drawing.Point(119, 255);
             this.txtTienSu.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.txtTienSu.Multiline = true;
             this.txtTienSu.Name = "txtTienSu";
@@ -646,7 +652,7 @@
             this.txtTienSu.PlaceholderText = "";
             this.txtTienSu.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtTienSu.SelectedText = "";
-            this.txtTienSu.Size = new System.Drawing.Size(1288, 106);
+            this.txtTienSu.Size = new System.Drawing.Size(1233, 106);
             this.txtTienSu.TabIndex = 10;
             // 
             // label43
@@ -1032,6 +1038,9 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.cbTiLe);
+            this.tabPage1.Controls.Add(this.txtChietKhau);
+            this.tabPage1.Controls.Add(this.label53);
             this.tabPage1.Controls.Add(this.label50);
             this.tabPage1.Controls.Add(this.guna2Panel1);
             this.tabPage1.Controls.Add(this.pnDichVu);
@@ -1050,6 +1059,40 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Chỉ định dịch vụ";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // txtChietKhau
+            // 
+            this.txtChietKhau.BackColor = System.Drawing.Color.White;
+            this.txtChietKhau.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(209)))), ((int)(((byte)(55)))));
+            this.txtChietKhau.BorderThickness = 2;
+            this.txtChietKhau.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtChietKhau.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtChietKhau.DefaultText = "";
+            this.txtChietKhau.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtChietKhau.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtChietKhau.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtChietKhau.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtChietKhau.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtChietKhau.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.txtChietKhau.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
+            this.txtChietKhau.Location = new System.Drawing.Point(132, 106);
+            this.txtChietKhau.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.txtChietKhau.Name = "txtChietKhau";
+            this.txtChietKhau.PasswordChar = '\0';
+            this.txtChietKhau.PlaceholderText = "";
+            this.txtChietKhau.SelectedText = "";
+            this.txtChietKhau.Size = new System.Drawing.Size(163, 36);
+            this.txtChietKhau.TabIndex = 59;
+            // 
+            // label53
+            // 
+            this.label53.AutoSize = true;
+            this.label53.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.label53.Location = new System.Drawing.Point(19, 109);
+            this.label53.Name = "label53";
+            this.label53.Size = new System.Drawing.Size(104, 28);
+            this.label53.TabIndex = 55;
+            this.label53.Text = "Chiết khấu";
             // 
             // label50
             // 
@@ -1141,11 +1184,11 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gridDichVu.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.gridDichVu.Location = new System.Drawing.Point(3, 112);
+            this.gridDichVu.Location = new System.Drawing.Point(3, 151);
             this.gridDichVu.MainView = this.gridView2;
             this.gridDichVu.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.gridDichVu.Name = "gridDichVu";
-            this.gridDichVu.Size = new System.Drawing.Size(1367, 441);
+            this.gridDichVu.Size = new System.Drawing.Size(1367, 402);
             this.gridDichVu.TabIndex = 24;
             this.gridDichVu.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
@@ -1167,6 +1210,8 @@
             this.gridColumn4,
             this.gridColumn5,
             this.gridColumn6,
+            this.gridCol_TyLeChietKhau,
+            this.gridCol_TienChietKhau,
             this.gridColumn7,
             this.gridColumn9,
             this.gridColumn8,
@@ -1222,7 +1267,7 @@
             this.gridColumn4.OptionsColumn.AllowEdit = false;
             this.gridColumn4.Visible = true;
             this.gridColumn4.VisibleIndex = 1;
-            this.gridColumn4.Width = 466;
+            this.gridColumn4.Width = 480;
             // 
             // gridColumn5
             // 
@@ -1246,6 +1291,27 @@
             this.gridColumn6.VisibleIndex = 3;
             this.gridColumn6.Width = 99;
             // 
+            // gridCol_TyLeChietKhau
+            // 
+            this.gridCol_TyLeChietKhau.Caption = "% CK";
+            this.gridCol_TyLeChietKhau.FieldName = "TyLeChietKhau";
+            this.gridCol_TyLeChietKhau.MinWidth = 25;
+            this.gridCol_TyLeChietKhau.Name = "gridCol_TyLeChietKhau";
+            this.gridCol_TyLeChietKhau.OptionsColumn.AllowEdit = false;
+            this.gridCol_TyLeChietKhau.Visible = true;
+            this.gridCol_TyLeChietKhau.VisibleIndex = 5;
+            this.gridCol_TyLeChietKhau.Width = 94;
+            // 
+            // gridCol_TienChietKhau
+            // 
+            this.gridCol_TienChietKhau.Caption = "Tiền CK";
+            this.gridCol_TienChietKhau.FieldName = "GiaTriChietKhau";
+            this.gridCol_TienChietKhau.MinWidth = 25;
+            this.gridCol_TienChietKhau.Name = "gridCol_TienChietKhau";
+            this.gridCol_TienChietKhau.Visible = true;
+            this.gridCol_TienChietKhau.VisibleIndex = 6;
+            this.gridCol_TienChietKhau.Width = 94;
+            // 
             // gridColumn7
             // 
             this.gridColumn7.Caption = "Thành tiền";
@@ -1255,7 +1321,7 @@
             this.gridColumn7.OptionsColumn.AllowEdit = false;
             this.gridColumn7.Visible = true;
             this.gridColumn7.VisibleIndex = 4;
-            this.gridColumn7.Width = 99;
+            this.gridColumn7.Width = 110;
             // 
             // gridColumn9
             // 
@@ -1264,8 +1330,8 @@
             this.gridColumn9.MinWidth = 26;
             this.gridColumn9.Name = "gridColumn9";
             this.gridColumn9.Visible = true;
-            this.gridColumn9.VisibleIndex = 5;
-            this.gridColumn9.Width = 99;
+            this.gridColumn9.VisibleIndex = 7;
+            this.gridColumn9.Width = 100;
             // 
             // gridColumn8
             // 
@@ -1283,8 +1349,8 @@
             this.gridColumn25.MinWidth = 29;
             this.gridColumn25.Name = "gridColumn25";
             this.gridColumn25.Visible = true;
-            this.gridColumn25.VisibleIndex = 6;
-            this.gridColumn25.Width = 99;
+            this.gridColumn25.VisibleIndex = 8;
+            this.gridColumn25.Width = 142;
             // 
             // btnXoaDichVu
             // 
@@ -1348,10 +1414,10 @@
             this.pnNhomBenh.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(209)))), ((int)(((byte)(55)))));
             this.pnNhomBenh.BorderThickness = 2;
             this.pnNhomBenh.Controls.Add(this.cbbNhomBenh);
-            this.pnNhomBenh.Location = new System.Drawing.Point(264, 59);
+            this.pnNhomBenh.Location = new System.Drawing.Point(233, 59);
             this.pnNhomBenh.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pnNhomBenh.Name = "pnNhomBenh";
-            this.pnNhomBenh.Size = new System.Drawing.Size(767, 36);
+            this.pnNhomBenh.Size = new System.Drawing.Size(798, 36);
             this.pnNhomBenh.TabIndex = 17;
             // 
             // cbbNhomBenh
@@ -1370,7 +1436,7 @@
             this.cbbNhomBenh.Name = "cbbNhomBenh";
             this.cbbNhomBenh.SelectedIndex = -1;
             this.cbbNhomBenh.SelectedItem = null;
-            this.cbbNhomBenh.Size = new System.Drawing.Size(761, 28);
+            this.cbbNhomBenh.Size = new System.Drawing.Size(792, 28);
             this.cbbNhomBenh.TabIndex = 11;
             this.cbbNhomBenh.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cbbNhomBenh_KeyDown);
             // 
@@ -3370,6 +3436,18 @@
             this.popupMenu3.Manager = this.barManager1;
             this.popupMenu3.Name = "popupMenu3";
             // 
+            // cbTiLe
+            // 
+            this.cbTiLe.EditValue = true;
+            this.cbTiLe.Location = new System.Drawing.Point(305, 107);
+            this.cbTiLe.Margin = new System.Windows.Forms.Padding(4);
+            this.cbTiLe.Name = "cbTiLe";
+            this.cbTiLe.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.cbTiLe.Properties.Appearance.Options.UseFont = true;
+            this.cbTiLe.Properties.Caption = "Theo %";
+            this.cbTiLe.Size = new System.Drawing.Size(120, 32);
+            this.cbTiLe.TabIndex = 88;
+            // 
             // KhamBenh
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -3437,6 +3515,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbTiLe.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -3642,5 +3721,10 @@
         private DevExpress.XtraBars.BarButtonItem XemChiDinh;
         private DevExpress.XtraGrid.Columns.GridColumn Add;
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit1;
+        private Guna.UI2.WinForms.Guna2TextBox txtChietKhau;
+        private System.Windows.Forms.Label label53;
+        private DevExpress.XtraGrid.Columns.GridColumn gridCol_TyLeChietKhau;
+        private DevExpress.XtraGrid.Columns.GridColumn gridCol_TienChietKhau;
+        private DevExpress.XtraEditors.CheckEdit cbTiLe;
     }
 }
