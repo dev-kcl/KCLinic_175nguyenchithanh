@@ -28,7 +28,7 @@ namespace KClinic2._1.View
                     txtTieuDe.Text = SelectSettingTheoSettingCode.Rows[0]["NoiDung"].ToString();
                 }
             }
-            DataTable SelectSettingTheoSettingCode2 = Model.db.SelectSettingTheoSettingCode("logo");
+            DataTable SelectSettingTheoSettingCode2 = Model.db.SelectSettingTheoSettingCode("logo_VSK");
             if (SelectSettingTheoSettingCode2 != null)
             {
                 if (SelectSettingTheoSettingCode2.Rows.Count > 0)
