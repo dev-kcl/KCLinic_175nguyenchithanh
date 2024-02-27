@@ -183,7 +183,19 @@ namespace KClinic2._1.View.TongHop
                                     {
                                         Decimal _SoLuong = Decimal.Parse(gridView1.GetRowCellValue(selectedRowHandle, "SoLuong").ToString(), System.Globalization.CultureInfo.InvariantCulture);
                                         Decimal _DonGiaDichVu = Decimal.Parse(gridView1.GetRowCellValue(selectedRowHandle, "DonGiaDichVu").ToString(), System.Globalization.CultureInfo.InvariantCulture);
-                                        //Decimal _GiamGia = Decimal.Parse(gridView1.GetRowCellValue(selectedRowHandle, "GiamGia").ToString(), System.Globalization.CultureInfo.InvariantCulture);
+                                        Decimal _GiamGiaTiLe = 0;
+                                        Decimal _GiamGia = 0;
+
+                                        if (gridView1.GetRowCellValue(selectedRowHandle, "GiamGiaTiLe").ToString() != "")
+                                        {
+                                            _GiamGiaTiLe = Decimal.Parse(gridView1.GetRowCellValue(selectedRowHandle, "GiamGiaTiLe").ToString(), System.Globalization.CultureInfo.InvariantCulture);
+                                        }
+
+                                        if (gridView1.GetRowCellValue(selectedRowHandle, "GiamGia").ToString() != "")
+                                        {
+                                            _GiamGia = Decimal.Parse(gridView1.GetRowCellValue(selectedRowHandle, "GiamGia").ToString(), System.Globalization.CultureInfo.InvariantCulture);
+                                        }
+
                                         //if (gridView1.GetRowCellValue(selectedRowHandle, "GiamGiaTiLe").ToString() == "1")
                                         //{
                                         //    _ThanhTienChitiet = (_SoLuong * _DonGiaDichVu) - ((_SoLuong * _DonGiaDichVu) / _GiamGia * 100);
@@ -192,7 +204,7 @@ namespace KClinic2._1.View.TongHop
                                         //{
                                         //    _ThanhTienChitiet = (_SoLuong * _DonGiaDichVu) - _GiamGia;
                                         //}
-                                        _ThanhTienChitiet = (_SoLuong * _DonGiaDichVu);
+                                        _ThanhTienChitiet = (_SoLuong * _DonGiaDichVu) - _GiamGia;
                                         DataTable InsertHoaDonChiTiet = Model.HoaDondb.InsertHoaDonChiTiet(
                                              HoaDon_Id
                                              , gridView1.GetRowCellValue(selectedRowHandle, "IDx").ToString()
@@ -203,8 +215,8 @@ namespace KClinic2._1.View.TongHop
                                              //, gridView1.GetRowCellValue(selectedRowHandle, "ThanhTienDichVu").ToString()
                                              , "null" //DaHoanTra
                                              , gridView1.GetRowCellValue(selectedRowHandle, "Loai_Id").ToString()
-                                             , "0"//gridView1.GetRowCellValue(selectedRowHandle, "GiamGia").ToString()
-                                             , "0"//gridView1.GetRowCellValue(selectedRowHandle, "GiamGiaTiLe").ToString()
+                                             , _GiamGia.ToString()
+                                             , _GiamGiaTiLe.ToString()
                                            );
                                         DataTable UpdateTrangThaiThanhToanCLSYeuCau = Model.HoaDondb.UpdateTrangThaiThanhToanCLSYeuCau(gridView1.GetRowCellValue(selectedRowHandle, "IDx").ToString());
                                     }
@@ -212,6 +224,18 @@ namespace KClinic2._1.View.TongHop
                                     {
                                         Decimal _SoLuong = Decimal.Parse(gridView1.GetRowCellValue(selectedRowHandle, "SoLuong").ToString(), System.Globalization.CultureInfo.InvariantCulture);
                                         Decimal _DonGiaDichVu = Decimal.Parse(gridView1.GetRowCellValue(selectedRowHandle, "DonGiaDichVu").ToString(), System.Globalization.CultureInfo.InvariantCulture);
+                                        Decimal _GiamGiaTiLe = 0;
+                                        Decimal _GiamGia = 0;
+
+                                        if (gridView1.GetRowCellValue(selectedRowHandle, "GiamGiaTiLe").ToString() != "")
+                                        {
+                                            _GiamGiaTiLe = Decimal.Parse(gridView1.GetRowCellValue(selectedRowHandle, "GiamGiaTiLe").ToString(), System.Globalization.CultureInfo.InvariantCulture);
+                                        }
+
+                                        if (gridView1.GetRowCellValue(selectedRowHandle, "GiamGia").ToString() != "")
+                                        {
+                                            _GiamGia = Decimal.Parse(gridView1.GetRowCellValue(selectedRowHandle, "GiamGia").ToString(), System.Globalization.CultureInfo.InvariantCulture);
+                                        }
                                         //Decimal _GiamGia = Decimal.Parse(gridView1.GetRowCellValue(selectedRowHandle, "GiamGia").ToString(), System.Globalization.CultureInfo.InvariantCulture);
                                         //if (gridView1.GetRowCellValue(selectedRowHandle, "GiamGiaTiLe").ToString() == "1")
                                         //{
@@ -221,7 +245,7 @@ namespace KClinic2._1.View.TongHop
                                         //{
                                         //    _ThanhTienChitiet = (_SoLuong * _DonGiaDichVu) - _GiamGia;
                                         //}
-                                        _ThanhTienChitiet = (_SoLuong * _DonGiaDichVu);
+                                        _ThanhTienChitiet = (_SoLuong * _DonGiaDichVu) - _GiamGia;
                                         DataTable InsertHoaDonChiTiet = Model.HoaDondb.InsertHoaDonChiTiet(
                                              HoaDon_Id
                                              , "null"
@@ -231,8 +255,8 @@ namespace KClinic2._1.View.TongHop
                                              , gridView1.GetRowCellValue(selectedRowHandle, "ThanhTienDichVu").ToString()
                                              , "null" //DaHoanTra
                                              , gridView1.GetRowCellValue(selectedRowHandle, "Loai_Id").ToString()
-                                             , "0"//gridView1.GetRowCellValue(selectedRowHandle, "GiamGia").ToString()
-                                             , "0"//gridView1.GetRowCellValue(selectedRowHandle, "GiamGiaTiLe").ToString()
+                                             , _GiamGia.ToString() //gridView1.GetRowCellValue(selectedRowHandle, "GiamGia").ToString()
+                                             , _GiamGiaTiLe.ToString() //gridView1.GetRowCellValue(selectedRowHandle, "GiamGiaTiLe").ToString()
                                            );
                                         DataTable UpdateTrangThaiThanhToanToaThuoc = Model.HoaDondb.UpdateTrangThaiThanhToanToaThuoc(gridView1.GetRowCellValue(selectedRowHandle, "IDx").ToString());
                                     }

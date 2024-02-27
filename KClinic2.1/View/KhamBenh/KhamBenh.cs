@@ -1326,10 +1326,33 @@ namespace KClinic2._1.View.KhamBenh
             {
                 DataRowView typeItem = (DataRowView)cbbDV.SelectedItem;
                 string DichVuId = typeItem.Row[0].ToString();
+
+                string Phongban_id = Login.PhongBan_Id;
                 DataRowView typeItem1 = (DataRowView)cbbphongban.SelectedItem;
-                string Phongban_id = typeItem1.Row[0].ToString();
+                if (typeItem1 != null)
+                {
+                    Phongban_id = typeItem1.Row[0].ToString();
+                }
+                
                 DataTable Dm_DichVu_DonGia = Model.DbTiepNhan.Dm_DichVu_DonGia(DichVuId);
                 string GiaDichVu = Dm_DichVu_DonGia.Rows[0]["GiaDichVu"].ToString();
+
+                string ChietKhauPhanTram = "null";
+                string GiaTriChietKhau = "null";
+
+                if (txtChietKhau.Text.Trim() != "")
+                {
+                    if (cbTiLe.Checked == true)
+                    {
+                        ChietKhauPhanTram = txtChietKhau.Text.ToString().Replace(".", "").Replace(",", "");
+                        GiaTriChietKhau = ((Decimal.Parse(GiaDichVu) * Decimal.Parse(ChietKhauPhanTram)) / 100).ToString();
+                    }
+                    else
+                    {
+                        GiaTriChietKhau = txtChietKhau.Text.ToString().Replace(".", "").Replace(",", "");
+                    }
+                }
+
                 //
                 DataTable InsertCLSYeuCau = Model.DbTiepNhan.InsertCLSYeuCau(
                                   "null"
@@ -1340,6 +1363,8 @@ namespace KClinic2._1.View.KhamBenh
                                 , DichVuId
                                 , "1"
                                 , GiaDichVu
+                                , ChietKhauPhanTram
+                                , GiaTriChietKhau
                                 , "null"
                                 , "1"
                                 , "ChuaThucHien"
@@ -1380,6 +1405,8 @@ namespace KClinic2._1.View.KhamBenh
                                 , CheckDichVuCapDuoi.Rows[j]["Dich_Id"].ToString()
                                 , "1"
                                 , "0" //set giá dịch vụ = 0
+                                , "null" //ty le chiet khau
+                                , "null" //tien chiet khau
                                 , "null"
                                 , "1"
                                 , "ChuaThucHien"
@@ -1453,8 +1480,24 @@ namespace KClinic2._1.View.KhamBenh
                 {
                     if (CheckNhomBenh_DichVu.Rows.Count > 0)
                     {
+                        string ChietKhauPhanTram = "null";
+                        string GiaTriChietKhau = "null";
+
                         for (int i = 0; i < CheckNhomBenh_DichVu.Rows.Count; i++)
                         {
+                            if (txtChietKhau.Text.Trim() != "")
+                            {
+                                if (cbTiLe.Checked == true)
+                                {
+                                    ChietKhauPhanTram = txtChietKhau.Text.ToString().Replace(".", "").Replace(",", "");
+                                    GiaTriChietKhau = ((Decimal.Parse(CheckNhomBenh_DichVu.Rows[i]["GiaDichVu"].ToString()) * Decimal.Parse(ChietKhauPhanTram)) / 100).ToString();
+                                }
+                                else
+                                {
+                                    GiaTriChietKhau = txtChietKhau.Text.ToString().Replace(".", "").Replace(",", "");
+                                }
+                            }
+
                             DataTable InsertCLSYeuCau = Model.DbTiepNhan.InsertCLSYeuCau(
                                   "null"
                                 , "'" + DateTime.Now.ToString("yyyyMMdd") + "'"
@@ -1464,6 +1507,8 @@ namespace KClinic2._1.View.KhamBenh
                                 , CheckNhomBenh_DichVu.Rows[i]["Dich_Id"].ToString()
                                 , "1"
                                 , CheckNhomBenh_DichVu.Rows[i]["GiaDichVu"].ToString()
+                                , ChietKhauPhanTram //ty le chiet khau
+                                , GiaTriChietKhau //tien chiet khau
                                 , "null"
                                 , "1"
                                 , "ChuaThucHien"
@@ -1504,6 +1549,8 @@ namespace KClinic2._1.View.KhamBenh
                                             , CheckDichVuCapDuoi.Rows[j]["Dich_Id"].ToString()
                                             , "1"
                                             , "0" //set gia dịch vụ = 0
+                                            , "null" //ty le chiet khau
+                                            , "null" //tien chiet khau
                                             , "null"
                                             , "1"
                                             , "ChuaThucHien"
@@ -2737,8 +2784,8 @@ namespace KClinic2._1.View.KhamBenh
 
         private void cbbDV_Click(object sender, EventArgs e)
         {
-            cbbDV.DataSource = null;
-            cbbDV.DroppedDown = true;
+            //cbbDV.DataSource = null;
+            //cbbDV.DroppedDown = true;
         }
 
         private void InToaThuoc_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

@@ -41,6 +41,8 @@
             this.panelContent = new System.Windows.Forms.Panel();
             this.panelDuLieu = new Guna.UI2.WinForms.Guna2Panel();
             this.panelChiTiet = new Guna.UI2.WinForms.Guna2Panel();
+            this.txtChietKhau = new Guna.UI2.WinForms.Guna2TextBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.label45 = new System.Windows.Forms.Label();
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             this.cbbphongban = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
@@ -54,6 +56,8 @@
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridCol_TL_ChietKhau = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridCol_ChietKhau = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -137,6 +141,7 @@
             this.btnSua = new DevExpress.XtraEditors.SimpleButton();
             this.btnThem = new DevExpress.XtraEditors.SimpleButton();
             this.alertControl1 = new DevExpress.XtraBars.Alerter.AlertControl(this.components);
+            this.cbTiLe = new DevExpress.XtraEditors.CheckEdit();
             this.panelMain.SuspendLayout();
             this.panelContent.SuspendLayout();
             this.panelDuLieu.SuspendLayout();
@@ -164,6 +169,7 @@
             this.panelButton.SuspendLayout();
             this.pnMenuPhu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbTiLe.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // panelMain
@@ -175,7 +181,7 @@
             this.panelMain.Location = new System.Drawing.Point(0, 0);
             this.panelMain.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panelMain.Name = "panelMain";
-            this.panelMain.Size = new System.Drawing.Size(1659, 583);
+            this.panelMain.Size = new System.Drawing.Size(1659, 899);
             this.panelMain.TabIndex = 0;
             // 
             // panelContent
@@ -186,7 +192,7 @@
             this.panelContent.Location = new System.Drawing.Point(0, 105);
             this.panelContent.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panelContent.Name = "panelContent";
-            this.panelContent.Size = new System.Drawing.Size(1659, 478);
+            this.panelContent.Size = new System.Drawing.Size(1659, 794);
             this.panelContent.TabIndex = 1;
             // 
             // panelDuLieu
@@ -197,7 +203,7 @@
             this.panelDuLieu.Location = new System.Drawing.Point(0, 261);
             this.panelDuLieu.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panelDuLieu.Name = "panelDuLieu";
-            this.panelDuLieu.Size = new System.Drawing.Size(1659, 217);
+            this.panelDuLieu.Size = new System.Drawing.Size(1659, 533);
             this.panelDuLieu.TabIndex = 16;
             // 
             // panelChiTiet
@@ -207,6 +213,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelChiTiet.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(209)))), ((int)(((byte)(55)))));
             this.panelChiTiet.BorderThickness = 2;
+            this.panelChiTiet.Controls.Add(this.cbTiLe);
+            this.panelChiTiet.Controls.Add(this.txtChietKhau);
+            this.panelChiTiet.Controls.Add(this.label12);
             this.panelChiTiet.Controls.Add(this.label45);
             this.panelChiTiet.Controls.Add(this.guna2Panel2);
             this.panelChiTiet.Controls.Add(this.pnDichVu);
@@ -220,15 +229,51 @@
             this.panelChiTiet.Location = new System.Drawing.Point(16, 0);
             this.panelChiTiet.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panelChiTiet.Name = "panelChiTiet";
-            this.panelChiTiet.Size = new System.Drawing.Size(1627, 203);
+            this.panelChiTiet.Size = new System.Drawing.Size(1627, 519);
             this.panelChiTiet.TabIndex = 0;
+            // 
+            // txtChietKhau
+            // 
+            this.txtChietKhau.BackColor = System.Drawing.Color.White;
+            this.txtChietKhau.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(209)))), ((int)(((byte)(55)))));
+            this.txtChietKhau.BorderThickness = 2;
+            this.txtChietKhau.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtChietKhau.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtChietKhau.DefaultText = "";
+            this.txtChietKhau.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtChietKhau.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtChietKhau.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtChietKhau.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtChietKhau.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtChietKhau.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.txtChietKhau.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
+            this.txtChietKhau.Location = new System.Drawing.Point(121, 119);
+            this.txtChietKhau.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.txtChietKhau.Name = "txtChietKhau";
+            this.txtChietKhau.PasswordChar = '\0';
+            this.txtChietKhau.PlaceholderText = "";
+            this.txtChietKhau.SelectedText = "";
+            this.txtChietKhau.Size = new System.Drawing.Size(176, 36);
+            this.txtChietKhau.TabIndex = 54;
+            this.txtChietKhau.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtChietKhauThuong_KeyPress);
+            this.txtChietKhau.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.txtChietKhauThuong_PreviewKeyDown);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.label12.Location = new System.Drawing.Point(10, 122);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(104, 28);
+            this.label12.TabIndex = 50;
+            this.label12.Text = "Chiết khấu";
             // 
             // label45
             // 
             this.label45.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label45.AutoSize = true;
             this.label45.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label45.Location = new System.Drawing.Point(998, 25);
+            this.label45.Location = new System.Drawing.Point(1003, 26);
             this.label45.Name = "label45";
             this.label45.Size = new System.Drawing.Size(107, 28);
             this.label45.TabIndex = 49;
@@ -278,10 +323,10 @@
             this.pnDichVu.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(209)))), ((int)(((byte)(55)))));
             this.pnDichVu.BorderThickness = 2;
             this.pnDichVu.Controls.Add(this.cbbDV);
-            this.pnDichVu.Location = new System.Drawing.Point(213, 26);
+            this.pnDichVu.Location = new System.Drawing.Point(182, 26);
             this.pnDichVu.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pnDichVu.Name = "pnDichVu";
-            this.pnDichVu.Size = new System.Drawing.Size(769, 36);
+            this.pnDichVu.Size = new System.Drawing.Size(800, 36);
             this.pnDichVu.TabIndex = 47;
             // 
             // cbbDV
@@ -300,7 +345,7 @@
             this.cbbDV.Name = "cbbDV";
             this.cbbDV.SelectedIndex = -1;
             this.cbbDV.SelectedItem = null;
-            this.cbbDV.Size = new System.Drawing.Size(766, 28);
+            this.cbbDV.Size = new System.Drawing.Size(797, 28);
             this.cbbDV.TabIndex = 10;
             this.cbbDV.ValueChanged += new System.EventHandler(this.cbbDV_ValueChanged);
             this.cbbDV.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBox_KeyDown);
@@ -312,11 +357,11 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gridDichVu.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.gridDichVu.Location = new System.Drawing.Point(15, 126);
+            this.gridDichVu.Location = new System.Drawing.Point(15, 164);
             this.gridDichVu.MainView = this.gridView1;
             this.gridDichVu.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.gridDichVu.Name = "gridDichVu";
-            this.gridDichVu.Size = new System.Drawing.Size(1599, 73);
+            this.gridDichVu.Size = new System.Drawing.Size(1599, 351);
             this.gridDichVu.TabIndex = 23;
             this.gridDichVu.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -338,6 +383,8 @@
             this.gridColumn4,
             this.gridColumn5,
             this.gridColumn6,
+            this.gridCol_TL_ChietKhau,
+            this.gridCol_ChietKhau,
             this.gridColumn7,
             this.gridColumn9,
             this.gridColumn8,
@@ -373,7 +420,7 @@
             this.gridColumn2.OptionsColumn.AllowEdit = false;
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 0;
-            this.gridColumn2.Width = 200;
+            this.gridColumn2.Width = 196;
             // 
             // gridColumn3
             // 
@@ -384,7 +431,7 @@
             this.gridColumn3.OptionsColumn.AllowEdit = false;
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 1;
-            this.gridColumn3.Width = 249;
+            this.gridColumn3.Width = 111;
             // 
             // gridColumn4
             // 
@@ -395,7 +442,7 @@
             this.gridColumn4.OptionsColumn.AllowEdit = false;
             this.gridColumn4.Visible = true;
             this.gridColumn4.VisibleIndex = 2;
-            this.gridColumn4.Width = 569;
+            this.gridColumn4.Width = 510;
             // 
             // gridColumn5
             // 
@@ -406,7 +453,7 @@
             this.gridColumn5.OptionsColumn.AllowEdit = false;
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 3;
-            this.gridColumn5.Width = 99;
+            this.gridColumn5.Width = 90;
             // 
             // gridColumn6
             // 
@@ -417,7 +464,29 @@
             this.gridColumn6.OptionsColumn.AllowEdit = false;
             this.gridColumn6.Visible = true;
             this.gridColumn6.VisibleIndex = 4;
-            this.gridColumn6.Width = 99;
+            this.gridColumn6.Width = 90;
+            // 
+            // gridCol_TL_ChietKhau
+            // 
+            this.gridCol_TL_ChietKhau.Caption = "CK (%)";
+            this.gridCol_TL_ChietKhau.FieldName = "TyLeChietKhau";
+            this.gridCol_TL_ChietKhau.MinWidth = 25;
+            this.gridCol_TL_ChietKhau.Name = "gridCol_TL_ChietKhau";
+            this.gridCol_TL_ChietKhau.OptionsColumn.AllowEdit = false;
+            this.gridCol_TL_ChietKhau.Visible = true;
+            this.gridCol_TL_ChietKhau.VisibleIndex = 5;
+            this.gridCol_TL_ChietKhau.Width = 67;
+            // 
+            // gridCol_ChietKhau
+            // 
+            this.gridCol_ChietKhau.Caption = "Tiền CK";
+            this.gridCol_ChietKhau.FieldName = "GiaTriChietKhau";
+            this.gridCol_ChietKhau.MinWidth = 25;
+            this.gridCol_ChietKhau.Name = "gridCol_ChietKhau";
+            this.gridCol_ChietKhau.OptionsColumn.AllowEdit = false;
+            this.gridCol_ChietKhau.Visible = true;
+            this.gridCol_ChietKhau.VisibleIndex = 6;
+            this.gridCol_ChietKhau.Width = 109;
             // 
             // gridColumn7
             // 
@@ -427,8 +496,8 @@
             this.gridColumn7.Name = "gridColumn7";
             this.gridColumn7.OptionsColumn.AllowEdit = false;
             this.gridColumn7.Visible = true;
-            this.gridColumn7.VisibleIndex = 5;
-            this.gridColumn7.Width = 99;
+            this.gridColumn7.VisibleIndex = 7;
+            this.gridColumn7.Width = 149;
             // 
             // gridColumn9
             // 
@@ -437,8 +506,8 @@
             this.gridColumn9.MinWidth = 26;
             this.gridColumn9.Name = "gridColumn9";
             this.gridColumn9.Visible = true;
-            this.gridColumn9.VisibleIndex = 6;
-            this.gridColumn9.Width = 99;
+            this.gridColumn9.VisibleIndex = 8;
+            this.gridColumn9.Width = 106;
             // 
             // gridColumn8
             // 
@@ -456,8 +525,8 @@
             this.gridColumn10.MinWidth = 29;
             this.gridColumn10.Name = "gridColumn10";
             this.gridColumn10.Visible = true;
-            this.gridColumn10.VisibleIndex = 7;
-            this.gridColumn10.Width = 107;
+            this.gridColumn10.VisibleIndex = 9;
+            this.gridColumn10.Width = 141;
             // 
             // pnNhomBenh
             // 
@@ -467,10 +536,10 @@
             this.pnNhomBenh.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(209)))), ((int)(((byte)(55)))));
             this.pnNhomBenh.BorderThickness = 2;
             this.pnNhomBenh.Controls.Add(this.cbbNhomBenh);
-            this.pnNhomBenh.Location = new System.Drawing.Point(254, 74);
+            this.pnNhomBenh.Location = new System.Drawing.Point(222, 74);
             this.pnNhomBenh.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pnNhomBenh.Name = "pnNhomBenh";
-            this.pnNhomBenh.Size = new System.Drawing.Size(1040, 36);
+            this.pnNhomBenh.Size = new System.Drawing.Size(1072, 36);
             this.pnNhomBenh.TabIndex = 13;
             // 
             // cbbNhomBenh
@@ -489,7 +558,7 @@
             this.cbbNhomBenh.Name = "cbbNhomBenh";
             this.cbbNhomBenh.SelectedIndex = -1;
             this.cbbNhomBenh.SelectedItem = null;
-            this.cbbNhomBenh.Size = new System.Drawing.Size(1034, 28);
+            this.cbbNhomBenh.Size = new System.Drawing.Size(1066, 28);
             this.cbbNhomBenh.TabIndex = 11;
             this.cbbNhomBenh.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBox_KeyDown);
             // 
@@ -657,7 +726,7 @@
             // 
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label21.Location = new System.Drawing.Point(765, 116);
+            this.label21.Location = new System.Drawing.Point(780, 113);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(102, 28);
             this.label21.TabIndex = 55;
@@ -702,7 +771,7 @@
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label20.Location = new System.Drawing.Point(397, 116);
+            this.label20.Location = new System.Drawing.Point(423, 113);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(102, 28);
             this.label20.TabIndex = 53;
@@ -751,6 +820,7 @@
             this.txtNgaySinh.Name = "txtNgaySinh";
             this.txtNgaySinh.Size = new System.Drawing.Size(169, 34);
             this.txtNgaySinh.TabIndex = 9;
+            this.txtNgaySinh.Validated += new System.EventHandler(this.txtNgaySinh_Validated);
             // 
             // txtZaloID
             // 
@@ -971,13 +1041,13 @@
             this.txtGhiChu.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.txtGhiChu.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
             this.txtGhiChu.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtGhiChu.Location = new System.Drawing.Point(121, 108);
+            this.txtGhiChu.Location = new System.Drawing.Point(110, 108);
             this.txtGhiChu.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.txtGhiChu.Name = "txtGhiChu";
             this.txtGhiChu.PasswordChar = '\0';
             this.txtGhiChu.PlaceholderText = "";
             this.txtGhiChu.SelectedText = "";
-            this.txtGhiChu.Size = new System.Drawing.Size(227, 36);
+            this.txtGhiChu.Size = new System.Drawing.Size(238, 36);
             this.txtGhiChu.TabIndex = 6;
             this.txtGhiChu.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBox_KeyDown);
             // 
@@ -986,7 +1056,7 @@
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label4.Location = new System.Drawing.Point(1272, 72);
+            this.label4.Location = new System.Drawing.Point(1314, 66);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(94, 28);
             this.label4.TabIndex = 0;
@@ -996,7 +1066,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label6.Location = new System.Drawing.Point(24, 116);
+            this.label6.Location = new System.Drawing.Point(18, 112);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(81, 28);
             this.label6.TabIndex = 0;
@@ -1017,7 +1087,7 @@
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label5.Location = new System.Drawing.Point(1262, 28);
+            this.label5.Location = new System.Drawing.Point(1280, 23);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(128, 28);
             this.label5.TabIndex = 0;
@@ -1067,13 +1137,13 @@
             this.txtDiaChi.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.txtDiaChi.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
             this.txtDiaChi.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtDiaChi.Location = new System.Drawing.Point(109, 154);
+            this.txtDiaChi.Location = new System.Drawing.Point(110, 154);
             this.txtDiaChi.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.txtDiaChi.Name = "txtDiaChi";
             this.txtDiaChi.PasswordChar = '\0';
             this.txtDiaChi.PlaceholderText = "";
             this.txtDiaChi.SelectedText = "";
-            this.txtDiaChi.Size = new System.Drawing.Size(1504, 36);
+            this.txtDiaChi.Size = new System.Drawing.Size(1503, 36);
             this.txtDiaChi.TabIndex = 7;
             this.txtDiaChi.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBox_KeyDown);
             // 
@@ -1654,11 +1724,23 @@
             this.alertControl1.FormShowingEffect = DevExpress.XtraBars.Alerter.AlertFormShowingEffect.SlideVertical;
             this.alertControl1.ShowPinButton = false;
             // 
+            // cbTiLe
+            // 
+            this.cbTiLe.EditValue = true;
+            this.cbTiLe.Location = new System.Drawing.Point(307, 122);
+            this.cbTiLe.Margin = new System.Windows.Forms.Padding(4);
+            this.cbTiLe.Name = "cbTiLe";
+            this.cbTiLe.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.cbTiLe.Properties.Appearance.Options.UseFont = true;
+            this.cbTiLe.Properties.Caption = "Theo %";
+            this.cbTiLe.Size = new System.Drawing.Size(120, 32);
+            this.cbTiLe.TabIndex = 87;
+            // 
             // TiepNhan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1659, 583);
+            this.ClientSize = new System.Drawing.Size(1659, 899);
             this.Controls.Add(this.panelMain);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "TiepNhan";
@@ -1706,6 +1788,7 @@
             this.pnMenuPhu.ResumeLayout(false);
             this.pnMenuPhu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbTiLe.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1812,5 +1895,10 @@
         private Guna.UI2.WinForms.Guna2Panel pnDichVu;
         private Janus.Windows.GridEX.EditControls.MultiColumnCombo cbbDV;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn10;
+        private Guna.UI2.WinForms.Guna2TextBox txtChietKhau;
+        private System.Windows.Forms.Label label12;
+        private DevExpress.XtraGrid.Columns.GridColumn gridCol_TL_ChietKhau;
+        private DevExpress.XtraGrid.Columns.GridColumn gridCol_ChietKhau;
+        private DevExpress.XtraEditors.CheckEdit cbTiLe;
     }
 }

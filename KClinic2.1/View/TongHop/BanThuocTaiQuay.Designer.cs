@@ -43,15 +43,14 @@
             this.TenLoaiDuoc = new DevExpress.XtraGrid.Columns.GridColumn();
             this.SoLuong = new DevExpress.XtraGrid.Columns.GridColumn();
             this.DonGia = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.cbGridGiamGiaTiLe = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.GiamGia = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ThanhTien = new DevExpress.XtraGrid.Columns.GridColumn();
             this.SoLuongTon = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.IDx = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Loai_Id = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.GiamGia = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.GiamGiaTiLe = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.cbGridGiamGiaTiLe = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.txtGridGiamGia = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.pnThongTin = new System.Windows.Forms.Panel();
             this.cbTiLe = new DevExpress.XtraEditors.CheckEdit();
@@ -105,6 +104,7 @@
             this.btnHoanTra = new DevExpress.XtraEditors.SimpleButton();
             this.btnThem = new DevExpress.XtraEditors.SimpleButton();
             this.alertControl1 = new DevExpress.XtraBars.Alerter.AlertControl(this.components);
+            this.GiamGiaTiLe = new DevExpress.XtraGrid.Columns.GridColumn();
             this.pnMain.SuspendLayout();
             this.pnContent.SuspendLayout();
             this.pnGrid.SuspendLayout();
@@ -198,14 +198,14 @@
             this.TenLoaiDuoc,
             this.SoLuong,
             this.DonGia,
+            this.GiamGiaTiLe,
+            this.GiamGia,
             this.ThanhTien,
             this.SoLuongTon,
             this.gridColumn2,
             this.gridColumn3,
             this.IDx,
-            this.Loai_Id,
-            this.GiamGia,
-            this.GiamGiaTiLe});
+            this.Loai_Id});
             this.gridView1.DetailHeight = 431;
             this.gridView1.GridControl = this.gridDichVu;
             this.gridView1.GroupCount = 1;
@@ -281,6 +281,24 @@
             this.DonGia.VisibleIndex = 4;
             this.DonGia.Width = 147;
             // 
+            // cbGridGiamGiaTiLe
+            // 
+            this.cbGridGiamGiaTiLe.AutoHeight = false;
+            this.cbGridGiamGiaTiLe.Name = "cbGridGiamGiaTiLe";
+            this.cbGridGiamGiaTiLe.Tag = "0";
+            this.cbGridGiamGiaTiLe.ValueChecked = "1";
+            this.cbGridGiamGiaTiLe.ValueUnchecked = "0";
+            // 
+            // GiamGia
+            // 
+            this.GiamGia.Caption = "Giảm giá";
+            this.GiamGia.FieldName = "GiamGia";
+            this.GiamGia.MinWidth = 27;
+            this.GiamGia.Name = "GiamGia";
+            this.GiamGia.Visible = true;
+            this.GiamGia.VisibleIndex = 6;
+            this.GiamGia.Width = 100;
+            // 
             // ThanhTien
             // 
             this.ThanhTien.Caption = "Thành tiền";
@@ -292,7 +310,7 @@
             this.ThanhTien.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "ThanhTienDichVu", "{0:0,0.00 vnđ}")});
             this.ThanhTien.Visible = true;
-            this.ThanhTien.VisibleIndex = 5;
+            this.ThanhTien.VisibleIndex = 7;
             this.ThanhTien.Width = 173;
             // 
             // SoLuongTon
@@ -306,7 +324,7 @@
             this.SoLuongTon.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "SoTienDaThanhToan", "{0:0,0.00 vnđ}")});
             this.SoLuongTon.Visible = true;
-            this.SoLuongTon.VisibleIndex = 6;
+            this.SoLuongTon.VisibleIndex = 8;
             this.SoLuongTon.Width = 173;
             // 
             // gridColumn2
@@ -317,7 +335,7 @@
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.OptionsColumn.AllowEdit = false;
             this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 7;
+            this.gridColumn2.VisibleIndex = 9;
             this.gridColumn2.Width = 113;
             // 
             // gridColumn3
@@ -328,7 +346,7 @@
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.OptionsColumn.AllowEdit = false;
             this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 8;
+            this.gridColumn3.VisibleIndex = 10;
             this.gridColumn3.Width = 153;
             // 
             // IDx
@@ -347,35 +365,6 @@
             this.Loai_Id.MinWidth = 27;
             this.Loai_Id.Name = "Loai_Id";
             this.Loai_Id.Width = 100;
-            // 
-            // GiamGia
-            // 
-            this.GiamGia.Caption = "Giảm giá";
-            this.GiamGia.FieldName = "GiamGia";
-            this.GiamGia.MinWidth = 27;
-            this.GiamGia.Name = "GiamGia";
-            this.GiamGia.Visible = true;
-            this.GiamGia.VisibleIndex = 9;
-            this.GiamGia.Width = 100;
-            // 
-            // GiamGiaTiLe
-            // 
-            this.GiamGiaTiLe.Caption = "%";
-            this.GiamGiaTiLe.ColumnEdit = this.cbGridGiamGiaTiLe;
-            this.GiamGiaTiLe.FieldName = "GiamGiaTiLe";
-            this.GiamGiaTiLe.MinWidth = 27;
-            this.GiamGiaTiLe.Name = "GiamGiaTiLe";
-            this.GiamGiaTiLe.Visible = true;
-            this.GiamGiaTiLe.VisibleIndex = 10;
-            this.GiamGiaTiLe.Width = 100;
-            // 
-            // cbGridGiamGiaTiLe
-            // 
-            this.cbGridGiamGiaTiLe.AutoHeight = false;
-            this.cbGridGiamGiaTiLe.Name = "cbGridGiamGiaTiLe";
-            this.cbGridGiamGiaTiLe.Tag = "0";
-            this.cbGridGiamGiaTiLe.ValueChecked = "1";
-            this.cbGridGiamGiaTiLe.ValueUnchecked = "0";
             // 
             // txtGridGiamGia
             // 
@@ -433,6 +422,7 @@
             this.cbTiLe.Properties.Caption = "Theo %";
             this.cbTiLe.Size = new System.Drawing.Size(120, 32);
             this.cbTiLe.TabIndex = 86;
+            this.cbTiLe.Visible = false;
             // 
             // label13
             // 
@@ -444,6 +434,7 @@
             this.label13.Size = new System.Drawing.Size(99, 28);
             this.label13.TabIndex = 85;
             this.label13.Text = "Giảm giá: ";
+            this.label13.Visible = false;
             // 
             // txtGiamGia
             // 
@@ -467,6 +458,7 @@
             this.txtGiamGia.SelectedText = "";
             this.txtGiamGia.Size = new System.Drawing.Size(269, 36);
             this.txtGiamGia.TabIndex = 84;
+            this.txtGiamGia.Visible = false;
             this.txtGiamGia.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBox_KeyDown);
             this.txtGiamGia.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.guna2TextBox1_KeyPress);
             // 
@@ -1278,6 +1270,16 @@
             this.alertControl1.FormShowingEffect = DevExpress.XtraBars.Alerter.AlertFormShowingEffect.SlideVertical;
             this.alertControl1.ShowPinButton = false;
             // 
+            // GiamGiaTiLe
+            // 
+            this.GiamGiaTiLe.Caption = "% CK";
+            this.GiamGiaTiLe.FieldName = "GiamGiaTiLe";
+            this.GiamGiaTiLe.MinWidth = 25;
+            this.GiamGiaTiLe.Name = "GiamGiaTiLe";
+            this.GiamGiaTiLe.Visible = true;
+            this.GiamGiaTiLe.VisibleIndex = 5;
+            this.GiamGiaTiLe.Width = 94;
+            // 
             // BanThuocTaiQuay
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1389,8 +1391,8 @@
         private Guna.UI2.WinForms.Guna2TextBox txtGiamGia;
         private DevExpress.XtraEditors.CheckEdit cbTiLe;
         private DevExpress.XtraGrid.Columns.GridColumn GiamGia;
-        private DevExpress.XtraGrid.Columns.GridColumn GiamGiaTiLe;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit cbGridGiamGiaTiLe;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit txtGridGiamGia;
+        private DevExpress.XtraGrid.Columns.GridColumn GiamGiaTiLe;
     }
 }
