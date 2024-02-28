@@ -507,6 +507,12 @@
     <Compile Include="View\GiaiPhauBenh\XtraForm1.Designer.cs">
       <DependentUpon>XtraForm1.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\HeThongBaoCao\BaoCaoDoanhThuPhongKham.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\HeThongBaoCao\BaoCaoDoanhThuPhongKham.Designer.cs">
+      <DependentUpon>BaoCaoDoanhThuPhongKham.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\HeThongBaoCao\BaoCaoBNChiDinhDichVu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -970,6 +976,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\GiaiPhauBenh\XtraForm1.resx">
       <DependentUpon>XtraForm1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\HeThongBaoCao\BaoCaoDoanhThuPhongKham.resx">
+      <DependentUpon>BaoCaoDoanhThuPhongKham.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\HeThongBaoCao\BaoCaoBNChiDinhDichVu.resx">
       <DependentUpon>BaoCaoBNChiDinhDichVu.cs</DependentUpon>
