@@ -118,7 +118,7 @@ namespace KClinic2._1.Model
                     + "@DenNgay = " + _DenNgay + ","
                     + "@DoiTuong = " + _DoiTuong + ","
                     + "@NhanVien = " + _NhanVien + ","
-                    + "@NguoiBaoCao = N'" + _NhanVien +"'"
+                    + "@NguoiBaoCao = N'" + _NguoiBaoCao +"'"
                     ;
                 con.Open();
                 table1.Load(cmd_Show.ExecuteReader(CommandBehavior.CloseConnection));

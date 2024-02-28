@@ -415,7 +415,7 @@ namespace KClinic2._1.View.HeThongBaoCao
                 }
                 ReportDocument rptDoca = new ReportDocument();
                 DataTable ShowDuongDan = Model.db.ShowDuongDan();
-                string DuongDan = @"" + ShowDuongDan.Rows[0][0].ToString() + @"BC006_BaoCaoBNChiDinhDichVu.rpt";
+                string DuongDan = @"" + ShowDuongDan.Rows[0][0].ToString() + @"BC013_BaoCaoDoanhThuPhongKham.rpt";
                 rptDoca.Load(DuongDan);
                 rptDoca.SetDataSource(table1);
                 crystalReportViewer1.ReportSource = rptDoca;
