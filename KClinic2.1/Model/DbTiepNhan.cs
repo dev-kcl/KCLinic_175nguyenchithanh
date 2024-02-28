@@ -77,6 +77,7 @@ namespace KClinic2._1.Model
             , string _NgayCapNhat
             , string _Huy
             , string _Zalo_Id
+            , string _BHYT
             )
         {
             try
@@ -102,7 +103,8 @@ namespace KClinic2._1.Model
                     + "@NguoiCapNhat = " + _NguoiCapNhat + ","
                     + "@NgayCapNhat = " + _NgayCapNhat + ","
                     + "@Huy = " + _Huy + ","
-                    + "@Zalo_Id = " + _Zalo_Id
+                    + "@Zalo_Id = " + _Zalo_Id + ","
+                    + "@BHYT = " + _BHYT
                     ;
                 con.Open();
                 table1.Load(cmd_Show.ExecuteReader(CommandBehavior.CloseConnection));
@@ -258,6 +260,26 @@ namespace KClinic2._1.Model
                 SqlCommand cmd_Show = con.CreateCommand();
                 cmd_Show.CommandTimeout = timeout_connecttion;
                 cmd_Show.CommandText = "exec SP_002_TiepNhan @Action = N'LoadThongTinBenhNhanTheoMaYTe', "
+                    + "@MaYTe = N'" + _SoVaoVien + "'"
+                    ;
+                con.Open();
+                table1.Load(cmd_Show.ExecuteReader(CommandBehavior.CloseConnection));
+                con.Close();
+                return table1;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+        public static DataTable LoadThongTinBenhNhanTheoCMNDHoacBHYT(string _SoVaoVien)
+        {
+            try
+            {
+                DataTable table1 = new DataTable();
+                SqlCommand cmd_Show = con.CreateCommand();
+                cmd_Show.CommandTimeout = timeout_connecttion;
+                cmd_Show.CommandText = "exec SP_002_TiepNhan @Action = N'LoadThongTinBenhNhanTheoCMNDHoacBHYT', "
                     + "@MaYTe = N'" + _SoVaoVien + "'"
                     ;
                 con.Open();
@@ -433,6 +455,7 @@ namespace KClinic2._1.Model
             , string _NgayCapNhat
             , string _Huy
             , string _Zalo_Id
+            , string _BHYT
             )
         {
             try
@@ -459,7 +482,8 @@ namespace KClinic2._1.Model
                     + "@NguoiCapNhat = " + _NguoiCapNhat + ","
                     + "@NgayCapNhat = " + _NgayCapNhat + ","
                     + "@Huy = " + _Huy + ","
-                    + "@Zalo_Id = " + _Zalo_Id
+                    + "@Zalo_Id = " + _Zalo_Id + ","
+                    + "@BHYT = " + _BHYT
                     ;
                 con.Open();
                 table1.Load(cmd_Show.ExecuteReader(CommandBehavior.CloseConnection));

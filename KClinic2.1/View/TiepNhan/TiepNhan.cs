@@ -31,6 +31,8 @@ namespace KClinic2._1.View.TiepNhan
         public string MaYTe = "";
         public string SoVaoVien = "";
 
+        string CMND = "";
+        string BHYT = "";
         public TiepNhan()
         {
             InitializeComponent();
@@ -177,7 +179,7 @@ namespace KClinic2._1.View.TiepNhan
             TiepNhan_Id = "";
             CLSYeuCau_Id = "";
             Reset();
-            MaYTe = "";SoVaoVien = "";
+            MaYTe = "";SoVaoVien = ""; CMND = ""; BHYT = "";
             AutoTinhMaYTe();
             txtHoTen.Focus();
         }
@@ -288,7 +290,7 @@ namespace KClinic2._1.View.TiepNhan
                             , NgaySinh
                             , NamSinh
                             , SoDienThoai
-                            , "null" //CMND
+                            , CMND
                             , DiaChi
                             , "null"
                             , "null"
@@ -299,7 +301,7 @@ namespace KClinic2._1.View.TiepNhan
                             , "'" + DateTime.Now.ToString("yyyyMMdd HH:mm:ss") + "'"
                             , "0"
                             , Zalo_Id
-                            
+                            , BHYT
                             );
                         if (UpdateBenhNhan.Rows.Count > 0)
                         {
@@ -382,7 +384,7 @@ namespace KClinic2._1.View.TiepNhan
                             , NgaySinh
                             , NamSinh
                             , SoDienThoai
-                            , "null"
+                            , CMND
                             , DiaChi
                             , "null"
                             , "null"
@@ -393,6 +395,7 @@ namespace KClinic2._1.View.TiepNhan
                             , "null"
                             , "0"
                             , Zalo_Id
+                            , BHYT
                             );
                         if (InsertBenhNhan.Rows.Count > 0)
                         {
@@ -486,7 +489,7 @@ namespace KClinic2._1.View.TiepNhan
                             , NgaySinh //NgaySinh
                             , NamSinh
                             , SoDienThoai
-                            , "null" //CMND
+                            , CMND
                             , DiaChi
                             , "null"
                             , "null"
@@ -497,6 +500,7 @@ namespace KClinic2._1.View.TiepNhan
                             , "'" + DateTime.Now.ToString("yyyyMMdd HH:mm:ss") + "'"
                             , "0"
                             , Zalo_Id
+                            , BHYT
                             );
                     if (UpdateBenhNhan.Rows.Count > 0)
                     {
@@ -1084,6 +1088,8 @@ namespace KClinic2._1.View.TiepNhan
                     txtThoiGianTiepNhan.Value = enteredDate;
                 }
                 txtZaloID.Text = LoadThongTinBenhNhanDaTiepNhan.Rows[0]["Zalo_Id"].ToString();
+                CMND = LoadThongTinBenhNhanDaTiepNhan.Rows[0]["CMND"].ToString();
+                BHYT = LoadThongTinBenhNhanDaTiepNhan.Rows[0]["BHYT"].ToString();
             }
             DataTable ThemClsYeuCauVaoPhieuDangNhap = Model.DbTiepNhan.ThemClsYeuCauVaoPhieuDangNhap(Login.PhienDangNhap_Id, TiepNhan_Id);
             DataTable SelectClsyeucauPhienDangNhap = Model.DbTiepNhan.SelectClsyeucauPhienDangNhap(Login.PhienDangNhap_Id);
@@ -1130,6 +1136,8 @@ namespace KClinic2._1.View.TiepNhan
                 txtDiaChi.Text = LoadThongTinBenhNhan.Rows[0]["DiaChiChiTiet"].ToString();
                 BenhNhan_Id = LoadThongTinBenhNhan.Rows[0]["BenhNhan_Id"].ToString();
                 txtZaloID.Text = LoadThongTinBenhNhan.Rows[0]["Zalo_Id"].ToString();
+                CMND = LoadThongTinBenhNhan.Rows[0]["CMND"].ToString();
+                BHYT = LoadThongTinBenhNhan.Rows[0]["BHYT"].ToString();
             }
             txtHoTen.Focus();
         }
@@ -1154,7 +1162,7 @@ namespace KClinic2._1.View.TiepNhan
             TiepNhan_Id = "";
             CLSYeuCau_Id = "";
             Reset();
-            MaYTe = ""; SoVaoVien = "";
+            MaYTe = ""; SoVaoVien = ""; CMND = ""; BHYT = "";
             //AutoTinhMaYTe();
             txtHoTen.Focus();
         }
@@ -1254,6 +1262,8 @@ namespace KClinic2._1.View.TiepNhan
                     txtDiaChi.Text = LoadThongTinBenhNhan.Rows[0]["DiaChiChiTiet"].ToString();
                     BenhNhan_Id = LoadThongTinBenhNhan.Rows[0]["BenhNhan_Id"].ToString();
                     txtZaloID.Text = LoadThongTinBenhNhan.Rows[0]["Zalo_Id"].ToString();
+                    CMND = LoadThongTinBenhNhan.Rows[0]["CMND"].ToString();
+                    BHYT = LoadThongTinBenhNhan.Rows[0]["BHYT"].ToString();
                 }
                 else
                 {
@@ -1610,10 +1620,101 @@ namespace KClinic2._1.View.TiepNhan
         }
         private void TextBox_KeyDown(object sender, KeyEventArgs e)
         {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+            {
+                if (txtHoTen.Text.Contains("|"))
+                {
+                    string[] arrListStr = txtHoTen.Text.Split('|');
+                    string a = arrListStr[0].ToString();
+                    if (arrListStr[0].Length == 15)
+                    {
+                        BHYT = arrListStr[0];
+                        txtHoTen.Text = Model.Crypt.ConvertHexStrToUnicode(arrListStr[1]).ToUpper();
+                        if (arrListStr[3] == "1") { cbbGioiTinh.Value = Int32.Parse("1"); } else { cbbGioiTinh.Value = Int32.Parse("2"); }
+
+                        int NgaySinh = Int32.Parse(arrListStr[2].Substring(0, 2));
+                        int ThangSinh = Int32.Parse(arrListStr[2].Substring(3, 2));
+                        int NamSinh = Int32.Parse(arrListStr[2].Substring(arrListStr[2].Length - 4, 4));
+
+                        if (!String.IsNullOrEmpty(arrListStr[2]))
+                        {
+                            DateTime dateValue = new DateTime(NamSinh, ThangSinh, NgaySinh);
+                            txtNgaySinh.Value = dateValue;
+                        }
+                        else { txtNgaySinh.Text = ""; }
+
+                        txtNamSinh.Text = arrListStr[2].Substring(arrListStr[2].Length - 4, 4);
+                        if (arrListStr[4].Length > 2)
+                        {
+                            txtDiaChi.Text = Model.Crypt.ConvertHexStrToUnicode(arrListStr[4]);
+                        }
+                        else { txtDiaChi.Text = ""; }
+                    }
+                    if (arrListStr[0].Length == 12)
+                    {
+                        CMND = arrListStr[0];
+                        BHYT = arrListStr[0];
+                        txtHoTen.Text = arrListStr[2].ToUpper();
+                        string GT = arrListStr[4];
+                        if (GT == "Nam" || GT == "NAM") { cbbGioiTinh.Value = Int32.Parse("1"); } else { cbbGioiTinh.Value = Int32.Parse("2"); }
+
+                        int NgaySinh = Int32.Parse(arrListStr[3].Substring(0, 2));
+                        int ThangSinh = Int32.Parse(arrListStr[3].Substring(2, 2));
+                        int NamSinh = Int32.Parse(arrListStr[3].Substring(arrListStr[3].Length - 4, 4));
+
+                        if (!String.IsNullOrEmpty(arrListStr[3]))
+                        {
+                            DateTime dateValue = new DateTime(NamSinh, ThangSinh, NgaySinh);
+                            txtNgaySinh.Value = dateValue;
+                        }
+                        else { txtNgaySinh.Text = ""; }
+
+                        txtNamSinh.Text = arrListStr[3].Substring(arrListStr[3].Length - 4, 4);
+                        txtDiaChi.Text = arrListStr[5];
+                    }
+                    if (arrListStr[0].Length == 10)
+                    {
+                        BHYT = arrListStr[0];
+                        txtHoTen.Text = Model.Crypt.ConvertHexStrToUnicode(arrListStr[1]).ToUpper();
+                        if (arrListStr[3] == "1") { cbbGioiTinh.Value = Int32.Parse("1"); } else { cbbGioiTinh.Value = Int32.Parse("2"); }
+
+                        int NgaySinh = Int32.Parse(arrListStr[2].Substring(0, 2));
+                        int ThangSinh = Int32.Parse(arrListStr[2].Substring(3, 2));
+                        int NamSinh = Int32.Parse(arrListStr[2].Substring(arrListStr[2].Length - 4, 4));
+
+                        if (!String.IsNullOrEmpty(arrListStr[2]))
+                        {
+                            DateTime dateValue = new DateTime(NamSinh, ThangSinh, NgaySinh);
+                            txtNgaySinh.Value = dateValue;
+                        }
+                        else { txtNgaySinh.Text = ""; }
+
+                        txtNamSinh.Text = arrListStr[2].Substring(arrListStr[2].Length - 4, 4);
+                        if (arrListStr[4].Length > 2)
+                        {
+                            txtDiaChi.Text = Model.Crypt.ConvertHexStrToUnicode(arrListStr[4]);
+                        }
+                        else { txtDiaChi.Text = ""; }
+                    }
+                    //
+                    DataTable LoadThongTinBenhNhan = Model.DbTiepNhan.LoadThongTinBenhNhanTheoCMNDHoacBHYT(BHYT);
+                    if (LoadThongTinBenhNhan != null)
+                    {
+                        if (LoadThongTinBenhNhan.Rows.Count > 0)
+                        {
+                            txtMaYTe.Text = LoadThongTinBenhNhan.Rows[0]["MaYTe"].ToString();
+                            MaYTe = LoadThongTinBenhNhan.Rows[0]["MaYTe"].ToString();
+                            SoVaoVien = LoadThongTinBenhNhan.Rows[0]["SoVaoVien"].ToString();
+                            BenhNhan_Id = LoadThongTinBenhNhan.Rows[0]["BenhNhan_Id"].ToString();
+                        }
+                    }
+                    
+                }
+            }
             if (e.KeyCode == Keys.Tab && e.Shift)
             {
                 MoveFocusToPreviousTextbox();
-                e.SuppressKeyPress = true; 
+                e.SuppressKeyPress = true;
             }
         }
 
