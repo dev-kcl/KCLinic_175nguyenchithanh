@@ -43,7 +43,7 @@
             this.TenLoaiDuoc = new DevExpress.XtraGrid.Columns.GridColumn();
             this.SoLuong = new DevExpress.XtraGrid.Columns.GridColumn();
             this.DonGia = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.cbGridGiamGiaTiLe = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.GiamGiaTiLe = new DevExpress.XtraGrid.Columns.GridColumn();
             this.GiamGia = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ThanhTien = new DevExpress.XtraGrid.Columns.GridColumn();
             this.SoLuongTon = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -51,6 +51,7 @@
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.IDx = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Loai_Id = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.cbGridGiamGiaTiLe = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.txtGridGiamGia = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.pnThongTin = new System.Windows.Forms.Panel();
             this.cbTiLe = new DevExpress.XtraEditors.CheckEdit();
@@ -104,7 +105,6 @@
             this.btnHoanTra = new DevExpress.XtraEditors.SimpleButton();
             this.btnThem = new DevExpress.XtraEditors.SimpleButton();
             this.alertControl1 = new DevExpress.XtraBars.Alerter.AlertControl(this.components);
-            this.GiamGiaTiLe = new DevExpress.XtraGrid.Columns.GridColumn();
             this.pnMain.SuspendLayout();
             this.pnContent.SuspendLayout();
             this.pnGrid.SuspendLayout();
@@ -281,13 +281,16 @@
             this.DonGia.VisibleIndex = 4;
             this.DonGia.Width = 147;
             // 
-            // cbGridGiamGiaTiLe
+            // GiamGiaTiLe
             // 
-            this.cbGridGiamGiaTiLe.AutoHeight = false;
-            this.cbGridGiamGiaTiLe.Name = "cbGridGiamGiaTiLe";
-            this.cbGridGiamGiaTiLe.Tag = "0";
-            this.cbGridGiamGiaTiLe.ValueChecked = "1";
-            this.cbGridGiamGiaTiLe.ValueUnchecked = "0";
+            this.GiamGiaTiLe.Caption = "% CK";
+            this.GiamGiaTiLe.FieldName = "GiamGiaTiLe";
+            this.GiamGiaTiLe.MinWidth = 25;
+            this.GiamGiaTiLe.Name = "GiamGiaTiLe";
+            this.GiamGiaTiLe.OptionsColumn.AllowEdit = false;
+            this.GiamGiaTiLe.Visible = true;
+            this.GiamGiaTiLe.VisibleIndex = 5;
+            this.GiamGiaTiLe.Width = 94;
             // 
             // GiamGia
             // 
@@ -295,6 +298,7 @@
             this.GiamGia.FieldName = "GiamGia";
             this.GiamGia.MinWidth = 27;
             this.GiamGia.Name = "GiamGia";
+            this.GiamGia.OptionsColumn.AllowEdit = false;
             this.GiamGia.Visible = true;
             this.GiamGia.VisibleIndex = 6;
             this.GiamGia.Width = 100;
@@ -365,6 +369,14 @@
             this.Loai_Id.MinWidth = 27;
             this.Loai_Id.Name = "Loai_Id";
             this.Loai_Id.Width = 100;
+            // 
+            // cbGridGiamGiaTiLe
+            // 
+            this.cbGridGiamGiaTiLe.AutoHeight = false;
+            this.cbGridGiamGiaTiLe.Name = "cbGridGiamGiaTiLe";
+            this.cbGridGiamGiaTiLe.Tag = "0";
+            this.cbGridGiamGiaTiLe.ValueChecked = "1";
+            this.cbGridGiamGiaTiLe.ValueUnchecked = "0";
             // 
             // txtGridGiamGia
             // 
@@ -1269,16 +1281,6 @@
             this.alertControl1.AppearanceText.Options.UseFont = true;
             this.alertControl1.FormShowingEffect = DevExpress.XtraBars.Alerter.AlertFormShowingEffect.SlideVertical;
             this.alertControl1.ShowPinButton = false;
-            // 
-            // GiamGiaTiLe
-            // 
-            this.GiamGiaTiLe.Caption = "% CK";
-            this.GiamGiaTiLe.FieldName = "GiamGiaTiLe";
-            this.GiamGiaTiLe.MinWidth = 25;
-            this.GiamGiaTiLe.Name = "GiamGiaTiLe";
-            this.GiamGiaTiLe.Visible = true;
-            this.GiamGiaTiLe.VisibleIndex = 5;
-            this.GiamGiaTiLe.Width = 94;
             // 
             // BanThuocTaiQuay
             // 
