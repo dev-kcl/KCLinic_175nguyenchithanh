@@ -876,6 +876,13 @@ namespace KClinic2._1.View.ChanDoanHinhAnh
                 {
                     if (CheckDaCoKetQuaTheoSoPhieuYeuCau.Rows[0]["KetQua"].ToString() == "0")
                     {
+                        DataTable CheckDaThanhToanTheoSoPhieuYeuCau = Model.dbCDHA.CheckDaThanhToanTheoSoPhieuYeuCau(SoPhieuYeuCau);
+                        //if (CheckDaThanhToanTheoSoPhieuYeuCau == null || CheckDaThanhToanTheoSoPhieuYeuCau.Rows.Count == 0) { return; }
+                        if (CheckDaThanhToanTheoSoPhieuYeuCau.Rows[0]["DaThanhToan"].ToString() == "0")
+                        {
+                            alertControl1.Show(this, "Thông báo", "Có dịch vụ chưa thanh toán. Vui lòng kiểm tra lại!", "");
+                            return;
+                        }
                         DataTable LoadThongTinBenhNhan = Model.dbCDHA.LoadThongTinBenhNhanTheoSoPhieuYeuCau(SoPhieuYeuCau);
                         if (LoadThongTinBenhNhan.Rows.Count > 0)
                         {
