@@ -87,6 +87,7 @@ namespace KClinic2._1.View.TiepNhan
             cbbDoiTuong.DataSource = DoiTuong;
             cbbDoiTuong.ValueMember = "FieldCode";
             cbbDoiTuong.DisplayMember = "FieldName";
+            cbbDoiTuong.Value = 1;
 
             HopDong = Model.DbTiepNhan.LayDMHopDong();
 
