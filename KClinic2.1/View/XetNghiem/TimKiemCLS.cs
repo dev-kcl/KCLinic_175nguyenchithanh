@@ -27,15 +27,23 @@ namespace KClinic2._1.View.XetNghiem
             cbbLoai.DisplayMember = "Loai";
             cbbLoai.ValueMember = "ID";
             cbbLoai.SelectedValue = "2";
+            txtTimKiem.Text = DateTime.Now.ToString("dd/MM/yyyy");
             txtTimKiem.Focus();
-            DataTable Search_TiepNhanCLS_DaThucHien = Model.db.Search_TiepNhanCLS_DaThucHien(cbbLoai.SelectedValue.ToString(), DateTime.Now.ToString("yyyyMMdd"),Login.PhongBan_Id);
+            DataTable Search_TiepNhanCLS_DaThucHien = Model.db.Search_TiepNhanCLS_DaThucHien(cbbLoai.SelectedValue.ToString(), txtTimKiem.Text,Login.PhongBan_Id);
             gridDS.DataSource = Search_TiepNhanCLS_DaThucHien;
         }
 
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
             DataTable Search_TiepNhanCLS_DaThucHien = Model.db.Search_TiepNhanCLS_DaThucHien(cbbLoai.SelectedValue.ToString(), txtTimKiem.Text,Login.PhongBan_Id);
-            gridDS.DataSource = Search_TiepNhanCLS_DaThucHien;
+            if (Search_TiepNhanCLS_DaThucHien.Rows.Count > 0)
+            {
+                gridDS.DataSource = Search_TiepNhanCLS_DaThucHien;
+            }
+            else
+            {
+                MessageBox.Show("Không tìm thấy bệnh nhân");
+            }
         }
 
         private void txtTimKiem_KeyDown(object sender, KeyEventArgs e)
