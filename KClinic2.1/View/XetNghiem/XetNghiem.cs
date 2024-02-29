@@ -141,6 +141,10 @@ namespace KClinic2._1.View.XetNghiem
             {
                 alertControl1.Show(this, "Thông báo", "Họ Tên không được để trống!", "");
             }
+            if (cbbBacSiKetLuan.SelectedItem == null)
+            {
+                XtraMessageBox.Show("Chưa chọn bác sĩ kết luận");
+            }
             else
             {
                 string KTVThucHien = "null";
@@ -170,7 +174,6 @@ namespace KClinic2._1.View.XetNghiem
                 string KetLuan = "N'" + txtKetLuan.Text.Replace("'", "''") + "'";
                 string BacSiKetLuan = "null";
                 if (cbbBacSiKetLuan.SelectedItem != null) { BacSiKetLuan = cbbBacSiKetLuan.Value.ToString(); }
-                else { XtraMessageBox.Show("Chưa chọn bác sĩ kết luận"); }
 
                 if (ThaoTac == "Them")
                 {

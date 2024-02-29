@@ -22,8 +22,9 @@ namespace KClinic2._1.View.XetNghiem
 
         private void btnChonAnh_Click(object sender, EventArgs e)
         {
-            this.openFileDialog1.Filter = "File (*.pdf)|*.pdf|" + "All files (*.*)|*.*";
+            //this.openFileDialog1.Filter = "File (*.pdf)|*.pdf|" + "All files (*.*)|*.*";
             //                   ^  ^  ^  ^  ^  ^ 
+            this.openFileDialog1.Filter = "File (*.pdf)|*.pdf";
             this.openFileDialog1.Title = "My File Browser";
 
             DialogResult dr = this.openFileDialog1.ShowDialog();

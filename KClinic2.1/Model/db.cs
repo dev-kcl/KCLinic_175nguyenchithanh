@@ -464,8 +464,8 @@ namespace KClinic2._1.Model
                 cmd_Show.CommandTimeout = timeout_connecttion;
                 cmd_Show.CommandText = "exec SP_001_Users @Action = N'Search_TiepNhanCLS_ChuaThucHien',"
                     + "@Idx =" + _Loai + ","
-                    + "@text = N'" + _text + "'"
-                    + "@PhongBan_Id = N'" + _PhongBan_Id
+                    + "@text = N'" + _text + "',"
+                    + "@PhongBan_Id = N'" + _PhongBan_Id +"'"
                     ;
                 con.Open();
                 table1.Load(cmd_Show.ExecuteReader(CommandBehavior.CloseConnection));
@@ -546,8 +546,8 @@ namespace KClinic2._1.Model
                 cmd_Show.CommandTimeout = timeout_connecttion;
                 cmd_Show.CommandText = "exec SP_001_Users @Action = N'Search_CLS_ChuaThucHien',"
                     + "@Idx =" + _Loai + ","
-                    + "@text = N'" + _text + "'"
-                    + "@PhongBan_Id = N'" + _PhongBan_Id
+                    + "@text = N'" + _text + "',"
+                    + "@PhongBan_Id = N'" + _PhongBan_Id +"'"
                     ;
                 con.Open();
                 table1.Load(cmd_Show.ExecuteReader(CommandBehavior.CloseConnection));
@@ -587,8 +587,8 @@ namespace KClinic2._1.Model
                 cmd_Show.CommandTimeout = timeout_connecttion;
                 cmd_Show.CommandText = "exec SP_001_Users @Action = N'Search_CLSKetQuaCDHA_DaThucHien',"
                     + "@Idx =" + _Loai + ","
-                    + "@text = N'" + _text + "'"
-                    + "@PhongBan_Id = N'" + _PhongBan_Id
+                    + "@text = N'" + _text + "',"
+                    + "@PhongBan_Id = N'" + _PhongBan_Id + "'"
                     ;
                 con.Open();
                 table1.Load(cmd_Show.ExecuteReader(CommandBehavior.CloseConnection));
