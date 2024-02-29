@@ -37,6 +37,12 @@ namespace KClinic2._1.View.ChanDoanHinhAnh
         {
             DataTable Search_CLSKetQuaCDHA_DaThucHien = Model.db.Search_CLSKetQuaCDHA_DaThucHien(cbbLoai.SelectedValue.ToString(), txtTimKiem.Text, Login.PhongBan_Id);
             gridDS.DataSource = Search_CLSKetQuaCDHA_DaThucHien;
+            if (Search_CLSKetQuaCDHA_DaThucHien.Rows.Count == 0)
+            {
+                MessageBox.Show("Không có kết quả bệnh nhân!");
+            }
+
+
         }
 
         private void txtTimKiem_KeyDown(object sender, KeyEventArgs e)

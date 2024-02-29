@@ -48,6 +48,10 @@ namespace KClinic2._1.View.ChanDoanHinhAnh
         {
             DataTable Search_CLS_ChuaThucHien = Model.db.Search_CLS_ChuaThucHien(cbbLoai.SelectedValue.ToString(), txtTimKiem.Text, Login.PhongBan_Id);
             gridDS.DataSource = Search_CLS_ChuaThucHien;
+            if (Search_CLS_ChuaThucHien.Rows.Count == 0)
+            {
+                MessageBox.Show("Không có bệnh nhân!");
+            }
         }
 
         private void txtTimKiem_KeyDown(object sender, KeyEventArgs e)
