@@ -106,6 +106,30 @@ namespace KClinic2._1.Model
                 return null;
             }
         }
+        public static DataTable SP_BaoCao_013_BaoCaoDoanhThuPhongKham(string _TuNgay, string _DenNgay, string _DoiTuong, string _NhanVien,string _NguoiBaoCao)
+        {
+            try
+            {
+                DataTable table1 = new DataTable();
+                SqlCommand cmd_Show = con.CreateCommand();
+                cmd_Show.CommandTimeout = timeout_connecttion;
+                cmd_Show.CommandText = "exec SP_BaoCao_013_BaoCaoDoanhThuPhongKham "
+                    + "@TuNgay = " + _TuNgay + ","
+                    + "@DenNgay = " + _DenNgay + ","
+                    + "@DoiTuong = " + _DoiTuong + ","
+                    + "@NhanVien = " + _NhanVien + ","
+                    + "@NguoiBaoCao = N'" + _NhanVien +"'"
+                    ;
+                con.Open();
+                table1.Load(cmd_Show.ExecuteReader(CommandBehavior.CloseConnection));
+                con.Close();
+                return table1;
+            }
+            catch
+            {
+                return null;
+            }
+        }
         public static DataTable SP_BaoCao_009_BaoCaoThongKeDonThuoc(string _TuNgay, string _DenNgay, string _BacSiChiDInh, string _Duoc_Id)
         {
             try
@@ -165,6 +189,24 @@ namespace KClinic2._1.Model
                     + "@NhomDichVu_Id = " + _NhomDichVu + ","
                     + "@BacSi_Id = " + _BacSiChiDInh
                     ;
+                con.Open();
+                table1.Load(cmd_Show.ExecuteReader(CommandBehavior.CloseConnection));
+                con.Close();
+                return table1;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+        public static DataTable cbbNhanVien()
+        {
+            try
+            {
+                DataTable table1 = new DataTable();
+                SqlCommand cmd_Show = con.CreateCommand();
+                cmd_Show.CommandTimeout = timeout_connecttion;
+                cmd_Show.CommandText = "exec SP_001_Users @Action = N'cbbNhanVien'";
                 con.Open();
                 table1.Load(cmd_Show.ExecuteReader(CommandBehavior.CloseConnection));
                 con.Close();
