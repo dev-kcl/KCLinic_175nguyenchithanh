@@ -161,9 +161,9 @@ namespace KClinic2._1.View.KhamBenh
                             LoadThongTinBenhNhanDaKham();
                         }
                     }
-
+                    else { alertControl1.Show(this, "Thông báo", "Bệnh nhân chưa thanh toán hoặc không có thông tin khám bệnh của bệnh nhân!", ""); }
                 }
-
+                else { alertControl1.Show(this, "Thông báo", "Bệnh nhân chưa thanh toán hoặc không có thông tin khám bệnh của bệnh nhân!", ""); }
             }
             else { TiepNhan_Id = ""; }
         }

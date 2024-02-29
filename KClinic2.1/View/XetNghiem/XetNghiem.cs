@@ -490,6 +490,7 @@ namespace KClinic2._1.View.XetNghiem
         }
         void checkCLSTheoSoTiepNhan (string SoTiepNhan)
         {
+
             DataTable CheckDaCoKetQuaTheoSoTiepNhan = Model.dbXetNghiem.CheckDaCoKetQuaTheoSoTiepNhan(SoTiepNhan);
             if (CheckDaCoKetQuaTheoSoTiepNhan != null)
             {
@@ -497,6 +498,13 @@ namespace KClinic2._1.View.XetNghiem
                 {
                     if (CheckDaCoKetQuaTheoSoTiepNhan.Rows[0]["KetQua"].ToString() == "0")
                     {
+                        DataTable CheckDaThanhToanTheoSoTiepNhan = Model.dbXetNghiem.CheckDaThanhToanTheoSoTiepNhan(SoTiepNhan);
+                        if (CheckDaThanhToanTheoSoTiepNhan == null || CheckDaThanhToanTheoSoTiepNhan.Rows.Count == 0) { return; }
+                        if (CheckDaThanhToanTheoSoTiepNhan.Rows[0]["DaThanhToan"].ToString() == "0")
+                        {
+                            alertControl1.Show(this, "Thông báo", "Có dịch vụ chưa thanh toán. Vui lòng kiểm tra lại!", "");
+                            return;
+                        }
                         DataTable LoadThongTinBenhNhan = Model.dbXetNghiem.LoadThongTinBenhNhanTheoSoTiepNhan(SoTiepNhan);
                         if (LoadThongTinBenhNhan.Rows.Count > 0)
                         {

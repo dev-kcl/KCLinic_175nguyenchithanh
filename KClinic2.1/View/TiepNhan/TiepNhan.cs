@@ -275,6 +275,11 @@ namespace KClinic2._1.View.TiepNhan
                 string Zalo_Id = "null";
                 if (txtZaloID.Text != "") { Zalo_Id = "N'" + txtZaloID.Text.Replace("'", "''") + "'"; }
 
+                string cMND = "null";
+                if (!String.IsNullOrEmpty(CMND)) { cMND = CMND; }
+                string bHYT = "null";
+                if (!String.IsNullOrEmpty(BHYT)) { bHYT = BHYT; }
+
                 if (ThaoTac == "Them")
                 {
                     if (BenhNhan_Id != "")
@@ -290,7 +295,7 @@ namespace KClinic2._1.View.TiepNhan
                             , NgaySinh
                             , NamSinh
                             , SoDienThoai
-                            , CMND
+                            , cMND
                             , DiaChi
                             , "null"
                             , "null"
@@ -301,7 +306,7 @@ namespace KClinic2._1.View.TiepNhan
                             , "'" + DateTime.Now.ToString("yyyyMMdd HH:mm:ss") + "'"
                             , "0"
                             , Zalo_Id
-                            , BHYT
+                            , bHYT
                             );
                         if (UpdateBenhNhan.Rows.Count > 0)
                         {
@@ -384,7 +389,7 @@ namespace KClinic2._1.View.TiepNhan
                             , NgaySinh
                             , NamSinh
                             , SoDienThoai
-                            , CMND
+                            , cMND
                             , DiaChi
                             , "null"
                             , "null"
@@ -395,7 +400,7 @@ namespace KClinic2._1.View.TiepNhan
                             , "null"
                             , "0"
                             , Zalo_Id
-                            , BHYT
+                            , bHYT
                             );
                         if (InsertBenhNhan.Rows.Count > 0)
                         {
@@ -489,7 +494,7 @@ namespace KClinic2._1.View.TiepNhan
                             , NgaySinh //NgaySinh
                             , NamSinh
                             , SoDienThoai
-                            , CMND
+                            , cMND
                             , DiaChi
                             , "null"
                             , "null"
@@ -500,7 +505,7 @@ namespace KClinic2._1.View.TiepNhan
                             , "'" + DateTime.Now.ToString("yyyyMMdd HH:mm:ss") + "'"
                             , "0"
                             , Zalo_Id
-                            , BHYT
+                            , bHYT
                             );
                     if (UpdateBenhNhan.Rows.Count > 0)
                     {
@@ -828,7 +833,7 @@ namespace KClinic2._1.View.TiepNhan
                                 , ChietKhauPhanTram //ty le chiet khau
                                 , GiaTriChietKhau //tien chiet khau
                                 , "null"
-                                , "1"
+                                , "1" //DuocPhepThucHien
                                 , "ChuaThucHien"
                                 , Login.User_Id
                                 , Login.User_Id
@@ -952,7 +957,7 @@ namespace KClinic2._1.View.TiepNhan
                                 , ChietKhauPhanTram
                                 , GiaTriChietKhau
                                 , "null"
-                                , "1"
+                                , "1" //DuocPhepThucHien
                                 , "ChuaThucHien"
                                 , Login.User_Id
                                 , Login.User_Id
@@ -994,7 +999,7 @@ namespace KClinic2._1.View.TiepNhan
                                 , "null" //ty le chiet khau
                                 , "null" //tien chiet khau
                                 , "null"
-                                , "1"
+                                , "1" //DuocPhepThucHien
                                 , "ChuaThucHien"
                                 , Login.User_Id
                                 , Login.User_Id

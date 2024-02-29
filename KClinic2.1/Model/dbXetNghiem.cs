@@ -230,6 +230,26 @@ namespace KClinic2._1.Model
                 return null;
             }
         }
+        public static DataTable CheckDaThanhToanTheoSoTiepNhan(string _SoTiepNhan)
+        {
+            try
+            {
+                DataTable table1 = new DataTable();
+                SqlCommand cmd_Show = con.CreateCommand();
+                cmd_Show.CommandTimeout = timeout_connecttion;
+                cmd_Show.CommandText = "exec SP_004_XetNghiem @Action=N'CheckDaThanhToanTheoSoTiepNhan',"
+                    + "@SoTiepNhan = N'" + _SoTiepNhan + "'"
+                    ;
+                con.Open();
+                table1.Load(cmd_Show.ExecuteReader(CommandBehavior.CloseConnection));
+                con.Close();
+                return table1;
+            }
+            catch
+            {
+                return null;
+            }
+        }
         public static DataTable Insert(
               string _NgayThucHien
             , string _ThoiGianThucHien
