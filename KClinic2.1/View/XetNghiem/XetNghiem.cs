@@ -761,16 +761,13 @@ namespace KClinic2._1.View.XetNghiem
                 TiepNhan_Id = LayThongTinSoTiepNhan.Rows[0]["TiepNhan_Id"].ToString();
             }
 
-            if (pathDatabaseAPI_Web == "")
+            if (pathDatabaseAPI_Web != "")
             {
-                DataTable LoadCLSYeuCauTheoTiepNhan_Id = Model.dbXetNghiem.LoadCLSYeuCauTheoTiepNhan_Id(TiepNhan_Id);
-                gridDichVu.DataSource = LoadCLSYeuCauTheoTiepNhan_Id;
+                DataTable updateKetQua_Lis = Model.dbXetNghiem.UpdateKetQua_Lis(TiepNhan_Id);
             }
-            else
-            {
-                DataTable LoadCLSYeuCauTheoTiepNhan_Id = Model.dbXetNghiem.LoadCLSYeuCauTheoTiepNhan_Id_WebAPI(TiepNhan_Id, pathDatabaseAPI_Web);
-                gridDichVu.DataSource = LoadCLSYeuCauTheoTiepNhan_Id;
-            }
+
+            DataTable LoadCLSYeuCauTheoTiepNhan_Id = Model.dbXetNghiem.LoadCLSYeuCauTheoTiepNhan_Id(TiepNhan_Id);
+            gridDichVu.DataSource = LoadCLSYeuCauTheoTiepNhan_Id;
 
             txtKetLuan.Focus();
         }
@@ -984,7 +981,7 @@ namespace KClinic2._1.View.XetNghiem
                             // Tạo đối tượng ListTestOrder từ mỗi phần tử trong gridDichVu
                             ListTestOrder order = new ListTestOrder
                             {
-                                OrderId = txtMaYTe.Text,
+                                OrderId = TiepNhan_Id,
                                 RequestTime = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss")),
                                 TestId = row["DichVu_Id"].ToString(),
                                 TestCode = row["MaDichVu"].ToString(),
