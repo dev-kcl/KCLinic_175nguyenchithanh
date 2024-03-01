@@ -389,6 +389,28 @@ namespace KClinic2._1.Model
                 return null;
             }
         }
+
+        public static DataTable SelectDichVuConTheoDichVuCha(string _Idx)
+        {
+            try
+            {
+                DataTable table1 = new DataTable();
+                SqlCommand cmd_Show = con.CreateCommand();
+                cmd_Show.CommandTimeout = timeout_connecttion;
+                cmd_Show.CommandText = "exec SP_006_DanhMuc @Action = N'SelectDichVuConTheoDichVuCha', "
+                    + "@Idx = " + _Idx
+                    ;
+                con.Open();
+                table1.Load(cmd_Show.ExecuteReader(CommandBehavior.CloseConnection));
+                con.Close();
+                return table1;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
         public static DataTable InsertDichVuCon(
                   string _MaDichVu
                 , string _TenDichVu

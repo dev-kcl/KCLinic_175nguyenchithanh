@@ -13,6 +13,8 @@ using DevExpress.XtraGrid.Views.Grid;
 using System.IO;
 using RestSharp;
 using Newtonsoft.Json.Linq;
+using KClinic2._1.DTOs;
+using Newtonsoft.Json;
 
 namespace KClinic2._1.View.XetNghiem
 {
@@ -23,6 +25,7 @@ namespace KClinic2._1.View.XetNghiem
         public string CLSYeuCau_Id;
         public string CLSKetQua_Id;
         public string BenhNhan_Id = "";
+        public string BacSiChiDinh_Id = "";
 
         public XetNghiem()
         {
@@ -56,7 +59,7 @@ namespace KClinic2._1.View.XetNghiem
                 ThaoTac = "Them";
                 Reset();
                 txtSoTiepNhan.Focus();
-                DataTable LaySoTiepNhanTuTiepNhan_Id = Model.dbXetNghiem.LaySoTiepNhanTuTiepNhan_Id(TiepNhan_Id); 
+                DataTable LaySoTiepNhanTuTiepNhan_Id = Model.dbXetNghiem.LaySoTiepNhanTuTiepNhan_Id(TiepNhan_Id);
                 checkCLSTheoSoTiepNhan(LaySoTiepNhanTuTiepNhan_Id.Rows[0]["SoTiepNhan"].ToString());
             }
             else { TiepNhan_Id = ""; }
@@ -141,106 +144,6 @@ namespace KClinic2._1.View.XetNghiem
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            //string _sex = "";
-            //if (txtGioiTinh.Text == "Nam")
-            //{
-            //    _sex = "M";
-            //}
-            //else
-            //{
-            //    _sex = "F";
-            //}
-
-            //var json = new
-            //{
-            //    PatientID = BenhNhan_Id,
-            //    PatientName = txtHoTen.Text,
-            //    Sex = _sex,
-            //    DateOfBirth = txtNgaySinh.Value.ToString("yyyy-mm-dd"), //"2023-09-07",
-            //    Age = 0,
-            //    Address = "Metropolis",
-            //    Email = "ahasjyoon@vsk.com",
-            //    PhoneNumber = txtSoDienThoai.Text,
-            //    CitizenIdentity = "",
-            //    Nationality = "VN",
-            //    Passport = "",
-            //    InsureNumber = "string",
-            //    MedicalID = txtMaYTe.Text,
-            //    Bed = "",
-            //    SampleID = "",
-            //    Sequence = BenhNhan_Id,
-            //    Intime = "2023-09-07T16:05:05.783Z",
-            //    HISCode = "string",
-            //    InPatient = true,
-            //    Urgent = true,
-            //    ListAdditionalInfo = new[]
-            //    {
-            //        new {Key = "string", Value = "string"}
-            //    },
-            //    ListOrder = new[]
-            //    {
-            //        new
-            //        {
-            //            ActionCode = 0,
-            //            OrderID = "string",
-            //            ObjectID = "string",
-            //            ObjectName = "string",
-            //            DoctorID = "string",
-            //            DoctorName = "string",
-            //            LocationID = "string",
-            //            LocationName = "string",
-            //            Diagnostic = "string",
-            //            RequestTime = "2023-09-07T16:05:05.783Z",
-            //            ListTestOrder = new[]
-            //            {
-            //                new
-            //                {
-            //                    OrderID = "string",
-            //                    RequestTime = "2023-09-07T16:05:05.783Z",
-            //                    TestID = "string",
-            //                    TestCode = "string",
-            //                    TestCodeMapping = "string",
-            //                    TestName = "string",
-            //                    CategoryID = "string",
-            //                    CategoryName = "string",
-            //                    SampleInfo = new
-            //                    {
-            //                        SpecimenID = "string",
-            //                        SpecimenName = "string",
-            //                        UserCollectedID = "string",
-            //                        UserCollectedName = "string",
-            //                        SpecimenCollectedTime = "2023-09-07T16:05:05.783Z",
-            //                        UserReceivedID = "string",
-            //                        UserReceivedName = "string",
-            //                        SpecimenReceivedTime = "2023-09-07T16:05:05.783Z"
-            //                    },
-            //                    ListSubTest = new object[] {"test"},
-            //                    ListAdditionalInfo = new[]
-            //                    {
-            //                        new {Key = "string", Value = "string"}
-            //                    }
-            //                }
-            //            }
-            //        }
-            //    }
-            //};
-
-            //// Serialize your json object to a string
-            //string _postTiepNhan = "http://192.168.1.111:8282/api/HISIntergrate/SavePatientInfo/";
-
-            //var client = new RestClient(_postTiepNhan);
-            //var request = new RestRequest(Method.POST);
-            //request.AddHeader("cache-control", "no-cache");
-            //request.AddHeader("Content-type", "application/json; charset=utf-8");
-            //request.RequestFormat = DataFormat.Json;
-
-            //request.AddJsonBody(json);
-            //IRestResponse response = client.Execute(request);
-            //dynamic resp = JObject.Parse(response.Content);
-
-
-
-
             if (txtSoTiepNhan.Text == "")
             {
                 alertControl1.Show(this, "Thông báo", "Họ Tên không được để trống!", "");
@@ -409,7 +312,7 @@ namespace KClinic2._1.View.XetNghiem
                                     );
                             }
                         }
-                        alertControl1.Show(this, "Thông báo", "Đã sửa thành công!", ""); 
+                        alertControl1.Show(this, "Thông báo", "Đã sửa thành công!", "");
                         if (TiepNhan_Id != "")
                         {
                             DataTable LoadCLSYeuCauTheoTiepNhan_Id = Model.dbXetNghiem.LoadCLSYeuCauTheoTiepNhan_Id(TiepNhan_Id);
@@ -599,7 +502,7 @@ namespace KClinic2._1.View.XetNghiem
                 e.SuppressKeyPress = true;
             }
         }
-        void checkCLSTheoSoTiepNhan (string SoTiepNhan)
+        void checkCLSTheoSoTiepNhan(string SoTiepNhan)
         {
 
             DataTable CheckDaCoKetQuaTheoSoTiepNhan = Model.dbXetNghiem.CheckDaCoKetQuaTheoSoTiepNhan(SoTiepNhan);
@@ -851,6 +754,8 @@ namespace KClinic2._1.View.XetNghiem
 
                 txtMaVachSid.Text = LayThongTinSoTiepNhan.Rows[0]["SID"].ToString();
 
+                BacSiChiDinh_Id = LayThongTinSoTiepNhan.Rows[0]["NguoiTiepNhan_Id"].ToString();
+
                 TiepNhan_Id = LayThongTinSoTiepNhan.Rows[0]["TiepNhan_Id"].ToString();
             }
             DataTable LoadCLSYeuCauTheoTiepNhan_Id = Model.dbXetNghiem.LoadCLSYeuCauTheoTiepNhan_Id(TiepNhan_Id);
@@ -991,6 +896,13 @@ namespace KClinic2._1.View.XetNghiem
 
         private void btnLoadSid_Click(object sender, EventArgs e)
         {
+            if (TiepNhan_Id == "")
+            {
+                alertControl1.Show(this, "Thông báo", "Bạn chưa chọn Bệnh Nhân!", "");
+                return;
+            }
+
+
             if (gridView1.RowCount > 0)
             {
                 gridView1.BeginDataUpdate();
@@ -1010,7 +922,146 @@ namespace KClinic2._1.View.XetNghiem
             }
             else
             {
-                alertControl1.Show(this, "Thông báo", "Đã cập nhật thành công!", "");
+                alertControl1.Show(this, "Thông báo", "Đã cập nhật thất bại!", "");
+                return;
+            }
+
+
+            //call api LIS
+            string pathAPI_LIS = System.Configuration.ConfigurationManager.AppSettings["pathAPI"];
+
+            if (pathAPI_LIS != "")
+            {
+                try
+                {
+                    string _sex = "";
+                    if (txtGioiTinh.Text == "Nam")
+                    {
+                        _sex = "M";
+                    }
+                    else
+                    {
+                        _sex = "F";
+                    }
+
+                    List<ListTestOrder> listTestOrder = new List<ListTestOrder>();
+
+                    DataTable gridDichVuDaTa = gridDichVu.DataSource as DataTable;
+                    foreach (DataRow row in gridDichVuDaTa.Rows)
+                    {
+                        List<ListSubTest> listSubTest = new List<ListSubTest>();
+
+                        if (row["CLSYeuCau_Cha_Id"].ToString() == "")
+                        {
+                            DataTable SelectDichVuConTheoID = Model.dbDanhMuc.SelectDichVuConTheoDichVuCha(row["DichVu_Id"].ToString());
+                            if (SelectDichVuConTheoID.Rows.Count > 0)
+                            {
+                                foreach (DataRow rowSub in SelectDichVuConTheoID.Rows)
+                                {
+                                    ListSubTest orderSub = new ListSubTest
+                                    {
+                                        TestId = rowSub["Dich_Id"].ToString(),
+                                        TestCode = rowSub["MaDichVu"].ToString(),
+                                        TestName = rowSub["TenDichVu"].ToString()
+                                    };
+
+                                    listSubTest.Add(orderSub);
+                                }
+                            }
+
+                            // Tạo đối tượng ListTestOrder từ mỗi phần tử trong gridDichVu
+                            ListTestOrder order = new ListTestOrder
+                            {
+                                OrderId = txtMaYTe.Text,
+                                RequestTime = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss")),
+                                TestId = row["DichVu_Id"].ToString(),
+                                TestCode = row["MaDichVu"].ToString(),
+                                TestName = row["TenDichVu"].ToString(),
+                                CategoryId = "",
+                                CategoryName = "",
+                                SampleInfo = null,
+                                ListSubTest = listSubTest,
+                                ListAdditionalInfo = null
+                            };
+
+                            listTestOrder.Add(order);
+                        }
+                    }
+
+                    RootObject dataRoot = new RootObject
+                    {
+                        PatientId = BenhNhan_Id,
+                        PatientName = txtHoTen.Text,
+                        Sex = _sex,
+                        DateOfBirth = DateTime.Parse("2023-11-11"),
+                        Age = Int32.Parse(txtTuoi.Text),
+                        Address = "PK VSK",
+                        Email = "pkvsk@pkvks.com",
+                        PhoneNumber = "1111111111",
+                        CitizenIdentity = "",
+                        Nationality = "VN",
+                        Passport = "",
+                        InsureNumber = "",
+                        MedicalId = txtMaYTe.Text,
+                        Bed = "",
+                        SampleId = DateTime.Now.ToString("yyyymmdd") + "-" + txtMaVachSid.Text,
+                        Sequence = txtMaVachSid.Text,
+                        RequestTime = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss")),
+                        Intime = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss")),
+                        HISCode = TiepNhan_Id,
+                        InPatient = false,
+                        Urgent = false,
+                        ListAdditionalInfo = new List<object>(),
+                        ListOrder = new List<ListOrder>
+                    {
+                        new ListOrder
+                        {
+                            OrderId = txtMaYTe.Text,
+                            ActionCode = null,
+                            Diagnostic = "",
+                            DoctorID = BacSiChiDinh_Id,
+                            DoctorName = BacSiChiDinh_Id,
+                            LocationID = "PK1",
+                            LocationName = "PK1",
+                            ObjectID = BenhNhan_Id,
+                            ObjectName = txtHoTen.Text,
+                            RequestTime = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss")),
+                            ListTestOrder = listTestOrder
+                        }
+                    }
+                    };
+
+
+                    // Chuyển đối tượng RootObject thành chuỗi JSON
+                    string json = JsonConvert.SerializeObject(dataRoot, Formatting.Indented);
+
+                    var client = new RestClient(pathAPI_LIS);
+                    var request = new RestRequest(Method.POST);
+                    request.AddHeader("cache-control", "no-cache");
+                    request.AddHeader("Content-type", "application/json; charset=utf-8");
+                    request.RequestFormat = DataFormat.Json;
+
+                    request.AddJsonBody(json);
+                    IRestResponse response = client.Execute(request);
+
+                    bool isSuccessful = response.IsSuccessful;
+
+                    if (!isSuccessful)
+                    {
+                        if (response.Content != "")
+                        {
+                            dynamic jsonResponse = JsonConvert.DeserializeObject(response.Content);
+
+                            string strError = jsonResponse["Err"].MsgString;
+
+                            alertControl1.Show(this, "Xảy ra lỗi API LIS", strError, "");
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    alertControl1.Show(this, "Thông báo", "Lỗi cập nhật API LIS!", "");
+                }
             }
         }
 
