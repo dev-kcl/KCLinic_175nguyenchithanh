@@ -317,6 +317,7 @@
             this.SID.FieldName = "SID";
             this.SID.MinWidth = 25;
             this.SID.Name = "SID";
+            this.SID.OptionsColumn.AllowEdit = false;
             this.SID.Visible = true;
             this.SID.VisibleIndex = 1;
             // 
