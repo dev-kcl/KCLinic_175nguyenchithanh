@@ -1004,14 +1004,14 @@ namespace KClinic2._1.View.XetNghiem
                         InsureNumber = "",
                         MedicalId = txtMaYTe.Text,
                         Bed = "",
-                        SampleId = DateTime.Now.ToString("yyyymmdd") + "-" + txtMaVachSid.Text,
+                        SampleId = DateTime.Now.ToString("ddMMyy") + "-" + txtMaVachSid.Text,
                         Sequence = txtMaVachSid.Text,
                         RequestTime = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss")),
                         Intime = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss")),
-                        HISCode = TiepNhan_Id,
+                        HISCode = "KCL",
                         InPatient = false,
                         Urgent = false,
-                        ListAdditionalInfo = new List<object>(),
+                        ListAdditionalInfo = null,
                         ListOrder = new List<ListOrder>
                     {
                         new ListOrder
@@ -1023,7 +1023,7 @@ namespace KClinic2._1.View.XetNghiem
                             DoctorName = BacSiChiDinh_Id,
                             LocationID = "PK1",
                             LocationName = "PK1",
-                            ObjectID = BenhNhan_Id,
+                            ObjectID = "KCL",
                             ObjectName = txtHoTen.Text,
                             RequestTime = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss")),
                             ListTestOrder = listTestOrder
