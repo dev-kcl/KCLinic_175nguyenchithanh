@@ -446,7 +446,7 @@ namespace KClinic2._1.Model
             }
         }
         public static DataTable LoadCLSYeuCauTheoTiepNhan_Id(string _TiepNhan_Id)
-        {
+        {            
             try
             {
                 DataTable table1 = new DataTable();
@@ -465,6 +465,29 @@ namespace KClinic2._1.Model
                 return null;
             }
         }
+
+        public static DataTable LoadCLSYeuCauTheoTiepNhan_Id_WebAPI(string _TiepNhan_Id, string _pathDatabase_Web)
+        {
+            try
+            {
+                DataTable table1 = new DataTable();
+                SqlCommand cmd_Show = con.CreateCommand();
+                cmd_Show.CommandTimeout = timeout_connecttion;
+                cmd_Show.CommandText = "exec SP_004_XetNghiem @Action=N'LoadCLSYeuCauTheoTiepNhan_Id_WebAPI',"
+                    + "@TiepNhan_Id = " + _TiepNhan_Id + ","
+                    + "@PathDatabase_Web = " + _pathDatabase_Web
+                    ;
+                con.Open();
+                table1.Load(cmd_Show.ExecuteReader(CommandBehavior.CloseConnection));
+                con.Close();
+                return table1;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
         public static DataTable UpdateKetQuaCLSYeuCau(string _CLSYeuCau_Id, string _ThoiGianThucHien, string _NgayThucHien, string _KetQua, string _SID)
         {
             try
