@@ -273,6 +273,7 @@ namespace KClinic2._1.Model
             , string _NgayNhanMau
             , string _ThoiGianNhanMau
             , string _NguoiNhanMau_Id
+            , string _MaVachSID
             )
         {
             try
@@ -302,7 +303,8 @@ namespace KClinic2._1.Model
                     + "@NguoiLayMau_Id = " + _NguoiLayMau_Id + ","
                     + "@NgayNhanMau = " + _NgayNhanMau + ","
                     + "@ThoiGianNhanMau = " + _ThoiGianNhanMau + ","
-                    + "@NguoiNhanMau_Id = " + _NguoiNhanMau_Id
+                    + "@NguoiNhanMau_Id = " + _NguoiNhanMau_Id + ","
+                    + "@SID = " + _MaVachSID
                     ;
                 con.Open();
                 table1.Load(cmd_Show.ExecuteReader(CommandBehavior.CloseConnection));
@@ -338,6 +340,7 @@ namespace KClinic2._1.Model
             , string _NgayNhanMau
             , string _ThoiGianNhanMau
             , string _NguoiNhanMau_Id
+            , string _MaVachSID
             )
         {
             try
@@ -368,7 +371,8 @@ namespace KClinic2._1.Model
                     + "@NguoiLayMau_Id = " + _NguoiLayMau_Id + ","
                     + "@NgayNhanMau = " + _NgayNhanMau + ","
                     + "@ThoiGianNhanMau = " + _ThoiGianNhanMau + ","
-                    + "@NguoiNhanMau_Id = " + _NguoiNhanMau_Id
+                    + "@NguoiNhanMau_Id = " + _NguoiNhanMau_Id + ","
+                    + "@SID = " + _MaVachSID
                     ;
                 con.Open();
                 table1.Load(cmd_Show.ExecuteReader(CommandBehavior.CloseConnection));
@@ -596,6 +600,28 @@ namespace KClinic2._1.Model
                 cmd_Show.CommandText = "exec SP_004_XetNghiem @Action=N'LayDanhSachBNChuaXNTrongNgay', " +
                     "@text = " + _text
                     //+ ","+ "@PhongBan_Id = " + _PhongBan_Id
+                    ;
+                con.Open();
+                table1.Load(cmd_Show.ExecuteReader(CommandBehavior.CloseConnection));
+                con.Close();
+                return table1;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public static DataTable UpdateMaVachSID(string _TiepNhan_Id, string _SID)
+        {
+            try
+            {
+                DataTable table1 = new DataTable();
+                SqlCommand cmd_Show = con.CreateCommand();
+                cmd_Show.CommandTimeout = timeout_connecttion;
+                cmd_Show.CommandText = "exec SP_004_XetNghiem @Action=N'UpdateMaVachSID',"
+                    + "@TiepNhan_Id = " + _TiepNhan_Id + ","
+                    + "@SID = " + _SID
                     ;
                 con.Open();
                 table1.Load(cmd_Show.ExecuteReader(CommandBehavior.CloseConnection));

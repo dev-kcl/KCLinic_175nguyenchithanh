@@ -11,6 +11,8 @@ using DevExpress.XtraEditors;
 using CrystalDecisions.CrystalReports.Engine;
 using DevExpress.XtraGrid.Views.Grid;
 using System.IO;
+using RestSharp;
+using Newtonsoft.Json.Linq;
 
 namespace KClinic2._1.View.XetNghiem
 {
@@ -20,6 +22,8 @@ namespace KClinic2._1.View.XetNghiem
         public string ThaoTac;
         public string CLSYeuCau_Id;
         public string CLSKetQua_Id;
+        public string BenhNhan_Id = "";
+
         public XetNghiem()
         {
             InitializeComponent();
@@ -137,6 +141,106 @@ namespace KClinic2._1.View.XetNghiem
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
+            //string _sex = "";
+            //if (txtGioiTinh.Text == "Nam")
+            //{
+            //    _sex = "M";
+            //}
+            //else
+            //{
+            //    _sex = "F";
+            //}
+
+            //var json = new
+            //{
+            //    PatientID = BenhNhan_Id,
+            //    PatientName = txtHoTen.Text,
+            //    Sex = _sex,
+            //    DateOfBirth = txtNgaySinh.Value.ToString("yyyy-mm-dd"), //"2023-09-07",
+            //    Age = 0,
+            //    Address = "Metropolis",
+            //    Email = "ahasjyoon@vsk.com",
+            //    PhoneNumber = txtSoDienThoai.Text,
+            //    CitizenIdentity = "",
+            //    Nationality = "VN",
+            //    Passport = "",
+            //    InsureNumber = "string",
+            //    MedicalID = txtMaYTe.Text,
+            //    Bed = "",
+            //    SampleID = "",
+            //    Sequence = BenhNhan_Id,
+            //    Intime = "2023-09-07T16:05:05.783Z",
+            //    HISCode = "string",
+            //    InPatient = true,
+            //    Urgent = true,
+            //    ListAdditionalInfo = new[]
+            //    {
+            //        new {Key = "string", Value = "string"}
+            //    },
+            //    ListOrder = new[]
+            //    {
+            //        new
+            //        {
+            //            ActionCode = 0,
+            //            OrderID = "string",
+            //            ObjectID = "string",
+            //            ObjectName = "string",
+            //            DoctorID = "string",
+            //            DoctorName = "string",
+            //            LocationID = "string",
+            //            LocationName = "string",
+            //            Diagnostic = "string",
+            //            RequestTime = "2023-09-07T16:05:05.783Z",
+            //            ListTestOrder = new[]
+            //            {
+            //                new
+            //                {
+            //                    OrderID = "string",
+            //                    RequestTime = "2023-09-07T16:05:05.783Z",
+            //                    TestID = "string",
+            //                    TestCode = "string",
+            //                    TestCodeMapping = "string",
+            //                    TestName = "string",
+            //                    CategoryID = "string",
+            //                    CategoryName = "string",
+            //                    SampleInfo = new
+            //                    {
+            //                        SpecimenID = "string",
+            //                        SpecimenName = "string",
+            //                        UserCollectedID = "string",
+            //                        UserCollectedName = "string",
+            //                        SpecimenCollectedTime = "2023-09-07T16:05:05.783Z",
+            //                        UserReceivedID = "string",
+            //                        UserReceivedName = "string",
+            //                        SpecimenReceivedTime = "2023-09-07T16:05:05.783Z"
+            //                    },
+            //                    ListSubTest = new object[] {"test"},
+            //                    ListAdditionalInfo = new[]
+            //                    {
+            //                        new {Key = "string", Value = "string"}
+            //                    }
+            //                }
+            //            }
+            //        }
+            //    }
+            //};
+
+            //// Serialize your json object to a string
+            //string _postTiepNhan = "http://192.168.1.111:8282/api/HISIntergrate/SavePatientInfo/";
+
+            //var client = new RestClient(_postTiepNhan);
+            //var request = new RestRequest(Method.POST);
+            //request.AddHeader("cache-control", "no-cache");
+            //request.AddHeader("Content-type", "application/json; charset=utf-8");
+            //request.RequestFormat = DataFormat.Json;
+
+            //request.AddJsonBody(json);
+            //IRestResponse response = client.Execute(request);
+            //dynamic resp = JObject.Parse(response.Content);
+
+
+
+
             if (txtSoTiepNhan.Text == "")
             {
                 alertControl1.Show(this, "Thông báo", "Họ Tên không được để trống!", "");
@@ -175,6 +279,8 @@ namespace KClinic2._1.View.XetNghiem
                 string BacSiKetLuan = "null";
                 if (cbbBacSiKetLuan.SelectedItem != null) { BacSiKetLuan = cbbBacSiKetLuan.Value.ToString(); }
 
+                string MaVachSID = "N'" + txtMaVachSid.Text.Replace("'", "''") + "'";
+
                 if (ThaoTac == "Them")
                 {
                     DataTable Insert = Model.dbXetNghiem.Insert(
@@ -200,6 +306,7 @@ namespace KClinic2._1.View.XetNghiem
                                 , NgayNhanMau //ngay lay mau
                                 , ThoiGianNhanMau //thoi gian nhan mau
                                 , NguoiNhanMau //nguoi nhan mau
+                                , MaVachSID
                                 );
                     if (Insert.Rows.Count > 0)
                     {
@@ -268,6 +375,7 @@ namespace KClinic2._1.View.XetNghiem
                                 , NgayNhanMau //ngay lay mau
                                 , ThoiGianNhanMau //thoi gian nhan mau
                                 , NguoiNhanMau //nguoi nhan mau
+                                , MaVachSID
                                 );
                     if (Update.Rows.Count > 0)
                     {
@@ -523,6 +631,8 @@ namespace KClinic2._1.View.XetNghiem
                             txtThoiGianNhanMau.Value = DateTime.Now;
                             txtThoiGianLayMau.Value = DateTime.Now;
 
+                            txtMaVachSid.Text = LoadThongTinBenhNhan.Rows[0]["SID"].ToString();
+
                             TiepNhan_Id = LoadThongTinBenhNhan.Rows[0]["TiepNhan_Id"].ToString();
                             //
                             DataTable LoadCLSYeuCauTheoTiepNhan_Id = Model.dbXetNghiem.LoadCLSYeuCauTheoTiepNhan_Id(TiepNhan_Id);
@@ -612,6 +722,8 @@ namespace KClinic2._1.View.XetNghiem
                             {
                                 cbbNguoiNhanMau.Value = Int32.Parse(NguoiNhanMau_Id);
                             }
+
+                            txtMaVachSid.Text = SuaLoadThongTinBenhNhan.Rows[0]["SID"].ToString();
 
                             TiepNhan_Id = SuaLoadThongTinBenhNhan.Rows[0]["TiepNhan_Id"].ToString();
                             CLSKetQua_Id = SuaLoadThongTinBenhNhan.Rows[0]["CLSKetQua_Id"].ToString();
@@ -703,6 +815,8 @@ namespace KClinic2._1.View.XetNghiem
                     cbbNguoiNhanMau.Value = Int32.Parse(NguoiNhanMau_Id);
                 }
 
+                txtMaVachSid.Text = SuaLoadThongTinBenhNhan.Rows[0]["SID"].ToString();
+
                 TiepNhan_Id = SuaLoadThongTinBenhNhan.Rows[0]["TiepNhan_Id"].ToString();
                 CLSKetQua_Id = SuaLoadThongTinBenhNhan.Rows[0]["CLSKetQua_Id"].ToString();
 
@@ -710,11 +824,13 @@ namespace KClinic2._1.View.XetNghiem
                 gridDichVu.DataSource = LoadCLSYeuCauTheoTiepNhan_Id;
             }
         }
+
         public void RefreshForm()
         {
             DataTable LayThongTinSoTiepNhan = Model.dbXetNghiem.LayThongTinSoTiepNhan(TiepNhan_Id);
             if (LayThongTinSoTiepNhan.Rows.Count > 0)
             {
+                BenhNhan_Id = LayThongTinSoTiepNhan.Rows[0]["BenhNhan_Id"].ToString();
                 txtSoTiepNhan.Text = LayThongTinSoTiepNhan.Rows[0]["SoTiepNhan"].ToString();
                 txtMaYTe.Text = LayThongTinSoTiepNhan.Rows[0]["MaYTe"].ToString();
                 txtHoTen.Text = LayThongTinSoTiepNhan.Rows[0]["TenBenhNhan"].ToString();
@@ -732,6 +848,9 @@ namespace KClinic2._1.View.XetNghiem
                 txtThoiGianThucHien.Value = DateTime.Now;
                 txtThoiGianLayMau.Value = DateTime.Now;
                 txtThoiGianNhanMau.Value = DateTime.Now;
+
+                txtMaVachSid.Text = LayThongTinSoTiepNhan.Rows[0]["SID"].ToString();
+
                 TiepNhan_Id = LayThongTinSoTiepNhan.Rows[0]["TiepNhan_Id"].ToString();
             }
             DataTable LoadCLSYeuCauTheoTiepNhan_Id = Model.dbXetNghiem.LoadCLSYeuCauTheoTiepNhan_Id(TiepNhan_Id);
@@ -763,8 +882,8 @@ namespace KClinic2._1.View.XetNghiem
             cbbNguoiNhanMau.Enabled = true;
             txtThoiGianNhanMau.Enabled = true;
 
-            txtMaVachSid.Enabled = true;
-            btnLoadSid.Enabled = true;
+            //txtMaVachSid.Enabled = true;
+            //btnLoadSid.Enabled = true;
         }
         public void An()
         {
@@ -791,8 +910,8 @@ namespace KClinic2._1.View.XetNghiem
             cbbNguoiNhanMau.Enabled = false;
             txtThoiGianNhanMau.Enabled = false;
 
-            txtMaVachSid.Enabled = false;
-            btnLoadSid.Enabled = false;
+            //txtMaVachSid.Enabled = false;
+            //btnLoadSid.Enabled = false;
         }
         public void Reset()
         {
@@ -875,10 +994,23 @@ namespace KClinic2._1.View.XetNghiem
             if (gridView1.RowCount > 0)
             {
                 gridView1.BeginDataUpdate();
-                DataTable dt = (DataTable) gridDichVu.DataSource;
+                DataTable dt = (DataTable)gridDichVu.DataSource;
                 foreach (DataRow dr in dt.Rows)
                     dr["SID"] = txtMaVachSid.Text.Trim();
                 gridView1.EndDataUpdate();
+            }
+
+            DataTable updateMaVachSID = Model.dbXetNghiem.UpdateMaVachSID(
+                                 TiepNhan_Id
+                                , "N'" + txtMaVachSid.Text.Replace("'", "''") + "'"
+                                );
+            if (updateMaVachSID.Rows.Count > 0)
+            {
+                alertControl1.Show(this, "Thông báo", "Đã cập nhật thành công!", "");
+            }
+            else
+            {
+                alertControl1.Show(this, "Thông báo", "Đã cập nhật thành công!", "");
             }
         }
 
