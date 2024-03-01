@@ -1011,24 +1011,24 @@ namespace KClinic2._1.View.XetNghiem
                         HISCode = "KCL",
                         InPatient = false,
                         Urgent = false,
-                        ListAdditionalInfo = null,
+                        ListAdditionalInfo = new List<ListAdditionalInfo> { },
                         ListOrder = new List<ListOrder>
-                    {
-                        new ListOrder
                         {
-                            OrderId = txtMaYTe.Text,
-                            ActionCode = null,
-                            Diagnostic = "",
-                            DoctorID = BacSiChiDinh_Id,
-                            DoctorName = BacSiChiDinh_Id,
-                            LocationID = "PK1",
-                            LocationName = "PK1",
-                            ObjectID = "KCL",
-                            ObjectName = txtHoTen.Text,
-                            RequestTime = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss")),
-                            ListTestOrder = listTestOrder
+                            new ListOrder
+                            {
+                                OrderId = txtMaYTe.Text,
+                                ActionCode = null,
+                                Diagnostic = "",
+                                DoctorID = BacSiChiDinh_Id,
+                                DoctorName = BacSiChiDinh_Id,
+                                LocationID = "PK1",
+                                LocationName = "PK1",
+                                ObjectID = "KCL",
+                                ObjectName = txtHoTen.Text,
+                                RequestTime = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss")),
+                                ListTestOrder = listTestOrder
+                            }
                         }
-                    }
                     };
 
 
