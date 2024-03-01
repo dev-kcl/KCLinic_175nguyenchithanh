@@ -227,6 +227,7 @@
     <Compile Include="Desktop\XetNghiemFile.cs" />
     <Compile Include="Desktop\ZaloFile.cs" />
     <Compile Include="DTOs\ChanDoanHinhAnhDTO.cs" />
+    <Compile Include="DTOs\LIS_DTO.cs" />
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
