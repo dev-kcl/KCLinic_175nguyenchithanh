@@ -83,7 +83,7 @@ namespace KClinic2._1.DTOs
         public string HISCode { get; set; }
         public bool InPatient { get; set; }
         public bool Urgent { get; set; }
-        public List<object> ListAdditionalInfo { get; set; }
+        public List<ListAdditionalInfo> ListAdditionalInfo { get; set; }
         public List<ListOrder> ListOrder { get; set; }
     }
 }
