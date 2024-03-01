@@ -20,6 +20,8 @@ namespace KClinic2._1.View.XetNghiem
 {
     public partial class XetNghiem : DevExpress.XtraEditors.XtraForm
     {
+        public string pathDatabaseAPI_Web = System.Configuration.ConfigurationManager.AppSettings["databaseAPI_Web"];
+
         public static string TiepNhan_Id = "";
         public string ThaoTac;
         public string CLSYeuCau_Id;
@@ -758,8 +760,18 @@ namespace KClinic2._1.View.XetNghiem
 
                 TiepNhan_Id = LayThongTinSoTiepNhan.Rows[0]["TiepNhan_Id"].ToString();
             }
-            DataTable LoadCLSYeuCauTheoTiepNhan_Id = Model.dbXetNghiem.LoadCLSYeuCauTheoTiepNhan_Id(TiepNhan_Id);
-            gridDichVu.DataSource = LoadCLSYeuCauTheoTiepNhan_Id;
+
+            if (pathDatabaseAPI_Web == "")
+            {
+                DataTable LoadCLSYeuCauTheoTiepNhan_Id = Model.dbXetNghiem.LoadCLSYeuCauTheoTiepNhan_Id(TiepNhan_Id);
+                gridDichVu.DataSource = LoadCLSYeuCauTheoTiepNhan_Id;
+            }
+            else
+            {
+                DataTable LoadCLSYeuCauTheoTiepNhan_Id = Model.dbXetNghiem.LoadCLSYeuCauTheoTiepNhan_Id_WebAPI(TiepNhan_Id, pathDatabaseAPI_Web);
+                gridDichVu.DataSource = LoadCLSYeuCauTheoTiepNhan_Id;
+            }
+
             txtKetLuan.Focus();
         }
         public void Hien()
@@ -1019,8 +1031,8 @@ namespace KClinic2._1.View.XetNghiem
                                 OrderId = txtMaYTe.Text,
                                 ActionCode = null,
                                 Diagnostic = "",
-                                DoctorID = BacSiChiDinh_Id,
-                                DoctorName = BacSiChiDinh_Id,
+                                DoctorID = "VSK",
+                                DoctorName = "VSK",
                                 LocationID = "PK1",
                                 LocationName = "PK1",
                                 ObjectID = "KCL",
