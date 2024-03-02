@@ -223,15 +223,21 @@ namespace KClinic2._1.View.TiepNhan
             if (txtHoTen.Text == "")
             {
                 XtraMessageBox.Show("Họ Tên không được để trống!");
+                return;
             }
-            if(txtSoDienThoai.Text=="")
+            else if(txtNamSinh.Text == "")
             {
-                XtraMessageBox.Show("Số điện thoại không được để trống!");
+                XtraMessageBox.Show("Năm sinh không được để trống!");
+                return;
             }
-            if (txtDiaChi.Text == "")
-            {
-                XtraMessageBox.Show("Địa chỉ không được để trống!");
-            }
+            //if(txtSoDienThoai.Text=="")
+            //{
+            //    XtraMessageBox.Show("Số điện thoại không được để trống!");
+            //}
+            //if (txtDiaChi.Text == "")
+            //{
+            //    XtraMessageBox.Show("Địa chỉ không được để trống!");
+            //}
             else
             {
                 string Hoten = "N'" + txtHoTen.Text.Replace("'", "''") + "'";
@@ -249,7 +255,7 @@ namespace KClinic2._1.View.TiepNhan
                 string ThangTiepNhan = "'" + txtThoiGianTiepNhan.Value.ToString("MM") + "'";
                 string NamTiepNhan = "'" + txtThoiGianTiepNhan.Value.ToString("yyyy") + "'";
                 string NgaySinh = "null";
-                if (txtNgaySinh.Value.ToString() != "") { NgaySinh = "'" + txtNgaySinh.Value.ToString("yyyyMMdd") + "'"; }
+                if (txtNgaySinh.Text is null) { NgaySinh = "'" + txtNgaySinh.Value.ToString("yyyyMMdd") + "'"; }
 
                 string DoiTuong_Id = "null";
                 if (cbbDoiTuong.SelectedItem != null)

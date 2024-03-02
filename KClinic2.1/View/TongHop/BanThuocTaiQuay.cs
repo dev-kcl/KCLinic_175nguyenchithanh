@@ -474,7 +474,8 @@ namespace KClinic2._1.View.TongHop
                 }
                 ReportDocument rptDoca = new ReportDocument();
                 DataTable ShowDuongDan = Model.db.ShowDuongDan();
-                string DuongDan = @"" + ShowDuongDan.Rows[0][0].ToString() + @"BC014_HoaDonBanHang.rpt";
+                //string DuongDan = @"" + ShowDuongDan.Rows[0][0].ToString() + @"BC014_HoaDonBanHang.rpt";
+                string DuongDan = @"" + ShowDuongDan.Rows[0][0].ToString() + @"BC014_BangKePhiDichVu.rpt"; 
                 rptDoca.Load(DuongDan);
                 rptDoca.SetDataSource(table1);
                 rptDoca.PrintToPrinter(1, false, 0, 0);
