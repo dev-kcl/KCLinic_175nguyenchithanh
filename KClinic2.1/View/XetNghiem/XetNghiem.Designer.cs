@@ -32,7 +32,7 @@
             Janus.Windows.GridEX.GridEXLayout cbbNguoiLayMau_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(XetNghiem));
             Janus.Windows.GridEX.GridEXLayout cbbNguoiNhanMau_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode2 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
             Janus.Windows.GridEX.GridEXLayout cbbBacSiKetLuan_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout cbbChatLuongMau_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout cbbLoaiMau_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
@@ -219,7 +219,7 @@
             this.btnLoadSid.AppearanceDisabled.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(96)))), ((int)(((byte)(111)))));
             this.btnLoadSid.AppearanceDisabled.Options.UseForeColor = true;
             this.btnLoadSid.ImageOptions.Image = global::KClinic2._1.Properties.Resources.icon_update1;
-            this.btnLoadSid.Location = new System.Drawing.Point(379, 8);
+            this.btnLoadSid.Location = new System.Drawing.Point(417, 8);
             this.btnLoadSid.Margin = new System.Windows.Forms.Padding(4);
             this.btnLoadSid.Name = "btnLoadSid";
             this.btnLoadSid.Size = new System.Drawing.Size(186, 40);
@@ -253,13 +253,13 @@
             this.txtMaVachSid.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtMaVachSid.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtMaVachSid.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
-            this.txtMaVachSid.Location = new System.Drawing.Point(177, 13);
+            this.txtMaVachSid.Location = new System.Drawing.Point(184, 13);
             this.txtMaVachSid.Margin = new System.Windows.Forms.Padding(5);
             this.txtMaVachSid.Name = "txtMaVachSid";
             this.txtMaVachSid.PasswordChar = '\0';
             this.txtMaVachSid.PlaceholderText = "";
             this.txtMaVachSid.SelectedText = "";
-            this.txtMaVachSid.Size = new System.Drawing.Size(193, 31);
+            this.txtMaVachSid.Size = new System.Drawing.Size(220, 31);
             this.txtMaVachSid.TabIndex = 17;
             this.txtMaVachSid.TabStop = false;
             // 
@@ -738,9 +738,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gridDSKham.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(4);
-            gridLevelNode2.RelationName = "Level1";
+            gridLevelNode1.RelationName = "Level1";
             this.gridDSKham.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode2});
+            gridLevelNode1});
             this.gridDSKham.Location = new System.Drawing.Point(8, 52);
             this.gridDSKham.MainView = this.gridView2;
             this.gridDSKham.Margin = new System.Windows.Forms.Padding(4);
