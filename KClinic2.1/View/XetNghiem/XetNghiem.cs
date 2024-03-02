@@ -454,7 +454,8 @@ namespace KClinic2._1.View.XetNghiem
                 }
                 ReportDocument rptDoca = new ReportDocument();
                 DataTable ShowDuongDan = Model.db.ShowDuongDan();
-                string DuongDan = @"" + ShowDuongDan.Rows[0][0].ToString() + @"BC002_PhieuTraLoiKetQua.rpt";
+                //string DuongDan = @"" + ShowDuongDan.Rows[0][0].ToString() + @"BC002_PhieuTraLoiKetQua.rpt";
+                string DuongDan = @"" + ShowDuongDan.Rows[0][0].ToString() + @"BC002_PhieuKetQuaXetNghiem.rpt";
                 rptDoca.Load(DuongDan);
                 rptDoca.SetDataSource(table1);
                 rptDoca.PrintToPrinter(1, false, 0, 0);
