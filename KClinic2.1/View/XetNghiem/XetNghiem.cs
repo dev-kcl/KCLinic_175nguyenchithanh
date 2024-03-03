@@ -468,6 +468,10 @@ namespace KClinic2._1.View.XetNghiem
             {
                 alertControl1.Show(this, "Thông báo", "Bạn chưa chọn Bệnh Nhân!", "");
             }
+            else if(CLSKetQua_Id is null)
+            {
+                alertControl1.Show(this, "Thông báo", "Bệnh nhân chưa có kết quả. Không thể xem!", "");
+            }
             else
             {
                 View.HeThongBaoCao.PhieuTraLoiKetQuaXN bc = new View.HeThongBaoCao.PhieuTraLoiKetQuaXN(this);
