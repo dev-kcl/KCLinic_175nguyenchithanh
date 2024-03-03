@@ -82,6 +82,7 @@
             this.label20 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.cbTiLe = new DevExpress.XtraEditors.CheckEdit();
             this.txtChietKhau = new Guna.UI2.WinForms.Guna2TextBox();
             this.label53 = new System.Windows.Forms.Label();
             this.label50 = new System.Windows.Forms.Label();
@@ -240,7 +241,6 @@
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.popupMenu2 = new DevExpress.XtraBars.PopupMenu(this.components);
             this.popupMenu3 = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.cbTiLe = new DevExpress.XtraEditors.CheckEdit();
             this.panelMain.SuspendLayout();
             this.panelContent.SuspendLayout();
             this.pnChiTiet.SuspendLayout();
@@ -248,6 +248,7 @@
             this.guna2TabControl1.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cbTiLe.Properties)).BeginInit();
             this.guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cbbphongban)).BeginInit();
             this.pnDichVu.SuspendLayout();
@@ -281,7 +282,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbTiLe.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // panelMain
@@ -443,7 +443,7 @@
             this.txtGhiChu.PlaceholderText = "";
             this.txtGhiChu.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtGhiChu.SelectedText = "";
-            this.txtGhiChu.Size = new System.Drawing.Size(1233, 84);
+            this.txtGhiChu.Size = new System.Drawing.Size(1212, 84);
             this.txtGhiChu.TabIndex = 15;
             // 
             // label47
@@ -482,7 +482,7 @@
             this.txtDieuTri.PlaceholderText = "";
             this.txtDieuTri.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtDieuTri.SelectedText = "";
-            this.txtDieuTri.Size = new System.Drawing.Size(1233, 84);
+            this.txtDieuTri.Size = new System.Drawing.Size(1212, 84);
             this.txtDieuTri.TabIndex = 14;
             // 
             // label46
@@ -521,7 +521,7 @@
             this.txtTomTatKetQuaCLS.PlaceholderText = "";
             this.txtTomTatKetQuaCLS.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtTomTatKetQuaCLS.SelectedText = "";
-            this.txtTomTatKetQuaCLS.Size = new System.Drawing.Size(1233, 138);
+            this.txtTomTatKetQuaCLS.Size = new System.Drawing.Size(1212, 138);
             this.txtTomTatKetQuaCLS.TabIndex = 13;
             // 
             // label45
@@ -555,7 +555,7 @@
             this.txtLyDoKham.PasswordChar = '\0';
             this.txtLyDoKham.PlaceholderText = "";
             this.txtLyDoKham.SelectedText = "";
-            this.txtLyDoKham.Size = new System.Drawing.Size(1234, 44);
+            this.txtLyDoKham.Size = new System.Drawing.Size(1212, 44);
             this.txtLyDoKham.TabIndex = 9;
             // 
             // label44
@@ -594,7 +594,7 @@
             this.txtKham.PlaceholderText = "";
             this.txtKham.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtKham.SelectedText = "";
-            this.txtKham.Size = new System.Drawing.Size(1233, 138);
+            this.txtKham.Size = new System.Drawing.Size(1212, 138);
             this.txtKham.TabIndex = 12;
             // 
             // txtTrieuChung
@@ -623,7 +623,7 @@
             this.txtTrieuChung.PlaceholderText = "";
             this.txtTrieuChung.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtTrieuChung.SelectedText = "";
-            this.txtTrieuChung.Size = new System.Drawing.Size(1233, 87);
+            this.txtTrieuChung.Size = new System.Drawing.Size(1212, 87);
             this.txtTrieuChung.TabIndex = 11;
             // 
             // txtTienSu
@@ -652,7 +652,7 @@
             this.txtTienSu.PlaceholderText = "";
             this.txtTienSu.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtTienSu.SelectedText = "";
-            this.txtTienSu.Size = new System.Drawing.Size(1233, 106);
+            this.txtTienSu.Size = new System.Drawing.Size(1212, 106);
             this.txtTienSu.TabIndex = 10;
             // 
             // label43
@@ -1059,6 +1059,18 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Chỉ định dịch vụ";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // cbTiLe
+            // 
+            this.cbTiLe.EditValue = true;
+            this.cbTiLe.Location = new System.Drawing.Point(305, 107);
+            this.cbTiLe.Margin = new System.Windows.Forms.Padding(4);
+            this.cbTiLe.Name = "cbTiLe";
+            this.cbTiLe.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.cbTiLe.Properties.Appearance.Options.UseFont = true;
+            this.cbTiLe.Properties.Caption = "Theo %";
+            this.cbTiLe.Size = new System.Drawing.Size(120, 32);
+            this.cbTiLe.TabIndex = 88;
             // 
             // txtChietKhau
             // 
@@ -3436,18 +3448,6 @@
             this.popupMenu3.Manager = this.barManager1;
             this.popupMenu3.Name = "popupMenu3";
             // 
-            // cbTiLe
-            // 
-            this.cbTiLe.EditValue = true;
-            this.cbTiLe.Location = new System.Drawing.Point(305, 107);
-            this.cbTiLe.Margin = new System.Windows.Forms.Padding(4);
-            this.cbTiLe.Name = "cbTiLe";
-            this.cbTiLe.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.cbTiLe.Properties.Appearance.Options.UseFont = true;
-            this.cbTiLe.Properties.Caption = "Theo %";
-            this.cbTiLe.Size = new System.Drawing.Size(120, 32);
-            this.cbTiLe.TabIndex = 88;
-            // 
             // KhamBenh
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -3469,6 +3469,7 @@
             this.tabPage3.PerformLayout();
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cbTiLe.Properties)).EndInit();
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cbbphongban)).EndInit();
@@ -3515,7 +3516,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbTiLe.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
