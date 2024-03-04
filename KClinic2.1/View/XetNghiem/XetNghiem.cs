@@ -21,6 +21,7 @@ namespace KClinic2._1.View.XetNghiem
     public partial class XetNghiem : DevExpress.XtraEditors.XtraForm
     {
         public string pathDatabaseAPI_Web = System.Configuration.ConfigurationManager.AppSettings["databaseAPI_Web"];
+        public string pathAPI_LIS = System.Configuration.ConfigurationManager.AppSettings["pathAPI"];
 
         public static string TiepNhan_Id = "";
         public string ThaoTac;
@@ -150,10 +151,10 @@ namespace KClinic2._1.View.XetNghiem
             {
                 alertControl1.Show(this, "Thông báo", "Họ Tên không được để trống!", "");
             }
-            if (cbbBacSiKetLuan.SelectedItem == null)
-            {
-                XtraMessageBox.Show("Chưa chọn bác sĩ kết luận");
-            }
+            //if (cbbBacSiKetLuan.SelectedItem == null)
+            //{
+            //    XtraMessageBox.Show("Chưa chọn bác sĩ kết luận");
+            //}
             else
             {
                 string KTVThucHien = "null";
@@ -932,7 +933,7 @@ namespace KClinic2._1.View.XetNghiem
                                 );
             if (updateMaVachSID.Rows.Count > 0)
             {
-                alertControl1.Show(this, "Thông báo", "Đã cập nhật thành công!", "");
+                //alertControl1.Show(this, "Thông báo", "Đã cập nhật thành công!", "");
             }
             else
             {
@@ -942,8 +943,6 @@ namespace KClinic2._1.View.XetNghiem
 
 
             //call api LIS
-            string pathAPI_LIS = System.Configuration.ConfigurationManager.AppSettings["pathAPI"];
-
             if (pathAPI_LIS != "")
             {
                 try
@@ -1068,15 +1067,26 @@ namespace KClinic2._1.View.XetNghiem
 
                             string strError = jsonResponse["Err"].MsgString;
 
-                            alertControl1.Show(this, "Xảy ra lỗi API LIS", strError, "");
+                            if (Microsoft.VisualBasic.Strings.Right(strError, 11) == "đã tồn tại!")
+                            {
+                                API_LIS();
+                            }
+                            else
+                            {
+                                alertControl1.Show(this, "Xảy ra lỗi API LIS", strError, "");
+                                return;
+                            }
                         }
                     }
                 }
                 catch (Exception ex)
                 {
                     alertControl1.Show(this, "Thông báo", "Lỗi cập nhật API LIS!", "");
+                    return;
                 }
             }
+
+            alertControl1.Show(this, "Thông báo", "Đã cập nhật thành công!", "");
         }
 
         private void txtSoTiepNhan_KeyDown_1(object sender, KeyEventArgs e)
@@ -1115,6 +1125,143 @@ namespace KClinic2._1.View.XetNghiem
             if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
             {
                 getLayDanhSachBNChuaXNTrongNgay(txtTimKiem.Text);
+            }
+        }
+
+        private void API_LIS()
+        {
+            try
+            {
+                string _sex = "";
+                if (txtGioiTinh.Text == "Nam")
+                {
+                    _sex = "M";
+                }
+                else
+                {
+                    _sex = "F";
+                }
+
+                List<ListTestOrder> listTestOrder = new List<ListTestOrder>();
+
+                DataTable gridDichVuDaTa = gridDichVu.DataSource as DataTable;
+                foreach (DataRow row in gridDichVuDaTa.Rows)
+                {
+                    List<ListSubTest> listSubTest = new List<ListSubTest>();
+
+                    if (row["CLSYeuCau_Cha_Id"].ToString() == "")
+                    {
+                        DataTable SelectDichVuConTheoID = Model.dbDanhMuc.SelectDichVuConTheoDichVuCha(row["DichVu_Id"].ToString());
+                        if (SelectDichVuConTheoID.Rows.Count > 0)
+                        {
+                            foreach (DataRow rowSub in SelectDichVuConTheoID.Rows)
+                            {
+                                ListSubTest orderSub = new ListSubTest
+                                {
+                                    TestId = rowSub["Dich_Id"].ToString(),
+                                    TestCode = rowSub["MaDichVu"].ToString(),
+                                    TestName = rowSub["TenDichVu"].ToString()
+                                };
+
+                                listSubTest.Add(orderSub);
+                            }
+                        }
+
+                        // Tạo đối tượng ListTestOrder từ mỗi phần tử trong gridDichVu
+                        ListTestOrder order = new ListTestOrder
+                        {
+                            OrderId = TiepNhan_Id,
+                            RequestTime = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss")),
+                            TestId = row["DichVu_Id"].ToString(),
+                            TestCode = row["MaDichVu"].ToString(),
+                            TestName = row["TenDichVu"].ToString(),
+                            CategoryId = "",
+                            CategoryName = "",
+                            SampleInfo = null,
+                            ListSubTest = listSubTest,
+                            ListAdditionalInfo = null
+                        };
+
+                        listTestOrder.Add(order);
+                    }
+                }
+
+                RootObject dataRoot = new RootObject
+                {
+                    PatientId = BenhNhan_Id,
+                    PatientName = txtHoTen.Text,
+                    Sex = _sex,
+                    DateOfBirth = DateTime.Parse("2023-11-11"),
+                    Age = Int32.Parse(txtTuoi.Text),
+                    Address = "PK VSK",
+                    Email = "pkvsk@pkvks.com",
+                    PhoneNumber = "1111111111",
+                    CitizenIdentity = "",
+                    Nationality = "VN",
+                    Passport = "",
+                    InsureNumber = "",
+                    MedicalId = txtMaYTe.Text,
+                    Bed = "",
+                    SampleId = DateTime.Now.ToString("ddMMyy") + "-" + txtMaVachSid.Text,
+                    Sequence = txtMaVachSid.Text,
+                    RequestTime = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss")),
+                    Intime = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss")),
+                    HISCode = "KCL",
+                    InPatient = false,
+                    Urgent = false,
+                    ListAdditionalInfo = new List<ListAdditionalInfo> { },
+                    ListOrder = new List<ListOrder>
+                        {
+                            new ListOrder
+                            {
+                                OrderId = txtMaYTe.Text,
+                                ActionCode = 1,
+                                Diagnostic = "",
+                                DoctorID = "VSK",
+                                DoctorName = "VSK",
+                                LocationID = "PK1",
+                                LocationName = "PK1",
+                                ObjectID = "KCL",
+                                ObjectName = txtHoTen.Text,
+                                RequestTime = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss")),
+                                ListTestOrder = listTestOrder
+                            }
+                        }
+                };
+
+
+                // Chuyển đối tượng RootObject thành chuỗi JSON
+                string json = JsonConvert.SerializeObject(dataRoot, Formatting.Indented);
+
+                var client = new RestClient(pathAPI_LIS);
+                var request = new RestRequest(Method.POST);
+                request.AddHeader("cache-control", "no-cache");
+                request.AddHeader("Content-type", "application/json; charset=utf-8");
+                request.RequestFormat = DataFormat.Json;
+
+                request.AddJsonBody(json);
+                IRestResponse response = client.Execute(request);
+
+                bool isSuccessful = response.IsSuccessful;
+
+                if (!isSuccessful)
+                {
+                    if (response.Content != "")
+                    {
+                        dynamic jsonResponse = JsonConvert.DeserializeObject(response.Content);
+
+                        string strError = jsonResponse["Err"].MsgString;
+
+                        alertControl1.Show(this, "Xảy ra lỗi API LIS", strError, "");
+
+                        return;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                alertControl1.Show(this, "Thông báo", "Lỗi cập nhật API LIS!", "");
+                return;
             }
         }
     }
