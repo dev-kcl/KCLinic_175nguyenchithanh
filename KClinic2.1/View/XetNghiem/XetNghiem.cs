@@ -26,9 +26,11 @@ namespace KClinic2._1.View.XetNghiem
         public static string TiepNhan_Id = "";
         public string ThaoTac;
         public string CLSYeuCau_Id;
-        public string CLSKetQua_Id;
+        public string CLSKetQua_Id = "";
         public string BenhNhan_Id = "";
         public string BacSiChiDinh_Id = "";
+
+        public string ListRowPrint = "";
 
         public XetNghiem()
         {
@@ -159,7 +161,7 @@ namespace KClinic2._1.View.XetNghiem
             {
                 string KTVThucHien = "null";
                 if (cbbKTVThucHien.SelectedItem != null) { KTVThucHien = cbbKTVThucHien.Value.ToString(); }
-                else { XtraMessageBox.Show("Chưa chọn KTV thực hiện"); }
+                //else { XtraMessageBox.Show("Chưa chọn KTV thực hiện"); }
 
                 string LoaiMau = "null";
                 if (cbbLoaiMau.SelectedItem != null) { LoaiMau = cbbLoaiMau.Value.ToString(); }
@@ -469,12 +471,22 @@ namespace KClinic2._1.View.XetNghiem
             {
                 alertControl1.Show(this, "Thông báo", "Bạn chưa chọn Bệnh Nhân!", "");
             }
-            else if(CLSKetQua_Id is null)
-            {
-                alertControl1.Show(this, "Thông báo", "Bệnh nhân chưa có kết quả. Không thể xem!", "");
-            }
             else
             {
+                ListRowPrint = "";
+
+                Int32[] selectedRowHandles = gridView1.GetSelectedRows();
+
+                for (int i = 0; i < selectedRowHandles.Length; i++)
+                {
+                    int selectedRowHandle = selectedRowHandles[i];
+
+                    if (selectedRowHandle >= 0)
+                    {
+                        ListRowPrint += gridView1.GetRowCellValue(selectedRowHandle, "DichVu_Id").ToString() + ",";
+                    }
+                }
+
                 View.HeThongBaoCao.PhieuTraLoiKetQuaXN bc = new View.HeThongBaoCao.PhieuTraLoiKetQuaXN(this);
                 bc.Show();
             }

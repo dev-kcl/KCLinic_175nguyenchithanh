@@ -572,7 +572,7 @@ namespace KClinic2._1.Model
                 return null;
             }
         }
-        public static DataTable SP_BaoCao_004_PhieuKetQuaXetNghiem(string _CLSKetQua_Id)
+        public static DataTable SP_BaoCao_004_PhieuKetQuaXetNghiem(string _CLSKetQua_Id, string _ListRowPrint = "")
         {
             try
             {
@@ -580,7 +580,8 @@ namespace KClinic2._1.Model
                 SqlCommand cmd_Show = con.CreateCommand();
                 cmd_Show.CommandTimeout = timeout_connecttion;
                 cmd_Show.CommandText = "exec SP_BaoCao_004_PhieuKetQuaXetNghiem "
-                    + "@CLSKetQua_Id = " + _CLSKetQua_Id
+                    + "@CLSKetQua_Id = N'" + _CLSKetQua_Id + "',"
+                    + "@ListRowPrint = N'" + _ListRowPrint + "'"
                     ;
                 con.Open();
                 table1.Load(cmd_Show.ExecuteReader(CommandBehavior.CloseConnection));

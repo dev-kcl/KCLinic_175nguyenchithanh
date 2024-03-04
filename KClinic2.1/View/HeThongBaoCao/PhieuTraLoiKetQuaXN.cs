@@ -24,7 +24,7 @@ namespace KClinic2._1.View.HeThongBaoCao
 
         private void PhieuTraLoiKetQuaXN_Load(object sender, EventArgs e)
         {
-            DataTable table1 = Model.dbXetNghiem.SP_BaoCao_004_PhieuKetQuaXetNghiem(tn.CLSKetQua_Id);
+            DataTable table1 = Model.dbXetNghiem.SP_BaoCao_004_PhieuKetQuaXetNghiem(tn.CLSKetQua_Id, tn.ListRowPrint);
             if (table1 != null)
             {
                 if (table1.Rows.Count > 0)
