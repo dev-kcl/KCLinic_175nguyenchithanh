@@ -31,11 +31,13 @@ namespace KClinic2._1.View.HeThongBaoCao
                 {
                     table1.Columns.Add("BarcodeMaYTe", System.Type.GetType("System.Byte[]"));
                     table1.Columns.Add("Logo", System.Type.GetType("System.Byte[]"));
+                    table1.Columns.Add("ChuKy", System.Type.GetType("System.Byte[]"));
                     table1.Columns.Add("TenBenhVien", System.Type.GetType("System.String"));
                     table1.Columns.Add("DiaChiBenhVien", System.Type.GetType("System.String"));
                     table1.Columns.Add("DienThoai", System.Type.GetType("System.String"));
                     byte[] Image = null;
                     byte[] ImageLogo = null;
+                    byte[] ImageChuKy = null;
                     string TenBenhVien = "", DiaChiBenhVien = "", DienThoai = "";
                     if (table1.Rows[0]["MaYTe"].ToString() != "")
                     {
@@ -59,6 +61,19 @@ namespace KClinic2._1.View.HeThongBaoCao
                             }
                         }
 
+                        DataTable SelectSettingTheoSettingCode3 = Model.db.SelectSettingTheoSettingCode("chuky");
+                        if (SelectSettingTheoSettingCode3 != null)
+                        {
+                            if (SelectSettingTheoSettingCode3.Rows.Count > 0)
+                            {
+                                string ChuKy = SelectSettingTheoSettingCode3.Rows[0]["NoiDung"].ToString();
+                                FileStream fsChuKy = new FileStream(ChuKy, System.IO.FileMode.Open, System.IO.FileAccess.Read);
+                                ImageChuKy = new byte[fsChuKy.Length];
+                                fsChuKy.Read(ImageChuKy, 0, Convert.ToInt32(fsChuKy.Length));
+                                fsChuKy.Close();
+                            }
+                        }
+
                         DataTable BenhVien = Model.db.BenhVien(Login.MaBenhVien);
                         if (BenhVien != null)
                         {
@@ -74,6 +89,7 @@ namespace KClinic2._1.View.HeThongBaoCao
                         {
                             table1.Rows[i]["BarcodeMaYTe"] = Image;
                             table1.Rows[i]["Logo"] = ImageLogo;
+                            table1.Rows[i]["ChuKy"] = ImageChuKy;
                             table1.Rows[i]["TenBenhVien"] = TenBenhVien;
                             table1.Rows[i]["DiaChiBenhVien"] = DiaChiBenhVien;
                             table1.Rows[i]["DienThoai"] = DienThoai;
