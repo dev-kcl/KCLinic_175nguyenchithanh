@@ -572,6 +572,7 @@ namespace KClinic2._1.View.XetNghiem
                             txtThoiGianLayMau.Value = DateTime.Now;
 
                             txtMaVachSid.Text = LoadThongTinBenhNhan.Rows[0]["SID"].ToString();
+                            txtMaVachSid_Check.Text = LoadThongTinBenhNhan.Rows[0]["SID"].ToString();
 
                             TiepNhan_Id = LoadThongTinBenhNhan.Rows[0]["TiepNhan_Id"].ToString();
                             //
@@ -664,6 +665,7 @@ namespace KClinic2._1.View.XetNghiem
                             }
 
                             txtMaVachSid.Text = SuaLoadThongTinBenhNhan.Rows[0]["SID"].ToString();
+                            txtMaVachSid_Check.Text = SuaLoadThongTinBenhNhan.Rows[0]["SID"].ToString();
 
                             TiepNhan_Id = SuaLoadThongTinBenhNhan.Rows[0]["TiepNhan_Id"].ToString();
                             CLSKetQua_Id = SuaLoadThongTinBenhNhan.Rows[0]["CLSKetQua_Id"].ToString();
@@ -691,6 +693,8 @@ namespace KClinic2._1.View.XetNghiem
             DataTable SuaLoadThongTinBenhNhan = Model.dbXetNghiem.SuaLoadThongTinBenhNhan(CLSKetQua_Id);
             if (SuaLoadThongTinBenhNhan.Rows.Count > 0)
             {
+                BenhNhan_Id = SuaLoadThongTinBenhNhan.Rows[0]["BenhNhan_Id"].ToString();
+
                 txtSoTiepNhan.Text = SuaLoadThongTinBenhNhan.Rows[0]["SoTiepNhan"].ToString();
                 txtMaYTe.Text = SuaLoadThongTinBenhNhan.Rows[0]["MaYTe"].ToString();
                 txtHoTen.Text = SuaLoadThongTinBenhNhan.Rows[0]["TenBenhNhan"].ToString();
@@ -756,6 +760,7 @@ namespace KClinic2._1.View.XetNghiem
                 }
 
                 txtMaVachSid.Text = SuaLoadThongTinBenhNhan.Rows[0]["SID"].ToString();
+                txtMaVachSid_Check.Text = SuaLoadThongTinBenhNhan.Rows[0]["SID"].ToString();
 
                 TiepNhan_Id = SuaLoadThongTinBenhNhan.Rows[0]["TiepNhan_Id"].ToString();
                 CLSKetQua_Id = SuaLoadThongTinBenhNhan.Rows[0]["CLSKetQua_Id"].ToString();
@@ -790,6 +795,7 @@ namespace KClinic2._1.View.XetNghiem
                 txtThoiGianNhanMau.Value = DateTime.Now;
 
                 txtMaVachSid.Text = LayThongTinSoTiepNhan.Rows[0]["SID"].ToString();
+                txtMaVachSid_Check.Text = LayThongTinSoTiepNhan.Rows[0]["SID"].ToString();
 
                 BacSiChiDinh_Id = LayThongTinSoTiepNhan.Rows[0]["NguoiTiepNhan_Id"].ToString();
 
@@ -886,6 +892,7 @@ namespace KClinic2._1.View.XetNghiem
             txtThoiGianNhanMau.Text = "";
 
             txtMaVachSid.Text = "";
+            txtMaVachSid_Check.Text = "";
         }
 
         private void gridView1_RowCellStyle(object sender, RowCellStyleEventArgs e)
@@ -974,144 +981,17 @@ namespace KClinic2._1.View.XetNghiem
             //call api LIS
             if (pathAPI_LIS != "")
             {
-                try
+                if (txtMaVachSid_Check.Text == "")
                 {
-                    string _sex = "";
-                    if (txtGioiTinh.Text == "Nam")
-                    {
-                        _sex = "M";
-                    }
-                    else
-                    {
-                        _sex = "F";
-                    }
-
-                    List<ListTestOrder> listTestOrder = new List<ListTestOrder>();
-
-                    DataTable gridDichVuDaTa = gridDichVu.DataSource as DataTable;
-                    foreach (DataRow row in gridDichVuDaTa.Rows)
-                    {
-                        List<ListSubTest> listSubTest = new List<ListSubTest>();
-
-                        if (row["CLSYeuCau_Cha_Id"].ToString() == "")
-                        {
-                            DataTable SelectDichVuConTheoID = Model.dbDanhMuc.SelectDichVuConTheoDichVuCha(row["DichVu_Id"].ToString());
-                            if (SelectDichVuConTheoID.Rows.Count > 0)
-                            {
-                                foreach (DataRow rowSub in SelectDichVuConTheoID.Rows)
-                                {
-                                    ListSubTest orderSub = new ListSubTest
-                                    {
-                                        TestId = rowSub["Dich_Id"].ToString(),
-                                        TestCode = rowSub["MaDichVu"].ToString(),
-                                        TestName = rowSub["TenDichVu"].ToString()
-                                    };
-
-                                    listSubTest.Add(orderSub);
-                                }
-                            }
-
-                            // Tạo đối tượng ListTestOrder từ mỗi phần tử trong gridDichVu
-                            ListTestOrder order = new ListTestOrder
-                            {
-                                OrderId = TiepNhan_Id,
-                                RequestTime = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss")),
-                                TestId = row["DichVu_Id"].ToString(),
-                                TestCode = row["MaDichVu"].ToString(),
-                                TestName = row["TenDichVu"].ToString(),
-                                CategoryId = "",
-                                CategoryName = "",
-                                SampleInfo = null,
-                                ListSubTest = listSubTest,
-                                ListAdditionalInfo = null
-                            };
-
-                            listTestOrder.Add(order);
-                        }
-                    }
-
-                    RootObject dataRoot = new RootObject
-                    {
-                        PatientId = BenhNhan_Id,
-                        PatientName = txtHoTen.Text,
-                        Sex = _sex,
-                        DateOfBirth = DateTime.Parse("2023-11-11"),
-                        Age = Int32.Parse(txtTuoi.Text),
-                        Address = "PK VSK",
-                        Email = "pkvsk@pkvks.com",
-                        PhoneNumber = "1111111111",
-                        CitizenIdentity = "",
-                        Nationality = "VN",
-                        Passport = "",
-                        InsureNumber = "",
-                        MedicalId = txtMaYTe.Text,
-                        Bed = "",
-                        SampleId = DateTime.Now.ToString("ddMMyy") + "-" + txtMaVachSid.Text,
-                        Sequence = txtMaVachSid.Text,
-                        RequestTime = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss")),
-                        Intime = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss")),
-                        HISCode = "KCL",
-                        InPatient = false,
-                        Urgent = false,
-                        ListAdditionalInfo = new List<ListAdditionalInfo> { },
-                        ListOrder = new List<ListOrder>
-                        {
-                            new ListOrder
-                            {
-                                OrderId = txtMaYTe.Text,
-                                ActionCode = null,
-                                Diagnostic = "",
-                                DoctorID = "VSK",
-                                DoctorName = "VSK",
-                                LocationID = "PK1",
-                                LocationName = "PK1",
-                                ObjectID = "KCL",
-                                ObjectName = txtHoTen.Text,
-                                RequestTime = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss")),
-                                ListTestOrder = listTestOrder
-                            }
-                        }
-                    };
-
-
-                    // Chuyển đối tượng RootObject thành chuỗi JSON
-                    string json = JsonConvert.SerializeObject(dataRoot, Formatting.Indented);
-
-                    var client = new RestClient(pathAPI_LIS);
-                    var request = new RestRequest(Method.POST);
-                    request.AddHeader("cache-control", "no-cache");
-                    request.AddHeader("Content-type", "application/json; charset=utf-8");
-                    request.RequestFormat = DataFormat.Json;
-
-                    request.AddJsonBody(json);
-                    IRestResponse response = client.Execute(request);
-
-                    bool isSuccessful = response.IsSuccessful;
-
-                    if (!isSuccessful)
-                    {
-                        if (response.Content != "")
-                        {
-                            dynamic jsonResponse = JsonConvert.DeserializeObject(response.Content);
-
-                            string strError = jsonResponse["Err"].MsgString;
-
-                            if (Microsoft.VisualBasic.Strings.Right(strError, 11) == "đã tồn tại!")
-                            {
-                                API_LIS();
-                            }
-                            else
-                            {
-                                alertControl1.Show(this, "Xảy ra lỗi API LIS", strError, "");
-                                return;
-                            }
-                        }
-                    }
+                    API_LIS(null);
                 }
-                catch (Exception ex)
+                else if (txtMaVachSid_Check.Text != "" && txtMaVachSid_Check.Text != txtMaVachSid.Text)
                 {
-                    alertControl1.Show(this, "Thông báo", "Lỗi cập nhật API LIS!", "");
-                    return;
+                    API_LIS(null);
+                }
+                else
+                {
+                    API_LIS("1");
                 }
             }
 
@@ -1157,7 +1037,7 @@ namespace KClinic2._1.View.XetNghiem
             }
         }
 
-        private void API_LIS()
+        private void API_LIS(string _ActionCode = null)
         {
             try
             {
@@ -1244,7 +1124,7 @@ namespace KClinic2._1.View.XetNghiem
                             new ListOrder
                             {
                                 OrderId = txtMaYTe.Text,
-                                ActionCode = 1,
+                                ActionCode = _ActionCode,
                                 Diagnostic = "",
                                 DoctorID = "VSK",
                                 DoctorName = "VSK",
