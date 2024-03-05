@@ -181,7 +181,7 @@ namespace KClinic2._1.View.TiepNhan
             CLSYeuCau_Id = "";
             Reset();
             MaYTe = "";SoVaoVien = ""; CMND = ""; BHYT = "";
-            AutoTinhMaYTe();
+            //AutoTinhMaYTe();
             txtHoTen.Focus();
         }
         void AutoTinhMaYTe()
@@ -286,6 +286,8 @@ namespace KClinic2._1.View.TiepNhan
                 if (!String.IsNullOrEmpty(CMND)) { cMND = CMND; }
                 string bHYT = "null";
                 if (!String.IsNullOrEmpty(BHYT)) { bHYT = BHYT; }
+
+                AutoTinhMaYTe();
 
                 if (ThaoTac == "Them")
                 {
