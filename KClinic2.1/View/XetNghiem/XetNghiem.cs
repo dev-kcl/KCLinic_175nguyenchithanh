@@ -1123,7 +1123,7 @@ namespace KClinic2._1.View.XetNghiem
                         {
                             new ListOrder
                             {
-                                OrderId = txtMaYTe.Text,
+                                OrderId = TiepNhan_Id,
                                 ActionCode = _ActionCode,
                                 Diagnostic = "",
                                 DoctorID = "VSK",
