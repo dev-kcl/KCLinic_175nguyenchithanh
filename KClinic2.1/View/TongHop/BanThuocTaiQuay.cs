@@ -45,6 +45,8 @@ namespace KClinic2._1.View.TongHop
             btnXem.Enabled = false;
             btnIn.Enabled = false;
             btnTimKiem.Enabled = true;
+            gridDS.Enabled = true;
+
             An();
             getdata();
             BenhNhan_Id = "";
@@ -62,6 +64,9 @@ namespace KClinic2._1.View.TongHop
             cbbMaHoaDon.DataSource = MaHoaDon;
             cbbMaHoaDon.DisplayMember = "FieldName";
             cbbMaHoaDon.ValueMember = "FieldCode";
+
+            DataTable LayBNVienPhi = Model.db.LayBNVienPhi(DateTime.Now.ToString("dd/MM/yyyy"));
+            gridDS.DataSource = LayBNVienPhi;
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -802,6 +807,23 @@ namespace KClinic2._1.View.TongHop
             int previousIndex = (currentIndex - 1 + controls.Length) % controls.Length;
 
             controls[previousIndex].Focus();
+        }
+
+        private void gridView2_RowCellClick(object sender, RowCellClickEventArgs e)
+        {
+            int n = e.RowHandle;
+            if (gridView2.RowCount > 0)
+            {
+                BenhNhan_Id = gridView2.GetRowCellValue(n, "BenhNhan_Id").ToString();
+                HoaDon_Id = "";
+                RefreshForm();
+            }
+        }
+
+        private void btnLamTuoiDanhSach_Click(object sender, EventArgs e)
+        {
+            DataTable LayBNVienPhi = Model.db.LayBNVienPhi(DateTime.Now.ToString("dd/MM/yyyy"));
+            gridDS.DataSource = LayBNVienPhi;
         }
     }
 }
