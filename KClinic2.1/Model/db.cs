@@ -239,6 +239,27 @@ namespace KClinic2._1.Model
                 return null;
             }
         }
+
+        public static DataTable LayBNVienPhi(string _text)
+        {
+            try
+            {
+                DataTable table1 = new DataTable();
+                SqlCommand cmd_Show = con.CreateCommand();
+                cmd_Show.CommandTimeout = timeout_connecttion;
+                cmd_Show.CommandText = "exec SP_001_Users @Action = N'LayBNVienPhi',"
+                    + "@text = N'" + _text + "'"
+                    ;
+                con.Open();
+                table1.Load(cmd_Show.ExecuteReader(CommandBehavior.CloseConnection));
+                con.Close();
+                return table1;
+            }
+            catch
+            {
+                return null;
+            }
+        }
         public static DataTable Search_HoaDon(string _Loai, string _text)
         {
             try
