@@ -430,12 +430,19 @@ namespace KClinic2._1.View.TongHop
                         string TenBenhVien = "", DiaChiBenhVien = "", DienThoai = "";
                         if (table1.Rows[0]["MaYTe"].ToString() != "")
                         {
-                            DataTable DuongDanHinhAnh = Model.db.DuongDanHinhAnh();
+                            //DataTable DuongDanHinhAnh = Model.db.DuongDanHinhAnh();
                             //string HinhAnhBarcode = DuongDanHinhAnh.Rows[0][0].ToString() + table1.Rows[0]["MaYTe"].ToString() + ".png";
                             //FileStream fs = new FileStream(HinhAnhBarcode, System.IO.FileMode.Open, System.IO.FileAccess.Read);
                             //Image = new byte[fs.Length];
                             //fs.Read(Image, 0, Convert.ToInt32(fs.Length));
                             //fs.Close();
+
+                            DataTable DuongDanHinhAnh = Model.db.DuongDanHinhAnh();
+                            string HinhAnhBarcode = DuongDanHinhAnh.Rows[0][0].ToString() + table1.Rows[0]["MaYTe"].ToString() + ".png";
+                            FileStream fs = new FileStream(HinhAnhBarcode, System.IO.FileMode.Open, System.IO.FileAccess.Read);
+                            Image = new byte[fs.Length];
+                            fs.Read(Image, 0, Convert.ToInt32(fs.Length));
+                            fs.Close();
 
                             DataTable SelectSettingTheoSettingCode2 = Model.db.SelectSettingTheoSettingCode("logo");
                             if (SelectSettingTheoSettingCode2 != null)
