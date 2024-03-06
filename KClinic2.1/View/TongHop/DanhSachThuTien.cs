@@ -27,9 +27,9 @@ namespace KClinic2._1.View.TongHop
             cbbLoai.DataSource = LoaiTimKiemVienPhi;
             cbbLoai.DisplayMember = "Loai";
             cbbLoai.ValueMember = "ID";
-            cbbLoai.SelectedValue = "1";
+            cbbLoai.SelectedValue = "3";
             txtTimKiem.Focus();
-            txtTimKiem.Text = DateTime.Now.ToString("dd/MM/yyyy");
+            //txtTimKiem.Text = DateTime.Now.ToString("dd/MM/yyyy");
             DataTable Search_HoaDon = Model.db.Search_HoaDon("1", DateTime.Now.ToString("dd/MM/yyyy"));
             gridDS.DataSource = Search_HoaDon;
         }
