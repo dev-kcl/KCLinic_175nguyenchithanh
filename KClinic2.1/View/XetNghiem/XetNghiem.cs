@@ -991,7 +991,7 @@ namespace KClinic2._1.View.XetNghiem
                 }
                 else
                 {
-                    API_LIS("1");
+                    API_LIS(1);
                 }
             }
 
@@ -1025,6 +1025,7 @@ namespace KClinic2._1.View.XetNghiem
             if (gridView2.RowCount > 0)
             {
                 TiepNhan_Id = gridView2.GetRowCellValue(n, "TiepNhan_Id").ToString();
+                LoadThongTinFormButton();
                 RefreshForm();
             }
         }
@@ -1037,7 +1038,7 @@ namespace KClinic2._1.View.XetNghiem
             }
         }
 
-        private void API_LIS(string _ActionCode = null)
+        private void API_LIS(object _ActionCode = null)
         {
             try
             {
@@ -1161,7 +1162,8 @@ namespace KClinic2._1.View.XetNghiem
 
                         string strError = jsonResponse["Err"].MsgString;
 
-                        alertControl1.Show(this, "Xảy ra lỗi API LIS", strError, "");
+                        //alertControl1.Show(this, "Xảy ra lỗi API LIS", strError, "");
+                        MessageBox.Show("Xảy ra lỗi API LIS " + strError.ToString(), "Thông Báo");
 
                         return;
                     }
@@ -1169,7 +1171,8 @@ namespace KClinic2._1.View.XetNghiem
             }
             catch (Exception ex)
             {
-                alertControl1.Show(this, "Thông báo", "Lỗi cập nhật API LIS!", "");
+                //alertControl1.Show(this, "Thông báo", "Lỗi cập nhật API LIS! " + ex.ToString(), "");
+                MessageBox.Show("Lỗi cập nhật API LIS! " + ex.ToString(), "Thông Báo");
                 return;
             }
         }

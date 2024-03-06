@@ -70,16 +70,16 @@ namespace KClinic2._1.DTOs
         public string Address { get; set; }
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
-        public object CitizenIdentity { get; set; }
+        public string CitizenIdentity { get; set; }
         public string Nationality { get; set; }
         public string Passport { get; set; }
         public string InsureNumber { get; set; }
         public string MedicalId { get; set; }
-        public object Bed { get; set; }
+        public string Bed { get; set; }
         public string SampleId { get; set; }
         public string Sequence { get; set; }
         public DateTime RequestTime { get; set; }
-        public object Intime { get; set; }
+        public DateTime Intime { get; set; }
         public string HISCode { get; set; }
         public bool InPatient { get; set; }
         public bool Urgent { get; set; }

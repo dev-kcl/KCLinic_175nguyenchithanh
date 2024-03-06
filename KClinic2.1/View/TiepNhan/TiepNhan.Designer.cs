@@ -72,6 +72,8 @@
             this.label8 = new System.Windows.Forms.Label();
             this.panelThongTin = new System.Windows.Forms.Panel();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
             this.pnlHopDong = new Guna.UI2.WinForms.Guna2Panel();
             this.cbbHopDong = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
             this.label21 = new System.Windows.Forms.Label();
@@ -142,8 +144,6 @@
             this.btnSua = new DevExpress.XtraEditors.SimpleButton();
             this.btnThem = new DevExpress.XtraEditors.SimpleButton();
             this.alertControl1 = new DevExpress.XtraBars.Alerter.AlertControl(this.components);
-            this.label13 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
             this.panelMain.SuspendLayout();
             this.panelContent.SuspendLayout();
             this.panelDuLieu.SuspendLayout();
@@ -364,6 +364,8 @@
             this.cbbDV.ValueChanged += new System.EventHandler(this.cbbDV_ValueChanged);
             this.cbbDV.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBox_KeyDown);
             this.cbbDV.KeyUp += new System.Windows.Forms.KeyEventHandler(this.cbbDV_KeyUp_1);
+            this.cbbDV.Validating += new System.ComponentModel.CancelEventHandler(this.cbbDV_Validating);
+            this.cbbDV.Validated += new System.EventHandler(this.cbbDV_Validated);
             // 
             // gridDichVu
             // 
@@ -702,6 +704,29 @@
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.Size = new System.Drawing.Size(1587, 254);
             this.guna2Panel1.TabIndex = 0;
+            // 
+            // label15
+            // 
+            this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.label15.ForeColor = System.Drawing.Color.Red;
+            this.label15.Location = new System.Drawing.Point(1365, 65);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(32, 28);
+            this.label15.TabIndex = 59;
+            this.label15.Text = "(*)";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.label13.ForeColor = System.Drawing.Color.Red;
+            this.label13.Location = new System.Drawing.Point(90, 67);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(32, 28);
+            this.label13.TabIndex = 57;
+            this.label13.Text = "(*)";
             // 
             // pnlHopDong
             // 
@@ -1739,29 +1764,6 @@
             this.alertControl1.AppearanceText.Options.UseFont = true;
             this.alertControl1.FormShowingEffect = DevExpress.XtraBars.Alerter.AlertFormShowingEffect.SlideVertical;
             this.alertControl1.ShowPinButton = false;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label13.ForeColor = System.Drawing.Color.Red;
-            this.label13.Location = new System.Drawing.Point(90, 67);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(32, 28);
-            this.label13.TabIndex = 57;
-            this.label13.Text = "(*)";
-            // 
-            // label15
-            // 
-            this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label15.ForeColor = System.Drawing.Color.Red;
-            this.label15.Location = new System.Drawing.Point(1365, 65);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(32, 28);
-            this.label15.TabIndex = 59;
-            this.label15.Text = "(*)";
             // 
             // TiepNhan
             // 

@@ -19,6 +19,8 @@ namespace KClinic2._1.View.TiepNhan
 {
     public partial class TiepNhan : DevExpress.XtraEditors.XtraForm
     {
+        public string autoClickDichVu = System.Configuration.ConfigurationManager.AppSettings["autoClickDichVu_TiepNhan"];
+
         public string BenhNhan_Id;
         public string TenBenhNhan;
         public string TiepNhan_Id;
@@ -1779,6 +1781,26 @@ namespace KClinic2._1.View.TiepNhan
             {
                 
             }
+        }
+
+        private void cbbDV_Validated(object sender, EventArgs e)
+        {
+            if (autoClickDichVu == "1")
+            {
+                if (cbbDV.SelectedIndex != -1)
+                {
+                    btnChonDichVu_Click(btnChonDichVu, EventArgs.Empty);
+                    //btnChonDichVu.PerformClick();
+                }
+            }
+        }
+
+        private void cbbDV_Validating(object sender, CancelEventArgs e)
+        {
+            //if (cbbDV.SelectedIndex == -1)
+            //{
+            //    e.Cancel = true;
+            //}
         }
     }
 }
