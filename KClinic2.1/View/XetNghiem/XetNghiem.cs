@@ -392,7 +392,7 @@ namespace KClinic2._1.View.XetNghiem
 
         private void btnIn_Click(object sender, EventArgs e)
         {
-            if (CLSKetQua_Id == "")
+            if (txtMaYTe.Text == "")
             {
                 alertControl1.Show(this, "Thông báo", "Bạn chưa chọn Bệnh Nhân!", "");
             }
@@ -484,7 +484,7 @@ namespace KClinic2._1.View.XetNghiem
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            if (CLSKetQua_Id == "")
+            if (txtMaYTe.Text == "")
             {
                 alertControl1.Show(this, "Thông báo", "Bạn chưa chọn Bệnh Nhân!", "");
             }
@@ -1022,10 +1022,16 @@ namespace KClinic2._1.View.XetNghiem
         private void gridView2_RowCellClick(object sender, RowCellClickEventArgs e)
         {
             int n = e.RowHandle;
+
             if (gridView2.RowCount > 0)
             {
+                CLSKetQua_Id = gridView2.GetRowCellValue(n, "TiepNhan_Id").ToString();
                 TiepNhan_Id = gridView2.GetRowCellValue(n, "TiepNhan_Id").ToString();
+
                 LoadThongTinFormButton();
+                btnSua.Enabled = false;
+                btnXoa.Enabled = false;
+
                 RefreshForm();
             }
         }
