@@ -54,6 +54,8 @@
             this.cbGridGiamGiaTiLe = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.txtGridGiamGia = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.pnThongTin = new System.Windows.Forms.Panel();
+            this.label14 = new System.Windows.Forms.Label();
+            this.txtTimKiem = new Guna.UI2.WinForms.Guna2TextBox();
             this.btnLamTuoiDanhSach = new DevExpress.XtraEditors.SimpleButton();
             this.gridDS = new DevExpress.XtraGrid.GridControl();
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -395,6 +397,8 @@
             // pnThongTin
             // 
             this.pnThongTin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(211)))), ((int)(((byte)(144)))));
+            this.pnThongTin.Controls.Add(this.label14);
+            this.pnThongTin.Controls.Add(this.txtTimKiem);
             this.pnThongTin.Controls.Add(this.btnLamTuoiDanhSach);
             this.pnThongTin.Controls.Add(this.gridDS);
             this.pnThongTin.Controls.Add(this.pnTrangThai);
@@ -430,23 +434,59 @@
             this.pnThongTin.Size = new System.Drawing.Size(1756, 255);
             this.pnThongTin.TabIndex = 15;
             // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.label14.Location = new System.Drawing.Point(4, 12);
+            this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(165, 23);
+            this.label14.TabIndex = 100;
+            this.label14.Text = "BN chưa thanh toán";
+            // 
+            // txtTimKiem
+            // 
+            this.txtTimKiem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.txtTimKiem.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(209)))), ((int)(((byte)(55)))));
+            this.txtTimKiem.BorderThickness = 2;
+            this.txtTimKiem.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtTimKiem.DefaultText = "";
+            this.txtTimKiem.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtTimKiem.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtTimKiem.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtTimKiem.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtTimKiem.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtTimKiem.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtTimKiem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
+            this.txtTimKiem.Location = new System.Drawing.Point(177, 8);
+            this.txtTimKiem.Margin = new System.Windows.Forms.Padding(4);
+            this.txtTimKiem.Name = "txtTimKiem";
+            this.txtTimKiem.PasswordChar = '\0';
+            this.txtTimKiem.PlaceholderText = "tìm kiếm";
+            this.txtTimKiem.SelectedText = "";
+            this.txtTimKiem.Size = new System.Drawing.Size(184, 30);
+            this.txtTimKiem.TabIndex = 101;
+            this.txtTimKiem.TabStop = false;
+            this.txtTimKiem.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTimKiem_KeyDown);
+            // 
             // btnLamTuoiDanhSach
             // 
-            this.btnLamTuoiDanhSach.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.btnLamTuoiDanhSach.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.btnLamTuoiDanhSach.Appearance.Options.UseFont = true;
             this.btnLamTuoiDanhSach.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnLamTuoiDanhSach.ImageOptions.Image")));
-            this.btnLamTuoiDanhSach.Location = new System.Drawing.Point(4, 2);
+            this.btnLamTuoiDanhSach.Location = new System.Drawing.Point(369, 8);
             this.btnLamTuoiDanhSach.Margin = new System.Windows.Forms.Padding(4);
             this.btnLamTuoiDanhSach.Name = "btnLamTuoiDanhSach";
-            this.btnLamTuoiDanhSach.Size = new System.Drawing.Size(483, 34);
+            this.btnLamTuoiDanhSach.Size = new System.Drawing.Size(116, 30);
             this.btnLamTuoiDanhSach.TabIndex = 99;
-            this.btnLamTuoiDanhSach.Text = "Làm tươi danh sách";
+            this.btnLamTuoiDanhSach.Text = "Làm tươi";
             this.btnLamTuoiDanhSach.Click += new System.EventHandler(this.btnLamTuoiDanhSach_Click);
             // 
             // gridDS
             // 
             this.gridDS.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(4);
-            this.gridDS.Location = new System.Drawing.Point(4, 37);
+            this.gridDS.Location = new System.Drawing.Point(4, 41);
             this.gridDS.MainView = this.gridView2;
             this.gridDS.Margin = new System.Windows.Forms.Padding(4);
             this.gridDS.Name = "gridDS";
@@ -471,7 +511,6 @@
             this.gridView2.DetailHeight = 431;
             this.gridView2.GridControl = this.gridDS;
             this.gridView2.Name = "gridView2";
-            this.gridView2.OptionsFind.AlwaysVisible = true;
             this.gridView2.OptionsView.ShowGroupPanel = false;
             this.gridView2.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gridView2_RowCellClick);
             // 
@@ -732,7 +771,7 @@
             this.pnThoiGianPhatSinh.Location = new System.Drawing.Point(622, 92);
             this.pnThoiGianPhatSinh.Margin = new System.Windows.Forms.Padding(4);
             this.pnThoiGianPhatSinh.Name = "pnThoiGianPhatSinh";
-            this.pnThoiGianPhatSinh.Size = new System.Drawing.Size(264, 36);
+            this.pnThoiGianPhatSinh.Size = new System.Drawing.Size(264, 34);
             this.pnThoiGianPhatSinh.TabIndex = 2;
             // 
             // txtThoiGianPhatSinh
@@ -766,7 +805,7 @@
             this.pnSoHoaDon.Location = new System.Drawing.Point(622, 48);
             this.pnSoHoaDon.Margin = new System.Windows.Forms.Padding(4);
             this.pnSoHoaDon.Name = "pnSoHoaDon";
-            this.pnSoHoaDon.Size = new System.Drawing.Size(263, 36);
+            this.pnSoHoaDon.Size = new System.Drawing.Size(263, 33);
             this.pnSoHoaDon.TabIndex = 62;
             // 
             // cbbSoHoaDon
@@ -1509,5 +1548,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn grTenBenhNhan;
         private DevExpress.XtraGrid.Columns.GridColumn grNamSinh;
         private DevExpress.XtraGrid.Columns.GridColumn grBenhNhan_Id;
+        private System.Windows.Forms.Label label14;
+        private Guna.UI2.WinForms.Guna2TextBox txtTimKiem;
     }
 }

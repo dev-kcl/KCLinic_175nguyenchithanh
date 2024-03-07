@@ -29,6 +29,7 @@ namespace KClinic2._1.View.TongHop
         DataTable HinhThucThanhToan;
         DataTable MaHoaDon;
         DataTable SoHoaDon;
+        DataTable LayBNVienPhi;
 
         public BanThuocTaiQuay()
         {
@@ -49,6 +50,8 @@ namespace KClinic2._1.View.TongHop
 
             An();
             getdata();
+            getLayDanhSachBNChuaThanhToan();
+
             BenhNhan_Id = "";
             HoaDon_Id = "";
             //pnTrangThai.Enabled = false;
@@ -64,9 +67,6 @@ namespace KClinic2._1.View.TongHop
             cbbMaHoaDon.DataSource = MaHoaDon;
             cbbMaHoaDon.DisplayMember = "FieldName";
             cbbMaHoaDon.ValueMember = "FieldCode";
-
-            DataTable LayBNVienPhi = Model.db.LayBNVienPhi(DateTime.Now.ToString("dd/MM/yyyy"));
-            gridDS.DataSource = LayBNVienPhi;
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -822,7 +822,20 @@ namespace KClinic2._1.View.TongHop
 
         private void btnLamTuoiDanhSach_Click(object sender, EventArgs e)
         {
-            DataTable LayBNVienPhi = Model.db.LayBNVienPhi(DateTime.Now.ToString("dd/MM/yyyy"));
+            getLayDanhSachBNChuaThanhToan();
+        }
+
+        private void txtTimKiem_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+            {
+                getLayDanhSachBNChuaThanhToan(txtTimKiem.Text);
+            }
+        }
+
+        void getLayDanhSachBNChuaThanhToan(string search = "")
+        {
+            DataTable LayBNVienPhi = Model.db.LayBNVienPhi(search);
             gridDS.DataSource = LayBNVienPhi;
         }
     }
