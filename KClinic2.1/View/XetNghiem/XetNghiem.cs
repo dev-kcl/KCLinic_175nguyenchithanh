@@ -1028,9 +1028,12 @@ namespace KClinic2._1.View.XetNghiem
                 CLSKetQua_Id = gridView2.GetRowCellValue(n, "TiepNhan_Id").ToString();
                 TiepNhan_Id = gridView2.GetRowCellValue(n, "TiepNhan_Id").ToString();
 
-                LoadThongTinFormButton();
+                //LoadThongTinFormButton();
                 btnSua.Enabled = false;
                 btnXoa.Enabled = false;
+                btnXem.Enabled = true;
+                btnIn.Enabled = true;
+                btnTimKiem.Enabled = true;
 
                 RefreshForm();
             }

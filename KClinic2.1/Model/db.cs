@@ -240,7 +240,7 @@ namespace KClinic2._1.Model
             }
         }
 
-        public static DataTable LayBNVienPhi(string _text)
+        public static DataTable LayBNVienPhi(string _text = "")
         {
             try
             {
