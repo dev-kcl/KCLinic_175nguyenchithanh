@@ -211,6 +211,8 @@ namespace KClinic2._1.View.TiepNhan
                 , PhienKetNoi_Id
                 );
         }
+
+
         private int xpos;
         private int ypos = 5;
         public string mode = "Right-to-Left";
@@ -257,6 +259,23 @@ namespace KClinic2._1.View.TiepNhan
         {
             txtBenhNhanDangKham.Text = TenBenhNhan;
         }
-       
+
+        private void ManHinhHangDoi_FormClosing_1(object sender, FormClosingEventArgs e)
+        {
+            MainTime.Stop();
+            timerChayChu.Stop();
+            s.Close();
+            //SqlDependency.Stop(sql);
+            DataTable KetThucPhienKetNoi = Model.dbManHinhHangDoi.KetThucPhienKetNoi(
+                "N'ManHinhKhamBenh'"
+                , "null"
+                , "null"
+                , "'" + DateTime.Now.ToString("yyyyMMdd HH:mm:ss") + "'"
+                , "1"
+                , "0"
+                , Login.User_Id
+                , PhienKetNoi_Id
+                );
+        }
     }
 }
