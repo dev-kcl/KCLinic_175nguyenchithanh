@@ -568,8 +568,8 @@ namespace KClinic2._1.View.XetNghiem
                             txtChanDoan.Text = LoadThongTinBenhNhan.Rows[0]["ChanDoan"].ToString();
 
                             txtThoiGianThucHien.Value = DateTime.Now;
-                            txtThoiGianNhanMau.Value = DateTime.Now;
-                            txtThoiGianLayMau.Value = DateTime.Now;
+                            txtThoiGianNhanMau.Value = DateTime.Parse(LoadThongTinBenhNhan.Rows[0]["NgayTao"].ToString());
+                            txtThoiGianLayMau.Value = DateTime.Parse(LoadThongTinBenhNhan.Rows[0]["NgayTao"].ToString());
 
                             txtMaVachSid.Text = LoadThongTinBenhNhan.Rows[0]["SID"].ToString();
                             txtMaVachSid_Check.Text = LoadThongTinBenhNhan.Rows[0]["SID"].ToString();
@@ -791,8 +791,8 @@ namespace KClinic2._1.View.XetNghiem
                 cbbBacSiKetLuan.Text = "";
 
                 txtThoiGianThucHien.Value = DateTime.Now;
-                txtThoiGianLayMau.Value = DateTime.Now;
-                txtThoiGianNhanMau.Value = DateTime.Now;
+                txtThoiGianLayMau.Value = DateTime.Parse(LayThongTinSoTiepNhan.Rows[0]["NgayTao"].ToString());
+                txtThoiGianNhanMau.Value = DateTime.Parse(LayThongTinSoTiepNhan.Rows[0]["NgayTao"].ToString());
 
                 txtMaVachSid.Text = LayThongTinSoTiepNhan.Rows[0]["SID"].ToString();
                 txtMaVachSid_Check.Text = LayThongTinSoTiepNhan.Rows[0]["SID"].ToString();
