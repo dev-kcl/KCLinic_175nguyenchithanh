@@ -789,6 +789,7 @@ namespace KClinic2._1.View.TiepNhan
 
                     DataTable SelectClsyeucauPhienDangNhap = Model.DbTiepNhan.SelectClsyeucauPhienDangNhap(Login.PhienDangNhap_Id);
                     gridDichVu.DataSource = SelectClsyeucauPhienDangNhap;
+                    gettongtien();
                     CLSYeuCau_Id = "";
                 }
                 else
@@ -913,6 +914,7 @@ namespace KClinic2._1.View.TiepNhan
                         }
                         DataTable SelectClsyeucauPhienDangNhap = Model.DbTiepNhan.SelectClsyeucauPhienDangNhap(Login.PhienDangNhap_Id);
                         gridDichVu.DataSource = SelectClsyeucauPhienDangNhap;
+                        gettongtien();
                     }
                 }
             }
@@ -1037,6 +1039,7 @@ namespace KClinic2._1.View.TiepNhan
                 //
                 DataTable SelectClsyeucauPhienDangNhap = Model.DbTiepNhan.SelectClsyeucauPhienDangNhap(Login.PhienDangNhap_Id);
                 gridDichVu.DataSource = SelectClsyeucauPhienDangNhap;
+                gettongtien();
             }
             else
             {
@@ -1110,6 +1113,7 @@ namespace KClinic2._1.View.TiepNhan
             DataTable ThemClsYeuCauVaoPhieuDangNhap = Model.DbTiepNhan.ThemClsYeuCauVaoPhieuDangNhap(Login.PhienDangNhap_Id, TiepNhan_Id);
             DataTable SelectClsyeucauPhienDangNhap = Model.DbTiepNhan.SelectClsyeucauPhienDangNhap(Login.PhienDangNhap_Id);
             gridDichVu.DataSource = SelectClsyeucauPhienDangNhap;
+            gettongtien();
 
             DataTable CheckKhamBenhTheoTiepNhan = Model.DbTiepNhan.CheckKhamBenhTheoTiepNhan(TiepNhan_Id);
             if (CheckKhamBenhTheoTiepNhan != null)
@@ -1258,6 +1262,7 @@ namespace KClinic2._1.View.TiepNhan
             txtThoiGianTiepNhan.Value = DateTime.Now;
             DataTable HoanTatClsYeuCauPhienDangNhap = Model.DbTiepNhan.HoanTatClsYeuCauPhienDangNhap(Login.PhienDangNhap_Id);
             gridDichVu.DataSource = null;
+            gettongtien();
         }
 
         private void txtMaYTe_KeyDown(object sender, KeyEventArgs e)
@@ -1801,6 +1806,45 @@ namespace KClinic2._1.View.TiepNhan
             //{
             //    e.Cancel = true;
             //}
+        }
+
+        private void cbbNhomBenh_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData != Keys.Tab && e.KeyData != Keys.Enter && e.KeyData != Keys.Up && e.KeyData != Keys.Down && e.KeyData != Keys.Right && e.KeyData != Keys.Left)
+            {
+                string text = cbbNhomBenh.Text;
+                DataRow[] resultRow = Dm_NhomBenh.Select("TenNhomBenh LIKE '%" + text + "%'");
+                if (resultRow.Count() > 0)
+                {
+                    DataTable dtResult = Dm_NhomBenh.Select("TenNhomBenh LIKE '%" + text + "%'").CopyToDataTable();
+                    cbbNhomBenh.DataSource = dtResult;
+                    cbbNhomBenh.DroppedDown = true;
+                }
+                else
+                {
+                    cbbNhomBenh.DataSource = null;
+                    cbbNhomBenh.DroppedDown = true;
+                }
+            }
+        }
+        void gettongtien()
+        {
+            float Tong = 0;
+                // Lặp qua từng hàng trong cột
+                for (int j = 0; j < gridView1.DataRowCount; j++)
+                {
+                    // Lấy giá trị tại ô (j, i)
+                    string cellValue = gridView1.GetRowCellValue(j, "TrangThai").ToString();
+                    if(cellValue=="Chưa thực hiện")
+                    {
+                         float thanhTienDichVu;
+                         if (float.TryParse(gridView1.GetRowCellValue(j, "ThanhTienDichVu").ToString(), out thanhTienDichVu))
+                            {
+                                Tong += thanhTienDichVu;
+                            }
+                    }
+                }
+            txtThanhTien.Text = Tong.ToString();
         }
     }
 }

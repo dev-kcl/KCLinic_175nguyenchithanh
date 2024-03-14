@@ -144,6 +144,8 @@
             this.btnSua = new DevExpress.XtraEditors.SimpleButton();
             this.btnThem = new DevExpress.XtraEditors.SimpleButton();
             this.alertControl1 = new DevExpress.XtraBars.Alerter.AlertControl(this.components);
+            this.txtThanhTien = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
             this.panelMain.SuspendLayout();
             this.panelContent.SuspendLayout();
             this.panelDuLieu.SuspendLayout();
@@ -215,6 +217,8 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelChiTiet.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(209)))), ((int)(((byte)(55)))));
             this.panelChiTiet.BorderThickness = 2;
+            this.panelChiTiet.Controls.Add(this.label17);
+            this.panelChiTiet.Controls.Add(this.txtThanhTien);
             this.panelChiTiet.Controls.Add(this.cbTiLe);
             this.panelChiTiet.Controls.Add(this.txtChietKhau);
             this.panelChiTiet.Controls.Add(this.label12);
@@ -366,7 +370,7 @@
             this.cbbDV.KeyUp += new System.Windows.Forms.KeyEventHandler(this.cbbDV_KeyUp_1);
             this.cbbDV.Validating += new System.ComponentModel.CancelEventHandler(this.cbbDV_Validating);
             this.cbbDV.Validated += new System.EventHandler(this.cbbDV_Validated);
-            // 
+            //
             // gridDichVu
             // 
             this.gridDichVu.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -577,7 +581,8 @@
             this.cbbNhomBenh.Size = new System.Drawing.Size(1027, 28);
             this.cbbNhomBenh.TabIndex = 11;
             this.cbbNhomBenh.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBox_KeyDown);
-            // 
+            this.cbbNhomBenh.KeyUp += new System.Windows.Forms.KeyEventHandler(this.cbbNhomBenh_KeyUp);
+            //
             // btnXoaDichVu
             // 
             this.btnXoaDichVu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -706,7 +711,7 @@
             this.guna2Panel1.TabIndex = 0;
             // 
             // label15
-            // 
+            //
             this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Segoe UI", 12F);
@@ -716,9 +721,9 @@
             this.label15.Size = new System.Drawing.Size(32, 28);
             this.label15.TabIndex = 59;
             this.label15.Text = "(*)";
-            // 
+            //
             // label13
-            // 
+            //
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.label13.ForeColor = System.Drawing.Color.Red;
@@ -727,7 +732,7 @@
             this.label13.Size = new System.Drawing.Size(32, 28);
             this.label13.TabIndex = 57;
             this.label13.Text = "(*)";
-            // 
+            //
             // pnlHopDong
             // 
             this.pnlHopDong.BackColor = System.Drawing.Color.Transparent;
@@ -1764,7 +1769,27 @@
             this.alertControl1.AppearanceText.Options.UseFont = true;
             this.alertControl1.FormShowingEffect = DevExpress.XtraBars.Alerter.AlertFormShowingEffect.SlideVertical;
             this.alertControl1.ShowPinButton = false;
-            // 
+            //
+            // txtThanhTien
+            //
+            this.txtThanhTien.AutoSize = true;
+            this.txtThanhTien.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.txtThanhTien.Location = new System.Drawing.Point(1191, 122);
+            this.txtThanhTien.Name = "txtThanhTien";
+            this.txtThanhTien.Size = new System.Drawing.Size(40, 28);
+            this.txtThanhTien.TabIndex = 88;
+            this.txtThanhTien.Text = ".......";
+            //
+            // label17
+            //
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.label17.Location = new System.Drawing.Point(939, 124);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(246, 28);
+            this.label17.TabIndex = 89;
+            this.label17.Text = "Tổng tiền chưa thanh toán:";
+            //
             // TiepNhan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1931,5 +1956,7 @@
         private DevExpress.XtraEditors.CheckEdit cbTiLe;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label txtThanhTien;
     }
 }
