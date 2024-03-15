@@ -17,6 +17,11 @@ namespace KClinic2._1.View.BenhNhan
     {
         public static string BNKham_Id = "";
         public string BenhNhan_Id;
+
+        public string symbol_OnlyMin = "≥";
+        public string symbol_OnlyMax = "≤";
+        public string symbol_FromTo = "→";
+
         public BenhSu()
         {
             InitializeComponent();
@@ -312,6 +317,8 @@ namespace KClinic2._1.View.BenhNhan
                                     table1.Rows[i]["DienThoai"] = DienThoai;
                                 }
                             }
+
+                            LoadBatThuong(table1);
                         }
                     }
                     ReportDocument rptDoca = new ReportDocument();
@@ -642,5 +649,89 @@ namespace KClinic2._1.View.BenhNhan
 
             controls[previousIndex].Focus();
         }
+
+        public void LoadBatThuong(DataTable tb_KetQuaXetNghiem)
+        {
+            tb_KetQuaXetNghiem.Columns["BatThuong"].ReadOnly = false;
+            foreach (DataRow row in tb_KetQuaXetNghiem.Rows)
+            {
+                if (row["GiaTriChuan"] == DBNull.Value || row["KetQua"] == DBNull.Value)
+                {
+                    continue;
+                }
+                if (row["GiaTriChuan"].ToString() == "" || row["KetQua"].ToString() == "")
+                {
+                    continue;
+                }
+
+                string giatrichuan = row["GiaTriChuan"].ToString();
+
+                if (giatrichuan.Contains(symbol_FromTo))
+                {
+                    int symbolIndex = giatrichuan.IndexOf(symbol_FromTo);
+                    string leftSubstring = (symbolIndex >= 0) ? giatrichuan.Substring(0, symbolIndex) : giatrichuan;
+                    string rightSubstring = (symbolIndex >= 0) ? giatrichuan.Substring(symbolIndex + 1) : string.Empty;
+
+                    decimal FromValue = Decimal.Parse(leftSubstring.Trim());
+                    decimal ToValue = Decimal.Parse(rightSubstring.Trim());
+                    decimal Result = Decimal.Parse(row["KetQua"].ToString().Trim());
+
+                    if (FromValue <= Result && Result <= ToValue)
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        row["BatThuong"] = "1";
+                    }
+                }
+                else if (giatrichuan.Contains(symbol_OnlyMin))
+                {
+                    int symbolIndex = giatrichuan.IndexOf(symbol_OnlyMin);
+                    string rightSubstring = (symbolIndex >= 0) ? giatrichuan.Substring(symbolIndex + 1) : string.Empty;
+
+                    decimal minValue = Decimal.Parse(rightSubstring.Trim());
+                    decimal Result = Decimal.Parse(row["KetQua"].ToString().Trim());
+
+                    if (Result >= minValue)
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        row["BatThuong"] = "1";
+                    }
+                }
+                else if (giatrichuan.Contains(symbol_OnlyMax))
+                {
+                    int symbolIndex = giatrichuan.IndexOf(symbol_OnlyMax);
+                    string rightSubstring = (symbolIndex >= 0) ? giatrichuan.Substring(symbolIndex + 1) : string.Empty;
+
+                    decimal maxValue = Decimal.Parse(rightSubstring.Trim());
+                    decimal Result = Decimal.Parse(row["KetQua"].ToString().Trim());
+
+                    if (Result <= maxValue)
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        row["BatThuong"] = "1";
+                    }
+                }
+                else
+                {
+                    if (row["KetLuan"].ToString().Trim() == row["GiaTriChuan"].ToString().Trim())
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        row["BatThuong"] = "1";
+                    }
+                }
+            }
+        }
+
     }
 }
