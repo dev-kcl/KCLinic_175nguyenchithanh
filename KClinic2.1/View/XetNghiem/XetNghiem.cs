@@ -32,6 +32,10 @@ namespace KClinic2._1.View.XetNghiem
 
         public string ListRowPrint = "";
 
+        public string symbol_OnlyMin = "≥";
+        public string symbol_OnlyMax = "≤";
+        public string symbol_FromTo = "→";
+
         public XetNghiem()
         {
             InitializeComponent();
@@ -470,8 +474,11 @@ namespace KClinic2._1.View.XetNghiem
                                 table1.Rows[i]["DienThoai"] = DienThoai;
                             }
                         }
+
+                        LoadBatThuong(table1);
                     }
                 }
+
                 ReportDocument rptDoca = new ReportDocument();
                 DataTable ShowDuongDan = Model.db.ShowDuongDan();
                 //string DuongDan = @"" + ShowDuongDan.Rows[0][0].ToString() + @"BC002_PhieuTraLoiKetQua.rpt";
@@ -765,8 +772,9 @@ namespace KClinic2._1.View.XetNghiem
                 TiepNhan_Id = SuaLoadThongTinBenhNhan.Rows[0]["TiepNhan_Id"].ToString();
                 CLSKetQua_Id = SuaLoadThongTinBenhNhan.Rows[0]["CLSKetQua_Id"].ToString();
 
-                DataTable LoadCLSYeuCauTheoTiepNhan_Id = Model.dbXetNghiem.LoadCLSYeuCauTheoTiepNhan_Id(TiepNhan_Id);
-                gridDichVu.DataSource = LoadCLSYeuCauTheoTiepNhan_Id;
+                DataTable tb_LoadCLSYeuCauTheoTiepNhan_Id = Model.dbXetNghiem.LoadCLSYeuCauTheoTiepNhan_Id(TiepNhan_Id);
+                LoadBatThuong(tb_LoadCLSYeuCauTheoTiepNhan_Id);
+                gridDichVu.DataSource = tb_LoadCLSYeuCauTheoTiepNhan_Id;
             }
         }
 
@@ -1044,6 +1052,89 @@ namespace KClinic2._1.View.XetNghiem
             if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
             {
                 getLayDanhSachBNChuaXNTrongNgay(txtTimKiem.Text);
+            }
+        }
+
+        public void LoadBatThuong(DataTable tb_KetQuaXetNghiem)
+        {
+            tb_KetQuaXetNghiem.Columns["BatThuong"].ReadOnly = false;
+            foreach (DataRow row in tb_KetQuaXetNghiem.Rows)
+            {
+                if (row["GiaTriChuan"] == DBNull.Value || row["KetQua"] == DBNull.Value)
+                {
+                    continue;
+                }
+                if (row["GiaTriChuan"].ToString() == "" || row["KetQua"].ToString() == "")
+                {
+                    continue;
+                }
+
+                string giatrichuan = row["GiaTriChuan"].ToString();
+
+                if (giatrichuan.Contains(symbol_FromTo))
+                {
+                    int symbolIndex = giatrichuan.IndexOf(symbol_FromTo);
+                    string leftSubstring = (symbolIndex >= 0) ? giatrichuan.Substring(0, symbolIndex) : giatrichuan;
+                    string rightSubstring = (symbolIndex >= 0) ? giatrichuan.Substring(symbolIndex + 1) : string.Empty;
+
+                    decimal FromValue = Decimal.Parse(leftSubstring.Trim());
+                    decimal ToValue = Decimal.Parse(rightSubstring.Trim());
+                    decimal Result = Decimal.Parse(row["KetQua"].ToString().Trim());
+
+                    if (FromValue <= Result && Result <= ToValue)
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        row["BatThuong"] = "1";
+                    }
+                }
+                else if (giatrichuan.Contains(symbol_OnlyMin))
+                {
+                    int symbolIndex = giatrichuan.IndexOf(symbol_OnlyMin);
+                    string rightSubstring = (symbolIndex >= 0) ? giatrichuan.Substring(symbolIndex + 1) : string.Empty;
+
+                    decimal minValue = Decimal.Parse(rightSubstring.Trim());
+                    decimal Result = Decimal.Parse(row["KetQua"].ToString().Trim());
+
+                    if (Result >= minValue)
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        row["BatThuong"] = "1";
+                    }
+                }
+                else if (giatrichuan.Contains(symbol_OnlyMax))
+                {
+                    int symbolIndex = giatrichuan.IndexOf(symbol_OnlyMax);
+                    string rightSubstring = (symbolIndex >= 0) ? giatrichuan.Substring(symbolIndex + 1) : string.Empty;
+
+                    decimal maxValue = Decimal.Parse(rightSubstring.Trim());
+                    decimal Result = Decimal.Parse(row["KetQua"].ToString().Trim());
+
+                    if (Result <= maxValue)
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        row["BatThuong"] = "1";
+                    }
+                }
+                else
+                {
+                    if (row["KetLuan"].ToString().Trim() == row["GiaTriChuan"].ToString().Trim())
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        row["BatThuong"] = "1";
+                    }
+                }
             }
         }
 

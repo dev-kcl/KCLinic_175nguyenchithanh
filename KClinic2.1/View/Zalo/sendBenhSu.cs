@@ -806,8 +806,11 @@ namespace KClinic2._1.View.Zalo
                             table1.Rows[i]["DienThoai"] = DienThoai;
                         }
                     }
+
+                    tn.LoadBatThuong(table1);
                 }
             }
+
             ReportDocument rptDoca = new ReportDocument();
             DataTable ShowDuongDan = Model.db.ShowDuongDan();
             //string DuongDan = @"" + ShowDuongDan.Rows[0][0].ToString() + @"BC002_PhieuTraLoiKetQua.rpt";
