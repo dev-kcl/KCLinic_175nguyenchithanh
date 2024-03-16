@@ -674,7 +674,14 @@ namespace KClinic2._1.View.BenhNhan
 
                     decimal FromValue = Decimal.Parse(leftSubstring.Trim());
                     decimal ToValue = Decimal.Parse(rightSubstring.Trim());
-                    decimal Result = Decimal.Parse(row["KetQua"].ToString().Trim());
+
+                    string str_ketqua = row["KetQua"].ToString().Trim();
+                    if (str_ketqua.Contains(","))
+                    {
+                        str_ketqua = str_ketqua.Replace(",", ".");
+                    }
+
+                    decimal Result = Decimal.Parse(str_ketqua);
 
                     if (FromValue <= Result && Result <= ToValue)
                     {
@@ -682,7 +689,14 @@ namespace KClinic2._1.View.BenhNhan
                     }
                     else
                     {
-                        row["BatThuong"] = "1";
+                        if (Result < FromValue)
+                        {
+                            row["BatThuong"] = "2";
+                        }
+                        else
+                        {
+                            row["BatThuong"] = "1";
+                        }
                     }
                 }
                 else if (giatrichuan.Contains(symbol_OnlyMin))
@@ -691,7 +705,14 @@ namespace KClinic2._1.View.BenhNhan
                     string rightSubstring = (symbolIndex >= 0) ? giatrichuan.Substring(symbolIndex + 1) : string.Empty;
 
                     decimal minValue = Decimal.Parse(rightSubstring.Trim());
-                    decimal Result = Decimal.Parse(row["KetQua"].ToString().Trim());
+
+                    string str_ketqua = row["KetQua"].ToString().Trim();
+                    if (str_ketqua.Contains(","))
+                    {
+                        str_ketqua = str_ketqua.Replace(",", ".");
+                    }
+
+                    decimal Result = Decimal.Parse(str_ketqua);
 
                     if (Result >= minValue)
                     {
@@ -699,7 +720,7 @@ namespace KClinic2._1.View.BenhNhan
                     }
                     else
                     {
-                        row["BatThuong"] = "1";
+                        row["BatThuong"] = "2";
                     }
                 }
                 else if (giatrichuan.Contains(symbol_OnlyMax))
@@ -708,7 +729,14 @@ namespace KClinic2._1.View.BenhNhan
                     string rightSubstring = (symbolIndex >= 0) ? giatrichuan.Substring(symbolIndex + 1) : string.Empty;
 
                     decimal maxValue = Decimal.Parse(rightSubstring.Trim());
-                    decimal Result = Decimal.Parse(row["KetQua"].ToString().Trim());
+
+                    string str_ketqua = row["KetQua"].ToString().Trim();
+                    if (str_ketqua.Contains(","))
+                    {
+                        str_ketqua = str_ketqua.Replace(",", ".");
+                    }
+
+                    decimal Result = Decimal.Parse(str_ketqua);
 
                     if (Result <= maxValue)
                     {
@@ -721,13 +749,13 @@ namespace KClinic2._1.View.BenhNhan
                 }
                 else
                 {
-                    if (row["KetLuan"].ToString().Trim() == row["GiaTriChuan"].ToString().Trim())
+                    if (row["KetQua"].ToString().Trim() == row["GiaTriChuan"].ToString().Trim())
                     {
                         continue;
                     }
                     else
                     {
-                        row["BatThuong"] = "1";
+                        row["BatThuong"] = "3";
                     }
                 }
             }
