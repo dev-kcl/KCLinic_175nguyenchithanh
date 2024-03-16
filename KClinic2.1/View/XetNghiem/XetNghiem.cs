@@ -1154,7 +1154,7 @@ namespace KClinic2._1.View.XetNghiem
                 }
                 else
                 {
-                    if (row["KetLuan"].ToString().Trim() == row["GiaTriChuan"].ToString().Trim())
+                    if (row["KetQua"].ToString().Trim() == row["GiaTriChuan"].ToString().Trim())
                     {
                         continue;
                     }
