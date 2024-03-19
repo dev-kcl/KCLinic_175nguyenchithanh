@@ -1823,6 +1823,28 @@ namespace KClinic2._1.Model
                 return null;
             }
         }
+        public static DataTable selectBenhSuToanBo(string _BenhNhan_Id, string _TuNgay, string _DenNgay)
+        {
+            try
+            {
+                DataTable table1 = new DataTable();
+                SqlCommand cmd_Show = con.CreateCommand();
+                cmd_Show.CommandTimeout = timeout_connecttion;
+                cmd_Show.CommandText = "exec SP_001_Users @Action=N'selectBenhSuToanBo', "
+                    + "@Idx = " + _BenhNhan_Id + ","
+                    + "@TuNgay = " + _TuNgay + ","
+                    + "@DenNgay = " + _DenNgay
+                    ;
+                con.Open();
+                table1.Load(cmd_Show.ExecuteReader(CommandBehavior.CloseConnection));
+                con.Close();
+                return table1;
+            }
+            catch
+            {
+                return null;
+            }
+        }
         public static DataTable SelectFileXetNghiem_Id(string _Idx)
         {
             try
