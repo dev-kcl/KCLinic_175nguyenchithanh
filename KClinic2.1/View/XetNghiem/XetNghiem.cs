@@ -1086,6 +1086,12 @@ namespace KClinic2._1.View.XetNghiem
                         str_ketqua = str_ketqua.Replace(",", ".");
                     }
 
+                    bool chk_isNumber = Microsoft.VisualBasic.Information.IsNumeric(str_ketqua);
+                    if (chk_isNumber == false)
+                    {
+                        continue;
+                    }
+
                     decimal Result = Decimal.Parse(str_ketqua);
                     
                     if (FromValue <= Result && Result <= ToValue)
@@ -1117,6 +1123,12 @@ namespace KClinic2._1.View.XetNghiem
                         str_ketqua = str_ketqua.Replace(",", ".");
                     }
 
+                    bool chk_isNumber = Microsoft.VisualBasic.Information.IsNumeric(str_ketqua);
+                    if (chk_isNumber == false)
+                    {
+                        continue;
+                    }
+
                     decimal Result = Decimal.Parse(str_ketqua);
 
                     if (Result >= minValue)
@@ -1139,6 +1151,12 @@ namespace KClinic2._1.View.XetNghiem
                     if (str_ketqua.Contains(","))
                     {
                         str_ketqua = str_ketqua.Replace(",", ".");
+                    }
+
+                    bool chk_isNumber = Microsoft.VisualBasic.Information.IsNumeric(str_ketqua);
+                    if (chk_isNumber == false)
+                    {
+                        continue;
                     }
 
                     decimal Result = Decimal.Parse(str_ketqua);
