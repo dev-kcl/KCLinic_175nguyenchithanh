@@ -775,6 +775,11 @@ namespace KClinic2._1.View.XetNghiem
                 DataTable tb_LoadCLSYeuCauTheoTiepNhan_Id = Model.dbXetNghiem.LoadCLSYeuCauTheoTiepNhan_Id(TiepNhan_Id);
                 LoadBatThuong(tb_LoadCLSYeuCauTheoTiepNhan_Id);
                 gridDichVu.DataSource = tb_LoadCLSYeuCauTheoTiepNhan_Id;
+
+                if (pathDatabaseAPI_Web != "")
+                {
+                    DataTable updateKetQua_Lis = Model.dbXetNghiem.UpdateKetQua_Lis(TiepNhan_Id);
+                }
             }
         }
 
