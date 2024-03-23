@@ -444,10 +444,14 @@ namespace KClinic2._1.View.TongHop
 
                             DataTable DuongDanHinhAnh = Model.db.DuongDanHinhAnh();
                             string HinhAnhBarcode = DuongDanHinhAnh.Rows[0][0].ToString() + table1.Rows[0]["MaYTe"].ToString() + ".png";
-                            FileStream fs = new FileStream(HinhAnhBarcode, System.IO.FileMode.Open, System.IO.FileAccess.Read);
-                            Image = new byte[fs.Length];
-                            fs.Read(Image, 0, Convert.ToInt32(fs.Length));
-                            fs.Close();
+
+                            if (File.Exists(HinhAnhBarcode))
+                            {
+                                FileStream fs = new FileStream(HinhAnhBarcode, System.IO.FileMode.Open, System.IO.FileAccess.Read);
+                                Image = new byte[fs.Length];
+                                fs.Read(Image, 0, Convert.ToInt32(fs.Length));
+                                fs.Close();
+                            }
 
                             DataTable SelectSettingTheoSettingCode2 = Model.db.SelectSettingTheoSettingCode("logo");
                             if (SelectSettingTheoSettingCode2 != null)
@@ -455,10 +459,14 @@ namespace KClinic2._1.View.TongHop
                                 if (SelectSettingTheoSettingCode2.Rows.Count > 0)
                                 {
                                     string Logo = SelectSettingTheoSettingCode2.Rows[0]["NoiDung"].ToString();
-                                    FileStream fsLogo = new FileStream(Logo, System.IO.FileMode.Open, System.IO.FileAccess.Read);
-                                    ImageLogo = new byte[fsLogo.Length];
-                                    fsLogo.Read(ImageLogo, 0, Convert.ToInt32(fsLogo.Length));
-                                    fsLogo.Close();
+
+                                    if (File.Exists(Logo))
+                                    {
+                                        FileStream fsLogo = new FileStream(Logo, System.IO.FileMode.Open, System.IO.FileAccess.Read);
+                                        ImageLogo = new byte[fsLogo.Length];
+                                        fsLogo.Read(ImageLogo, 0, Convert.ToInt32(fsLogo.Length));
+                                        fsLogo.Close();
+                                    }
                                 }
                             }
 
