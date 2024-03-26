@@ -736,6 +736,12 @@
     <Compile Include="View\KhamBenh\TimKiemKhamBenh.Designer.cs">
       <DependentUpon>TimKiemKhamBenh.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\TheThanhVien\ThongTinThe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\TheThanhVien\ThongTinThe.Designer.cs">
+      <DependentUpon>ThongTinThe.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\TiepNhan\DangKyKhamOnline.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -753,6 +759,12 @@
     </Compile>
     <Compile Include="View\TiepNhan\TiepNhan.Designer.cs">
       <DependentUpon>TiepNhan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\TiepNhan\TiepNhanTheThanhVien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\TiepNhan\TiepNhanTheThanhVien.Designer.cs">
+      <DependentUpon>TiepNhanTheThanhVien.cs</DependentUpon>
     </Compile>
     <Compile Include="View\TiepNhan\TimKiemBenhNhan.cs">
       <SubType>Form</SubType>
@@ -1094,6 +1106,9 @@
     <EmbeddedResource Include="View\KhamBenh\TimKiemKhamBenh.resx">
       <DependentUpon>TimKiemKhamBenh.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\TheThanhVien\ThongTinThe.resx">
+      <DependentUpon>ThongTinThe.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\TiepNhan\DangKyKhamOnline.resx">
       <DependentUpon>DangKyKhamOnline.cs</DependentUpon>
     </EmbeddedResource>
@@ -1102,6 +1117,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\TiepNhan\TiepNhan.resx">
       <DependentUpon>TiepNhan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\TiepNhan\TiepNhanTheThanhVien.resx">
+      <DependentUpon>TiepNhanTheThanhVien.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\TiepNhan\TimKiemBenhNhan.resx">
       <DependentUpon>TimKiemBenhNhan.cs</DependentUpon>
