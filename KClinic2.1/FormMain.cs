@@ -696,5 +696,25 @@ namespace KClinic2._1
             frm.MdiParent = this;
             frm.Show();
         }
+
+        private void barButtonItem61_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            if (ActivateThisChild("TiepNhanTheThanhVien") == false)
+            {
+                View.TiepNhan.TiepNhanTheThanhVien frm = new View.TiepNhan.TiepNhanTheThanhVien();
+                frm.MdiParent = this;
+                frm.Show();
+            }
+        }
+
+        private void barButtonItem62_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            if (ActivateThisChild("ThongTinThe") == false)
+            {
+                View.TheThanhVien.ThongTinThe frm = new View.TheThanhVien.ThongTinThe();
+                frm.MdiParent = this;
+                frm.Show();
+            }
+        }
     }
 }
