@@ -1325,9 +1325,13 @@ namespace KClinic2._1.View.XetNghiem
 
                         string strError = jsonResponse["Err"].MsgString;
 
-                        //alertControl1.Show(this, "Xảy ra lỗi API LIS", strError, "");
-                        MessageBox.Show("Xảy ra lỗi API LIS " + strError.ToString(), "Thông Báo");
+                        if (strError.Contains("Chưa tồn tại SID"))
+                        {
+                            API_LIS(null);
+                            return;
+                        }
 
+                        MessageBox.Show("Xảy ra lỗi API LIS " + strError.ToString(), "Thông Báo");
                         return;
                     }
                 }
