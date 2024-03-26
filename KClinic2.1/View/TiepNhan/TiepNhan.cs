@@ -65,6 +65,7 @@ namespace KClinic2._1.View.TiepNhan
         DataTable DoiTuong;
         DataTable PhongBan;
         DataTable HopDong;
+        DataTable PhongTuVan;
         void getdata()
         {
             DataTable GioiTinh = Model.DbTiepNhan.GioiTinh();
@@ -96,6 +97,11 @@ namespace KClinic2._1.View.TiepNhan
             cbbHopDong.DataSource = HopDong;
             cbbHopDong.ValueMember = "FieldCode";
             cbbHopDong.DisplayMember = "So_HD";
+            PhongTuVan = Model.DbTiepNhan.CbbPhongTuVan();
+            CbbPTuVan.DataSource = PhongTuVan;
+            CbbPTuVan.ValueMember = "FieldCode";
+            CbbPTuVan.DisplayMember = "FieldName";
+            CbbPTuVan.Value = 4;
         }
 
         private void cbbDV_KeyDown(object sender, KeyEventArgs e)
@@ -271,6 +277,12 @@ namespace KClinic2._1.View.TiepNhan
                     HopDong_Id = cbbHopDong.Value.ToString();
                 }
 
+                string PhongTuVan_Id = "null";
+                if (CbbPTuVan.SelectedItem != null)
+                {
+                    PhongTuVan_Id = CbbPTuVan.Value.ToString();
+                }
+
                 string NoiLamViec = "null";
                 if (!String.IsNullOrEmpty(Login.PhongBan_Id))
                 {
@@ -345,6 +357,7 @@ namespace KClinic2._1.View.TiepNhan
                             , "0"
                             , DoiTuong_Id
                             , HopDong_Id
+                            , PhongTuVan_Id
                             );
                         if (Insert_TiepNhan.Rows.Count > 0)
                         {
@@ -441,6 +454,7 @@ namespace KClinic2._1.View.TiepNhan
                             , "0"
                             , DoiTuong_Id
                             , HopDong_Id
+                            ,PhongTuVan_Id
                             );
                         if (Insert_TiepNhan.Rows.Count > 0)
                         {
@@ -545,6 +559,7 @@ namespace KClinic2._1.View.TiepNhan
                             , "0"
                             , DoiTuong_Id
                             , HopDong_Id
+                            ,PhongTuVan_Id
                             );
                     if (Update_TiepNhan.Rows.Count > 0)
                     {
@@ -1229,6 +1244,7 @@ namespace KClinic2._1.View.TiepNhan
             txtNgaySinh.Enabled = true;
             cbbDoiTuong.Enabled = true;
             cbbHopDong.Enabled = true;
+            CbbPTuVan.Enabled = true;
         }
         public void An()
         {
@@ -1252,6 +1268,7 @@ namespace KClinic2._1.View.TiepNhan
             txtNgaySinh.Enabled = false;
             cbbDoiTuong.Enabled = false;
             cbbHopDong.Enabled = false;
+            CbbPTuVan.Enabled = false;
         }
         public void Reset()
         {
@@ -1267,6 +1284,7 @@ namespace KClinic2._1.View.TiepNhan
             cbbNhanVien.Text = "";
             cbbNhomBenh.Text = "";
             txtZaloID.Text = "";
+            CbbPTuVan.Text = "";
             txtThoiGianTiepNhan.Value = DateTime.Now;
             DataTable HoanTatClsYeuCauPhienDangNhap = Model.DbTiepNhan.HoanTatClsYeuCauPhienDangNhap(Login.PhienDangNhap_Id);
             gridDichVu.DataSource = null;

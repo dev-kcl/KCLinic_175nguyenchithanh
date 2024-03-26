@@ -137,6 +137,7 @@ namespace KClinic2._1.Model
             , string _Huy
            , string _DoiTuong_Id
             , string _HopDong_Id
+            ,string _PhongTuVan_Id
             )
         {
             try
@@ -164,7 +165,8 @@ namespace KClinic2._1.Model
                     + "@NgayCapNhat = " + _NgayCapNhat + ","
                     + "@Huy = " + _Huy + ","
                       + "@DoiTuong_Id = " + _DoiTuong_Id + ","
-                    + "@HopDong_Id = " + _HopDong_Id
+                    + "@HopDong_Id = " + _HopDong_Id + ","
+                    + "@PhongTuvan_Id = " + _PhongTuVan_Id
                     ;
                 con.Open();
                 table1.Load(cmd_Show.ExecuteReader(CommandBehavior.CloseConnection));
@@ -395,6 +397,7 @@ namespace KClinic2._1.Model
             , string _Huy
             ,string _DoiTuong_Id
             ,string _HopDong_Id
+            ,string _PhongTuvan_Id
             )
         {
             try
@@ -423,7 +426,8 @@ namespace KClinic2._1.Model
                     + "@NgayCapNhat = " + _NgayCapNhat + ","
                     + "@Huy = " + _Huy + ","
                       + "@DoiTuong_Id = " + _DoiTuong_Id + ","
-                    + "@HopDong_Id = " + _HopDong_Id
+                    + "@HopDong_Id = " + _HopDong_Id + ","
+                    + "@PhongTuVan_Id = " + _PhongTuvan_Id
                     ;
                 con.Open();
                 table1.Load(cmd_Show.ExecuteReader(CommandBehavior.CloseConnection));
@@ -963,7 +967,25 @@ namespace KClinic2._1.Model
                 return null;
             }
         }
-
+        public static DataTable CbbPhongTuVan()
+        {
+            try
+            {
+                DataTable table1 = new DataTable();
+                SqlCommand cmd_Show = con.CreateCommand();
+                cmd_Show.CommandTimeout = timeout_connecttion;
+                cmd_Show.CommandText = "select FieldCode=Dictionary_Id,FieldName=Dictionary_Name from K_Dictionary where Dictionary_Code like 'PhongTuVan'"
+                    ;
+                con.Open();
+                table1.Load(cmd_Show.ExecuteReader(CommandBehavior.CloseConnection));
+                con.Close();
+                return table1;
+            }
+            catch
+            {
+                return null;
+            }
+        }
 
         public static DataTable LayDMHopDong()
         {

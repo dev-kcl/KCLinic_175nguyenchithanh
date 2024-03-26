@@ -538,6 +538,12 @@
     <Compile Include="View\HeThongBaoCao\BaoCaoThongKeDonThuoc.Designer.cs">
       <DependentUpon>BaoCaoThongKeDonThuoc.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\HeThongBaoCao\BaoCaoBNPTuVan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\HeThongBaoCao\BaoCaoBNPTuVan.Designer.cs">
+      <DependentUpon>BaoCaoBNPTuVan.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\HeThongBaoCao\BaoCaoThuTien.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -853,6 +859,7 @@
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -991,6 +998,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\HeThongBaoCao\BaoCaoThongKeDonThuoc.resx">
       <DependentUpon>BaoCaoThongKeDonThuoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\HeThongBaoCao\BaoCaoBNPTuVan.resx">
+      <DependentUpon>BaoCaoBNPTuVan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\HeThongBaoCao\BaoCaoThuTien.resx">
       <DependentUpon>BaoCaoThuTien.cs</DependentUpon>

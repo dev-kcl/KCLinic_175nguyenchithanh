@@ -689,5 +689,12 @@ namespace KClinic2._1
             frm.MdiParent = this;
             frm.Show();
         }
+
+        private void barButtonItem60_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            View.HeThongBaoCao.BaoCaoBNPTuVan frm = new View.HeThongBaoCao.BaoCaoBNPTuVan();
+            frm.MdiParent = this;
+            frm.Show();
+        }
     }
 }

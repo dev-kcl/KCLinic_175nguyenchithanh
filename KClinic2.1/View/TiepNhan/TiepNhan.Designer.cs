@@ -33,6 +33,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TiepNhan));
             Janus.Windows.GridEX.GridEXLayout cbbDV_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout cbbNhomBenh_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
+            Janus.Windows.GridEX.GridEXLayout CbbPTuVan_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout cbbHopDong_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout cbbDoiTuong_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout cbbNhanVien_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
@@ -41,6 +42,8 @@
             this.panelContent = new System.Windows.Forms.Panel();
             this.panelDuLieu = new Guna.UI2.WinForms.Guna2Panel();
             this.panelChiTiet = new Guna.UI2.WinForms.Guna2Panel();
+            this.label17 = new System.Windows.Forms.Label();
+            this.txtThanhTien = new System.Windows.Forms.Label();
             this.cbTiLe = new DevExpress.XtraEditors.CheckEdit();
             this.txtChietKhau = new Guna.UI2.WinForms.Guna2TextBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -72,6 +75,9 @@
             this.label8 = new System.Windows.Forms.Label();
             this.panelThongTin = new System.Windows.Forms.Panel();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.guna2Panel3 = new Guna.UI2.WinForms.Guna2Panel();
+            this.CbbPTuVan = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
+            this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.pnlHopDong = new Guna.UI2.WinForms.Guna2Panel();
@@ -144,8 +150,6 @@
             this.btnSua = new DevExpress.XtraEditors.SimpleButton();
             this.btnThem = new DevExpress.XtraEditors.SimpleButton();
             this.alertControl1 = new DevExpress.XtraBars.Alerter.AlertControl(this.components);
-            this.txtThanhTien = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
             this.panelMain.SuspendLayout();
             this.panelContent.SuspendLayout();
             this.panelDuLieu.SuspendLayout();
@@ -161,6 +165,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.cbbNhomBenh)).BeginInit();
             this.panelThongTin.SuspendLayout();
             this.guna2Panel1.SuspendLayout();
+            this.guna2Panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CbbPTuVan)).BeginInit();
             this.pnlHopDong.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cbbHopDong)).BeginInit();
             this.pnlDoiTuong.SuspendLayout();
@@ -237,6 +243,30 @@
             this.panelChiTiet.Name = "panelChiTiet";
             this.panelChiTiet.Size = new System.Drawing.Size(1587, 510);
             this.panelChiTiet.TabIndex = 0;
+            // 
+            // label17
+            // 
+            this.label17.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(910, 124);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(270, 28);
+            this.label17.TabIndex = 89;
+            this.label17.Text = "Tổng tiền chưa thanh toán:";
+            // 
+            // txtThanhTien
+            // 
+            this.txtThanhTien.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtThanhTien.AutoSize = true;
+            this.txtThanhTien.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.txtThanhTien.Location = new System.Drawing.Point(1186, 124);
+            this.txtThanhTien.Name = "txtThanhTien";
+            this.txtThanhTien.Size = new System.Drawing.Size(40, 28);
+            this.txtThanhTien.TabIndex = 88;
+            this.txtThanhTien.Text = ".......";
             // 
             // cbTiLe
             // 
@@ -370,7 +400,7 @@
             this.cbbDV.KeyUp += new System.Windows.Forms.KeyEventHandler(this.cbbDV_KeyUp_1);
             this.cbbDV.Validating += new System.ComponentModel.CancelEventHandler(this.cbbDV_Validating);
             this.cbbDV.Validated += new System.EventHandler(this.cbbDV_Validated);
-            //
+            // 
             // gridDichVu
             // 
             this.gridDichVu.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -582,7 +612,7 @@
             this.cbbNhomBenh.TabIndex = 11;
             this.cbbNhomBenh.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBox_KeyDown);
             this.cbbNhomBenh.KeyUp += new System.Windows.Forms.KeyEventHandler(this.cbbNhomBenh_KeyUp);
-            //
+            // 
             // btnXoaDichVu
             // 
             this.btnXoaDichVu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -675,6 +705,8 @@
             this.guna2Panel1.BackColor = System.Drawing.Color.White;
             this.guna2Panel1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(209)))), ((int)(((byte)(55)))));
             this.guna2Panel1.BorderThickness = 2;
+            this.guna2Panel1.Controls.Add(this.guna2Panel3);
+            this.guna2Panel1.Controls.Add(this.label14);
             this.guna2Panel1.Controls.Add(this.label15);
             this.guna2Panel1.Controls.Add(this.label13);
             this.guna2Panel1.Controls.Add(this.pnlHopDong);
@@ -710,8 +742,52 @@
             this.guna2Panel1.Size = new System.Drawing.Size(1587, 254);
             this.guna2Panel1.TabIndex = 0;
             // 
+            // guna2Panel3
+            // 
+            this.guna2Panel3.BackColor = System.Drawing.Color.Transparent;
+            this.guna2Panel3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(209)))), ((int)(((byte)(55)))));
+            this.guna2Panel3.BorderThickness = 2;
+            this.guna2Panel3.Controls.Add(this.CbbPTuVan);
+            this.guna2Panel3.Location = new System.Drawing.Point(1170, 109);
+            this.guna2Panel3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.guna2Panel3.Name = "guna2Panel3";
+            this.guna2Panel3.Size = new System.Drawing.Size(227, 36);
+            this.guna2Panel3.TabIndex = 61;
+            // 
+            // CbbPTuVan
+            // 
+            this.CbbPTuVan.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.CbbPTuVan.AutoComplete = false;
+            this.CbbPTuVan.BackColor = System.Drawing.Color.White;
+            this.CbbPTuVan.BorderStyle = Janus.Windows.GridEX.BorderStyle.None;
+            this.CbbPTuVan.ColorScheme = "";
+            CbbPTuVan_DesignTimeLayout.LayoutString = resources.GetString("CbbPTuVan_DesignTimeLayout.LayoutString");
+            this.CbbPTuVan.DesignTimeLayout = CbbPTuVan_DesignTimeLayout;
+            this.CbbPTuVan.FlatBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(209)))), ((int)(((byte)(55)))));
+            this.CbbPTuVan.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.CbbPTuVan.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
+            this.CbbPTuVan.Location = new System.Drawing.Point(5, 1);
+            this.CbbPTuVan.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.CbbPTuVan.Name = "CbbPTuVan";
+            this.CbbPTuVan.SelectedIndex = -1;
+            this.CbbPTuVan.SelectedItem = null;
+            this.CbbPTuVan.Size = new System.Drawing.Size(219, 32);
+            this.CbbPTuVan.TabIndex = 2;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.label14.Location = new System.Drawing.Point(1062, 111);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(85, 28);
+            this.label14.TabIndex = 60;
+            this.label14.Text = "P.Tư vấn";
+            // 
             // label15
-            //
+            // 
             this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Segoe UI", 12F);
@@ -721,9 +797,9 @@
             this.label15.Size = new System.Drawing.Size(32, 28);
             this.label15.TabIndex = 59;
             this.label15.Text = "(*)";
-            //
+            // 
             // label13
-            //
+            // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.label13.ForeColor = System.Drawing.Color.Red;
@@ -732,14 +808,14 @@
             this.label13.Size = new System.Drawing.Size(32, 28);
             this.label13.TabIndex = 57;
             this.label13.Text = "(*)";
-            //
+            // 
             // pnlHopDong
             // 
             this.pnlHopDong.BackColor = System.Drawing.Color.Transparent;
             this.pnlHopDong.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(209)))), ((int)(((byte)(55)))));
             this.pnlHopDong.BorderThickness = 2;
             this.pnlHopDong.Controls.Add(this.cbbHopDong);
-            this.pnlHopDong.Location = new System.Drawing.Point(888, 111);
+            this.pnlHopDong.Location = new System.Drawing.Point(824, 110);
             this.pnlHopDong.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pnlHopDong.Name = "pnlHopDong";
             this.pnlHopDong.Size = new System.Drawing.Size(227, 36);
@@ -772,7 +848,7 @@
             // 
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label21.Location = new System.Drawing.Point(780, 113);
+            this.label21.Location = new System.Drawing.Point(716, 112);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(102, 28);
             this.label21.TabIndex = 55;
@@ -784,7 +860,7 @@
             this.pnlDoiTuong.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(209)))), ((int)(((byte)(55)))));
             this.pnlDoiTuong.BorderThickness = 2;
             this.pnlDoiTuong.Controls.Add(this.cbbDoiTuong);
-            this.pnlDoiTuong.Location = new System.Drawing.Point(531, 110);
+            this.pnlDoiTuong.Location = new System.Drawing.Point(475, 110);
             this.pnlDoiTuong.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pnlDoiTuong.Name = "pnlDoiTuong";
             this.pnlDoiTuong.Size = new System.Drawing.Size(227, 36);
@@ -817,7 +893,7 @@
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label20.Location = new System.Drawing.Point(423, 113);
+            this.label20.Location = new System.Drawing.Point(367, 113);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(102, 28);
             this.label20.TabIndex = 53;
@@ -872,7 +948,7 @@
             // 
             this.txtZaloID.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtZaloID.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.txtZaloID.Location = new System.Drawing.Point(1259, 116);
+            this.txtZaloID.Location = new System.Drawing.Point(1355, 115);
             this.txtZaloID.Name = "txtZaloID";
             this.txtZaloID.Size = new System.Drawing.Size(195, 26);
             this.txtZaloID.TabIndex = 28;
@@ -1769,27 +1845,7 @@
             this.alertControl1.AppearanceText.Options.UseFont = true;
             this.alertControl1.FormShowingEffect = DevExpress.XtraBars.Alerter.AlertFormShowingEffect.SlideVertical;
             this.alertControl1.ShowPinButton = false;
-            //
-            // txtThanhTien
-            //
-            this.txtThanhTien.AutoSize = true;
-            this.txtThanhTien.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.txtThanhTien.Location = new System.Drawing.Point(1191, 122);
-            this.txtThanhTien.Name = "txtThanhTien";
-            this.txtThanhTien.Size = new System.Drawing.Size(40, 28);
-            this.txtThanhTien.TabIndex = 88;
-            this.txtThanhTien.Text = ".......";
-            //
-            // label17
-            //
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label17.Location = new System.Drawing.Point(939, 124);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(246, 28);
-            this.label17.TabIndex = 89;
-            this.label17.Text = "Tổng tiền chưa thanh toán:";
-            //
+            // 
             // TiepNhan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1823,6 +1879,9 @@
             this.panelThongTin.ResumeLayout(false);
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel1.PerformLayout();
+            this.guna2Panel3.ResumeLayout(false);
+            this.guna2Panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CbbPTuVan)).EndInit();
             this.pnlHopDong.ResumeLayout(false);
             this.pnlHopDong.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cbbHopDong)).EndInit();
@@ -1958,5 +2017,8 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label txtThanhTien;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel3;
+        private Janus.Windows.GridEX.EditControls.MultiColumnCombo CbbPTuVan;
+        private System.Windows.Forms.Label label14;
     }
 }
