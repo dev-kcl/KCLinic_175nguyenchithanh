@@ -1682,6 +1682,7 @@
             this.Text = "Xét nghiệm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.XetNghiem_FormClosing);
             this.Load += new System.EventHandler(this.XetNghiem_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.XetNghiem_KeyDown);
             this.panelMain.ResumeLayout(false);
             this.panelContent.ResumeLayout(false);
             this.pnChiTiet.ResumeLayout(false);

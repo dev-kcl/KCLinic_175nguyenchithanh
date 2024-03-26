@@ -54,6 +54,7 @@ namespace KClinic2._1.View.XetNghiem
             An();
             getdata();
             getLayDanhSachBNChuaXNTrongNgay(txtTimKiem.Text);
+            this.KeyPreview = true;
             if (TiepNhan_Id != "")
             {
                 btnThem.Enabled = false;
@@ -1341,6 +1342,98 @@ namespace KClinic2._1.View.XetNghiem
                 //alertControl1.Show(this, "Thông báo", "Lỗi cập nhật API LIS! " + ex.ToString(), "");
                 MessageBox.Show("Lỗi cập nhật API LIS! " + ex.ToString(), "Thông Báo");
                 return;
+            }
+        }
+
+        private void XetNghiem_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (Control.ModifierKeys == Keys.Control && e.KeyCode == Keys.S)
+            {
+                if (btnLuu.Enabled == true)
+                {
+                    btnLuu.PerformClick();
+                }
+                else
+                {
+                    alertControl1.Show(this, "Thông báo", "Chưa đủ điều kiện khởi chạy phím Lưu!", "");
+                }
+            }
+            if (Control.ModifierKeys == Keys.Control && e.KeyCode == Keys.N)
+            {
+                if (btnThem.Enabled == true)
+                {
+                    btnThem.PerformClick();
+                }
+                else
+                {
+                    alertControl1.Show(this, "Thông báo", "Chưa đủ điều kiện khởi chạy phím Thêm!", "");
+                }
+            }
+            if (Control.ModifierKeys == Keys.Control && e.KeyCode == Keys.E)
+            {
+                if (btnSua.Enabled == true)
+                {
+                    btnSua.PerformClick();
+                }
+                else
+                {
+                    alertControl1.Show(this, "Thông báo", "Chưa đủ điều kiện khởi chạy phím Sửa!", "");
+                }
+            }
+            if (Control.ModifierKeys == Keys.Control && e.KeyCode == Keys.W)
+            {
+                if (btnHuy.Enabled == true)
+                {
+                    btnHuy.PerformClick();
+                }
+                else
+                {
+                    alertControl1.Show(this, "Thông báo", "Chưa đủ điều kiện khởi chạy phím Huỷ!", "");
+                }
+            }
+            if (Control.ModifierKeys == Keys.Control && e.KeyCode == Keys.D)
+            {
+                if (btnXoa.Enabled == true)
+                {
+                    btnXoa.PerformClick();
+                }
+                else
+                {
+                    alertControl1.Show(this, "Thông báo", "Chưa đủ điều kiện khởi chạy phím Xoá!", "");
+                }
+            }
+            if (Control.ModifierKeys == Keys.Control && e.KeyCode == Keys.F)
+            {
+                if (btnTimKiem.Enabled == true)
+                {
+                    btnTimKiem.PerformClick();
+                }
+                else
+                {
+                    alertControl1.Show(this, "Thông báo", "Chưa đủ điều kiện khởi chạy phím Tìm kiếm!", "");
+                }
+            }
+            if (Control.ModifierKeys == Keys.Control && e.KeyCode == Keys.P)
+            {
+                if (btnIn.Enabled == true)
+                {
+                    btnIn.PerformClick();
+                }
+                else
+                {
+                    alertControl1.Show(this, "Thông báo", "Chưa đủ điều kiện khởi chạy phím In!", "");
+                }
+            }
+            if (Control.ModifierKeys == Keys.Control && e.KeyCode == Keys.R)
+            {
+                if (btnXem.Enabled == true)
+                {
+                    btnXem.PerformClick();
+                }
+                else
+                {
+                    alertControl1.Show(this, "Thông báo", "Chưa đủ điều kiện khởi chạy phím Xem!", "");
+                }
             }
         }
     }
