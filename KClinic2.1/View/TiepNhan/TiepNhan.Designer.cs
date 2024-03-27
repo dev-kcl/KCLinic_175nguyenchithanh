@@ -262,7 +262,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtThanhTien.AutoSize = true;
             this.txtThanhTien.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.txtThanhTien.Location = new System.Drawing.Point(1186, 124);
+            this.txtThanhTien.Location = new System.Drawing.Point(1194, 124);
             this.txtThanhTien.Name = "txtThanhTien";
             this.txtThanhTien.Size = new System.Drawing.Size(40, 28);
             this.txtThanhTien.TabIndex = 88;
@@ -396,6 +396,7 @@
             this.cbbDV.Size = new System.Drawing.Size(757, 28);
             this.cbbDV.TabIndex = 10;
             this.cbbDV.ValueChanged += new System.EventHandler(this.cbbDV_ValueChanged);
+            this.cbbDV.Click += new System.EventHandler(this.cbbDV_Click_1);
             this.cbbDV.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBox_KeyDown);
             this.cbbDV.KeyUp += new System.Windows.Forms.KeyEventHandler(this.cbbDV_KeyUp_1);
             this.cbbDV.Validating += new System.ComponentModel.CancelEventHandler(this.cbbDV_Validating);

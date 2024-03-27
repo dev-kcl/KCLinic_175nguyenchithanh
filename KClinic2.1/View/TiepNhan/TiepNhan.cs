@@ -1639,6 +1639,14 @@ namespace KClinic2._1.View.TiepNhan
                     }
 
                 }
+
+                if (autoClickDichVu == "1")
+                {
+                    if (cbbDV.SelectedIndex != -1)
+                    {
+                        btnChonDichVu_Click(btnChonDichVu, EventArgs.Empty);
+                    }
+                }
             }
             else
             {
@@ -1816,14 +1824,14 @@ namespace KClinic2._1.View.TiepNhan
 
         private void cbbDV_Validated(object sender, EventArgs e)
         {
-            if (autoClickDichVu == "1")
-            {
-                if (cbbDV.SelectedIndex != -1)
-                {
-                    btnChonDichVu_Click(btnChonDichVu, EventArgs.Empty);
-                    //btnChonDichVu.PerformClick();
-                }
-            }
+            //if (autoClickDichVu == "1")
+            //{
+            //    if (cbbDV.SelectedIndex != -1)
+            //    {
+            //        btnChonDichVu_Click(btnChonDichVu, EventArgs.Empty);
+            //        //btnChonDichVu.PerformClick();
+            //    }
+            //}
         }
 
         private void cbbDV_Validating(object sender, CancelEventArgs e)
@@ -1832,6 +1840,11 @@ namespace KClinic2._1.View.TiepNhan
             //{
             //    e.Cancel = true;
             //}
+        }
+
+        private void cbbDV_Click_1(object sender, EventArgs e)
+        {
+
         }
 
         private void cbbNhomBenh_KeyUp(object sender, KeyEventArgs e)
@@ -1870,6 +1883,7 @@ namespace KClinic2._1.View.TiepNhan
                             }
                     }
                 }
+            txtThanhTien.Text = "";
             txtThanhTien.Text = Tong.ToString();
         }
     }
