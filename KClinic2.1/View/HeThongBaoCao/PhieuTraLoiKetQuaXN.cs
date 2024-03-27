@@ -20,6 +20,21 @@ namespace KClinic2._1.View.HeThongBaoCao
         {
             InitializeComponent();
             this.tn = tn;
+            this.KeyPreview = true;
+
+            //event click button print
+            foreach (ToolStrip ts in crystalReportViewer1.Controls.OfType<ToolStrip>())
+            {
+                foreach (ToolStripButton tsb in ts.Items.OfType<ToolStripButton>())
+                {
+                    //hacky but should work. you can probably figure out a better method
+                    if (tsb.ToolTipText.ToLower().Contains("print"))
+                    {
+                        //Adding a handler for our propose
+                        tsb.Click += new EventHandler(printButton_Click);
+                    }
+                }
+            }
         }
 
         private void PhieuTraLoiKetQuaXN_Load(object sender, EventArgs e)
@@ -119,6 +134,29 @@ namespace KClinic2._1.View.HeThongBaoCao
             rptDoca.Load(DuongDan);
             rptDoca.SetDataSource(table1);
             crystalReportViewer1.ReportSource = rptDoca;
+        }
+
+        private void crystalReportViewer1_KeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void PhieuTraLoiKetQuaXN_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.P)
+            {
+                crystalReportViewer1.PrintReport();
+            }
+
+            if (e.KeyCode == Keys.Escape)
+            {
+                this.Close();
+            }
+        }
+
+        private void printButton_Click(object sender, EventArgs e)
+        {
+            //MessageBox.Show("Printed");
         }
     }
 }
