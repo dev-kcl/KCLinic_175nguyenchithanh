@@ -1381,6 +1381,17 @@ namespace KClinic2._1.View.TiepNhan
                     e.Appearance.ForeColor = Color.FromArgb(236, 240, 241);
                 }
             }
+
+            if (e.Column.FieldName == "TenDichVu")
+            {
+                string status = View.GetRowCellDisplayText(e.RowHandle, View.Columns["DaThanhToan"]);
+                if (status == "0")
+                {
+                    e.Appearance.BackColor = Color.FromArgb(52, 152, 219);
+                    e.Appearance.FontStyleDelta = FontStyle.Bold;
+                    e.Appearance.ForeColor = Color.FromArgb(236, 240, 241);
+                }
+            }
         }
         void SavePicture(string _Ma)
         {
@@ -1873,8 +1884,8 @@ namespace KClinic2._1.View.TiepNhan
                 for (int j = 0; j < gridView1.DataRowCount; j++)
                 {
                     // Lấy giá trị tại ô (j, i)
-                    string cellValue = gridView1.GetRowCellValue(j, "TrangThai").ToString();
-                    if(cellValue=="Chưa thực hiện")
+                    string cellValue = gridView1.GetRowCellValue(j, "DaThanhToan").ToString();
+                    if(cellValue == "0")
                     {
                          float thanhTienDichVu;
                          if (float.TryParse(gridView1.GetRowCellValue(j, "ThanhTienDichVu").ToString(), out thanhTienDichVu))
@@ -1884,7 +1895,7 @@ namespace KClinic2._1.View.TiepNhan
                     }
                 }
             txtThanhTien.Text = "";
-            txtThanhTien.Text = Tong.ToString();
+            txtThanhTien.Text = Tong.ToString("#,##0") + " VNĐ";
         }
     }
 }
