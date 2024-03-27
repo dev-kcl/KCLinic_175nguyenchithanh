@@ -548,13 +548,14 @@ namespace KClinic2._1.View.XetNghiem
 
         private void txtSoTiepNhan_KeyDown(object sender, KeyEventArgs e)
         {
-            TiepNhan_Id = "";
             if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
             {
+                TiepNhan_Id = "";
                 checkCLSTheoSoTiepNhan(txtSoTiepNhan.Text);
             }
             if (e.KeyCode == Keys.Tab && e.Shift)
             {
+                TiepNhan_Id = "";
                 MoveFocusToPreviousTextbox();
                 e.SuppressKeyPress = true;
             }
@@ -1026,9 +1027,9 @@ namespace KClinic2._1.View.XetNghiem
 
         private void txtSoTiepNhan_KeyDown_1(object sender, KeyEventArgs e)
         {
-            TiepNhan_Id = "";
             if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
             {
+                TiepNhan_Id = "";
                 checkCLSTheoSoTiepNhan(txtSoTiepNhan.Text);
             }
         }
