@@ -152,7 +152,7 @@ namespace KClinic2._1.View.XetNghiem
             LoadThongTinForm();
         }
 
-        private void btnLuu_Click(object sender, EventArgs e)
+        public void btnLuu_Click(object sender, EventArgs e)
         {
             if (txtSoTiepNhan.Text == "")
             {

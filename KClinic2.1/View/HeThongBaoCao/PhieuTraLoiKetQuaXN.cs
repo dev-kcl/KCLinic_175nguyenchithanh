@@ -145,8 +145,21 @@ namespace KClinic2._1.View.HeThongBaoCao
         {
             if (e.Control && e.KeyCode == Keys.P)
             {
+                
+                if (tn.ThaoTac == "Sua")
+                {
+
+                }
+                else
+                {
+                    tn.ThaoTac = "Them";
+                    tn.btnLuu_Click(sender, e);
+                    PhieuTraLoiKetQuaXN_Load(sender, e);
+                }
                 crystalReportViewer1.PrintReport();
+
             }
+
 
             if (e.KeyCode == Keys.Escape)
             {
