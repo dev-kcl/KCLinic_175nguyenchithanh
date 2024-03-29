@@ -145,19 +145,19 @@ namespace KClinic2._1.View.HeThongBaoCao
         {
             if (e.Control && e.KeyCode == Keys.P)
             {
-                
-                if (tn.ThaoTac == "Sua")
-                {
+                //DataTable LayDanhSachBNChuaXNTrongNgay = Model.dbXetNghiem.LayDanhSachBNChuaXNTrongNgay("", Login.PhongBan_Id);
 
-                }
-                else
+                DataTable Search_TiepNhanCLS_DaThucHien_TheoID = Model.db.Search_TiepNhanCLS_DaThucHien_TheoID(tn.CLSKetQua_Id);
+                if (Search_TiepNhanCLS_DaThucHien_TheoID.Rows[0]["count_kq"].ToString() == "0")
                 {
-                    tn.ThaoTac = "Them";
-                    tn.btnLuu_Click(sender, e);
-                    PhieuTraLoiKetQuaXN_Load(sender, e);
+                    {
+                        tn.ThaoTac = "Them";
+                        PhieuTraLoiKetQuaXN_Load(sender, e);
+                        tn.btnLuu_Click(sender, e);
+
+                    }
                 }
                 crystalReportViewer1.PrintReport();
-
             }
 
 
@@ -169,7 +169,17 @@ namespace KClinic2._1.View.HeThongBaoCao
 
         private void printButton_Click(object sender, EventArgs e)
         {
-            //MessageBox.Show("Printed");
+            DataTable Search_TiepNhanCLS_DaThucHien_TheoID = Model.db.Search_TiepNhanCLS_DaThucHien_TheoID(tn.CLSKetQua_Id);
+            if (Search_TiepNhanCLS_DaThucHien_TheoID.Rows[0]["count_kq"].ToString() == "0")
+            {
+                {
+                    tn.ThaoTac = "Them";
+                    PhieuTraLoiKetQuaXN_Load(sender, e);
+                    tn.btnLuu_Click(sender, e);
+                }
+            }
+
+
         }
     }
 }
