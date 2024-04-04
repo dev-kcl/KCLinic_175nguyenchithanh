@@ -4014,5 +4014,469 @@ namespace KClinic2._1.Model
                 return null;
             }
         }
+
+        public static DataTable SelectDanhSachTheThanhVien(string _Search)
+        {
+            try
+            {
+                DataTable table1 = new DataTable();
+                SqlCommand cmd_Show = con.CreateCommand();
+                cmd_Show.CommandTimeout = timeout_connecttion;
+                cmd_Show.CommandText = "exec SP_006_DanhMuc @Action = N'SelectDanhSachTheThanhVien', "
+                    + "@Text = " + _Search
+                    ;
+                con.Open();
+                table1.Load(cmd_Show.ExecuteReader(CommandBehavior.CloseConnection));
+                con.Close();
+                return table1;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public static DataTable SelectDanhSachTheThanhVienTheoId(string _The_Id)
+        {
+            try
+            {
+                DataTable table1 = new DataTable();
+                SqlCommand cmd_Show = con.CreateCommand();
+                cmd_Show.CommandTimeout = timeout_connecttion;
+                cmd_Show.CommandText = "exec SP_006_DanhMuc @Action = N'SelectDanhSachTheThanhVienTheoId', "
+                    + "@The_Id = " + _The_Id
+                    ;
+                con.Open();
+                table1.Load(cmd_Show.ExecuteReader(CommandBehavior.CloseConnection));
+                con.Close();
+                return table1;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public static DataTable LoadThongTinTrongTheTheoId(string _The_Id)
+        {
+            try
+            {
+                DataTable table1 = new DataTable();
+                SqlCommand cmd_Show = con.CreateCommand();
+                cmd_Show.CommandTimeout = timeout_connecttion;
+                cmd_Show.CommandText = "exec SP_006_DanhMuc @Action = N'LoadThongTinTrongTheTheoId', "
+                    + "@The_Id = " + _The_Id
+                    ;
+                con.Open();
+                table1.Load(cmd_Show.ExecuteReader(CommandBehavior.CloseConnection));
+                con.Close();
+                return table1;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public static DataTable CheckExistThongTinThe(string _SoThe)
+        {
+            try
+            {
+                DataTable table1 = new DataTable();
+                SqlCommand cmd_Show = con.CreateCommand();
+                cmd_Show.CommandTimeout = timeout_connecttion;
+                cmd_Show.CommandText = "exec SP_006_DanhMuc @Action = N'CheckExistThongTinThe', "
+                    + "@SoTheThanhVien = " + _SoThe + ""
+                    ;
+                con.Open();
+                table1.Load(cmd_Show.ExecuteReader(CommandBehavior.CloseConnection));
+                con.Close();
+                return table1;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public static DataTable CheckExistThongTinTheThanhVienTheoID(string _The_Id)
+        {
+            try
+            {
+                DataTable table1 = new DataTable();
+                SqlCommand cmd_Show = con.CreateCommand();
+                cmd_Show.CommandTimeout = timeout_connecttion;
+                cmd_Show.CommandText = "exec SP_006_DanhMuc @Action = N'CheckExistThongTinTheThanhVienTheoID', "
+                    + "@The_Id = " + _The_Id + ""
+                    ;
+                con.Open();
+                table1.Load(cmd_Show.ExecuteReader(CommandBehavior.CloseConnection));
+                con.Close();
+                return table1;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public static DataTable Insert_ThongTinThe(
+              string _SoThe
+            , string _LoaiThe
+            , string _NgayHieuLuc
+            , string _NguoiTao
+            , string _NgayTao
+            , string _Huy
+            )
+        {
+            try
+            {
+                DataTable table1 = new DataTable();
+                SqlCommand cmd_Show = con.CreateCommand();
+                cmd_Show.CommandTimeout = timeout_connecttion;
+                cmd_Show.CommandText = "exec SP_006_DanhMuc @Action = N'Insert_ThongTinThe',"
+                    + "@SoTheThanhVien = " + _SoThe + ","
+                    + "@LoaiThe = " + _LoaiThe + ","
+                    + "@NgayHieuLuc = " + _NgayHieuLuc + ","
+                    + "@NguoiTao = " + _NguoiTao + ","
+                    + "@NgayTao = " + _NgayTao + ","
+                    + "@Huy = " + _Huy + ""
+                    ;
+                con.Open();
+                table1.Load(cmd_Show.ExecuteReader(CommandBehavior.CloseConnection));
+                con.Close();
+                return table1;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public static DataTable Update_ThongTinThe(
+              string _SoThe
+            , string _LoaiThe
+            , string _NgayHieuLuc
+            , string _NguoiCapNhat
+            , string _NgayCapNhat
+            )
+        {
+            try
+            {
+                DataTable table1 = new DataTable();
+                SqlCommand cmd_Show = con.CreateCommand();
+                cmd_Show.CommandTimeout = timeout_connecttion;
+                cmd_Show.CommandText = "exec SP_006_DanhMuc @Action = N'Update_ThongTinThe',"
+                    + "@SoTheThanhVien = " + _SoThe + ","
+                    + "@LoaiThe = " + _LoaiThe + ","
+                    + "@NgayHieuLuc = " + _NgayHieuLuc + ","
+                    + "@NguoiCapNhat = " + _NguoiCapNhat + ","
+                    + "@NgayCapNhat = " + _NgayCapNhat + ""
+                    ;
+                con.Open();
+                table1.Load(cmd_Show.ExecuteReader(CommandBehavior.CloseConnection));
+                con.Close();
+                return table1;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public static DataTable InsertThe_PhienDangNhap(string _PhienDangNhap, string _The_Id, string _DichVu_id, string _SoLuong, string _ThaoTac)
+        {
+            try
+            {
+                DataTable table1 = new DataTable();
+                SqlCommand cmd_Show = con.CreateCommand();
+                cmd_Show.CommandTimeout = timeout_connecttion;
+                cmd_Show.CommandText = "exec SP_006_DanhMuc @Action = N'InsertThe_PhienDangNhap' ,"
+                    + "@PhienDangNhap_Id = " + _PhienDangNhap + ","
+                    + "@The_Id = " + _The_Id + ","
+                    + "@DichVu_Id = " + _DichVu_id + ","
+                    + "@SoLuong = " + _SoLuong + ","
+                    + "@ThaoTac = " + _ThaoTac
+                    ;
+                con.Open();
+                table1.Load(cmd_Show.ExecuteReader(CommandBehavior.CloseConnection));
+                con.Close();
+                return table1;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public static DataTable SelectThe_PhienDangNhap(string _PhienDangNhap)
+        {
+            try
+            {
+                DataTable table1 = new DataTable();
+                SqlCommand cmd_Show = con.CreateCommand();
+                cmd_Show.CommandTimeout = timeout_connecttion;
+                cmd_Show.CommandText = "exec SP_006_DanhMuc @Action = N'SelectThe_PhienDangNhap' ,"
+                    + "@PhienDangNhap_Id = " + _PhienDangNhap
+                    ;
+                con.Open();
+                table1.Load(cmd_Show.ExecuteReader(CommandBehavior.CloseConnection));
+                con.Close();
+                return table1;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public static DataTable Delete_The_PhienDangNhap(string _The_Id, string _DichVu_Id, string _NguoiCapNhat)
+        {
+            try
+            {
+                DataTable table1 = new DataTable();
+                SqlCommand cmd_Show = con.CreateCommand();
+                cmd_Show.CommandTimeout = timeout_connecttion;
+                cmd_Show.CommandText = "exec SP_006_DanhMuc @Action = N'Delete_The_PhienDangNhap' ,"
+                    + "@The_Id = " + _The_Id + ","
+                    + "@DichVu_Id = " + _DichVu_Id + ","
+                    + "@NguoiCapNhat = " + _NguoiCapNhat
+                    ;
+                con.Open();
+                table1.Load(cmd_Show.ExecuteReader(CommandBehavior.CloseConnection));
+                con.Close();
+                return table1;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public static DataTable Insert_DichVuTrongThe(string _PhienDangNhap, string _The_Id, string _DichVu_id, string _SoLuong, string _ThaoTac)
+        {
+            try
+            {
+                DataTable table1 = new DataTable();
+                SqlCommand cmd_Show = con.CreateCommand();
+                cmd_Show.CommandTimeout = timeout_connecttion;
+                cmd_Show.CommandText = "exec SP_006_DanhMuc @Action = N'InsertThe_PhienDangNhap' ,"
+                    + "@PhienDangNhap_Id = " + _PhienDangNhap + ","
+                    + "@The_Id = " + _The_Id + ","
+                    + "@DichVu_Id = " + _DichVu_id + ","
+                    + "@SoLuong = " + _SoLuong + ","
+                    + "@ThaoTac = " + _ThaoTac
+                    ;
+                con.Open();
+                table1.Load(cmd_Show.ExecuteReader(CommandBehavior.CloseConnection));
+                con.Close();
+                return table1;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public static DataTable CheckThePhienDangNhap(string _PhienDangNhap)
+        {
+            try
+            {
+                DataTable table1 = new DataTable();
+                SqlCommand cmd_Show = con.CreateCommand();
+                cmd_Show.CommandTimeout = timeout_connecttion;
+                cmd_Show.CommandText = "exec SP_006_DanhMuc @Action = N'CheckThePhienDangNhap' ,"
+                    + "@PhienDangNhap_Id = " + _PhienDangNhap
+                    ;
+                con.Open();
+                table1.Load(cmd_Show.ExecuteReader(CommandBehavior.CloseConnection));
+                con.Close();
+                return table1;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public static DataTable InsertDichVuTrongThe(string _The_Id, string _BenhNhan_Id, string _DichVu_Id, string _SoLuong
+            , string _NguoiTao, string _NgayTao, string _Huy)
+        {
+            try
+            {
+                DataTable table1 = new DataTable();
+                SqlCommand cmd_Show = con.CreateCommand();
+                cmd_Show.CommandTimeout = timeout_connecttion;
+                cmd_Show.CommandText = "exec SP_006_DanhMuc @Action = N'Insert_DichVuTrongThe' ,"
+                    + "@The_Id = " + _The_Id + ","
+                    + "@BenhNhan_Id = " + _BenhNhan_Id + ","
+                    + "@DichVu_Id = " + _DichVu_Id + ","
+                    + "@SoLuong = " + _SoLuong + ","
+                    + "@NguoiTao = " + _NguoiTao + ","
+                    + "@NgayTao = " + _NgayTao + ","
+                    + "@Huy = " + _Huy
+                    ;
+                con.Open();
+                table1.Load(cmd_Show.ExecuteReader(CommandBehavior.CloseConnection));
+                con.Close();
+                return table1;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public static DataTable UpdateDichVuTrongThe(string _The_Id, string _BenhNhan_Id, string _DichVu_Id, string _SoLuong
+            , string _NguoiTao, string _NgayTao, string _Huy)
+        {
+            try
+            {
+                DataTable table1 = new DataTable();
+                SqlCommand cmd_Show = con.CreateCommand();
+                cmd_Show.CommandTimeout = timeout_connecttion;
+                cmd_Show.CommandText = "exec SP_006_DanhMuc @Action = N'Update_DichVuTrongThe' ,"
+                    + "@The_Id = " + _The_Id + ","
+                    + "@BenhNhan_Id = " + _BenhNhan_Id + ","
+                    + "@DichVu_Id = " + _DichVu_Id + ","
+                    + "@SoLuong = " + _SoLuong + ","
+                    + "@NguoiTao = " + _NguoiTao + ","
+                    + "@NgayTao = " + _NgayTao + ","
+                    + "@Huy = " + _Huy
+                    ;
+                con.Open();
+                table1.Load(cmd_Show.ExecuteReader(CommandBehavior.CloseConnection));
+                con.Close();
+                return table1;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public static DataTable DeleteDichVuTrongThe(string _The_Id, string _NguoiCapNhat, string _NgayCapNhat)
+        {
+            try
+            {
+                DataTable table1 = new DataTable();
+                SqlCommand cmd_Show = con.CreateCommand();
+                cmd_Show.CommandTimeout = timeout_connecttion;
+                cmd_Show.CommandText = "exec SP_006_DanhMuc @Action = N'Delete_DichVuTrongThe' ,"
+                    + "@The_Id = " + _The_Id + ","
+                    + "@NguoiCapNhat = " + _NguoiCapNhat + ","
+                    + "@NgayCapNhat = " + _NgayCapNhat + ""
+                    ;
+                con.Open();
+                table1.Load(cmd_Show.ExecuteReader(CommandBehavior.CloseConnection));
+                con.Close();
+                return table1;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public static DataTable HoanTatThePhienDangNhap(string _PhienDangNhap)
+        {
+            try
+            {
+                DataTable table1 = new DataTable();
+                SqlCommand cmd_Show = con.CreateCommand();
+                cmd_Show.CommandTimeout = timeout_connecttion;
+                cmd_Show.CommandText = "exec SP_006_DanhMuc @Action = N'HoanTatThePhienDangNhap' ,"
+                    + "@PhienDangNhap_Id = " + _PhienDangNhap
+                    ;
+                con.Open();
+                table1.Load(cmd_Show.ExecuteReader(CommandBehavior.CloseConnection));
+                con.Close();
+                return table1;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public static DataTable ThemTheVaoPhienDangNhap(string _PhienDangNhap, string _The_Id)
+        {
+            try
+            {
+                DataTable table1 = new DataTable();
+                SqlCommand cmd_Show = con.CreateCommand();
+                cmd_Show.CommandTimeout = timeout_connecttion;
+                cmd_Show.CommandText = "exec SP_006_DanhMuc @Action = N'ThemTheVaoPhienDangNhap' ,"
+                    + "@PhienDangNhap_Id = " + _PhienDangNhap + ","
+                    + "@The_Id = " + _The_Id
+                    ;
+                con.Open();
+                table1.Load(cmd_Show.ExecuteReader(CommandBehavior.CloseConnection));
+                con.Close();
+                return table1;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public static DataTable DeleteThe(string _The_Id, string _NguoiCapNhat)
+        {
+            try
+            {
+                DataTable table1 = new DataTable();
+                SqlCommand cmd_Show = con.CreateCommand();
+                cmd_Show.CommandTimeout = timeout_connecttion;
+                cmd_Show.CommandText = "exec SP_006_DanhMuc @Action = N'DeleteThe', "
+                    + "@The_Id = " + _The_Id + ","
+                    + "@NguoiCapNhat = " + _NguoiCapNhat
+                    ;
+                con.Open();
+                table1.Load(cmd_Show.ExecuteReader(CommandBehavior.CloseConnection));
+                con.Close();
+                return table1;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public static DataTable UpdateBenhNhan(
+              string _BenhNhan_Id
+            , string _TenBenhNhan
+            , string _GioiTinh
+            , string _NamSinh
+            , string _SoDienThoai
+            , string _NguoiCapNhat
+            , string _NgayCapNhat
+            )
+        {
+            try
+            {
+                DataTable table1 = new DataTable();
+                SqlCommand cmd_Show = con.CreateCommand();
+                cmd_Show.CommandTimeout = timeout_connecttion;
+                cmd_Show.CommandText = "exec SP_002_TiepNhan @Action = N'UpdateBenhNhan',"
+                    + "@BenhNhan_Id = " + _BenhNhan_Id + ","
+                    + "@TenBenhNhan = " + _TenBenhNhan + ","
+                    + "@GioiTinh = " + _GioiTinh + ","
+                    + "@NamSinh = " + _NamSinh + ","
+                    + "@SoDienThoai = " + _SoDienThoai + ","
+                    + "@NguoiCapNhat = " + _NguoiCapNhat + ","
+                    + "@NgayCapNhat = " + _NgayCapNhat + ""
+                    ;
+                con.Open();
+                table1.Load(cmd_Show.ExecuteReader(CommandBehavior.CloseConnection));
+                con.Close();
+                return table1;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
     }
 }
