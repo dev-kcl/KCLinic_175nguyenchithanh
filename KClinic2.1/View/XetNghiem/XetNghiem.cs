@@ -790,10 +790,10 @@ namespace KClinic2._1.View.XetNghiem
                 LoadBatThuong(tb_LoadCLSYeuCauTheoTiepNhan_Id);
                 gridDichVu.DataSource = tb_LoadCLSYeuCauTheoTiepNhan_Id;
 
-                if (pathDatabaseAPI_Web != "")
-                {
-                    DataTable updateKetQua_Lis = Model.dbXetNghiem.UpdateKetQua_Lis(TiepNhan_Id);
-                }
+                //if (pathDatabaseAPI_Web != "")
+                //{
+                //    DataTable updateKetQua_Lis = Model.dbXetNghiem.UpdateKetQua_Lis(TiepNhan_Id);
+                //}
             }
         }
 

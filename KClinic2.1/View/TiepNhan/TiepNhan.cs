@@ -263,7 +263,7 @@ namespace KClinic2._1.View.TiepNhan
                 string ThangTiepNhan = "'" + txtThoiGianTiepNhan.Value.ToString("MM") + "'";
                 string NamTiepNhan = "'" + txtThoiGianTiepNhan.Value.ToString("yyyy") + "'";
                 string NgaySinh = "null";
-                if (txtNgaySinh.Text is null) { NgaySinh = "'" + txtNgaySinh.Value.ToString("yyyyMMdd") + "'"; }
+                if (!string.IsNullOrEmpty(txtNgaySinh.Text)) { NgaySinh = "'" + txtNgaySinh.Value.ToString("yyyyMMdd") + "'"; }
 
                 string DoiTuong_Id = "null";
                 if (cbbDoiTuong.SelectedItem != null)
