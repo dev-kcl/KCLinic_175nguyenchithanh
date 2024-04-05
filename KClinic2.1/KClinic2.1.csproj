@@ -592,6 +592,12 @@
     <Compile Include="View\HeThongBaoCao\PhieuChiDinh_Kham.Designer.cs">
       <DependentUpon>PhieuChiDinh_Kham.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\HeThongBaoCao\PhieuChiDinh_The.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\HeThongBaoCao\PhieuChiDinh_The.Designer.cs">
+      <DependentUpon>PhieuChiDinh_The.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\HeThongBaoCao\PhieuKham.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -778,11 +784,23 @@
     <Compile Include="View\TiepNhan\TimKiemBenhNhan.Designer.cs">
       <DependentUpon>TimKiemBenhNhan.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\TiepNhan\TimKiemBenhNhan_The.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\TiepNhan\TimKiemBenhNhan_The.Designer.cs">
+      <DependentUpon>TimKiemBenhNhan_The.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\TiepNhan\TimKiemTiepNhan.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\TiepNhan\TimKiemTiepNhan.Designer.cs">
       <DependentUpon>TimKiemTiepNhan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\TiepNhan\TimKiemTiepNhan_The.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\TiepNhan\TimKiemTiepNhan_The.Designer.cs">
+      <DependentUpon>TimKiemTiepNhan_The.cs</DependentUpon>
     </Compile>
     <Compile Include="View\TiepNhan\ZaloCheck.cs">
       <SubType>Form</SubType>
@@ -1043,6 +1061,9 @@
     <EmbeddedResource Include="View\HeThongBaoCao\PhieuChiDinh_Kham.resx">
       <DependentUpon>PhieuChiDinh_Kham.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\HeThongBaoCao\PhieuChiDinh_The.resx">
+      <DependentUpon>PhieuChiDinh_The.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\HeThongBaoCao\PhieuKham.resx">
       <DependentUpon>PhieuKham.cs</DependentUpon>
     </EmbeddedResource>
@@ -1135,6 +1156,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\TiepNhan\TimKiemTiepNhan.resx">
       <DependentUpon>TimKiemTiepNhan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\TiepNhan\TimKiemTiepNhan_The.resx">
+      <DependentUpon>TimKiemTiepNhan_The.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\TiepNhan\ZaloCheck.resx">
       <DependentUpon>ZaloCheck.cs</DependentUpon>
