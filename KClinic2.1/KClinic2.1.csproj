@@ -1154,6 +1154,9 @@
     <EmbeddedResource Include="View\TiepNhan\TimKiemBenhNhan.resx">
       <DependentUpon>TimKiemBenhNhan.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\TiepNhan\TimKiemBenhNhan_The.resx">
+      <DependentUpon>TimKiemBenhNhan_The.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\TiepNhan\TimKiemTiepNhan.resx">
       <DependentUpon>TimKiemTiepNhan.cs</DependentUpon>
     </EmbeddedResource>

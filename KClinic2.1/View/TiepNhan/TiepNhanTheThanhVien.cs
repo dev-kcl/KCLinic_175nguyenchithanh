@@ -40,7 +40,6 @@ namespace KClinic2._1.View.TiepNhan
         DataTable BacSiChiDinh;
         DataTable DoiTuong;
         DataTable PhongBan;
-        DataTable HopDong;
         DataTable PhongTuVan;
 
         public TiepNhanTheThanhVien()
@@ -63,9 +62,6 @@ namespace KClinic2._1.View.TiepNhan
 
             getdata();
             this.KeyPreview = true;
-
-            The_Id = "9";
-            LoadThongTinTrongTheTheoId(The_Id);
         }
 
         void getdata()
@@ -103,8 +99,7 @@ namespace KClinic2._1.View.TiepNhan
 
         private void TiepNhanTheThanhVien_Paint(object sender, PaintEventArgs e)
         {
-            System.Drawing.Rectangle rect = new Rectangle(cbbDV.Location.X,
-                cbbDV.Location.Y, cbbDV.ClientSize.Width, cbbDV.ClientSize.Height);
+            System.Drawing.Rectangle rect = new Rectangle(cbbDV.Location.X, cbbDV.Location.Y, cbbDV.ClientSize.Width, cbbDV.ClientSize.Height);
             rect.Inflate(10, 10); // border thickness
             System.Windows.Forms.ControlPaint.DrawBorder(e.Graphics, rect, Color.Red, ButtonBorderStyle.Solid);
         }
@@ -121,52 +116,61 @@ namespace KClinic2._1.View.TiepNhan
             btnTimKiem.Enabled = true;
         }
 
-        public void LoadThongTinBenhNhanDaTiepNhan()
+        public void LoadThongTinBenhNhanDaTiepNhan_The()
         {
-            DataTable LoadThongTinBenhNhanDaTiepNhan = Model.DbTiepNhan.LoadThongTinBenhNhanDaTiepNhan(TiepNhan_Id);
-            if (LoadThongTinBenhNhanDaTiepNhan.Rows.Count > 0)
+            DataTable LoadThongTinBenhNhanDaTiepNhan_The = Model.DbTiepNhan.LoadThongTinBenhNhanDaTiepNhan_The(TiepNhan_Id);
+            if (LoadThongTinBenhNhanDaTiepNhan_The.Rows.Count > 0)
             {
-                txtMaYTe.Text = LoadThongTinBenhNhanDaTiepNhan.Rows[0]["MaYTe"].ToString();
-                MaYTe = LoadThongTinBenhNhanDaTiepNhan.Rows[0]["MaYTe"].ToString();
-                SoVaoVien = LoadThongTinBenhNhanDaTiepNhan.Rows[0]["SoVaoVien"].ToString();
-                txtHoTen.Text = LoadThongTinBenhNhanDaTiepNhan.Rows[0]["TenBenhNhan"].ToString();
-                string GioiTinh = LoadThongTinBenhNhanDaTiepNhan.Rows[0]["GioiTinh"].ToString();
+                txtMaYTe.Text = LoadThongTinBenhNhanDaTiepNhan_The.Rows[0]["MaYTe"].ToString();
+                MaYTe = LoadThongTinBenhNhanDaTiepNhan_The.Rows[0]["MaYTe"].ToString();
+                SoVaoVien = LoadThongTinBenhNhanDaTiepNhan_The.Rows[0]["SoVaoVien"].ToString();
+                txtHoTen.Text = LoadThongTinBenhNhanDaTiepNhan_The.Rows[0]["TenBenhNhan"].ToString();
+                string GioiTinh = LoadThongTinBenhNhanDaTiepNhan_The.Rows[0]["GioiTinh"].ToString();
                 if (!String.IsNullOrEmpty(GioiTinh))
                 {
                     cbbGioiTinh.Value = Int32.Parse(GioiTinh);
                 }
-                txtNamSinh.Text = LoadThongTinBenhNhanDaTiepNhan.Rows[0]["NamSinh"].ToString();
-                txtSoDienThoai.Text = LoadThongTinBenhNhanDaTiepNhan.Rows[0]["SoDienThoai"].ToString();
-                txtDiaChi.Text = LoadThongTinBenhNhanDaTiepNhan.Rows[0]["DiaChiChiTiet"].ToString();
-                string NgaySinh = LoadThongTinBenhNhanDaTiepNhan.Rows[0]["NgaySinh"].ToString();
+                txtNamSinh.Text = LoadThongTinBenhNhanDaTiepNhan_The.Rows[0]["NamSinh"].ToString();
+                txtSoDienThoai.Text = LoadThongTinBenhNhanDaTiepNhan_The.Rows[0]["SoDienThoai"].ToString();
+                txtDiaChi.Text = LoadThongTinBenhNhanDaTiepNhan_The.Rows[0]["DiaChiChiTiet"].ToString();
+                string NgaySinh = LoadThongTinBenhNhanDaTiepNhan_The.Rows[0]["NgaySinh"].ToString();
                 if (!String.IsNullOrEmpty(NgaySinh))
                 {
                     DateTime enteredDate = DateTime.Parse(NgaySinh);
                     txtNgaySinh.Value = enteredDate;
                 }
-                string DoiTuong_Id = LoadThongTinBenhNhanDaTiepNhan.Rows[0]["DoiTuong_Id"].ToString();
+                string DoiTuong_Id = LoadThongTinBenhNhanDaTiepNhan_The.Rows[0]["DoiTuong_Id"].ToString();
                 if (!String.IsNullOrEmpty(DoiTuong_Id))
                 {
                     cbbDoiTuong.Value = Int32.Parse(DoiTuong_Id);
                 }
 
-                string NguoiTiepNhan = LoadThongTinBenhNhanDaTiepNhan.Rows[0]["NguoiTiepNhan_Id"].ToString();
+                string NguoiTiepNhan = LoadThongTinBenhNhanDaTiepNhan_The.Rows[0]["NguoiTiepNhan_Id"].ToString();
                 if (!String.IsNullOrEmpty(NguoiTiepNhan))
                 {
                     cbbNhanVien.Value = Int32.Parse(NguoiTiepNhan);
                 }
-                BenhNhan_Id = LoadThongTinBenhNhanDaTiepNhan.Rows[0]["BenhNhan_Id"].ToString();
-                TiepNhan_Id = LoadThongTinBenhNhanDaTiepNhan.Rows[0]["TiepNhan_Id"].ToString();
-                string ThoiGianTiepNhan = LoadThongTinBenhNhanDaTiepNhan.Rows[0]["ThoiGianTiepNhan"].ToString();
+                BenhNhan_Id = LoadThongTinBenhNhanDaTiepNhan_The.Rows[0]["BenhNhan_Id"].ToString();
+                TiepNhan_Id = LoadThongTinBenhNhanDaTiepNhan_The.Rows[0]["TiepNhan_Id"].ToString();
+                string ThoiGianTiepNhan = LoadThongTinBenhNhanDaTiepNhan_The.Rows[0]["ThoiGianTiepNhan"].ToString();
                 if (!String.IsNullOrEmpty(ThoiGianTiepNhan))
                 {
                     DateTime enteredDate = DateTime.Parse(ThoiGianTiepNhan);
                     txtThoiGianTiepNhan.Value = enteredDate;
                 }
-                txtZaloID.Text = LoadThongTinBenhNhanDaTiepNhan.Rows[0]["Zalo_Id"].ToString();
-                CMND = LoadThongTinBenhNhanDaTiepNhan.Rows[0]["CMND"].ToString();
-                BHYT = LoadThongTinBenhNhanDaTiepNhan.Rows[0]["BHYT"].ToString();
+                txtZaloID.Text = LoadThongTinBenhNhanDaTiepNhan_The.Rows[0]["Zalo_Id"].ToString();
+                CMND = LoadThongTinBenhNhanDaTiepNhan_The.Rows[0]["CMND"].ToString();
+                BHYT = LoadThongTinBenhNhanDaTiepNhan_The.Rows[0]["BHYT"].ToString();
+
+                The_Id = LoadThongTinBenhNhanDaTiepNhan_The.Rows[0]["The_Id"].ToString();
+                txtSoThe.Text = LoadThongTinBenhNhanDaTiepNhan_The.Rows[0]["SoThe"].ToString();
+
+                if (!string.IsNullOrEmpty(The_Id) || The_Id != "")
+                {
+                    LoadThongTinTrongTheTheoId(The_Id);
+                }
             }
+
             DataTable ThemClsYeuCauVaoPhieuDangNhap = Model.DbTiepNhan.ThemClsYeuCauVaoPhieuDangNhap(Login.PhienDangNhap_Id, TiepNhan_Id);
             DataTable SelectClsyeucauPhienDangNhap = Model.DbTiepNhan.SelectClsyeucauPhienDangNhap(Login.PhienDangNhap_Id);
             gridDichVu.DataSource = SelectClsyeucauPhienDangNhap;
@@ -175,70 +179,59 @@ namespace KClinic2._1.View.TiepNhan
         }
         public void RefreshForm()
         {
-            DataTable LoadThongTinBenhNhan = Model.DbTiepNhan.LoadThongTinBenhNhan(BenhNhan_Id);
-            if (LoadThongTinBenhNhan.Rows.Count > 0)
+            DataTable LoadThongTinBenhNhan_The = Model.DbTiepNhan.LoadThongTinBenhNhan_The(BenhNhan_Id);
+            if (LoadThongTinBenhNhan_The.Rows.Count > 0)
             {
-                txtMaYTe.Text = LoadThongTinBenhNhan.Rows[0]["MaYTe"].ToString();
-                MaYTe = LoadThongTinBenhNhan.Rows[0]["MaYTe"].ToString();
-                SoVaoVien = LoadThongTinBenhNhan.Rows[0]["SoVaoVien"].ToString();
-                txtHoTen.Text = LoadThongTinBenhNhan.Rows[0]["TenBenhNhan"].ToString();
-                string GioiTinh = LoadThongTinBenhNhan.Rows[0]["GioiTinh"].ToString();
+                txtMaYTe.Text = LoadThongTinBenhNhan_The.Rows[0]["MaYTe"].ToString();
+                MaYTe = LoadThongTinBenhNhan_The.Rows[0]["MaYTe"].ToString();
+                SoVaoVien = LoadThongTinBenhNhan_The.Rows[0]["SoVaoVien"].ToString();
+                txtHoTen.Text = LoadThongTinBenhNhan_The.Rows[0]["TenBenhNhan"].ToString();
+                string GioiTinh = LoadThongTinBenhNhan_The.Rows[0]["GioiTinh"].ToString();
                 if (!String.IsNullOrEmpty(GioiTinh))
                 {
-                    cbbGioiTinh.Value = Int32.Parse(LoadThongTinBenhNhan.Rows[0]["GioiTinh"].ToString());
+                    cbbGioiTinh.Value = Int32.Parse(LoadThongTinBenhNhan_The.Rows[0]["GioiTinh"].ToString());
                 }
 
-                string NgaySinh = LoadThongTinBenhNhan.Rows[0]["NgaySinh"].ToString();
+                string NgaySinh = LoadThongTinBenhNhan_The.Rows[0]["NgaySinh"].ToString();
                 if (!String.IsNullOrEmpty(NgaySinh))
                 {
                     DateTime enteredDate = DateTime.Parse(NgaySinh);
                     txtNgaySinh.Value = enteredDate;
                 }
 
-                txtNamSinh.Text = LoadThongTinBenhNhan.Rows[0]["NamSinh"].ToString();
-                txtSoDienThoai.Text = LoadThongTinBenhNhan.Rows[0]["SoDienThoai"].ToString();
-                txtDiaChi.Text = LoadThongTinBenhNhan.Rows[0]["DiaChiChiTiet"].ToString();
-                BenhNhan_Id = LoadThongTinBenhNhan.Rows[0]["BenhNhan_Id"].ToString();
-                txtZaloID.Text = LoadThongTinBenhNhan.Rows[0]["Zalo_Id"].ToString();
-                CMND = LoadThongTinBenhNhan.Rows[0]["CMND"].ToString();
-                BHYT = LoadThongTinBenhNhan.Rows[0]["BHYT"].ToString();
-            }
-            txtHoTen.Focus();
-        }
-        public void RefreshFormThongDangKy()
-        {
-            btnThem.Enabled = false;
-            btnSua.Enabled = false;
-            btnLuu.Enabled = true;
-            btnHuy.Enabled = true;
-            btnXoa.Enabled = false;
-            btnXem.Enabled = false;
-            btnIn.Enabled = false;
-            btnTimKiem.Enabled = false;
-            Hien();
-            ThaoTac = "Them";
-            BenhNhan_Id = "";
-            DangKy_Id = "";
-            TenBenhNhan = "";
-            TiepNhan_Id = "";
-            CLSYeuCau_Id = "";
-            Reset();
-            MaYTe = ""; SoVaoVien = ""; CMND = ""; BHYT = "";
-            txtHoTen.Focus();
-        }
+                txtNamSinh.Text = LoadThongTinBenhNhan_The.Rows[0]["NamSinh"].ToString();
+                txtSoDienThoai.Text = LoadThongTinBenhNhan_The.Rows[0]["SoDienThoai"].ToString();
+                txtDiaChi.Text = LoadThongTinBenhNhan_The.Rows[0]["DiaChiChiTiet"].ToString();
+                BenhNhan_Id = LoadThongTinBenhNhan_The.Rows[0]["BenhNhan_Id"].ToString();
+                txtZaloID.Text = LoadThongTinBenhNhan_The.Rows[0]["Zalo_Id"].ToString();
+                CMND = LoadThongTinBenhNhan_The.Rows[0]["CMND"].ToString();
+                BHYT = LoadThongTinBenhNhan_The.Rows[0]["BHYT"].ToString();
 
-        public void RefreshThongDangKy(string _Idx)
-        {
-            AutoTinhMaYTe();
-            DangKy_Id = _Idx;
-            DataTable LoadThongTinDangKyKhamOnline = Model.DbTiepNhan.LoadThongTinDangKyKhamOnline(_Idx);
-            if (LoadThongTinDangKyKhamOnline.Rows.Count > 0)
-            {
-                txtHoTen.Text = LoadThongTinDangKyKhamOnline.Rows[0]["TenBenhNhan"].ToString();
-                txtSoDienThoai.Text = LoadThongTinDangKyKhamOnline.Rows[0]["SoDienThoai"].ToString();
+                The_Id = LoadThongTinBenhNhan_The.Rows[0]["The_Id"].ToString();
+                txtSoThe.Text = LoadThongTinBenhNhan_The.Rows[0]["SoThe"].ToString();
+
+                string NgayHieuLuc = LoadThongTinBenhNhan_The.Rows[0]["NgayHieuLuc"].ToString();
+                if (!String.IsNullOrEmpty(NgayHieuLuc))
+                {
+                    DateTime enteredDate = DateTime.Parse(NgayHieuLuc);
+                    txtHieuLuc.Value = enteredDate;
+                }
+
+                //string NguoiGioiThieu = LoadThongTinBenhNhan_The.Rows[0]["NhanVienGioiThieu_Id"].ToString();
+                //if (!String.IsNullOrEmpty(NguoiGioiThieu))
+                //{
+                //    cbbNVGioiThieu.Value = Int32.Parse(LoadThongTinBenhNhan_The.Rows[0]["NhanVienGioiThieu_Id"].ToString());
+                //}
+
+                if (!string.IsNullOrEmpty(The_Id) || The_Id != "")
+                {
+                    LoadThongTinTrongTheTheoId(The_Id);
+                }
+
             }
+
             txtHoTen.Focus();
-        }
+        }      
 
         public void Hien()
         {
@@ -251,6 +244,7 @@ namespace KClinic2._1.View.TiepNhan
             pnNhomBenh.Enabled = true;
             pnNhanVien.Enabled = true;
             pnThoiGianTiepNhan.Enabled = true;
+            txtThoiGianTiepNhan.Enabled = true;
             pnDichVu.Enabled = true;
             btn_S.Enabled = true;
             btnThemNhomBenh.Enabled = true;
@@ -260,6 +254,13 @@ namespace KClinic2._1.View.TiepNhan
             txtNgaySinh.Enabled = true;
             cbbDoiTuong.Enabled = true;
             CbbPTuVan.Enabled = true;
+
+            cbbNVGioiThieu.Enabled = true;
+            txtChietKhau.Enabled = true;
+            cbbphongban.Enabled = true;
+            gridDichVu_The.Enabled = true;
+            txtSoThe.Enabled = true;
+            txtHieuLuc.Enabled = false;
         }
 
         public void An()
@@ -281,6 +282,14 @@ namespace KClinic2._1.View.TiepNhan
             txtNgaySinh.Enabled = false;
             cbbDoiTuong.Enabled = false;
             CbbPTuVan.Enabled = false;
+
+            txtThoiGianTiepNhan.Enabled = false;
+            cbbNVGioiThieu.Enabled = false;
+            txtChietKhau.Enabled = false;
+            cbbphongban.Enabled = false;
+            gridDichVu_The.Enabled = false;
+            txtSoThe.Enabled = false;
+            txtHieuLuc.Enabled = false;
         }
 
         public void Reset()
@@ -298,28 +307,15 @@ namespace KClinic2._1.View.TiepNhan
             txtZaloID.Text = "";
             CbbPTuVan.Text = "";
             txtThoiGianTiepNhan.Value = DateTime.Now;
+            
+            txtSoThe.Text = "";
+            cbbNVGioiThieu.Text = "";
 
             DataTable HoanTatClsYeuCauPhienDangNhap = Model.DbTiepNhan.HoanTatClsYeuCauPhienDangNhap(Login.PhienDangNhap_Id);
             gridDichVu.DataSource = null;
+            gridDichVu_The.DataSource = null;
 
             gettongtien();
-        }
-
-        private void cbbNhomBenh_KeyDown(object sender, KeyEventArgs e)
-        {
-            string text = cbbNhomBenh.Text;
-            DataRow[] resultRow = Dm_NhomBenh.Select("TenNhomBenh LIKE '%" + text + "%'");
-            if (resultRow.Count() > 0)
-            {
-                DataTable dtResult = Dm_NhomBenh.Select("TenNhomBenh LIKE '%" + text + "%'").CopyToDataTable();
-                cbbNhomBenh.DataSource = dtResult;
-                cbbNhomBenh.DroppedDown = true;
-            }
-            else
-            {
-                cbbNhomBenh.DataSource = null;
-                cbbNhomBenh.DroppedDown = true;
-            }
         }
 
         private void cbbNhanVien_KeyDown(object sender, KeyEventArgs e)
@@ -360,7 +356,8 @@ namespace KClinic2._1.View.TiepNhan
             CLSYeuCau_Id = "";
             Reset();
             MaYTe = ""; SoVaoVien = ""; CMND = ""; BHYT = "";
-            txtHoTen.Focus();
+
+            txtSoThe.Focus();
         }
 
         void AutoTinhMaYTe()
@@ -392,24 +389,34 @@ namespace KClinic2._1.View.TiepNhan
             CLSYeuCau_Id = "";
             txtHoTen.Focus();
             //
-            LoadThongTinBenhNhanDaTiepNhan();
+            LoadThongTinBenhNhanDaTiepNhan_The();
         }
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
+            if (txtSoThe.Text.Trim() == "")
+            {
+                XtraMessageBox.Show("Thẻ thành viên không được để trống!", "Thông Báo");
+                txtSoThe.Focus();
+                return;
+            }
+
             if (txtHoTen.Text == "")
             {
-                XtraMessageBox.Show("Họ Tên không được để trống!");
+                XtraMessageBox.Show("Họ Tên không được để trống!", "Thông Báo");
+                txtHoTen.Focus();
                 return;
             }
             else if (txtNamSinh.Text == "")
             {
-                XtraMessageBox.Show("Năm sinh không được để trống!");
+                XtraMessageBox.Show("Năm sinh không được để trống!", "Thông Báo");
+                txtNamSinh.Focus();
                 return;
             }
             if (cbbGioiTinh.SelectedItem == null)
             {
-                XtraMessageBox.Show("Giới tính không được để trống!");
+                XtraMessageBox.Show("Giới tính không được để trống!", "Thông Báo");
+                cbbGioiTinh.Focus();
                 return;
             }
             else
@@ -452,6 +459,9 @@ namespace KClinic2._1.View.TiepNhan
                         NoiLamViec = Login.PhongBan_Id;
                     }
                 }
+
+                string NguoiGioiThieu = "null";
+                if (cbbNVGioiThieu.SelectedItem != null) { NguoiGioiThieu = cbbNVGioiThieu.Value.ToString(); }
 
                 string Zalo_Id = "null";
                 if (txtZaloID.Text != "") { Zalo_Id = "N'" + txtZaloID.Text.Replace("'", "''") + "'"; }
@@ -516,6 +526,8 @@ namespace KClinic2._1.View.TiepNhan
                             , DoiTuong_Id
                             , HopDong_Id
                             , PhongTuVan_Id
+                            , The_Id
+                            , NguoiGioiThieu
                             );
                         if (Insert_TiepNhan.Rows.Count > 0)
                         {
@@ -550,7 +562,7 @@ namespace KClinic2._1.View.TiepNhan
                             }
                             DataTable HoanTatClsYeuCauPhienDangNhap = Model.DbTiepNhan.HoanTatClsYeuCauPhienDangNhap(Login.PhienDangNhap_Id);
                             //
-                            LoadThongTinBenhNhanDaTiepNhan();
+                            LoadThongTinBenhNhanDaTiepNhan_The();
                         }
 
                         //
@@ -606,6 +618,8 @@ namespace KClinic2._1.View.TiepNhan
                             , DoiTuong_Id
                             , HopDong_Id
                             , PhongTuVan_Id
+                            , The_Id
+                            , NguoiGioiThieu
                             );
                         if (Insert_TiepNhan.Rows.Count > 0)
                         {
@@ -640,7 +654,7 @@ namespace KClinic2._1.View.TiepNhan
                             }
                             DataTable HoanTatClsYeuCauPhienDangNhap = Model.DbTiepNhan.HoanTatClsYeuCauPhienDangNhap(Login.PhienDangNhap_Id);
                             //
-                            LoadThongTinBenhNhanDaTiepNhan();
+                            LoadThongTinBenhNhanDaTiepNhan_The();
                         }
 
                         //
@@ -707,6 +721,8 @@ namespace KClinic2._1.View.TiepNhan
                             , DoiTuong_Id
                             , HopDong_Id
                             , PhongTuVan_Id
+                            , The_Id
+                            , NguoiGioiThieu
                             );
                     if (Update_TiepNhan.Rows.Count > 0)
                     {
@@ -741,7 +757,7 @@ namespace KClinic2._1.View.TiepNhan
                         }
                         DataTable HoanTatClsYeuCauPhienDangNhap = Model.DbTiepNhan.HoanTatClsYeuCauPhienDangNhap(Login.PhienDangNhap_Id);
                         //
-                        LoadThongTinBenhNhanDaTiepNhan();
+                        LoadThongTinBenhNhanDaTiepNhan_The();
                     }
                     //
                     alertControl1.Show(this, "Thông báo", "Đã sửa thành công bệnh nhân " + TenBenhNhan, "");
@@ -943,7 +959,7 @@ namespace KClinic2._1.View.TiepNhan
             else
             {
                 LoadThongTinBenhNhanDaTiepNhanButton();
-                LoadThongTinBenhNhanDaTiepNhan();
+                LoadThongTinBenhNhanDaTiepNhan_The();
             }
         }
 
@@ -1230,7 +1246,131 @@ namespace KClinic2._1.View.TiepNhan
 
         private void repositoryItemButtonEdit1_Click(object sender, EventArgs e)
         {
-            string a = "aa";
+            int SoLuongConLai = int.Parse(gridView2.GetFocusedRowCellValue("SoLuongConLai").ToString());
+            
+            if (SoLuongConLai <= 0)
+            {
+                XtraMessageBox.Show("Số lần sử dụng dịch vụ này của thẻ đã hết!", "Thông Báo");
+                return;
+            }
+
+            string DichVuId = gridView2.GetFocusedRowCellValue("DichVu_Id").ToString();
+
+            string Phongban_id = Login.PhongBan_Id;
+
+            //t = cbbDV.Value.ToString();
+
+            PhongBan = Model.DbTiepNhan.CBBPhongBan(DichVuId);
+            if (PhongBan != null)
+            {
+                if (PhongBan.Rows.Count > 0)
+                {
+                    cbbphongban.DataSource = PhongBan;
+
+                    cbbphongban.ValueMember = "PhongBan_Id";
+                    cbbphongban.DisplayMember = "TenPhongBan";
+
+                    int firstRowValue = (int)PhongBan.Rows[0]["PhongBan_Id"];
+                    cbbphongban.Value = firstRowValue.ToString();
+                    
+                    Phongban_id = PhongBan.Rows[0]["PhongBan_Id"].ToString();
+                }
+            }
+
+            DataTable Dm_DichVu_DonGia = Model.DbTiepNhan.Dm_DichVu_DonGia(DichVuId);
+            string GiaDichVu = Dm_DichVu_DonGia.Rows[0]["GiaDichVu"].ToString();
+
+            string ChietKhauPhanTram = "null";
+            string GiaTriChietKhau = "null";
+
+            ChietKhauPhanTram = "100";
+            GiaTriChietKhau = ((Decimal.Parse(GiaDichVu) * Decimal.Parse(ChietKhauPhanTram)) / 100).ToString();
+
+            //
+            DataTable InsertCLSYeuCau = Model.DbTiepNhan.InsertCLSYeuCau(
+                              "null"
+                            , "'" + DateTime.Now.ToString("yyyyMMdd") + "'"
+                            , "'" + DateTime.Now.ToString("yyyyMMdd HH:mm:ss") + "'"
+                            , "null"
+                            , "null"
+                            , DichVuId
+                            , "1"
+                            , GiaDichVu
+                            , ChietKhauPhanTram
+                            , GiaTriChietKhau
+                            , "null"
+                            , "1" //DuocPhepThucHien
+                            , "ChuaThucHien"
+                            , Login.User_Id
+                            , Login.User_Id
+                            , "'" + DateTime.Now.ToString("yyyyMMdd HH:mm:ss") + "'"
+                            , "null"
+                            , "null"
+                            , "0"
+                            , "null"
+                            , Phongban_id
+                            , The_Id
+                            );
+            if (InsertCLSYeuCau.Rows.Count > 0)
+            {
+                CLSYeuCau_Id = InsertCLSYeuCau.Rows[0][0].ToString();
+                CLSYeuCauCha_Id = InsertCLSYeuCau.Rows[0][0].ToString();
+            }
+            DataTable InsertCLSYeuCau_PhieuDangNhap = Model.DbTiepNhan.InsertCLSYeuCau_PhieuDangNhap(
+                Login.PhienDangNhap_Id
+                , CLSYeuCau_Id
+                , DichVuId
+                , "N'" + "Them" + "'"
+                );
+            //thêm phiếu yêu cầu cho dịch vụ cấp dưới
+            DataTable CheckDichVuCapDuoi = Model.DbTiepNhan.CheckDichVuCapDuoi(DichVuId);
+            if (CheckDichVuCapDuoi != null)
+            {
+                if (CheckDichVuCapDuoi.Rows.Count > 0)
+                {
+                    for (int j = 0; j < CheckDichVuCapDuoi.Rows.Count; j++)
+                    {
+                        DataTable InsertCLSYeuCauCapDuoi = Model.DbTiepNhan.InsertCLSYeuCau(
+                              "null"
+                            , "'" + DateTime.Now.ToString("yyyyMMdd") + "'"
+                            , "'" + DateTime.Now.ToString("yyyyMMdd HH:mm:ss") + "'"
+                            , "null"
+                            , "null"
+                            , CheckDichVuCapDuoi.Rows[j]["Dich_Id"].ToString()
+                            , "1"
+                            , "0" //set giá dịch vụ = 0
+                            , "null" //ty le chiet khau
+                            , "null" //tien chiet khau
+                            , "null"
+                            , "1" //DuocPhepThucHien
+                            , "ChuaThucHien"
+                            , Login.User_Id
+                            , Login.User_Id
+                            , "'" + DateTime.Now.ToString("yyyyMMdd HH:mm:ss") + "'"
+                            , "null"
+                            , "null"
+                            , "0"
+                            , CLSYeuCauCha_Id
+                            , Phongban_id
+                            , The_Id
+                            );
+                        if (InsertCLSYeuCauCapDuoi.Rows.Count > 0)
+                        {
+                            CLSYeuCau_Id = InsertCLSYeuCauCapDuoi.Rows[0][0].ToString();
+                        }
+                        DataTable InsertCLSYeuCau_PhieuDangNhapCapDuoi = Model.DbTiepNhan.InsertCLSYeuCau_PhieuDangNhap(
+                            Login.PhienDangNhap_Id
+                            , CLSYeuCau_Id
+                            , CheckDichVuCapDuoi.Rows[j]["Dich_Id"].ToString()
+                            , "N'" + "Them" + "'"
+                            );
+                    }
+                }
+            }
+            //
+            DataTable SelectClsyeucauPhienDangNhap = Model.DbTiepNhan.SelectClsyeucauPhienDangNhap(Login.PhienDangNhap_Id);
+            gridDichVu.DataSource = SelectClsyeucauPhienDangNhap;
+            gettongtien();
         }
 
         private void LoadThongTinTrongTheTheoId(string _The_Id)
@@ -1240,27 +1380,30 @@ namespace KClinic2._1.View.TiepNhan
 
             txtSoThe.Text = SelectDanhSachTheThanhVienTheoId.Rows[0]["SoThe"].ToString();
 
+            string _BenhNhan_Id = "null";
+            if (BenhNhan_Id != "") { _BenhNhan_Id = "N'" + BenhNhan_Id.Replace("'", "''") + "'"; }
+
             //load thong tin trong the
-            DataTable LoadThongTinTrongTheTheoId = Model.dbDanhMuc.LoadThongTinTrongTheTheoId(_The_Id);
-            if (LoadThongTinTrongTheTheoId.Rows.Count > 0)
+            DataTable LoadThongTinTrongTheTheoId_TiepNhan = Model.DbTiepNhan.LoadThongTinTrongTheTheoId_TiepNhan(_The_Id, _BenhNhan_Id);
+            if (LoadThongTinTrongTheTheoId_TiepNhan.Rows.Count > 0)
             {
                 //load benh nhan
-                txtMaYTe.Text = LoadThongTinTrongTheTheoId.Rows[0]["MaYTe"].ToString();
-                txtHoTen.Text = LoadThongTinTrongTheTheoId.Rows[0]["TenBenhNhan"].ToString();
-                string GioiTinh = LoadThongTinTrongTheTheoId.Rows[0]["GioiTinh"].ToString();
+                txtMaYTe.Text = LoadThongTinTrongTheTheoId_TiepNhan.Rows[0]["MaYTe"].ToString();
+                txtHoTen.Text = LoadThongTinTrongTheTheoId_TiepNhan.Rows[0]["TenBenhNhan"].ToString();
+                string GioiTinh = LoadThongTinTrongTheTheoId_TiepNhan.Rows[0]["GioiTinh"].ToString();
                 if (!String.IsNullOrEmpty(GioiTinh))
                 {
-                    cbbGioiTinh.Value = Int32.Parse(LoadThongTinTrongTheTheoId.Rows[0]["GioiTinh"].ToString());
+                    cbbGioiTinh.Value = Int32.Parse(LoadThongTinTrongTheTheoId_TiepNhan.Rows[0]["GioiTinh"].ToString());
                 }
-                txtNamSinh.Text = LoadThongTinTrongTheTheoId.Rows[0]["NamSinh"].ToString();
-                txtSoDienThoai.Text = LoadThongTinTrongTheTheoId.Rows[0]["SoDienThoai"].ToString();
+                txtNamSinh.Text = LoadThongTinTrongTheTheoId_TiepNhan.Rows[0]["NamSinh"].ToString();
+                txtSoDienThoai.Text = LoadThongTinTrongTheTheoId_TiepNhan.Rows[0]["SoDienThoai"].ToString();
 
-                The_Id = LoadThongTinTrongTheTheoId.Rows[0]["The_Id"].ToString();
-                BenhNhan_Id = LoadThongTinTrongTheTheoId.Rows[0]["BenhNhan_Id"].ToString();
+                The_Id = LoadThongTinTrongTheTheoId_TiepNhan.Rows[0]["The_Id"].ToString();
+                BenhNhan_Id = LoadThongTinTrongTheTheoId_TiepNhan.Rows[0]["BenhNhan_Id"].ToString();
             }
 
             //load dich vu
-            gridDichVu_The.DataSource = LoadThongTinTrongTheTheoId;
+            gridDichVu_The.DataSource = LoadThongTinTrongTheTheoId_TiepNhan;
 
             for (int i = 0; i < gridView2.RowCount; i++)
             {
@@ -1294,32 +1437,58 @@ namespace KClinic2._1.View.TiepNhan
         {
             if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
             {
-                DataTable LoadThongTinBenhNhan = Model.DbTiepNhan.LoadThongTinBenhNhanTheoMaYTe(txtMaYTe.Text);
-                if (LoadThongTinBenhNhan.Rows.Count > 0)
-                {
-                    txtMaYTe.Text = LoadThongTinBenhNhan.Rows[0]["MaYTe"].ToString();
-                    MaYTe = LoadThongTinBenhNhan.Rows[0]["MaYTe"].ToString();
-                    SoVaoVien = LoadThongTinBenhNhan.Rows[0]["SoVaoVien"].ToString();
-                    txtHoTen.Text = LoadThongTinBenhNhan.Rows[0]["TenBenhNhan"].ToString();
-                    cbbGioiTinh.Value = Int32.Parse(LoadThongTinBenhNhan.Rows[0]["GioiTinh"].ToString());
-                    txtNamSinh.Text = LoadThongTinBenhNhan.Rows[0]["NamSinh"].ToString();
-                    //txtCMND.Text = LoadThongTinBenhNhan.Rows[0]["CMND"].ToString();
-                    txtSoDienThoai.Text = LoadThongTinBenhNhan.Rows[0]["SoDienThoai"].ToString();
-                    txtDiaChi.Text = LoadThongTinBenhNhan.Rows[0]["DiaChiChiTiet"].ToString();
-                    BenhNhan_Id = LoadThongTinBenhNhan.Rows[0]["BenhNhan_Id"].ToString();
-                    txtZaloID.Text = LoadThongTinBenhNhan.Rows[0]["Zalo_Id"].ToString();
-                    CMND = LoadThongTinBenhNhan.Rows[0]["CMND"].ToString();
-                    BHYT = LoadThongTinBenhNhan.Rows[0]["BHYT"].ToString();
-                }
-                else
-                {
-                    MessageBox.Show("Mã Y Tế Không tồn tại! Vui lòng kiểm tra lại.");
-                }
+                LoadThongTinBenhNhanTheoMaYTe_The();
+
                 if (e.KeyCode == Keys.Tab && e.Shift)
                 {
                     MoveFocusToPreviousTextbox();
                     e.SuppressKeyPress = true;
                 }
+            }
+        }
+
+        private void LoadThongTinBenhNhanTheoMaYTe_The()
+        {
+            if (txtMaYTe.Text == "")
+            {
+                XtraMessageBox.Show("Mã Y Tế Không tồn tại! Vui lòng kiểm tra lại.");
+                return;
+            }
+
+            DataTable LoadThongTinBenhNhan_The = Model.DbTiepNhan.LoadThongTinBenhNhanTheoMaYTe_The(txtMaYTe.Text);
+            if (LoadThongTinBenhNhan_The.Rows.Count > 0)
+            {
+                txtMaYTe.Text = LoadThongTinBenhNhan_The.Rows[0]["MaYTe"].ToString();
+                MaYTe = LoadThongTinBenhNhan_The.Rows[0]["MaYTe"].ToString();
+                SoVaoVien = LoadThongTinBenhNhan_The.Rows[0]["SoVaoVien"].ToString();
+                txtHoTen.Text = LoadThongTinBenhNhan_The.Rows[0]["TenBenhNhan"].ToString();
+                cbbGioiTinh.Value = Int32.Parse(LoadThongTinBenhNhan_The.Rows[0]["GioiTinh"].ToString());
+                txtNamSinh.Text = LoadThongTinBenhNhan_The.Rows[0]["NamSinh"].ToString();
+                txtSoDienThoai.Text = LoadThongTinBenhNhan_The.Rows[0]["SoDienThoai"].ToString();
+                txtDiaChi.Text = LoadThongTinBenhNhan_The.Rows[0]["DiaChiChiTiet"].ToString();
+                BenhNhan_Id = LoadThongTinBenhNhan_The.Rows[0]["BenhNhan_Id"].ToString();
+                txtZaloID.Text = LoadThongTinBenhNhan_The.Rows[0]["Zalo_Id"].ToString();
+                CMND = LoadThongTinBenhNhan_The.Rows[0]["CMND"].ToString();
+                BHYT = LoadThongTinBenhNhan_The.Rows[0]["BHYT"].ToString();
+
+                The_Id = LoadThongTinBenhNhan_The.Rows[0]["The_Id"].ToString();
+                txtSoThe.Text = LoadThongTinBenhNhan_The.Rows[0]["SoThe"].ToString();
+
+                string NgayHieuLuc = LoadThongTinBenhNhan_The.Rows[0]["NgayHieuLuc"].ToString();
+                if (!String.IsNullOrEmpty(NgayHieuLuc))
+                {
+                    DateTime enteredDate = DateTime.Parse(NgayHieuLuc);
+                    txtHieuLuc.Value = enteredDate;
+                }
+
+                if (!string.IsNullOrEmpty(The_Id) || The_Id != "")
+                {
+                    LoadThongTinTrongTheTheoId(The_Id);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Mã Y Tế Không tồn tại! Vui lòng kiểm tra lại.");
             }
         }
 
@@ -1357,11 +1526,6 @@ namespace KClinic2._1.View.TiepNhan
                     e.Appearance.ForeColor = Color.FromArgb(236, 240, 241);
                 }
             }
-        }
-
-        private void txtSoDienThoai_KeyDown(object sender, KeyEventArgs e)
-        {
-
         }
 
         private void txtSoDienThoai_KeyPress(object sender, KeyPressEventArgs e)
@@ -1497,10 +1661,7 @@ namespace KClinic2._1.View.TiepNhan
                         //cbbphongban.Value = cbbphongban.ValueMember.ToString().Min(); 
                         int firstRowValue = (int)PhongBan.Rows[0]["PhongBan_Id"];
                         cbbphongban.Value = firstRowValue.ToString();
-
-
                     }
-
                 }
 
                 if (autoClickDichVu == "1")
@@ -1692,6 +1853,59 @@ namespace KClinic2._1.View.TiepNhan
             }
             txtThanhTien.Text = "";
             txtThanhTien.Text = Tong.ToString("#,##0") + " VNĐ";
+        }
+
+        private void txtSoThe_Validated(object sender, EventArgs e)
+        {
+            if (txtSoThe.Text.Trim() != "")
+            {
+                //load the
+                string SoThe = "N'" + txtSoThe.Text.Trim().Replace("'", "''") + "'";
+
+                DataTable SelectTheThanhVienIdTheoSoThe = Model.DbTiepNhan.SelectTheThanhVienIdTheoSoThe(SoThe);
+
+                txtMaYTe.Text = "";
+
+                if (SelectTheThanhVienIdTheoSoThe != null)
+                {
+                    if (SelectTheThanhVienIdTheoSoThe.Rows.Count > 0)
+                    {
+                        The_Id = SelectTheThanhVienIdTheoSoThe.Rows[0]["The_Id"].ToString();
+                        BenhNhan_Id = SelectTheThanhVienIdTheoSoThe.Rows[0]["BenhNhan_Id"].ToString();
+                        MaYTe = SelectTheThanhVienIdTheoSoThe.Rows[0]["MaYTe"].ToString();
+                        txtMaYTe.Text = SelectTheThanhVienIdTheoSoThe.Rows[0]["MaYTe"].ToString(); ;
+                    }
+                    else
+                    {
+                        XtraMessageBox.Show("Thẻ thành viên không tồn tại!", "Thông Báo");
+                        return;
+                    }
+                }
+                else
+                {
+                    XtraMessageBox.Show("Thẻ thành viên không tồn tại!", "Thông Báo");
+                    return;
+                }
+
+                LoadThongTinBenhNhanTheoMaYTe_The();
+            }
+            else
+            {
+                Reset();
+            }
+        }
+
+        private void txtSoThe_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+            {
+                
+            }
+        }
+
+        private void txtHieuLuc_ValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

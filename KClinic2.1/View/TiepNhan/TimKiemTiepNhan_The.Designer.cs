@@ -57,6 +57,8 @@ namespace KClinic2._1.View.TiepNhan
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtSoThe = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridDS)).BeginInit();
             this.panel3.SuspendLayout();
@@ -70,7 +72,7 @@ namespace KClinic2._1.View.TiepNhan
             this.stn.AutoSize = true;
             this.stn.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.stn.ForeColor = System.Drawing.Color.Black;
-            this.stn.Location = new System.Drawing.Point(56, 66);
+            this.stn.Location = new System.Drawing.Point(56, 111);
             this.stn.Name = "stn";
             this.stn.Size = new System.Drawing.Size(118, 22);
             this.stn.TabIndex = 41;
@@ -80,11 +82,11 @@ namespace KClinic2._1.View.TiepNhan
             // 
             this.txtSoTiepNhan.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSoTiepNhan.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSoTiepNhan.Location = new System.Drawing.Point(213, 63);
+            this.txtSoTiepNhan.Location = new System.Drawing.Point(213, 108);
             this.txtSoTiepNhan.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtSoTiepNhan.Name = "txtSoTiepNhan";
             this.txtSoTiepNhan.Size = new System.Drawing.Size(631, 30);
-            this.txtSoTiepNhan.TabIndex = 61;
+            this.txtSoTiepNhan.TabIndex = 3;
             this.txtSoTiepNhan.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTimKiem_KeyDown);
             // 
             // dtmDenNgay
@@ -92,11 +94,11 @@ namespace KClinic2._1.View.TiepNhan
             this.dtmDenNgay.CustomFormat = "dd/MM/yyyy";
             this.dtmDenNgay.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtmDenNgay.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtmDenNgay.Location = new System.Drawing.Point(709, 25);
+            this.dtmDenNgay.Location = new System.Drawing.Point(451, 21);
             this.dtmDenNgay.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dtmDenNgay.Name = "dtmDenNgay";
             this.dtmDenNgay.Size = new System.Drawing.Size(135, 30);
-            this.dtmDenNgay.TabIndex = 60;
+            this.dtmDenNgay.TabIndex = 1;
             this.dtmDenNgay.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTimKiem_KeyDown);
             // 
             // DenNgay
@@ -105,7 +107,7 @@ namespace KClinic2._1.View.TiepNhan
             this.DenNgay.AutoSize = true;
             this.DenNgay.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DenNgay.ForeColor = System.Drawing.Color.Black;
-            this.DenNgay.Location = new System.Drawing.Point(555, 25);
+            this.DenNgay.Location = new System.Drawing.Point(357, 25);
             this.DenNgay.Name = "DenNgay";
             this.DenNgay.Size = new System.Drawing.Size(88, 22);
             this.DenNgay.TabIndex = 60;
@@ -120,7 +122,7 @@ namespace KClinic2._1.View.TiepNhan
             this.dtmTuNgay.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dtmTuNgay.Name = "dtmTuNgay";
             this.dtmTuNgay.Size = new System.Drawing.Size(135, 30);
-            this.dtmTuNgay.TabIndex = 59;
+            this.dtmTuNgay.TabIndex = 0;
             this.dtmTuNgay.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTimKiem_KeyDown);
             // 
             // TuNgay
@@ -139,11 +141,11 @@ namespace KClinic2._1.View.TiepNhan
             // 
             this.txtSDT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSDT.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSDT.Location = new System.Drawing.Point(613, 199);
+            this.txtSDT.Location = new System.Drawing.Point(613, 244);
             this.txtSDT.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtSDT.Name = "txtSDT";
             this.txtSDT.Size = new System.Drawing.Size(231, 30);
-            this.txtSDT.TabIndex = 65;
+            this.txtSDT.TabIndex = 7;
             this.txtSDT.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTimKiem_KeyDown);
             // 
             // label3
@@ -152,7 +154,7 @@ namespace KClinic2._1.View.TiepNhan
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(451, 206);
+            this.label3.Location = new System.Drawing.Point(482, 249);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(125, 22);
             this.label3.TabIndex = 45;
@@ -164,7 +166,7 @@ namespace KClinic2._1.View.TiepNhan
             this.TenBN.AutoSize = true;
             this.TenBN.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TenBN.ForeColor = System.Drawing.Color.Black;
-            this.TenBN.Location = new System.Drawing.Point(56, 152);
+            this.TenBN.Location = new System.Drawing.Point(56, 197);
             this.TenBN.Name = "TenBN";
             this.TenBN.Size = new System.Drawing.Size(131, 22);
             this.TenBN.TabIndex = 43;
@@ -174,11 +176,11 @@ namespace KClinic2._1.View.TiepNhan
             // 
             this.txtTenBN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtTenBN.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTenBN.Location = new System.Drawing.Point(213, 149);
+            this.txtTenBN.Location = new System.Drawing.Point(213, 194);
             this.txtTenBN.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtTenBN.Name = "txtTenBN";
             this.txtTenBN.Size = new System.Drawing.Size(631, 30);
-            this.txtTenBN.TabIndex = 63;
+            this.txtTenBN.TabIndex = 5;
             this.txtTenBN.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTimKiem_KeyDown);
             // 
             // namsinh
@@ -187,7 +189,7 @@ namespace KClinic2._1.View.TiepNhan
             this.namsinh.AutoSize = true;
             this.namsinh.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.namsinh.ForeColor = System.Drawing.Color.Black;
-            this.namsinh.Location = new System.Drawing.Point(56, 207);
+            this.namsinh.Location = new System.Drawing.Point(56, 252);
             this.namsinh.Name = "namsinh";
             this.namsinh.Size = new System.Drawing.Size(87, 22);
             this.namsinh.TabIndex = 44;
@@ -197,20 +199,20 @@ namespace KClinic2._1.View.TiepNhan
             // 
             this.txtNamSinh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtNamSinh.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNamSinh.Location = new System.Drawing.Point(213, 199);
+            this.txtNamSinh.Location = new System.Drawing.Point(213, 244);
             this.txtNamSinh.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtNamSinh.Name = "txtNamSinh";
             this.txtNamSinh.Size = new System.Drawing.Size(230, 30);
-            this.txtNamSinh.TabIndex = 64;
+            this.txtNamSinh.TabIndex = 6;
             this.txtNamSinh.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTimKiem_KeyDown);
             // 
             // btnTimKiem
             // 
-            this.btnTimKiem.Location = new System.Drawing.Point(415, 247);
+            this.btnTimKiem.Location = new System.Drawing.Point(415, 292);
             this.btnTimKiem.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnTimKiem.Name = "btnTimKiem";
             this.btnTimKiem.Size = new System.Drawing.Size(230, 32);
-            this.btnTimKiem.TabIndex = 66;
+            this.btnTimKiem.TabIndex = 10;
             this.btnTimKiem.Text = "Tìm kiếm";
             this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
             // 
@@ -218,11 +220,11 @@ namespace KClinic2._1.View.TiepNhan
             // 
             this.txtMaYTe.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtMaYTe.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMaYTe.Location = new System.Drawing.Point(213, 106);
+            this.txtMaYTe.Location = new System.Drawing.Point(213, 151);
             this.txtMaYTe.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtMaYTe.Name = "txtMaYTe";
             this.txtMaYTe.Size = new System.Drawing.Size(631, 30);
-            this.txtMaYTe.TabIndex = 62;
+            this.txtMaYTe.TabIndex = 4;
             this.txtMaYTe.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTimKiem_KeyDown);
             // 
             // label5
@@ -231,7 +233,7 @@ namespace KClinic2._1.View.TiepNhan
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(56, 110);
+            this.label5.Location = new System.Drawing.Point(56, 155);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(79, 22);
             this.label5.TabIndex = 42;
@@ -348,7 +350,7 @@ namespace KClinic2._1.View.TiepNhan
             this.gridDS.MainView = this.gridView1;
             this.gridDS.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.gridDS.Name = "gridDS";
-            this.gridDS.Size = new System.Drawing.Size(1123, 268);
+            this.gridDS.Size = new System.Drawing.Size(1123, 228);
             this.gridDS.TabIndex = 67;
             this.gridDS.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -357,14 +359,16 @@ namespace KClinic2._1.View.TiepNhan
             // 
             this.panel3.Controls.Add(this.gridDS);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(0, 293);
+            this.panel3.Location = new System.Drawing.Point(0, 333);
             this.panel3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1123, 268);
+            this.panel3.Size = new System.Drawing.Size(1123, 228);
             this.panel3.TabIndex = 1;
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.txtSoThe);
             this.panel2.Controls.Add(this.stn);
             this.panel2.Controls.Add(this.txtSoTiepNhan);
             this.panel2.Controls.Add(this.dtmDenNgay);
@@ -384,7 +388,7 @@ namespace KClinic2._1.View.TiepNhan
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1123, 293);
+            this.panel2.Size = new System.Drawing.Size(1123, 333);
             this.panel2.TabIndex = 0;
             // 
             // panel1
@@ -397,6 +401,29 @@ namespace KClinic2._1.View.TiepNhan
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1123, 561);
             this.panel1.TabIndex = 3;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(56, 70);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(59, 22);
+            this.label1.TabIndex = 67;
+            this.label1.Text = "Số thẻ";
+            // 
+            // txtSoThe
+            // 
+            this.txtSoThe.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtSoThe.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSoThe.Location = new System.Drawing.Point(213, 67);
+            this.txtSoThe.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtSoThe.Name = "txtSoThe";
+            this.txtSoThe.Size = new System.Drawing.Size(631, 30);
+            this.txtSoThe.TabIndex = 2;
+            this.txtSoThe.Tag = "";
             // 
             // TimKiemTiepNhan_The
             // 
@@ -448,5 +475,7 @@ namespace KClinic2._1.View.TiepNhan
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtSoThe;
     }
 }
