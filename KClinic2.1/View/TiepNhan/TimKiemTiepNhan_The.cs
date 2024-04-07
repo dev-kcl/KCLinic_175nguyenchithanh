@@ -23,14 +23,15 @@ namespace KClinic2._1.View.TiepNhan
 
         private void TimKiemTiepNhan_The_Load(object sender, EventArgs e)
         {
-            dtmTuNgay.Focus();
-            DataTable Search_TiepNhan = Model.db.Search_TiepNhan(txtSoTiepNhan.Text, dtmTuNgay.Value, dtmDenNgay.Value, txtMaYTe.Text, txtTenBN.Text, txtNamSinh.Text, txtSDT.Text);
+            txtSoThe.Focus();
+
+            DataTable Search_TiepNhan = Model.db.Search_TiepNhan_The(txtSoTiepNhan.Text, dtmTuNgay.Value, dtmDenNgay.Value, txtMaYTe.Text, txtTenBN.Text, txtNamSinh.Text, txtSDT.Text, txtSoThe.Text);
             gridDS.DataSource = Search_TiepNhan;
         }
 
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
-            DataTable Search_TiepNhan = Model.db.Search_TiepNhan(txtSoTiepNhan.Text, dtmTuNgay.Value, dtmDenNgay.Value, txtMaYTe.Text, txtTenBN.Text, txtNamSinh.Text, txtSDT.Text);
+            DataTable Search_TiepNhan = Model.db.Search_TiepNhan_The(txtSoTiepNhan.Text, dtmTuNgay.Value, dtmDenNgay.Value, txtMaYTe.Text, txtTenBN.Text, txtNamSinh.Text, txtSDT.Text, txtSoThe.Text);
             gridDS.DataSource = Search_TiepNhan;
         }
 
@@ -38,7 +39,7 @@ namespace KClinic2._1.View.TiepNhan
         {
             if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
             {
-                DataTable Search_TiepNhan = Model.db.Search_TiepNhan(txtSoTiepNhan.Text, dtmTuNgay.Value, dtmDenNgay.Value, txtMaYTe.Text, txtTenBN.Text, txtNamSinh.Text, txtSDT.Text);
+                DataTable Search_TiepNhan = Model.db.Search_TiepNhan_The(txtSoTiepNhan.Text, dtmTuNgay.Value, dtmDenNgay.Value, txtMaYTe.Text, txtTenBN.Text, txtNamSinh.Text, txtSDT.Text, txtSoThe.Text);
                 gridDS.DataSource = Search_TiepNhan;
             }
         }
@@ -50,7 +51,7 @@ namespace KClinic2._1.View.TiepNhan
             {
                 tn.TiepNhan_Id = gridView1.GetRowCellValue(n, "TiepNhan_Id").ToString();
                 tn.LoadThongTinBenhNhanDaTiepNhanButton();
-                tn.LoadThongTinBenhNhanDaTiepNhan();
+                tn.LoadThongTinBenhNhanDaTiepNhan_The();
                 this.Hide();
             }
         }

@@ -91,6 +91,8 @@ namespace KClinic2._1.View.TheThanhVien
                     alertControl1.Show(this, "Thông báo", "Đã xóa thành công thẻ " + txtSoThe.Text, "");
                     Reset();
                     The_Id = "";
+                    MaYTe = "";
+                    SoVaoVien = "";
                     BenhNhan_Id = "";
                     TenBenhNhan = "";
 
@@ -248,6 +250,8 @@ namespace KClinic2._1.View.TheThanhVien
 
                         LoadThongTinTrongTheTheoId(The_Id);
                     }
+
+                    alertControl1.Show(this, "Thông báo", "Đã cập nhật thông tin thành công thẻ " + txtSoThe.Text, "");
                 }
 
                 DataTable ThemTheVaoPhienDangNhap = Model.dbDanhMuc.ThemTheVaoPhienDangNhap(Login.PhienDangNhap_Id, The_Id);
@@ -307,6 +311,7 @@ namespace KClinic2._1.View.TheThanhVien
                 {
                     MaYTe = AutoTinhMaYTe.Rows[0]["MaYTe"].ToString();
                     txtMaYTe.Text = AutoTinhMaYTe.Rows[0]["MaYTe"].ToString();
+                    SoVaoVien = AutoTinhMaYTe.Rows[0]["SoVaoVien"].ToString();
                 }
             }
         }
@@ -699,6 +704,10 @@ namespace KClinic2._1.View.TheThanhVien
             cbbNhomBenh.Text = "";
             cbbDV.Text = "";
             gridDichVu.DataSource = null;
+
+            The_Id = "";
+            MaYTe = "";
+            SoVaoVien = "";
 
             DataTable HoanTatClsYeuCauPhienDangNhap = Model.DbTiepNhan.HoanTatClsYeuCauPhienDangNhap(Login.PhienDangNhap_Id);
         }

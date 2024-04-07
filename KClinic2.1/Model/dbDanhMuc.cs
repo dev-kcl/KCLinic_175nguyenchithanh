@@ -4076,7 +4076,7 @@ namespace KClinic2._1.Model
             {
                 return null;
             }
-        }
+        }        
 
         public static DataTable CheckExistThongTinThe(string _SoThe)
         {

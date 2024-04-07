@@ -135,9 +135,11 @@ namespace KClinic2._1.Model
             , string _NguoiCapNhat
             , string _NgayCapNhat
             , string _Huy
-           , string _DoiTuong_Id
+            , string _DoiTuong_Id
             , string _HopDong_Id
-            ,string _PhongTuVan_Id
+            , string _PhongTuVan_Id
+            , string _The_Id = "null"
+            , string _NhanVienGioiThieu_Id = "null"
             )
         {
             try
@@ -164,9 +166,11 @@ namespace KClinic2._1.Model
                     + "@NguoiCapNhat = " + _NguoiCapNhat + ","
                     + "@NgayCapNhat = " + _NgayCapNhat + ","
                     + "@Huy = " + _Huy + ","
-                      + "@DoiTuong_Id = " + _DoiTuong_Id + ","
+                    + "@DoiTuong_Id = " + _DoiTuong_Id + ","
                     + "@HopDong_Id = " + _HopDong_Id + ","
-                    + "@PhongTuvan_Id = " + _PhongTuVan_Id
+                    + "@PhongTuvan_Id = " + _PhongTuVan_Id + ","
+                    + "@The_Id = " + _The_Id + ","
+                    + "@NhanVienGioiThieu_Id = " + _NhanVienGioiThieu_Id
                     ;
                 con.Open();
                 table1.Load(cmd_Show.ExecuteReader(CommandBehavior.CloseConnection));
@@ -234,6 +238,28 @@ namespace KClinic2._1.Model
                 return null;
             }
         }
+
+        public static DataTable LoadThongTinBenhNhan_The(string _BenhNhan_Id)
+        {
+            try
+            {
+                DataTable table1 = new DataTable();
+                SqlCommand cmd_Show = con.CreateCommand();
+                cmd_Show.CommandTimeout = timeout_connecttion;
+                cmd_Show.CommandText = "exec SP_002_TiepNhan @Action = N'LoadThongTinBenhNhan_The', "
+                    + "@BenhNhan_Id = " + _BenhNhan_Id
+                    ;
+                con.Open();
+                table1.Load(cmd_Show.ExecuteReader(CommandBehavior.CloseConnection));
+                con.Close();
+                return table1;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
         public static DataTable LoadThongTinDangKyKhamOnline(string _Idx)
         {
             try
@@ -274,6 +300,28 @@ namespace KClinic2._1.Model
                 return null;
             }
         }
+
+        public static DataTable LoadThongTinBenhNhanTheoMaYTe_The(string _SoVaoVien)
+        {
+            try
+            {
+                DataTable table1 = new DataTable();
+                SqlCommand cmd_Show = con.CreateCommand();
+                cmd_Show.CommandTimeout = timeout_connecttion;
+                cmd_Show.CommandText = "exec SP_002_TiepNhan @Action = N'LoadThongTinBenhNhanTheoMaYTe_The', "
+                    + "@MaYTe = N'" + _SoVaoVien + "'"
+                    ;
+                con.Open();
+                table1.Load(cmd_Show.ExecuteReader(CommandBehavior.CloseConnection));
+                con.Close();
+                return table1;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
         public static DataTable LoadThongTinBenhNhanTheoCMNDHoacBHYT(string _SoVaoVien)
         {
             try
@@ -314,6 +362,28 @@ namespace KClinic2._1.Model
                 return null;
             }
         }
+
+        public static DataTable LoadThongTinBenhNhanDaTiepNhan_The(string _TiepNhan_Id)
+        {
+            try
+            {
+                DataTable table1 = new DataTable();
+                SqlCommand cmd_Show = con.CreateCommand();
+                cmd_Show.CommandTimeout = timeout_connecttion;
+                cmd_Show.CommandText = "exec SP_002_TiepNhan @Action = N'LoadThongTinBenhNhanDaTiepNhan_The', "
+                    + "@IDx = " + _TiepNhan_Id
+                    ;
+                con.Open();
+                table1.Load(cmd_Show.ExecuteReader(CommandBehavior.CloseConnection));
+                con.Close();
+                return table1;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
         public static DataTable DeleteTiepNhan(string _TiepNhan_Id, string _NguoiCapNhat)
         {
             try
@@ -395,9 +465,11 @@ namespace KClinic2._1.Model
             , string _NguoiCapNhat
             , string _NgayCapNhat
             , string _Huy
-            ,string _DoiTuong_Id
-            ,string _HopDong_Id
-            ,string _PhongTuvan_Id
+            , string _DoiTuong_Id
+            , string _HopDong_Id
+            , string _PhongTuvan_Id
+            , string _The_Id = "null"
+            , string _NhanVienGioiThieu_Id = "null"
             )
         {
             try
@@ -425,9 +497,11 @@ namespace KClinic2._1.Model
                     + "@NguoiCapNhat = " + _NguoiCapNhat + ","
                     + "@NgayCapNhat = " + _NgayCapNhat + ","
                     + "@Huy = " + _Huy + ","
-                      + "@DoiTuong_Id = " + _DoiTuong_Id + ","
+                    + "@DoiTuong_Id = " + _DoiTuong_Id + ","
                     + "@HopDong_Id = " + _HopDong_Id + ","
-                    + "@PhongTuVan_Id = " + _PhongTuvan_Id
+                    + "@PhongTuVan_Id = " + _PhongTuvan_Id + ","
+                    + "@The_Id = " + _The_Id + ","
+                    + "@NhanVienGioiThieu_Id = " + _NhanVienGioiThieu_Id
                     ;
                 con.Open();
                 table1.Load(cmd_Show.ExecuteReader(CommandBehavior.CloseConnection));
@@ -579,6 +653,7 @@ namespace KClinic2._1.Model
             , string _Huy
             , string _CLSYeuCau_Cha_Id
             , string _PhongBan_Id
+            , string _The_Id = "null"
             )
         {
             try
@@ -607,7 +682,8 @@ namespace KClinic2._1.Model
                     + "@NgayCapNhat = " + _NgayCapNhat + ","
                     + "@Huy = " + _Huy + ","
                     + "@CLSYeuCau_Cha_Id = " + _CLSYeuCau_Cha_Id + ","
-                    + "@PhongBan_Id = " + _PhongBan_Id 
+                    + "@PhongBan_Id = " + _PhongBan_Id + ","
+                    + "@The_Id = " + _The_Id 
                     ;
                 con.Open();
                 table1.Load(cmd_Show.ExecuteReader(CommandBehavior.CloseConnection));
@@ -996,6 +1072,49 @@ namespace KClinic2._1.Model
                 cmd_Show.CommandTimeout = timeout_connecttion;
                 cmd_Show.CommandText = "select FieldCode = HopDong_Id, TenCongTy, MaHopDong, So_HD  from KSK_HopDong  where Huy = 0"
                        ;
+                con.Open();
+                table1.Load(cmd_Show.ExecuteReader(CommandBehavior.CloseConnection));
+                con.Close();
+                return table1;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public static DataTable SelectTheThanhVienIdTheoSoThe(string _SoThe)
+        {
+            try
+            {
+                DataTable table1 = new DataTable();
+                SqlCommand cmd_Show = con.CreateCommand();
+                cmd_Show.CommandTimeout = timeout_connecttion;
+                cmd_Show.CommandText = "exec SP_002_TiepNhan @Action = N'SelectTheThanhVienIdTheoSoThe', "
+                    + "@SoTheThanhVien =" + _SoThe
+                    ;
+                con.Open();
+                table1.Load(cmd_Show.ExecuteReader(CommandBehavior.CloseConnection));
+                con.Close();
+                return table1;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public static DataTable LoadThongTinTrongTheTheoId_TiepNhan(string _The_Id, string _BenhNhan_Id)
+        {
+            try
+            {
+                DataTable table1 = new DataTable();
+                SqlCommand cmd_Show = con.CreateCommand();
+                cmd_Show.CommandTimeout = timeout_connecttion;
+                cmd_Show.CommandText = "exec SP_002_TiepNhan @Action = N'LoadThongTinTrongTheTheoId_TiepNhan', "
+                    + "@The_Id = " + _The_Id + ","
+                    + "@BenhNhan_Id = " + _BenhNhan_Id
+                    ;
                 con.Open();
                 table1.Load(cmd_Show.ExecuteReader(CommandBehavior.CloseConnection));
                 con.Close();
