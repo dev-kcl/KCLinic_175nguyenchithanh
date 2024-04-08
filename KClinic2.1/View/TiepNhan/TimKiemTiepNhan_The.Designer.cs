@@ -56,9 +56,9 @@ namespace KClinic2._1.View.TiepNhan
             this.gridDS = new DevExpress.XtraGrid.GridControl();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.txtSoThe = new System.Windows.Forms.TextBox();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridDS)).BeginInit();
             this.panel3.SuspendLayout();
@@ -391,17 +391,6 @@ namespace KClinic2._1.View.TiepNhan
             this.panel2.Size = new System.Drawing.Size(1123, 333);
             this.panel2.TabIndex = 0;
             // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.panel3);
-            this.panel1.Controls.Add(this.panel2);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1123, 561);
-            this.panel1.TabIndex = 3;
-            // 
             // label1
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -425,6 +414,17 @@ namespace KClinic2._1.View.TiepNhan
             this.txtSoThe.TabIndex = 2;
             this.txtSoThe.Tag = "";
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.panel3);
+            this.panel1.Controls.Add(this.panel2);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1123, 561);
+            this.panel1.TabIndex = 3;
+            // 
             // TimKiemTiepNhan_The
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -435,6 +435,7 @@ namespace KClinic2._1.View.TiepNhan
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tìm kiếm tiếp nhận";
             this.Load += new System.EventHandler(this.TimKiemTiepNhan_The_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TimKiemTiepNhan_The_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridDS)).EndInit();
             this.panel3.ResumeLayout(false);

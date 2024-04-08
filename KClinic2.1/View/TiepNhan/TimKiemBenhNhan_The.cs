@@ -54,5 +54,13 @@ namespace KClinic2._1.View.TiepNhan
                 gridDS.DataSource = Search_BenhNhan_The;
             }
         }
+
+        private void TimKiemBenhNhan_The_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                this.Close();
+            }
+        }
     }
 }
