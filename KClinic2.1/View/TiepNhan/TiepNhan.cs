@@ -363,7 +363,8 @@ namespace KClinic2._1.View.TiepNhan
                         {
                             TiepNhan_Id = Insert_TiepNhan.Rows[0][0].ToString();
 
-                            SavePicture(Insert_TiepNhan.Rows[0]["SoTiepNhan"].ToString());
+                            //SavePicture(Insert_TiepNhan.Rows[0]["SoTiepNhan"].ToString());
+
                             //
                             //DataTable BangCLS = gridDichVu.DataSource as DataTable;
                             DataTable CheckClsYeuCauPhienDangNhap = Model.DbTiepNhan.CheckClsYeuCauPhienDangNhap(Login.PhienDangNhap_Id);
@@ -431,7 +432,7 @@ namespace KClinic2._1.View.TiepNhan
                             BenhNhan_Id = InsertBenhNhan.Rows[0]["BenhNhan_Id"].ToString();
                             TenBenhNhan = InsertBenhNhan.Rows[0]["TenBenhNhan"].ToString();
 
-                            SavePicture(InsertBenhNhan.Rows[0]["MaYTe"].ToString());
+                            //SavePicture(InsertBenhNhan.Rows[0]["MaYTe"].ToString());
                         }
                         DataTable Insert_TiepNhan = Model.DbTiepNhan.Insert_TiepNhan(
                               "null"
@@ -459,7 +460,9 @@ namespace KClinic2._1.View.TiepNhan
                         if (Insert_TiepNhan.Rows.Count > 0)
                         {
                             TiepNhan_Id = Insert_TiepNhan.Rows[0][0].ToString();
-                            SavePicture(Insert_TiepNhan.Rows[0]["SoTiepNhan"].ToString());
+
+                            //SavePicture(Insert_TiepNhan.Rows[0]["SoTiepNhan"].ToString());
+
                             //
                             //insert clsyeucau
                             DataTable CheckClsYeuCauPhienDangNhap = Model.DbTiepNhan.CheckClsYeuCauPhienDangNhap(Login.PhienDangNhap_Id);

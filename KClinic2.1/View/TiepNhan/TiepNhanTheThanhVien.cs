@@ -1240,12 +1240,21 @@ namespace KClinic2._1.View.TiepNhan
             }
             else
             {
-                XtraMessageBox.Show("Chưa chọn Dịch vụ!");
+                XtraMessageBox.Show("Chưa chọn Dịch vụ!", "Thông Báo");
             }
         }
 
         private void repositoryItemButtonEdit1_Click(object sender, EventArgs e)
         {
+            string strNgayHieuLuc = txtHieuLuc.Value.ToString("yyyyMMdd");
+            string strNgayHienTai = DateTime.Now.ToString("yyyyMMdd");
+
+            if (strNgayHieuLuc.CompareTo(strNgayHienTai) < 0)
+            {
+                XtraMessageBox.Show("Thẻ đã hết hạn sử dụng. Vui lòng liên hệ nhân viên để được hỗ trợ!", "Thông Báo");
+                return;
+            }
+
             int SoLuongConLai = int.Parse(gridView2.GetFocusedRowCellValue("SoLuongConLai").ToString());
             
             if (SoLuongConLai <= 0)
