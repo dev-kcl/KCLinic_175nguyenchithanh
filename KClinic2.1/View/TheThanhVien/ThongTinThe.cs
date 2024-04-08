@@ -357,7 +357,13 @@ namespace KClinic2._1.View.TheThanhVien
                 MaYTe = LoadThongTinBenhNhan.Rows[0]["MaYTe"].ToString();
                 SoVaoVien = LoadThongTinBenhNhan.Rows[0]["SoVaoVien"].ToString();
                 txtHoTen.Text = LoadThongTinBenhNhan.Rows[0]["TenBenhNhan"].ToString();
-                cbbGioiTinh.Value = Int32.Parse(LoadThongTinBenhNhan.Rows[0]["GioiTinh"].ToString());
+
+                string GioiTinh = LoadThongTinBenhNhan.Rows[0]["GioiTinh"].ToString();
+                if (!String.IsNullOrEmpty(GioiTinh))
+                {
+                    cbbGioiTinh.Value = Int32.Parse(GioiTinh);
+                }
+
                 txtNamSinh.Text = LoadThongTinBenhNhan.Rows[0]["NamSinh"].ToString();
                 txtSoDienThoai.Text = LoadThongTinBenhNhan.Rows[0]["SoDienThoai"].ToString();
                 BenhNhan_Id = LoadThongTinBenhNhan.Rows[0]["BenhNhan_Id"].ToString();

@@ -297,8 +297,10 @@ namespace KClinic2._1.View.TheThanhVien
             this.ClientSize = new System.Drawing.Size(1009, 496);
             this.Controls.Add(this.panel1);
             this.Name = "TimKiemBenhNhan";
-            this.Text = "TimKiemBenhNhan";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Tìm kiếm bệnh nhân";
             this.Load += new System.EventHandler(this.TimKiemBenhNhan_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TimKiemBenhNhan_KeyDown);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();

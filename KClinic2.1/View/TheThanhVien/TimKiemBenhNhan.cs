@@ -112,5 +112,13 @@ namespace KClinic2._1.View.TheThanhVien
 
             controls[previousIndex].Focus();
         }
+
+        private void TimKiemBenhNhan_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                this.Close();
+            }
+        }
     }
 }

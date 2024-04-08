@@ -55,5 +55,13 @@ namespace KClinic2._1.View.TiepNhan
                 this.Hide();
             }
         }
+
+        private void TimKiemTiepNhan_The_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                this.Close();
+            }
+        }
     }
 }
