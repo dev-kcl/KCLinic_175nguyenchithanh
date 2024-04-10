@@ -34,6 +34,7 @@ namespace KClinic2._1.View.TheThanhVien
         {
             txtHieuLuc.Text = DateTime.Today.ToString("dd/MM/yyyy");
             getdata();
+            Reset();
         }
 
         private void btnThem_Click(object sender, EventArgs e)
