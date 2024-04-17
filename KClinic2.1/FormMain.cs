@@ -716,5 +716,15 @@ namespace KClinic2._1
                 frm.Show();
             }
         }
+
+        private void barButtonItem63_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            if (ActivateThisChild("DanhMucLoaiThe") == false)
+            {
+                View.TheThanhVien.DanhMucLoaiThe frm = new View.TheThanhVien.DanhMucLoaiThe();
+                frm.MdiParent = this;
+                frm.Show();
+            }
+        }
     }
 }
