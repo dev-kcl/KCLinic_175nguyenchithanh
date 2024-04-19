@@ -253,6 +253,7 @@
     <Compile Include="Model\dbBaoCao.cs" />
     <Compile Include="Model\dbBenhPham.cs" />
     <Compile Include="Model\dbCDHA.cs" />
+    <Compile Include="Model\dbTheThanhVien.cs" />
     <Compile Include="Model\dbDanhMuc.cs" />
     <Compile Include="Model\dbDuoc.cs" />
     <Compile Include="Model\dbGPB.cs" />

@@ -22,8 +22,8 @@ namespace KClinic2._1.View.TheThanhVien
         public string MaYTe = "";
         public string SoVaoVien = "";
 
-        DataTable Dm_DichVu;
-        DataTable Dm_NhomDichVu;
+        DataTable DM_LoaiThe;
+        DataTable SoThangHieuLucThe;
 
         public ThongTinThe()
         {
@@ -32,9 +32,9 @@ namespace KClinic2._1.View.TheThanhVien
 
         private void ThongTinThe_Load(object sender, EventArgs e)
         {
-            txtHieuLuc.Text = DateTime.Today.ToString("dd/MM/yyyy");
             getdata();
             Reset();
+            //txtHieuLuc.Text = DateTime.Today.ToString("dd/MM/yyyy");
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -71,7 +71,7 @@ namespace KClinic2._1.View.TheThanhVien
             getLayDanhSachTheThanhVien();
             
             txtSoThe.Text = "";
-            txtLoaiThe.Text = "";
+            txtTenThe.Text = "";
             //end dang ky thong tin
         }
 
@@ -88,7 +88,7 @@ namespace KClinic2._1.View.TheThanhVien
             switch (dr)
             {
                 case DialogResult.Yes:
-                    DataTable Delete = Model.dbDanhMuc.DeleteThe(The_Id, nguoicapnhat);
+                    DataTable Delete = Model.dbTheThanhVien.DeleteThe(The_Id, nguoicapnhat);
                     alertControl1.Show(this, "Thông báo", "Đã xóa thành công thẻ " + txtSoThe.Text, "");
                     Reset();
                     The_Id = "";
@@ -114,82 +114,12 @@ namespace KClinic2._1.View.TheThanhVien
             else
             {
                 LoadThongTinTrongTheTheoId(The_Id);
-                DataTable ThemTheVaoPhienDangNhap = Model.dbDanhMuc.ThemTheVaoPhienDangNhap(Login.PhienDangNhap_Id, The_Id);
             }
         }
 
         private void btnThoat_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void btnChonDichVu_Click(object sender, EventArgs e)
-        {
-            if (cbbDV.SelectedItem != null)
-            {
-                DataRowView typeItem = (DataRowView)cbbDV.SelectedItem;
-                string DichVuId = typeItem.Row[0].ToString();
-
-                DataTable Dm_DichVu_DonGia = Model.DbTiepNhan.Dm_DichVu_DonGia(DichVuId);
-                string GiaDichVu = Dm_DichVu_DonGia.Rows[0]["GiaDichVu"].ToString();
-
-                //
-                InsertThePhienDangNhap(DichVuId);
-
-                //
-                DataTable SelectClsyeucauPhienDangNhap = Model.dbDanhMuc.SelectThe_PhienDangNhap(Login.PhienDangNhap_Id);
-                gridDichVu.DataSource = SelectClsyeucauPhienDangNhap;
-            }
-            else
-            {
-                XtraMessageBox.Show("Chưa chọn Dịch vụ!", "Thông Báo");
-            }
-        }
-
-        private void btnThemNhomBenh_Click(object sender, EventArgs e)
-        {
-            if (cbbNhomBenh.SelectedItem != null)
-            {
-                DataRowView typeItem = (DataRowView)cbbNhomBenh.SelectedItem;
-                string NhomBenhId = typeItem.Row[0].ToString();
-
-                DataTable CheckNhomBenh_DichVu = Model.DbTiepNhan.CheckNhomBenh_DichVu(NhomBenhId);
-                if (CheckNhomBenh_DichVu != null)
-                {
-                    if (CheckNhomBenh_DichVu.Rows.Count > 0)
-                    {
-
-                        for (int i = 0; i < CheckNhomBenh_DichVu.Rows.Count; i++)
-                        {
-                            InsertThePhienDangNhap(CheckNhomBenh_DichVu.Rows[i]["Dich_Id"].ToString()); 
-                        }
-
-                        //
-                        DataTable SelectClsyeucauPhienDangNhap = Model.dbDanhMuc.SelectThe_PhienDangNhap(Login.PhienDangNhap_Id);
-                        gridDichVu.DataSource = SelectClsyeucauPhienDangNhap;
-                    }
-                }
-            }
-            else
-            {
-                XtraMessageBox.Show("Chưa chọn Nhóm bệnh!", "Thông Báo");
-            }
-        }
-
-        private void btnXoaDichVu_Click(object sender, EventArgs e)
-        {
-            if (The_Id != "" && DichVu_Id != "")
-            {
-                DataTable Delete = Model.dbDanhMuc.Delete_The_PhienDangNhap(The_Id, DichVu_Id, Login.User_Id);
-
-                DataTable SelectClsyeucauPhienDangNhap = Model.dbDanhMuc.SelectThe_PhienDangNhap(Login.PhienDangNhap_Id);
-                gridDichVu.DataSource = SelectClsyeucauPhienDangNhap;
-                DichVu_Id = "";
-            }
-            else
-            {
-                alertControl1.Show(this, "Thông báo", "Chưa chọn dịch vụ cần xóa!", "");
-            }
         }
 
         private void btnUpdateDV_Click(object sender, EventArgs e)
@@ -239,23 +169,17 @@ namespace KClinic2._1.View.TheThanhVien
                     {
                         InsertDichVuTrongThe();
 
-                        DataTable HoanTatClsYeuCauPhienDangNhap = Model.dbDanhMuc.HoanTatThePhienDangNhap(Login.PhienDangNhap_Id);
-
                         LoadThongTinTrongTheTheoId(The_Id);
                     }
                     else
                     {
                         UpdateDichVuTrongThe();
 
-                        DataTable HoanTatClsYeuCauPhienDangNhap = Model.dbDanhMuc.HoanTatThePhienDangNhap(Login.PhienDangNhap_Id);
-
                         LoadThongTinTrongTheTheoId(The_Id);
                     }
 
                     alertControl1.Show(this, "Thông báo", "Đã cập nhật thông tin thành công thẻ " + txtSoThe.Text, "");
                 }
-
-                DataTable ThemTheVaoPhienDangNhap = Model.dbDanhMuc.ThemTheVaoPhienDangNhap(Login.PhienDangNhap_Id, The_Id);
             }
             else if (dialogResult == DialogResult.No)
             {
@@ -265,20 +189,23 @@ namespace KClinic2._1.View.TheThanhVien
 
         private void getdata()
         {
-            Dm_DichVu = Model.DbTiepNhan.Dm_DichVu();
-            cbbDV.DataSource = Dm_DichVu;
-            cbbDV.ValueMember = "Dich_Id";
-            cbbDV.DisplayMember = "TenDichVu";
-
-            Dm_NhomDichVu = Model.DbTiepNhan.Dm_NhomBenh();
-            cbbNhomBenh.DataSource = Dm_NhomDichVu;
-            cbbNhomBenh.ValueMember = "NhomBenh_Id";
-            cbbNhomBenh.DisplayMember = "TenNhomBenh";
-
+            //load combobox gioi tinh
             DataTable GioiTinh = Model.DbTiepNhan.GioiTinh();
             cbbGioiTinh.DataSource = GioiTinh;
             cbbGioiTinh.DisplayMember = "GioiTinh";
             cbbGioiTinh.ValueMember = "GioiTinh_id";
+
+            //load combobox so thang hieu luc
+            SoThangHieuLucThe = Model.dbTheThanhVien.SoThangHieuLucThe();
+            cbbSoThang.DataSource = SoThangHieuLucThe;
+            cbbSoThang.DisplayMember = "SoThangHieuLuc";
+            cbbSoThang.ValueMember = "SoThangHieuLuc_id";
+
+            //load combobox loai the
+            DM_LoaiThe = Model.dbTheThanhVien.CbbLoaiThe();
+            cbbLoaiThe.DataSource = DM_LoaiThe;
+            cbbLoaiThe.DisplayMember = "TenLoaiThe";
+            cbbLoaiThe.ValueMember = "LoaiThe_Id";
 
             //load thong tin the
             getLayDanhSachTheThanhVien();
@@ -299,7 +226,7 @@ namespace KClinic2._1.View.TheThanhVien
         {
             string reSearch = "N'" + search.Replace("'", "''") + "'";
 
-            DataTable SelectDanhSachTheThanhVien = Model.dbDanhMuc.SelectDanhSachTheThanhVien(reSearch);
+            DataTable SelectDanhSachTheThanhVien = Model.dbTheThanhVien.SelectDanhSachTheThanhVien(reSearch);
             gridTheThanhVien.DataSource = SelectDanhSachTheThanhVien;
         }
 
@@ -321,7 +248,7 @@ namespace KClinic2._1.View.TheThanhVien
         {
             int count = 0;
 
-            DataTable CheckExistThongTinThe = Model.dbDanhMuc.CheckExistThongTinThe(SoThe);
+            DataTable CheckExistThongTinThe = Model.dbTheThanhVien.CheckExistThongTinThe(SoThe);
             if (CheckExistThongTinThe.Rows.Count > 0)
             {
                 if (int.Parse(CheckExistThongTinThe.Rows[0]["count_the"].ToString()) > 0)
@@ -337,7 +264,7 @@ namespace KClinic2._1.View.TheThanhVien
         {
             int count = 0;
 
-            DataTable CheckExistTheThanhVienTheoID = Model.dbDanhMuc.CheckExistThongTinTheThanhVienTheoID(_The_Id);
+            DataTable CheckExistTheThanhVienTheoID = Model.dbTheThanhVien.CheckExistThongTinTheThanhVienTheoID(_The_Id);
             if (CheckExistTheThanhVienTheoID.Rows.Count > 0)
             {
                 if (int.Parse(CheckExistTheThanhVienTheoID.Rows[0]["count_the"].ToString()) > 0)
@@ -374,10 +301,17 @@ namespace KClinic2._1.View.TheThanhVien
         private void LoadThongTinTrongTheTheoId(string _The_Id)
         {
             //load the
-            DataTable SelectDanhSachTheThanhVienTheoId = Model.dbDanhMuc.SelectDanhSachTheThanhVienTheoId(_The_Id);
+            DataTable SelectDanhSachTheThanhVienTheoId = Model.dbTheThanhVien.SelectDanhSachTheThanhVienTheoId(_The_Id);
 
             txtSoThe.Text = SelectDanhSachTheThanhVienTheoId.Rows[0]["SoThe"].ToString();
-            txtLoaiThe.Text = SelectDanhSachTheThanhVienTheoId.Rows[0]["LoaiThe"].ToString();
+            txtTenThe.Text = SelectDanhSachTheThanhVienTheoId.Rows[0]["TenThe"].ToString();
+
+            string SoThangHieuLuc = SelectDanhSachTheThanhVienTheoId.Rows[0]["SoThang"].ToString();
+            if (!String.IsNullOrEmpty(SoThangHieuLuc))
+            {
+                cbbSoThang.Value = Int32.Parse(SelectDanhSachTheThanhVienTheoId.Rows[0]["SoThang"].ToString());
+            }
+
             string NgayHieuLuc = SelectDanhSachTheThanhVienTheoId.Rows[0]["NgayHieuLuc"].ToString();
             if (!String.IsNullOrEmpty(NgayHieuLuc))
             {
@@ -386,7 +320,7 @@ namespace KClinic2._1.View.TheThanhVien
             }
 
             //load thong tin trong the
-            DataTable LoadThongTinTrongTheTheoId = Model.dbDanhMuc.LoadThongTinTrongTheTheoId(_The_Id);
+            DataTable LoadThongTinTrongTheTheoId = Model.dbTheThanhVien.LoadThongTinTrongTheTheoId(_The_Id);
             if (LoadThongTinTrongTheTheoId.Rows.Count > 0)
             {
                 //load benh nhan
@@ -401,13 +335,16 @@ namespace KClinic2._1.View.TheThanhVien
                 txtNamSinh.Text = LoadThongTinTrongTheTheoId.Rows[0]["NamSinh"].ToString();
                 txtSoDienThoai.Text = LoadThongTinTrongTheTheoId.Rows[0]["SoDienThoai"].ToString();
 
+                string LoaiThe = LoadThongTinTrongTheTheoId.Rows[0]["LoaiThe_Id"].ToString();
+                if (!String.IsNullOrEmpty(LoaiThe))
+                {
+                    cbbLoaiThe.Value = Int32.Parse(LoadThongTinTrongTheTheoId.Rows[0]["LoaiThe_Id"].ToString());
+                }
+
                 The_Id = LoadThongTinTrongTheTheoId.Rows[0]["The_Id"].ToString();
                 The_DichVu_Id = LoadThongTinTrongTheTheoId.Rows[0]["The_DichVu_Id"].ToString();
                 BenhNhan_Id = LoadThongTinTrongTheTheoId.Rows[0]["BenhNhan_Id"].ToString();
             }
-
-            //load dich vu
-            gridDichVu.DataSource = LoadThongTinTrongTheTheoId;
 
             for (int i = 0; i < gridView1.RowCount; i++)
             {
@@ -435,7 +372,7 @@ namespace KClinic2._1.View.TheThanhVien
 
             if (BenhNhan_Id != "")
             {
-                DataTable UpdateBenhNhan = Model.dbDanhMuc.UpdateBenhNhan(
+                DataTable UpdateBenhNhan = Model.dbTheThanhVien.UpdateBenhNhan(
                       BenhNhan_Id
                     , Hoten
                     , GioiTinh
@@ -449,8 +386,6 @@ namespace KClinic2._1.View.TheThanhVien
                     BenhNhan_Id = UpdateBenhNhan.Rows[0]["BenhNhan_Id"].ToString();
                     TenBenhNhan = UpdateBenhNhan.Rows[0]["TenBenhNhan"].ToString();
                 }
-
-                alertControl1.Show(this, "Thông báo", "Đã cập nhật thành công Bệnh nhân " + TenBenhNhan, "");
             }
             else
             {
@@ -486,13 +421,17 @@ namespace KClinic2._1.View.TheThanhVien
         private void InsertThongTinThe()
         {
             string SoThe = "N'" + txtSoThe.Text.Replace("'", "''") + "'";
-            string LoaiThe = "N'" + txtLoaiThe.Text.Replace("'", "''") + "'";
+            string TenThe = "N'" + txtTenThe.Text.Replace("'", "''") + "'";
+            string SoThangHieuLuc = "null";
+            if (cbbSoThang.SelectedItem != null) { SoThangHieuLuc = cbbSoThang.Value.ToString(); }
+
             string NgayHieuLuc = "null";
             if (!string.IsNullOrEmpty(txtHieuLuc.Text)) { NgayHieuLuc = "'" + txtHieuLuc.Value.ToString("yyyyMMdd") + "'"; }
 
-            DataTable Insert_ThongTinThe = Model.dbDanhMuc.Insert_ThongTinThe(
+            DataTable Insert_ThongTinThe = Model.dbTheThanhVien.Insert_ThongTinThe(
                   SoThe
-                , LoaiThe
+                , TenThe
+                , SoThangHieuLuc
                 , NgayHieuLuc
                 , Login.User_Id
                 , "'" + DateTime.Now.ToString("yyyyMMdd HH:mm:ss") + "'"
@@ -510,13 +449,17 @@ namespace KClinic2._1.View.TheThanhVien
         private void UpdateThongTinThe()
         {
             string SoThe = "N'" + txtSoThe.Text.Replace("'", "''") + "'";
-            string LoaiThe = "N'" + txtLoaiThe.Text.Replace("'", "''") + "'";
+            string TenThe = "N'" + txtTenThe.Text.Replace("'", "''") + "'";
+            string SoThangHieuLuc = "null";
+            if (cbbSoThang.SelectedItem != null) { SoThangHieuLuc = cbbSoThang.Value.ToString(); }
+
             string NgayHieuLuc = "null";
             if (!string.IsNullOrEmpty(txtHieuLuc.Text)) { NgayHieuLuc = "'" + txtHieuLuc.Value.ToString("yyyyMMdd") + "'"; }
 
-            DataTable Update_ThongTinThe = Model.dbDanhMuc.Update_ThongTinThe(
+            DataTable Update_ThongTinThe = Model.dbTheThanhVien.Update_ThongTinThe(
                   SoThe
-                , LoaiThe
+                , TenThe
+                , SoThangHieuLuc
                 , NgayHieuLuc
                 , Login.User_Id
                 , "'" + DateTime.Now.ToString("yyyyMMdd HH:mm:ss") + "'"
@@ -535,28 +478,17 @@ namespace KClinic2._1.View.TheThanhVien
             string reBenhNhan_Id = "null";
             if (BenhNhan_Id != "") { reBenhNhan_Id = "N'" + BenhNhan_Id + "'"; }
 
-            string reSoLuong;
-            string reDichVu_Id;
+            string reLoaiThe_Id = "null";
+            if (cbbLoaiThe.SelectedItem != null) { reLoaiThe_Id = cbbLoaiThe.Value.ToString(); }
 
-            DataTable gridDichVuDaTa = gridDichVu.DataSource as DataTable;
-            foreach (DataRow row in gridDichVuDaTa.Rows)
-            {
-                reSoLuong = "null";
-                reDichVu_Id = "null";
-
-                if (row["SoLuong"].ToString() != "") { reSoLuong = "N'" + row["SoLuong"].ToString() + "'"; }
-                if (row["DichVu_Id"].ToString() != "") { reDichVu_Id = "N'" + row["DichVu_Id"].ToString() + "'"; }
-
-                DataTable InsertDichVuTrongThe = Model.dbDanhMuc.InsertDichVuTrongThe(
-                       The_Id
-                       , reBenhNhan_Id
-                       , reDichVu_Id
-                       , reSoLuong
-                       , Login.User_Id
-                       , "'" + DateTime.Now.ToString("yyyyMMdd HH:mm:ss") + "'"
-                       , "0"
-                       );
-            }
+            DataTable InsertDichVuTrongThe = Model.dbTheThanhVien.InsertDichVuTrongThe(
+                   The_Id
+                   , reBenhNhan_Id
+                   , reLoaiThe_Id
+                   , Login.User_Id
+                   , "'" + DateTime.Now.ToString("yyyyMMdd HH:mm:ss") + "'"
+                   , "0"
+                   );
         }
 
         private void UpdateDichVuTrongThe()
@@ -564,64 +496,24 @@ namespace KClinic2._1.View.TheThanhVien
             string reBenhNhan_Id = "null";
             if (BenhNhan_Id != "") { reBenhNhan_Id = "N'" + BenhNhan_Id + "'"; }
 
-            string reSoLuong;
-            string reDichVu_Id;
+            string reLoaiThe_Id = "null";
+            if (cbbLoaiThe.SelectedItem != null) { reLoaiThe_Id = cbbLoaiThe.Value.ToString(); }
 
-            DataTable DelDichVuTrongThe = Model.dbDanhMuc.DeleteDichVuTrongThe(
+            DataTable DelDichVuTrongThe = Model.dbTheThanhVien.DeleteDichVuTrongThe(
                        The_Id
                        , Login.User_Id
                        , "'" + DateTime.Now.ToString("yyyyMMdd HH:mm:ss") + "'"
                        );
 
-            DataTable gridDichVuDaTa = gridDichVu.DataSource as DataTable;
-            foreach (DataRow row in gridDichVuDaTa.Rows)
-            {
-                reSoLuong = "null";
-                reDichVu_Id = "null";
 
-                if (row["SoLuong"].ToString() != "") { reSoLuong = "N'" + row["SoLuong"].ToString() + "'"; }
-                if (row["DichVu_Id"].ToString() != "") { reDichVu_Id = "N'" + row["DichVu_Id"].ToString() + "'"; }
-
-                DataTable UpdateDichVuTrongThe = Model.dbDanhMuc.UpdateDichVuTrongThe(
-                       The_Id
-                       , reBenhNhan_Id
-                       , reDichVu_Id
-                       , reSoLuong
-                       , Login.User_Id
-                       , "'" + DateTime.Now.ToString("yyyyMMdd HH:mm:ss") + "'"
-                       , "0"
-                       );
-            }
-        }
-
-        private void InsertThePhienDangNhap(string _DichVu_Id)
-        {
-            DataTable InsertThe_PhienDangNhap = Model.dbDanhMuc.InsertThe_PhienDangNhap(
-                    Login.PhienDangNhap_Id
-                    , The_Id
-                    , _DichVu_Id
-                    , "null"
-                    , "N'" + "Them" + "'"
-                    );
-
-            ////thêm phiếu yêu cầu cho dịch vụ cấp dưới
-            //DataTable CheckDichVuCapDuoi = Model.DbTiepNhan.CheckDichVuCapDuoi(_DichVu_Id);
-            //if (CheckDichVuCapDuoi != null)
-            //{
-            //    if (CheckDichVuCapDuoi.Rows.Count > 0)
-            //    {
-            //        for (int j = 0; j < CheckDichVuCapDuoi.Rows.Count; j++)
-            //        {
-            //            DataTable InsertCLSYeuCau_PhieuDangNhapCapDuoi = Model.dbDanhMuc.InsertThe_PhienDangNhap(
-            //                Login.PhienDangNhap_Id
-            //                , The_Id
-            //                , CheckDichVuCapDuoi.Rows[j]["Dich_Id"].ToString()
-            //                , "null"
-            //                , "N'" + "Them" + "'"
-            //                );
-            //        }
-            //    }
-            //}
+            DataTable UpdateDichVuTrongThe = Model.dbTheThanhVien.UpdateDichVuTrongThe(
+                   The_Id
+                   , reBenhNhan_Id
+                   , reLoaiThe_Id
+                   , Login.User_Id
+                   , "'" + DateTime.Now.ToString("yyyyMMdd HH:mm:ss") + "'"
+                   , "0"
+                   );
         }
 
         private void gridView1_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
@@ -632,75 +524,27 @@ namespace KClinic2._1.View.TheThanhVien
                 The_Id = gridView1.GetRowCellValue(n, "The_Id").ToString();
 
                 txtSoThe.Text = "";
-                txtLoaiThe.Text = "";
-                txtHieuLuc.Text = DateTime.Today.ToString("dd/MM/yyyy");
+                txtTenThe.Text = "";
+                cbbSoThang.SelectedIndex = 3;
+                //txtHieuLuc.Text = DateTime.Today.ToString("dd/MM/yyyy");
 
                 txtMaYTe.Text = "";
                 txtHoTen.Text = "";
                 cbbGioiTinh.Text = "";
                 txtNamSinh.Text = "";
                 txtSoDienThoai.Text = "";
+                cbbLoaiThe.Text = "";
 
                 LoadThongTinTrongTheTheoId(The_Id);
-
-                DataTable ThemTheVaoPhienDangNhap = Model.dbDanhMuc.ThemTheVaoPhienDangNhap(Login.PhienDangNhap_Id, The_Id);
-            }
-        }
-
-        private void gridView2_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
-        {
-            int n = e.RowHandle;
-            if (n >= 0)
-            {
-                DichVu_Id = gridView2.GetRowCellValue(n, "DichVu_Id").ToString();
-            }
-        }
-
-        private void cbbDV_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.KeyData != Keys.Tab && e.KeyData != Keys.Enter && e.KeyData != Keys.Up && e.KeyData != Keys.Down && e.KeyData != Keys.Right && e.KeyData != Keys.Left)
-            {
-                string text = cbbDV.Text;
-                DataRow[] resultRow = Dm_DichVu.Select("TenDichVu LIKE '%" + text + "%' or MaDichVu LIKE '%" + text + "%'");
-                if (resultRow.Count() > 0)
-                {
-                    DataTable dtResult = Dm_DichVu.Select("TenDichVu LIKE '%" + text + "%' or MaDichVu LIKE '%" + text + "%'").CopyToDataTable();
-                    cbbDV.DataSource = dtResult;
-                    cbbDV.DroppedDown = true;
-                }
-                else
-                {
-                    cbbDV.DataSource = null;
-                    cbbDV.DroppedDown = true;
-                }
-            }
-        }
-
-        private void cbbNhomBenh_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.KeyData != Keys.Tab && e.KeyData != Keys.Enter && e.KeyData != Keys.Up && e.KeyData != Keys.Down && e.KeyData != Keys.Right && e.KeyData != Keys.Left)
-            {
-                string text = cbbNhomBenh.Text;
-                DataRow[] resultRow = Dm_NhomDichVu.Select("TenNhomBenh LIKE '%" + text + "%'");
-                if (resultRow.Count() > 0)
-                {
-                    DataTable dtResult = Dm_NhomDichVu.Select("TenNhomBenh LIKE '%" + text + "%'").CopyToDataTable();
-                    cbbNhomBenh.DataSource = dtResult;
-                    cbbNhomBenh.DroppedDown = true;
-                }
-                else
-                {
-                    cbbNhomBenh.DataSource = null;
-                    cbbNhomBenh.DroppedDown = true;
-                }
             }
         }
 
         public void Reset()
         {
             txtSoThe.Text = "";
-            txtLoaiThe.Text = "";
-            txtHieuLuc.Text = DateTime.Today.ToString("dd/MM/yyyy");
+            txtTenThe.Text = "";
+            //txtHieuLuc.Text = DateTime.Today.ToString("dd/MM/yyyy");
+            cbbSoThang.SelectedIndex = 3;
 
             txtMaYTe.Text = "";
             txtHoTen.Text = "";
@@ -708,15 +552,9 @@ namespace KClinic2._1.View.TheThanhVien
             txtNamSinh.Text = "";
             txtSoDienThoai.Text = "";
 
-            cbbNhomBenh.Text = "";
-            cbbDV.Text = "";
-            gridDichVu.DataSource = null;
-
             The_Id = "";
             MaYTe = "";
             SoVaoVien = "";
-
-            DataTable HoanTatClsYeuCauPhienDangNhap = Model.DbTiepNhan.HoanTatClsYeuCauPhienDangNhap(Login.PhienDangNhap_Id);
         }
 
         private void btnSearch_BN_Click(object sender, EventArgs e)
@@ -725,5 +563,32 @@ namespace KClinic2._1.View.TheThanhVien
             tc.ShowDialog();
         }
 
+        private void cbbSoThang_ValueChanged(object sender, EventArgs e)
+        {
+            DateTime dateNow = DateTime.Now;
+            dateNow = dateNow.AddMonths(int.Parse(cbbSoThang.Text));
+
+            txtHieuLuc.Text = dateNow.ToString("dd/MM/yyyy");
+        }
+
+        private void cbbLoaiThe_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData != Keys.Tab && e.KeyData != Keys.Enter && e.KeyData != Keys.Up && e.KeyData != Keys.Down && e.KeyData != Keys.Right && e.KeyData != Keys.Left)
+            {
+                string text = cbbLoaiThe.Text;
+                DataRow[] resultRow = DM_LoaiThe.Select("TenLoaiThe LIKE '%" + text + "%' or MaLoaiThe LIKE '%" + text + "%'");
+                if (resultRow.Count() > 0)
+                {
+                    DataTable dtResult = DM_LoaiThe.Select("TenLoaiThe LIKE '%" + text + "%' or MaLoaiThe LIKE '%" + text + "%'").CopyToDataTable();
+                    cbbLoaiThe.DataSource = dtResult;
+                    cbbLoaiThe.DroppedDown = true;
+                }
+                else
+                {
+                    cbbLoaiThe.DataSource = null;
+                    cbbLoaiThe.DroppedDown = true;
+                }
+            }
+        }
     }
 }

@@ -1385,7 +1385,7 @@ namespace KClinic2._1.View.TiepNhan
         private void LoadThongTinTrongTheTheoId(string _The_Id)
         {
             //load the
-            DataTable SelectDanhSachTheThanhVienTheoId = Model.dbDanhMuc.SelectDanhSachTheThanhVienTheoId(_The_Id);
+            DataTable SelectDanhSachTheThanhVienTheoId = Model.dbTheThanhVien.SelectDanhSachTheThanhVienTheoId(_The_Id);
 
             txtSoThe.Text = SelectDanhSachTheThanhVienTheoId.Rows[0]["SoThe"].ToString();
 
