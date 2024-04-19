@@ -76,7 +76,7 @@ namespace KClinic2._1.View.TheThanhVien
             switch (dr)
             {
                 case DialogResult.Yes:
-                    DataTable Delete = Model.dbDanhMuc.DeleteLoaiThe(LoaiThe_Id, nguoicapnhat);
+                    DataTable Delete = Model.dbTheThanhVien.DeleteLoaiThe(LoaiThe_Id, nguoicapnhat);
                     alertControl1.Show(this, "Thông báo", "Đã xóa thành công loại thẻ " + txtMaLoaiThe.Text, "");
                     Reset();
                     LoaiThe_Id = "";
@@ -98,7 +98,7 @@ namespace KClinic2._1.View.TheThanhVien
             else
             {
                 LoadThongTinLoaiTheTheoId(LoaiThe_Id);
-                DataTable ThemLoaiTheVaoPhienDangNhap = Model.dbDanhMuc.ThemLoaiTheVaoPhienDangNhap(Login.PhienDangNhap_Id, LoaiThe_Id);
+                DataTable ThemLoaiTheVaoPhienDangNhap = Model.dbTheThanhVien.ThemLoaiTheVaoPhienDangNhap(Login.PhienDangNhap_Id, LoaiThe_Id);
             }
         }
 
@@ -136,7 +136,7 @@ namespace KClinic2._1.View.TheThanhVien
                 InsertLoaiThePhienDangNhap(NhomBenh_Id, SoLuong);
 
                 //
-                DataTable SelectClsyeucauPhienDangNhap = Model.dbDanhMuc.SelectLoaiThe_PhienDangNhap(Login.PhienDangNhap_Id);
+                DataTable SelectClsyeucauPhienDangNhap = Model.dbTheThanhVien.SelectLoaiThe_PhienDangNhap(Login.PhienDangNhap_Id);
                 gridDichVu.DataSource = SelectClsyeucauPhienDangNhap;
             }
             else
@@ -149,9 +149,9 @@ namespace KClinic2._1.View.TheThanhVien
         {
             if (LoaiThe_Id != "" && NhomDichVu_Id != "")
             {
-                DataTable Delete = Model.dbDanhMuc.Delete_LoaiThe_PhienDangNhap(LoaiThe_Id, NhomDichVu_Id, Login.User_Id);
+                DataTable Delete = Model.dbTheThanhVien.Delete_LoaiThe_PhienDangNhap(LoaiThe_Id, NhomDichVu_Id, Login.User_Id);
 
-                DataTable SelectClsyeucauPhienDangNhap = Model.dbDanhMuc.SelectLoaiThe_PhienDangNhap(Login.PhienDangNhap_Id);
+                DataTable SelectClsyeucauPhienDangNhap = Model.dbTheThanhVien.SelectLoaiThe_PhienDangNhap(Login.PhienDangNhap_Id);
                 gridDichVu.DataSource = SelectClsyeucauPhienDangNhap;
                 NhomDichVu_Id = "";
             }
@@ -180,7 +180,7 @@ namespace KClinic2._1.View.TheThanhVien
                     {
                         InsertDichVuTrongLoaiThe();
 
-                        DataTable HoanTatClsYeuCauPhienDangNhap = Model.dbDanhMuc.HoanTatLoaiThePhienDangNhap(Login.PhienDangNhap_Id);
+                        DataTable HoanTatClsYeuCauPhienDangNhap = Model.dbTheThanhVien.HoanTatLoaiThePhienDangNhap(Login.PhienDangNhap_Id);
 
                         LoadThongTinLoaiTheTheoId(LoaiThe_Id);
                     }
@@ -188,7 +188,7 @@ namespace KClinic2._1.View.TheThanhVien
                     {
                         UpdateDichVuTrongThe();
 
-                        DataTable HoanTatClsYeuCauPhienDangNhap = Model.dbDanhMuc.HoanTatLoaiThePhienDangNhap(Login.PhienDangNhap_Id);
+                        DataTable HoanTatClsYeuCauPhienDangNhap = Model.dbTheThanhVien.HoanTatLoaiThePhienDangNhap(Login.PhienDangNhap_Id);
 
                         LoadThongTinLoaiTheTheoId(LoaiThe_Id);
                     }
@@ -196,7 +196,7 @@ namespace KClinic2._1.View.TheThanhVien
                     alertControl1.Show(this, "Thông báo", "Đã cập nhật thông tin thành công loại thẻ " + txtMaLoaiThe.Text, "");
                 }
 
-                DataTable ThemLoaiTheVaoPhienDangNhap = Model.dbDanhMuc.ThemLoaiTheVaoPhienDangNhap(Login.PhienDangNhap_Id, LoaiThe_Id);
+                DataTable ThemLoaiTheVaoPhienDangNhap = Model.dbTheThanhVien.ThemLoaiTheVaoPhienDangNhap(Login.PhienDangNhap_Id, LoaiThe_Id);
             }
             else if (dialogResult == DialogResult.No)
             {
@@ -230,7 +230,7 @@ namespace KClinic2._1.View.TheThanhVien
         {
             string reSearch = "N'" + search.Replace("'", "''") + "'";
 
-            DataTable SelectDanhSachLoaiThe = Model.dbDanhMuc.SelectDanhSachLoaiThe(reSearch);
+            DataTable SelectDanhSachLoaiThe = Model.dbTheThanhVien.SelectDanhSachLoaiThe(reSearch);
             gridTheThanhVien.DataSource = SelectDanhSachLoaiThe;
         }
 
@@ -238,7 +238,7 @@ namespace KClinic2._1.View.TheThanhVien
         {
             int count = 0;
 
-            DataTable CheckExistThongTinLoaiThe = Model.dbDanhMuc.CheckExistThongTinLoaiThe(MaLoaiThe);
+            DataTable CheckExistThongTinLoaiThe = Model.dbTheThanhVien.CheckExistThongTinLoaiThe(MaLoaiThe);
             if (CheckExistThongTinLoaiThe.Rows.Count > 0)
             {
                 if (int.Parse(CheckExistThongTinLoaiThe.Rows[0]["count_the"].ToString()) > 0)
@@ -254,7 +254,7 @@ namespace KClinic2._1.View.TheThanhVien
         {
             int count = 0;
 
-            DataTable CheckExistLoaiTheTheoID = Model.dbDanhMuc.CheckExistThongTinLoaiTheTheoID(_LoaiThe_Id);
+            DataTable CheckExistLoaiTheTheoID = Model.dbTheThanhVien.CheckExistThongTinLoaiTheTheoID(_LoaiThe_Id);
             if (CheckExistLoaiTheTheoID.Rows.Count > 0)
             {
                 if (int.Parse(CheckExistLoaiTheTheoID.Rows[0]["count_the"].ToString()) > 0)
@@ -269,14 +269,14 @@ namespace KClinic2._1.View.TheThanhVien
         private void LoadThongTinLoaiTheTheoId(string _LoaiThe_Id)
         {
             //load the
-            DataTable SelectDanhMucLoaiTheTheoId = Model.dbDanhMuc.SelectDanhMucLoaiTheTheoId(_LoaiThe_Id);
+            DataTable SelectDanhMucLoaiTheTheoId = Model.dbTheThanhVien.SelectDanhMucLoaiTheTheoId(_LoaiThe_Id);
 
             txtMaLoaiThe.Text = SelectDanhMucLoaiTheTheoId.Rows[0]["MaLoaiThe"].ToString();
             txtTenLoaiThe.Text = SelectDanhMucLoaiTheTheoId.Rows[0]["TenLoaiThe"].ToString();
             txtGhiChu.Text = SelectDanhMucLoaiTheTheoId.Rows[0]["GhiChu"].ToString();
 
             //load thong tin trong the
-            DataTable LoadThongTinTrongLoaiTheTheoId = Model.dbDanhMuc.LoadThongTinTrongLoaiTheTheoId(_LoaiThe_Id);
+            DataTable LoadThongTinTrongLoaiTheTheoId = Model.dbTheThanhVien.LoadThongTinTrongLoaiTheTheoId(_LoaiThe_Id);
             if (LoadThongTinTrongLoaiTheTheoId != null)
             {
                 if (LoadThongTinTrongLoaiTheTheoId.Rows.Count > 0)
@@ -311,7 +311,7 @@ namespace KClinic2._1.View.TheThanhVien
             string TenLoaiThe = "N'" + txtTenLoaiThe.Text.Replace("'", "''") + "'";
             string GhiChu = "N'" + txtGhiChu.Text.Replace("'", "''") + "'";
 
-            DataTable Insert_ThongTinThe = Model.dbDanhMuc.Insert_ThongTinLoaiThe(
+            DataTable Insert_ThongTinThe = Model.dbTheThanhVien.Insert_ThongTinLoaiThe(
                   MaLoaiThe
                 , TenLoaiThe
                 , GhiChu
@@ -334,7 +334,7 @@ namespace KClinic2._1.View.TheThanhVien
             string TenLoaiThe = "N'" + txtTenLoaiThe.Text.Replace("'", "''") + "'";
             string GhiChu = "N'" + txtGhiChu.Text.Replace("'", "''") + "'";
 
-            DataTable Update_ThongTinLoaiThe = Model.dbDanhMuc.Update_ThongTinLoaiThe(
+            DataTable Update_ThongTinLoaiThe = Model.dbTheThanhVien.Update_ThongTinLoaiThe(
                   MaLoaiThe
                 , TenLoaiThe
                 , GhiChu
@@ -364,7 +364,7 @@ namespace KClinic2._1.View.TheThanhVien
                 if (row["SoLuong"].ToString() != "") { reSoLuong = "N'" + row["SoLuong"].ToString() + "'"; }
                 if (row["NhomDichVu_Id"].ToString() != "") { reNhomDichVu_Id = "N'" + row["NhomDichVu_Id"].ToString() + "'"; }
 
-                DataTable InsertDichVuTrongThe = Model.dbDanhMuc.InsertDichVuTrongLoaiThe(
+                DataTable InsertDichVuTrongThe = Model.dbTheThanhVien.InsertDichVuTrongLoaiThe(
                        LoaiThe_Id
                        , reNhomDichVu_Id
                        , reSoLuong
@@ -380,7 +380,7 @@ namespace KClinic2._1.View.TheThanhVien
             string reSoLuong;
             string reNhomDichVu_Id;
 
-            DataTable DelDichVuTrongLoaiThe = Model.dbDanhMuc.DeleteDichVuTrongLoaiThe(
+            DataTable DelDichVuTrongLoaiThe = Model.dbTheThanhVien.DeleteDichVuTrongLoaiThe(
                        LoaiThe_Id
                        , Login.User_Id
                        , "'" + DateTime.Now.ToString("yyyyMMdd HH:mm:ss") + "'"
@@ -395,7 +395,7 @@ namespace KClinic2._1.View.TheThanhVien
                 if (row["SoLuong"].ToString() != "") { reSoLuong = "N'" + row["SoLuong"].ToString() + "'"; }
                 if (row["NhomDichVu_Id"].ToString() != "") { reNhomDichVu_Id = "N'" + row["NhomDichVu_Id"].ToString() + "'"; }
 
-                DataTable UpdateDichVuTrongLoaiThe = Model.dbDanhMuc.UpdateDichVuTrongLoaiThe(
+                DataTable UpdateDichVuTrongLoaiThe = Model.dbTheThanhVien.UpdateDichVuTrongLoaiThe(
                        LoaiThe_Id
                        , reNhomDichVu_Id
                        , reSoLuong
@@ -408,7 +408,7 @@ namespace KClinic2._1.View.TheThanhVien
 
         private void InsertThePhienDangNhap(string _DichVu_Id)
         {
-            DataTable InsertThe_PhienDangNhap = Model.dbDanhMuc.InsertThe_PhienDangNhap(
+            DataTable InsertThe_PhienDangNhap = Model.dbTheThanhVien.InsertThe_PhienDangNhap(
                     Login.PhienDangNhap_Id
                     , LoaiThe_Id
                     , _DichVu_Id
@@ -424,7 +424,7 @@ namespace KClinic2._1.View.TheThanhVien
             //    {
             //        for (int j = 0; j < CheckDichVuCapDuoi.Rows.Count; j++)
             //        {
-            //            DataTable InsertCLSYeuCau_PhieuDangNhapCapDuoi = Model.dbDanhMuc.InsertThe_PhienDangNhap(
+            //            DataTable InsertCLSYeuCau_PhieuDangNhapCapDuoi = Model.dbTheThanhVien.InsertThe_PhienDangNhap(
             //                Login.PhienDangNhap_Id
             //                , The_Id
             //                , CheckDichVuCapDuoi.Rows[j]["Dich_Id"].ToString()
@@ -438,7 +438,7 @@ namespace KClinic2._1.View.TheThanhVien
 
         private void InsertLoaiThePhienDangNhap(string _NhomDichVu_Id, string _SoLuong)
         {
-            DataTable InsertThe_PhienDangNhap = Model.dbDanhMuc.InsertLoaiThe_PhienDangNhap(
+            DataTable InsertThe_PhienDangNhap = Model.dbTheThanhVien.InsertLoaiThe_PhienDangNhap(
                     Login.PhienDangNhap_Id
                     , LoaiThe_Id
                     , _NhomDichVu_Id
@@ -460,7 +460,7 @@ namespace KClinic2._1.View.TheThanhVien
 
                 LoadThongTinLoaiTheTheoId(LoaiThe_Id);
                 
-                DataTable ThemLoaiTheVaoPhienDangNhap = Model.dbDanhMuc.ThemLoaiTheVaoPhienDangNhap(Login.PhienDangNhap_Id, LoaiThe_Id);
+                DataTable ThemLoaiTheVaoPhienDangNhap = Model.dbTheThanhVien.ThemLoaiTheVaoPhienDangNhap(Login.PhienDangNhap_Id, LoaiThe_Id);
             }
         }
 
@@ -505,7 +505,7 @@ namespace KClinic2._1.View.TheThanhVien
 
             LoaiThe_Id = "";
 
-            DataTable HoanTatLoaiThePhienDangNhap = Model.dbDanhMuc.HoanTatLoaiThePhienDangNhap(Login.PhienDangNhap_Id);
+            DataTable HoanTatLoaiThePhienDangNhap = Model.dbTheThanhVien.HoanTatLoaiThePhienDangNhap(Login.PhienDangNhap_Id);
         }
     }
 }
