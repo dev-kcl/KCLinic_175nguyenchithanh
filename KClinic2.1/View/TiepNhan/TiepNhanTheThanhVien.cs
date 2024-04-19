@@ -41,6 +41,7 @@ namespace KClinic2._1.View.TiepNhan
         DataTable DoiTuong;
         DataTable PhongBan;
         DataTable PhongTuVan;
+        DataTable DM_NVGioiThieu;
 
         public TiepNhanTheThanhVien()
         {
@@ -70,10 +71,12 @@ namespace KClinic2._1.View.TiepNhan
             cbbGioiTinh.DataSource = GioiTinh;
             cbbGioiTinh.DisplayMember = "GioiTinh";
             cbbGioiTinh.ValueMember = "GioiTinh_id";
+
             BacSiChiDinh = Model.DbTiepNhan.BacSiChiDinh();
             cbbNhanVien.DataSource = BacSiChiDinh;
             cbbNhanVien.DisplayMember = "FieldName";
             cbbNhanVien.ValueMember = "FieldCode";
+
             Dm_DichVu = Model.DbTiepNhan.Dm_DichVu();
             cbbDV.DataSource = Dm_DichVu;
             cbbDV.ValueMember = "Dich_Id";
@@ -95,6 +98,11 @@ namespace KClinic2._1.View.TiepNhan
             CbbPTuVan.ValueMember = "FieldCode";
             CbbPTuVan.DisplayMember = "FieldName";
             CbbPTuVan.Value = 4;
+
+            DM_NVGioiThieu = Model.dbXetNghiem.KTVThucHien();
+            cbbNVGioiThieu.DataSource = DM_NVGioiThieu;
+            cbbNVGioiThieu.ValueMember = "FieldCode";
+            cbbNVGioiThieu.DisplayMember = "FieldName";
         }
 
         private void TiepNhanTheThanhVien_Paint(object sender, PaintEventArgs e)
@@ -161,6 +169,16 @@ namespace KClinic2._1.View.TiepNhan
                 txtZaloID.Text = LoadThongTinBenhNhanDaTiepNhan_The.Rows[0]["Zalo_Id"].ToString();
                 CMND = LoadThongTinBenhNhanDaTiepNhan_The.Rows[0]["CMND"].ToString();
                 BHYT = LoadThongTinBenhNhanDaTiepNhan_The.Rows[0]["BHYT"].ToString();
+
+                string NVGioiThieu = LoadThongTinBenhNhanDaTiepNhan_The.Rows[0]["NhanVienGioiThieu_Id"].ToString();
+                if (!String.IsNullOrEmpty(NVGioiThieu))
+                {
+                    cbbNVGioiThieu.Value = Int32.Parse(NVGioiThieu);
+                }
+                else
+                {
+                    cbbNVGioiThieu.Text = "";
+                }
 
                 The_Id = LoadThongTinBenhNhanDaTiepNhan_The.Rows[0]["The_Id"].ToString();
                 txtSoThe.Text = LoadThongTinBenhNhanDaTiepNhan_The.Rows[0]["SoThe"].ToString();
@@ -1263,93 +1281,153 @@ namespace KClinic2._1.View.TiepNhan
                 return;
             }
 
-            string DichVuId = gridView2.GetFocusedRowCellValue("DichVu_Id").ToString();
+            //string DichVuId = gridView2.GetFocusedRowCellValue("DichVu_Id").ToString();
 
-            string Phongban_id = Login.PhongBan_Id;
+            //string Phongban_id = Login.PhongBan_Id;
 
-            //t = cbbDV.Value.ToString();
+            ////t = cbbDV.Value.ToString();
 
-            PhongBan = Model.DbTiepNhan.CBBPhongBan(DichVuId);
-            if (PhongBan != null)
+            //PhongBan = Model.DbTiepNhan.CBBPhongBan(DichVuId);
+            //if (PhongBan != null)
+            //{
+            //    if (PhongBan.Rows.Count > 0)
+            //    {
+            //        cbbphongban.DataSource = PhongBan;
+
+            //        cbbphongban.ValueMember = "PhongBan_Id";
+            //        cbbphongban.DisplayMember = "TenPhongBan";
+
+            //        int firstRowValue = (int)PhongBan.Rows[0]["PhongBan_Id"];
+            //        cbbphongban.Value = firstRowValue.ToString();
+
+            //        Phongban_id = PhongBan.Rows[0]["PhongBan_Id"].ToString();
+            //    }
+            //}
+
+            //DataTable Dm_DichVu_DonGia = Model.DbTiepNhan.Dm_DichVu_DonGia(DichVuId);
+            //string GiaDichVu = Dm_DichVu_DonGia.Rows[0]["GiaDichVu"].ToString();
+
+            //string ChietKhauPhanTram = "null";
+            //string GiaTriChietKhau = "null";
+
+            //ChietKhauPhanTram = "100";
+            //GiaTriChietKhau = ((Decimal.Parse(GiaDichVu) * Decimal.Parse(ChietKhauPhanTram)) / 100).ToString();
+
+            ////
+            //DataTable InsertCLSYeuCau = Model.DbTiepNhan.InsertCLSYeuCau(
+            //                  "null"
+            //                , "'" + DateTime.Now.ToString("yyyyMMdd") + "'"
+            //                , "'" + DateTime.Now.ToString("yyyyMMdd HH:mm:ss") + "'"
+            //                , "null"
+            //                , "null"
+            //                , DichVuId
+            //                , "1"
+            //                , GiaDichVu
+            //                , ChietKhauPhanTram
+            //                , GiaTriChietKhau
+            //                , "null"
+            //                , "1" //DuocPhepThucHien
+            //                , "ChuaThucHien"
+            //                , Login.User_Id
+            //                , Login.User_Id
+            //                , "'" + DateTime.Now.ToString("yyyyMMdd HH:mm:ss") + "'"
+            //                , "null"
+            //                , "null"
+            //                , "0"
+            //                , "null"
+            //                , Phongban_id
+            //                , The_Id
+            //                );
+            //if (InsertCLSYeuCau.Rows.Count > 0)
+            //{
+            //    CLSYeuCau_Id = InsertCLSYeuCau.Rows[0][0].ToString();
+            //    CLSYeuCauCha_Id = InsertCLSYeuCau.Rows[0][0].ToString();
+            //}
+            //DataTable InsertCLSYeuCau_PhieuDangNhap = Model.DbTiepNhan.InsertCLSYeuCau_PhieuDangNhap(
+            //    Login.PhienDangNhap_Id
+            //    , CLSYeuCau_Id
+            //    , DichVuId
+            //    , "N'" + "Them" + "'"
+            //    );
+            ////thêm phiếu yêu cầu cho dịch vụ cấp dưới
+            //DataTable CheckDichVuCapDuoi = Model.DbTiepNhan.CheckDichVuCapDuoi(DichVuId);
+            //if (CheckDichVuCapDuoi != null)
+            //{
+            //    if (CheckDichVuCapDuoi.Rows.Count > 0)
+            //    {
+            //        for (int j = 0; j < CheckDichVuCapDuoi.Rows.Count; j++)
+            //        {
+            //            DataTable InsertCLSYeuCauCapDuoi = Model.DbTiepNhan.InsertCLSYeuCau(
+            //                  "null"
+            //                , "'" + DateTime.Now.ToString("yyyyMMdd") + "'"
+            //                , "'" + DateTime.Now.ToString("yyyyMMdd HH:mm:ss") + "'"
+            //                , "null"
+            //                , "null"
+            //                , CheckDichVuCapDuoi.Rows[j]["Dich_Id"].ToString()
+            //                , "1"
+            //                , "0" //set giá dịch vụ = 0
+            //                , "null" //ty le chiet khau
+            //                , "null" //tien chiet khau
+            //                , "null"
+            //                , "1" //DuocPhepThucHien
+            //                , "ChuaThucHien"
+            //                , Login.User_Id
+            //                , Login.User_Id
+            //                , "'" + DateTime.Now.ToString("yyyyMMdd HH:mm:ss") + "'"
+            //                , "null"
+            //                , "null"
+            //                , "0"
+            //                , CLSYeuCauCha_Id
+            //                , Phongban_id
+            //                , The_Id
+            //                );
+            //            if (InsertCLSYeuCauCapDuoi.Rows.Count > 0)
+            //            {
+            //                CLSYeuCau_Id = InsertCLSYeuCauCapDuoi.Rows[0][0].ToString();
+            //            }
+            //            DataTable InsertCLSYeuCau_PhieuDangNhapCapDuoi = Model.DbTiepNhan.InsertCLSYeuCau_PhieuDangNhap(
+            //                Login.PhienDangNhap_Id
+            //                , CLSYeuCau_Id
+            //                , CheckDichVuCapDuoi.Rows[j]["Dich_Id"].ToString()
+            //                , "N'" + "Them" + "'"
+            //                );
+            //        }
+            //    }
+            //}
+            ////
+            //DataTable SelectClsyeucauPhienDangNhap = Model.DbTiepNhan.SelectClsyeucauPhienDangNhap(Login.PhienDangNhap_Id);
+            //gridDichVu.DataSource = SelectClsyeucauPhienDangNhap;
+            //gettongtien();
+
+
+            //codenew
+            string NhomBenhId = gridView2.GetFocusedRowCellValue("NhomBenh_Id").ToString();
+            string _NhomBenhId = "null";
+            if (NhomBenhId != "") { _NhomBenhId = "N'" + NhomBenhId.Replace("'", "''") + "'"; }
+
+            DataTable CheckNhomBenh_DichVu = Model.DbTiepNhan.CheckNhomBenh_DichVu(NhomBenhId);
+            if (CheckNhomBenh_DichVu != null)
             {
-                if (PhongBan.Rows.Count > 0)
+                if (CheckNhomBenh_DichVu.Rows.Count > 0)
                 {
-                    cbbphongban.DataSource = PhongBan;
+                    string ChietKhauPhanTram = "100";
+                    string GiaTriChietKhau = "null";
 
-                    cbbphongban.ValueMember = "PhongBan_Id";
-                    cbbphongban.DisplayMember = "TenPhongBan";
-
-                    int firstRowValue = (int)PhongBan.Rows[0]["PhongBan_Id"];
-                    cbbphongban.Value = firstRowValue.ToString();
-                    
-                    Phongban_id = PhongBan.Rows[0]["PhongBan_Id"].ToString();
-                }
-            }
-
-            DataTable Dm_DichVu_DonGia = Model.DbTiepNhan.Dm_DichVu_DonGia(DichVuId);
-            string GiaDichVu = Dm_DichVu_DonGia.Rows[0]["GiaDichVu"].ToString();
-
-            string ChietKhauPhanTram = "null";
-            string GiaTriChietKhau = "null";
-
-            ChietKhauPhanTram = "100";
-            GiaTriChietKhau = ((Decimal.Parse(GiaDichVu) * Decimal.Parse(ChietKhauPhanTram)) / 100).ToString();
-
-            //
-            DataTable InsertCLSYeuCau = Model.DbTiepNhan.InsertCLSYeuCau(
-                              "null"
-                            , "'" + DateTime.Now.ToString("yyyyMMdd") + "'"
-                            , "'" + DateTime.Now.ToString("yyyyMMdd HH:mm:ss") + "'"
-                            , "null"
-                            , "null"
-                            , DichVuId
-                            , "1"
-                            , GiaDichVu
-                            , ChietKhauPhanTram
-                            , GiaTriChietKhau
-                            , "null"
-                            , "1" //DuocPhepThucHien
-                            , "ChuaThucHien"
-                            , Login.User_Id
-                            , Login.User_Id
-                            , "'" + DateTime.Now.ToString("yyyyMMdd HH:mm:ss") + "'"
-                            , "null"
-                            , "null"
-                            , "0"
-                            , "null"
-                            , Phongban_id
-                            , The_Id
-                            );
-            if (InsertCLSYeuCau.Rows.Count > 0)
-            {
-                CLSYeuCau_Id = InsertCLSYeuCau.Rows[0][0].ToString();
-                CLSYeuCauCha_Id = InsertCLSYeuCau.Rows[0][0].ToString();
-            }
-            DataTable InsertCLSYeuCau_PhieuDangNhap = Model.DbTiepNhan.InsertCLSYeuCau_PhieuDangNhap(
-                Login.PhienDangNhap_Id
-                , CLSYeuCau_Id
-                , DichVuId
-                , "N'" + "Them" + "'"
-                );
-            //thêm phiếu yêu cầu cho dịch vụ cấp dưới
-            DataTable CheckDichVuCapDuoi = Model.DbTiepNhan.CheckDichVuCapDuoi(DichVuId);
-            if (CheckDichVuCapDuoi != null)
-            {
-                if (CheckDichVuCapDuoi.Rows.Count > 0)
-                {
-                    for (int j = 0; j < CheckDichVuCapDuoi.Rows.Count; j++)
+                    for (int i = 0; i < CheckNhomBenh_DichVu.Rows.Count; i++)
                     {
-                        DataTable InsertCLSYeuCauCapDuoi = Model.DbTiepNhan.InsertCLSYeuCau(
+                        GiaTriChietKhau = ((Decimal.Parse(CheckNhomBenh_DichVu.Rows[i]["GiaDichVu"].ToString()) * Decimal.Parse(ChietKhauPhanTram)) / 100).ToString();
+
+                        DataTable InsertCLSYeuCau = Model.DbTiepNhan.InsertCLSYeuCau(
                               "null"
                             , "'" + DateTime.Now.ToString("yyyyMMdd") + "'"
                             , "'" + DateTime.Now.ToString("yyyyMMdd HH:mm:ss") + "'"
                             , "null"
                             , "null"
-                            , CheckDichVuCapDuoi.Rows[j]["Dich_Id"].ToString()
+                            , CheckNhomBenh_DichVu.Rows[i]["Dich_Id"].ToString()
                             , "1"
-                            , "0" //set giá dịch vụ = 0
-                            , "null" //ty le chiet khau
-                            , "null" //tien chiet khau
+                            , CheckNhomBenh_DichVu.Rows[i]["GiaDichVu"].ToString()
+                            , ChietKhauPhanTram //ty le chiet khau
+                            , GiaTriChietKhau //tien chiet khau
                             , "null"
                             , "1" //DuocPhepThucHien
                             , "ChuaThucHien"
@@ -1359,33 +1437,85 @@ namespace KClinic2._1.View.TiepNhan
                             , "null"
                             , "null"
                             , "0"
-                            , CLSYeuCauCha_Id
-                            , Phongban_id
+                            , "null"
+                            , CheckNhomBenh_DichVu.Rows[i]["PhongBan_Id"].ToString()
                             , The_Id
+                            , _NhomBenhId
                             );
-                        if (InsertCLSYeuCauCapDuoi.Rows.Count > 0)
+                        if (InsertCLSYeuCau.Rows.Count > 0)
                         {
-                            CLSYeuCau_Id = InsertCLSYeuCauCapDuoi.Rows[0][0].ToString();
+                            CLSYeuCau_Id = InsertCLSYeuCau.Rows[0][0].ToString();
+                            CLSYeuCauCha_Id = InsertCLSYeuCau.Rows[0][0].ToString();
                         }
-                        DataTable InsertCLSYeuCau_PhieuDangNhapCapDuoi = Model.DbTiepNhan.InsertCLSYeuCau_PhieuDangNhap(
+                        DataTable InsertCLSYeuCau_PhieuDangNhap = Model.DbTiepNhan.InsertCLSYeuCau_PhieuDangNhap(
                             Login.PhienDangNhap_Id
                             , CLSYeuCau_Id
-                            , CheckDichVuCapDuoi.Rows[j]["Dich_Id"].ToString()
+                            , CheckNhomBenh_DichVu.Rows[i]["Dich_Id"].ToString()
                             , "N'" + "Them" + "'"
                             );
+                        //thêm phiếu yêu cầu cho dịch vụ cấp dưới
+                        DataTable CheckDichVuCapDuoi = Model.DbTiepNhan.CheckDichVuCapDuoi(CheckNhomBenh_DichVu.Rows[i]["Dich_Id"].ToString());
+                        if (CheckDichVuCapDuoi != null)
+                        {
+                            if (CheckDichVuCapDuoi.Rows.Count > 0)
+                            {
+                                for (int j = 0; j < CheckDichVuCapDuoi.Rows.Count; j++)
+                                {
+                                    DataTable InsertCLSYeuCauCapDuoi = Model.DbTiepNhan.InsertCLSYeuCau(
+                                          "null"
+                                        , "'" + DateTime.Now.ToString("yyyyMMdd") + "'"
+                                        , "'" + DateTime.Now.ToString("yyyyMMdd HH:mm:ss") + "'"
+                                        , "null"
+                                        , "null"
+                                        , CheckDichVuCapDuoi.Rows[j]["Dich_Id"].ToString()
+                                        , "1"
+                                        , "0" //set gia dịch vụ = 0
+                                        , "null" //ty le chiet khau
+                                        , "null" //tien chiet khau
+                                        , "null"
+                                        , "1"
+                                        , "ChuaThucHien"
+                                        , Login.User_Id
+                                        , Login.User_Id
+                                        , "'" + DateTime.Now.ToString("yyyyMMdd HH:mm:ss") + "'"
+                                        , "null"
+                                        , "null"
+                                        , "0"
+                                        , CLSYeuCauCha_Id
+                                        , CheckNhomBenh_DichVu.Rows[i]["PhongBan_Id"].ToString()
+                                        , The_Id
+                                        , _NhomBenhId
+                                        );
+                                    if (InsertCLSYeuCauCapDuoi.Rows.Count > 0)
+                                    {
+                                        CLSYeuCau_Id = InsertCLSYeuCauCapDuoi.Rows[0][0].ToString();
+                                    }
+                                    DataTable InsertCLSYeuCau_PhieuDangNhapCapDuoi = Model.DbTiepNhan.InsertCLSYeuCau_PhieuDangNhap(
+                                        Login.PhienDangNhap_Id
+                                        , CLSYeuCau_Id
+                                        , CheckDichVuCapDuoi.Rows[j]["Dich_Id"].ToString()
+                                        , "N'" + "Them" + "'"
+                                        );
+                                }
+                            }
+                        }
                     }
+                    DataTable SelectClsyeucauPhienDangNhap = Model.DbTiepNhan.SelectClsyeucauPhienDangNhap(Login.PhienDangNhap_Id);
+                    gridDichVu.DataSource = SelectClsyeucauPhienDangNhap;
+                    gettongtien();
                 }
             }
-            //
-            DataTable SelectClsyeucauPhienDangNhap = Model.DbTiepNhan.SelectClsyeucauPhienDangNhap(Login.PhienDangNhap_Id);
-            gridDichVu.DataSource = SelectClsyeucauPhienDangNhap;
-            gettongtien();
         }
 
         private void LoadThongTinTrongTheTheoId(string _The_Id)
         {
             //load the
             DataTable SelectDanhSachTheThanhVienTheoId = Model.dbTheThanhVien.SelectDanhSachTheThanhVienTheoId(_The_Id);
+
+            if (SelectDanhSachTheThanhVienTheoId.Rows.Count == 0)
+            {
+                return;
+            }
 
             txtSoThe.Text = SelectDanhSachTheThanhVienTheoId.Rows[0]["SoThe"].ToString();
 

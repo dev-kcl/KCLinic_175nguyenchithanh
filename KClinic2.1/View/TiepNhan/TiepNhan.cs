@@ -66,6 +66,8 @@ namespace KClinic2._1.View.TiepNhan
         DataTable PhongBan;
         DataTable HopDong;
         DataTable PhongTuVan;
+        DataTable DM_NVGioiThieu;
+
         void getdata()
         {
             DataTable GioiTinh = Model.DbTiepNhan.GioiTinh();
@@ -102,6 +104,11 @@ namespace KClinic2._1.View.TiepNhan
             CbbPTuVan.ValueMember = "FieldCode";
             CbbPTuVan.DisplayMember = "FieldName";
             CbbPTuVan.Value = 4;
+
+            DM_NVGioiThieu = Model.dbXetNghiem.KTVThucHien();
+            cbbNVGioiThieu.DataSource = DM_NVGioiThieu;
+            cbbNVGioiThieu.ValueMember = "FieldCode";
+            cbbNVGioiThieu.DisplayMember = "FieldName";
         }
 
         private void cbbDV_KeyDown(object sender, KeyEventArgs e)
@@ -291,7 +298,10 @@ namespace KClinic2._1.View.TiepNhan
                         NoiLamViec = Login.PhongBan_Id;
                     }
                 }
-              
+
+                string NguoiGioiThieu = "null";
+                if (cbbNVGioiThieu.SelectedItem != null) { NguoiGioiThieu = cbbNVGioiThieu.Value.ToString(); }
+
 
                 string Zalo_Id = "null";
                 if (txtZaloID.Text != "") { Zalo_Id = "N'" + txtZaloID.Text.Replace("'", "''") + "'"; }
@@ -358,6 +368,8 @@ namespace KClinic2._1.View.TiepNhan
                             , DoiTuong_Id
                             , HopDong_Id
                             , PhongTuVan_Id
+                            , "null" //The_Id
+                            , NguoiGioiThieu
                             );
                         if (Insert_TiepNhan.Rows.Count > 0)
                         {
@@ -455,7 +467,9 @@ namespace KClinic2._1.View.TiepNhan
                             , "0"
                             , DoiTuong_Id
                             , HopDong_Id
-                            ,PhongTuVan_Id
+                            , PhongTuVan_Id
+                            , "null" //The_Id
+                            , NguoiGioiThieu
                             );
                         if (Insert_TiepNhan.Rows.Count > 0)
                         {
@@ -562,7 +576,9 @@ namespace KClinic2._1.View.TiepNhan
                             , "0"
                             , DoiTuong_Id
                             , HopDong_Id
-                            ,PhongTuVan_Id
+                            , PhongTuVan_Id
+                            , "null" //The_Id
+                            , NguoiGioiThieu
                             );
                     if (Update_TiepNhan.Rows.Count > 0)
                     {
@@ -1135,6 +1151,16 @@ namespace KClinic2._1.View.TiepNhan
                 txtZaloID.Text = LoadThongTinBenhNhanDaTiepNhan.Rows[0]["Zalo_Id"].ToString();
                 CMND = LoadThongTinBenhNhanDaTiepNhan.Rows[0]["CMND"].ToString();
                 BHYT = LoadThongTinBenhNhanDaTiepNhan.Rows[0]["BHYT"].ToString();
+
+                string NVGioiThieu = LoadThongTinBenhNhanDaTiepNhan.Rows[0]["NhanVienGioiThieu_Id"].ToString();
+                if (!String.IsNullOrEmpty(NVGioiThieu))
+                {
+                    cbbNVGioiThieu.Value = Int32.Parse(NVGioiThieu);
+                }
+                else
+                {
+                    cbbNVGioiThieu.Text = "";
+                }
             }
             DataTable ThemClsYeuCauVaoPhieuDangNhap = Model.DbTiepNhan.ThemClsYeuCauVaoPhieuDangNhap(Login.PhienDangNhap_Id, TiepNhan_Id);
             DataTable SelectClsyeucauPhienDangNhap = Model.DbTiepNhan.SelectClsyeucauPhienDangNhap(Login.PhienDangNhap_Id);
@@ -1248,6 +1274,7 @@ namespace KClinic2._1.View.TiepNhan
             cbbDoiTuong.Enabled = true;
             cbbHopDong.Enabled = true;
             CbbPTuVan.Enabled = true;
+            cbbNVGioiThieu.Enabled = true;
         }
         public void An()
         {
@@ -1272,6 +1299,7 @@ namespace KClinic2._1.View.TiepNhan
             cbbDoiTuong.Enabled = false;
             cbbHopDong.Enabled = false;
             CbbPTuVan.Enabled = false;
+            cbbNVGioiThieu.Enabled = false;
         }
         public void Reset()
         {
@@ -1288,6 +1316,7 @@ namespace KClinic2._1.View.TiepNhan
             cbbNhomBenh.Text = "";
             txtZaloID.Text = "";
             CbbPTuVan.Text = "";
+            cbbNVGioiThieu.Text = "";
             txtThoiGianTiepNhan.Value = DateTime.Now;
             DataTable HoanTatClsYeuCauPhienDangNhap = Model.DbTiepNhan.HoanTatClsYeuCauPhienDangNhap(Login.PhienDangNhap_Id);
             gridDichVu.DataSource = null;

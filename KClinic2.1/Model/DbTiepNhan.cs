@@ -631,6 +631,7 @@ namespace KClinic2._1.Model
                 return null;
             }
         }
+
         public static DataTable InsertCLSYeuCau(
             string _SoPhieuYeuCau
             , string _NgayYeuCau
@@ -654,6 +655,7 @@ namespace KClinic2._1.Model
             , string _CLSYeuCau_Cha_Id
             , string _PhongBan_Id
             , string _The_Id = "null"
+            , string _NhomBenh_Id = "null"
             )
         {
             try
@@ -683,7 +685,8 @@ namespace KClinic2._1.Model
                     + "@Huy = " + _Huy + ","
                     + "@CLSYeuCau_Cha_Id = " + _CLSYeuCau_Cha_Id + ","
                     + "@PhongBan_Id = " + _PhongBan_Id + ","
-                    + "@The_Id = " + _The_Id 
+                    + "@The_Id = " + _The_Id + ","
+                    + "@NhomBenh_Id = " + _NhomBenh_Id
                     ;
                 con.Open();
                 table1.Load(cmd_Show.ExecuteReader(CommandBehavior.CloseConnection));
@@ -1095,12 +1098,16 @@ namespace KClinic2._1.Model
                     ;
                 con.Open();
                 table1.Load(cmd_Show.ExecuteReader(CommandBehavior.CloseConnection));
-                con.Close();
+                
                 return table1;
             }
-            catch
+            catch(Exception ex)
             {
-                return null;
+                throw ex;
+            }
+            finally
+            {
+                con.Close();
             }
         }
 
@@ -1117,12 +1124,16 @@ namespace KClinic2._1.Model
                     ;
                 con.Open();
                 table1.Load(cmd_Show.ExecuteReader(CommandBehavior.CloseConnection));
-                con.Close();
+                
                 return table1;
             }
-            catch
+            catch(Exception ex)
             {
-                return null;
+                throw ex;
+            }
+            finally
+            {
+                con.Close();
             }
         }
     }

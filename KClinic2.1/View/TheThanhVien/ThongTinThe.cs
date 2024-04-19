@@ -152,12 +152,12 @@ namespace KClinic2._1.View.TheThanhVien
                         if (txtMaYTe.Text == "")
                         {
                             AutoTinhMaYTe();
+                            InsertBenhNhan();
                             LoadThongTinBenhNhanTheoMaYTe();
-                            InsertUpdateBenhNhan();
                         }
                         else
                         {
-                            InsertUpdateBenhNhan();
+                            UpdateBenhNhan();
                         }
                     }
 
@@ -362,34 +362,15 @@ namespace KClinic2._1.View.TheThanhVien
             }
         }
 
-        private void InsertUpdateBenhNhan()
-        {          
+        private void InsertBenhNhan()
+        {
             string Hoten = "N'" + txtHoTen.Text.Replace("'", "''") + "'";
             string GioiTinh = "null";
             if (cbbGioiTinh.SelectedItem != null) { GioiTinh = cbbGioiTinh.Value.ToString(); }
             string NamSinh = "'" + txtNamSinh.Text + "'";
             string SoDienThoai = "N'" + txtSoDienThoai.Text.Replace("'", "''") + "'";
 
-            if (BenhNhan_Id != "")
-            {
-                DataTable UpdateBenhNhan = Model.dbTheThanhVien.UpdateBenhNhan(
-                      BenhNhan_Id
-                    , Hoten
-                    , GioiTinh
-                    , NamSinh
-                    , SoDienThoai
-                    , Login.User_Id
-                    , "'" + DateTime.Now.ToString("yyyyMMdd HH:mm:ss") + "'"
-                    );
-                if (UpdateBenhNhan.Rows.Count > 0)
-                {
-                    BenhNhan_Id = UpdateBenhNhan.Rows[0]["BenhNhan_Id"].ToString();
-                    TenBenhNhan = UpdateBenhNhan.Rows[0]["TenBenhNhan"].ToString();
-                }
-            }
-            else
-            {
-                DataTable InsertBenhNhan = Model.DbTiepNhan.InsertBenhNhan(
+            DataTable InsertBenhNhan = Model.DbTiepNhan.InsertBenhNhan(
                      MaYTe
                     , SoVaoVien
                     , Hoten
@@ -410,11 +391,34 @@ namespace KClinic2._1.View.TheThanhVien
                     , "null" //Zalo_Id
                     , "null" //BHYT
                     );
-                if (InsertBenhNhan.Rows.Count > 0)
-                {
-                    BenhNhan_Id = InsertBenhNhan.Rows[0]["BenhNhan_Id"].ToString();
-                    TenBenhNhan = InsertBenhNhan.Rows[0]["TenBenhNhan"].ToString();
-                }
+            if (InsertBenhNhan.Rows.Count > 0)
+            {
+                BenhNhan_Id = InsertBenhNhan.Rows[0]["BenhNhan_Id"].ToString();
+                TenBenhNhan = InsertBenhNhan.Rows[0]["TenBenhNhan"].ToString();
+            }
+        }
+
+        private void UpdateBenhNhan()
+        {
+            string Hoten = "N'" + txtHoTen.Text.Replace("'", "''") + "'";
+            string GioiTinh = "null";
+            if (cbbGioiTinh.SelectedItem != null) { GioiTinh = cbbGioiTinh.Value.ToString(); }
+            string NamSinh = "'" + txtNamSinh.Text + "'";
+            string SoDienThoai = "N'" + txtSoDienThoai.Text.Replace("'", "''") + "'";
+
+            DataTable UpdateBenhNhan = Model.dbTheThanhVien.UpdateBenhNhan(
+                      BenhNhan_Id
+                    , Hoten
+                    , GioiTinh
+                    , NamSinh
+                    , SoDienThoai
+                    , Login.User_Id
+                    , "'" + DateTime.Now.ToString("yyyyMMdd HH:mm:ss") + "'"
+                    );
+            if (UpdateBenhNhan.Rows.Count > 0)
+            {
+                BenhNhan_Id = UpdateBenhNhan.Rows[0]["BenhNhan_Id"].ToString();
+                TenBenhNhan = UpdateBenhNhan.Rows[0]["TenBenhNhan"].ToString();
             }
         }
 
@@ -589,6 +593,18 @@ namespace KClinic2._1.View.TheThanhVien
                     cbbLoaiThe.DroppedDown = true;
                 }
             }
+        }
+
+        private void btnThayDoiKhach_Click(object sender, EventArgs e)
+        {
+            txtMaYTe.Text = "";
+            txtHoTen.Text = "";
+            cbbGioiTinh.Text = "";
+            txtNamSinh.Text = "";
+            txtSoDienThoai.Text = "";
+
+            MaYTe = "";
+            SoVaoVien = "";
         }
     }
 }
