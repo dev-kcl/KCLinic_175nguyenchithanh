@@ -68,6 +68,7 @@ namespace KClinic2._1.View.TiepNhan
             this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn20 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.pnNhomBenh = new Guna.UI2.WinForms.Guna2Panel();
             this.cbbNhomBenh = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
             this.btnXoaDichVu = new DevExpress.XtraEditors.SimpleButton();
@@ -95,8 +96,6 @@ namespace KClinic2._1.View.TiepNhan
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn19 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
-            this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn15 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn18 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -436,7 +435,8 @@ namespace KClinic2._1.View.TiepNhan
             this.gridColumn8,
             this.gridColumn10,
             this.gridColumn11,
-            this.gridColumn20});
+            this.gridColumn20,
+            this.gridColumn12});
             this.gridView1.DetailHeight = 431;
             this.gridView1.GridControl = this.gridDichVu;
             this.gridView1.GroupCount = 1;
@@ -617,6 +617,14 @@ namespace KClinic2._1.View.TiepNhan
             this.gridColumn20.MinWidth = 25;
             this.gridColumn20.Name = "gridColumn20";
             this.gridColumn20.Width = 94;
+            // 
+            // gridColumn12
+            // 
+            this.gridColumn12.Caption = "NhomBenh_Id";
+            this.gridColumn12.FieldName = "NhomBenh_Id";
+            this.gridColumn12.MinWidth = 25;
+            this.gridColumn12.Name = "gridColumn12";
+            this.gridColumn12.Width = 94;
             // 
             // pnNhomBenh
             // 
@@ -998,8 +1006,6 @@ namespace KClinic2._1.View.TiepNhan
             this.gridView2.Appearance.SelectedRow.Options.UseFont = true;
             this.gridView2.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn19,
-            this.gridColumn12,
-            this.gridColumn13,
             this.gridColumn14,
             this.gridColumn15,
             this.gridColumn18,
@@ -1007,14 +1013,11 @@ namespace KClinic2._1.View.TiepNhan
             this.gridColumn17});
             this.gridView2.DetailHeight = 431;
             this.gridView2.GridControl = this.gridDichVu_The;
-            this.gridView2.GroupCount = 1;
             this.gridView2.Name = "gridView2";
             this.gridView2.OptionsBehavior.AllowFixedGroups = DevExpress.Utils.DefaultBoolean.True;
             this.gridView2.OptionsBehavior.AutoExpandAllGroups = true;
             this.gridView2.OptionsFind.AlwaysVisible = true;
             this.gridView2.OptionsView.ShowButtonMode = DevExpress.XtraGrid.Views.Base.ShowButtonModeEnum.ShowAlways;
-            this.gridView2.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
-            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gridColumn12, DevExpress.Data.ColumnSortOrder.Ascending)});
             // 
             // gridColumn19
             // 
@@ -1045,47 +1048,25 @@ namespace KClinic2._1.View.TiepNhan
             this.repositoryItemButtonEdit1.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             this.repositoryItemButtonEdit1.Click += new System.EventHandler(this.repositoryItemButtonEdit1_Click);
             // 
-            // gridColumn12
-            // 
-            this.gridColumn12.Caption = "Nhóm dịch vụ";
-            this.gridColumn12.FieldName = "TenNhomDichVu";
-            this.gridColumn12.MinWidth = 25;
-            this.gridColumn12.Name = "gridColumn12";
-            this.gridColumn12.OptionsColumn.AllowEdit = false;
-            this.gridColumn12.Visible = true;
-            this.gridColumn12.VisibleIndex = 1;
-            this.gridColumn12.Width = 99;
-            // 
-            // gridColumn13
-            // 
-            this.gridColumn13.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridColumn13.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn13.AppearanceHeader.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.gridColumn13.Caption = "Mã dịch vụ";
-            this.gridColumn13.FieldName = "MaDichVu";
-            this.gridColumn13.MinWidth = 25;
-            this.gridColumn13.Name = "gridColumn13";
-            this.gridColumn13.OptionsColumn.AllowEdit = false;
-            this.gridColumn13.Visible = true;
-            this.gridColumn13.VisibleIndex = 1;
-            this.gridColumn13.Width = 142;
-            // 
             // gridColumn14
             // 
             this.gridColumn14.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn14.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridColumn14.AppearanceHeader.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.gridColumn14.Caption = "Tên dịch vụ";
-            this.gridColumn14.FieldName = "TenDichVu";
+            this.gridColumn14.Caption = "Tên gói dịch vụ";
+            this.gridColumn14.FieldName = "TenNhomBenh";
             this.gridColumn14.MinWidth = 25;
             this.gridColumn14.Name = "gridColumn14";
             this.gridColumn14.OptionsColumn.AllowEdit = false;
             this.gridColumn14.Visible = true;
-            this.gridColumn14.VisibleIndex = 2;
+            this.gridColumn14.VisibleIndex = 1;
             this.gridColumn14.Width = 504;
             // 
             // gridColumn15
             // 
+            this.gridColumn15.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumn15.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn15.AppearanceCell.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.gridColumn15.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn15.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridColumn15.AppearanceHeader.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
@@ -1095,19 +1076,25 @@ namespace KClinic2._1.View.TiepNhan
             this.gridColumn15.Name = "gridColumn15";
             this.gridColumn15.OptionsColumn.AllowEdit = false;
             this.gridColumn15.Visible = true;
-            this.gridColumn15.VisibleIndex = 3;
+            this.gridColumn15.VisibleIndex = 2;
             this.gridColumn15.Width = 103;
             // 
             // gridColumn18
             // 
+            this.gridColumn18.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumn18.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn18.AppearanceCell.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.gridColumn18.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumn18.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn18.AppearanceHeader.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.gridColumn18.Caption = "Số lượng còn lại";
             this.gridColumn18.FieldName = "SoLuongConLai";
             this.gridColumn18.MinWidth = 25;
             this.gridColumn18.Name = "gridColumn18";
             this.gridColumn18.OptionsColumn.AllowEdit = false;
             this.gridColumn18.Visible = true;
-            this.gridColumn18.VisibleIndex = 4;
-            this.gridColumn18.Width = 107;
+            this.gridColumn18.VisibleIndex = 3;
+            this.gridColumn18.Width = 150;
             // 
             // gridColumn16
             // 
@@ -1119,8 +1106,8 @@ namespace KClinic2._1.View.TiepNhan
             // 
             // gridColumn17
             // 
-            this.gridColumn17.Caption = "DichVuId";
-            this.gridColumn17.FieldName = "DichVu_Id";
+            this.gridColumn17.Caption = "LoaiThe_Id";
+            this.gridColumn17.FieldName = "LoaiThe_Id";
             this.gridColumn17.MinWidth = 25;
             this.gridColumn17.Name = "gridColumn17";
             this.gridColumn17.Width = 94;
@@ -1911,8 +1898,6 @@ namespace KClinic2._1.View.TiepNhan
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
         private DevExpress.XtraGrid.GridControl gridDichVu_The;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn12;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn13;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn14;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn15;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn16;
@@ -1977,5 +1962,6 @@ namespace KClinic2._1.View.TiepNhan
         private System.Windows.Forms.Label label23;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel5;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn20;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn12;
     }
 }
