@@ -149,6 +149,12 @@ namespace KClinic2._1.View.TheThanhVien
                             return;
                         }
 
+                        if (cbbLoaiThe.SelectedItem == null || cbbLoaiThe.Value.ToString() == "")
+                        {
+                            XtraMessageBox.Show("Loại thẻ không được để trống!", "Thông Báo");
+                            return;
+                        }
+
                         if (txtMaYTe.Text == "")
                         {
                             AutoTinhMaYTe();
@@ -569,6 +575,10 @@ namespace KClinic2._1.View.TheThanhVien
 
         private void cbbSoThang_ValueChanged(object sender, EventArgs e)
         {
+            if (cbbSoThang.Text == "")
+            {
+                return;
+            }
             DateTime dateNow = DateTime.Now;
             dateNow = dateNow.AddMonths(int.Parse(cbbSoThang.Text));
 

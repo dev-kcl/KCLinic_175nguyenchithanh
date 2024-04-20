@@ -96,6 +96,7 @@ namespace KClinic2._1.View.TiepNhan
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn19 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
+            this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn15 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn18 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -143,6 +144,7 @@ namespace KClinic2._1.View.TiepNhan
             this.btnSua = new DevExpress.XtraEditors.SimpleButton();
             this.btnThem = new DevExpress.XtraEditors.SimpleButton();
             this.alertControl1 = new DevExpress.XtraBars.Alerter.AlertControl(this.components);
+            this.gridColumn21 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panelContent.SuspendLayout();
             this.panelDuLieu.SuspendLayout();
             this.panelChiTiet.SuspendLayout();
@@ -317,7 +319,7 @@ namespace KClinic2._1.View.TiepNhan
             this.label45.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label45.AutoSize = true;
             this.label45.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.label45.Location = new System.Drawing.Point(955, 18);
+            this.label45.Location = new System.Drawing.Point(949, 18);
             this.label45.Name = "label45";
             this.label45.Size = new System.Drawing.Size(94, 23);
             this.label45.TabIndex = 49;
@@ -436,6 +438,7 @@ namespace KClinic2._1.View.TiepNhan
             this.gridColumn10,
             this.gridColumn11,
             this.gridColumn20,
+            this.gridColumn21,
             this.gridColumn12});
             this.gridView1.DetailHeight = 431;
             this.gridView1.GridControl = this.gridDichVu;
@@ -869,7 +872,7 @@ namespace KClinic2._1.View.TiepNhan
             this.pnThoiGianTiepNhan.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(209)))), ((int)(((byte)(55)))));
             this.pnThoiGianTiepNhan.BorderThickness = 2;
             this.pnThoiGianTiepNhan.Controls.Add(this.txtThoiGianTiepNhan);
-            this.pnThoiGianTiepNhan.Location = new System.Drawing.Point(174, 292);
+            this.pnThoiGianTiepNhan.Location = new System.Drawing.Point(183, 292);
             this.pnThoiGianTiepNhan.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pnThoiGianTiepNhan.Name = "pnThoiGianTiepNhan";
             this.pnThoiGianTiepNhan.Size = new System.Drawing.Size(217, 34);
@@ -949,7 +952,7 @@ namespace KClinic2._1.View.TiepNhan
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.label15.ForeColor = System.Drawing.Color.Red;
-            this.label15.Location = new System.Drawing.Point(90, 89);
+            this.label15.Location = new System.Drawing.Point(92, 89);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(17, 23);
             this.label15.TabIndex = 59;
@@ -1006,6 +1009,7 @@ namespace KClinic2._1.View.TiepNhan
             this.gridView2.Appearance.SelectedRow.Options.UseFont = true;
             this.gridView2.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn19,
+            this.gridColumn13,
             this.gridColumn14,
             this.gridColumn15,
             this.gridColumn18,
@@ -1048,6 +1052,20 @@ namespace KClinic2._1.View.TiepNhan
             this.repositoryItemButtonEdit1.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             this.repositoryItemButtonEdit1.Click += new System.EventHandler(this.repositoryItemButtonEdit1_Click);
             // 
+            // gridColumn13
+            // 
+            this.gridColumn13.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumn13.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn13.AppearanceHeader.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.gridColumn13.Caption = "Tên loại thẻ";
+            this.gridColumn13.FieldName = "TenLoaiThe";
+            this.gridColumn13.MinWidth = 25;
+            this.gridColumn13.Name = "gridColumn13";
+            this.gridColumn13.OptionsColumn.AllowEdit = false;
+            this.gridColumn13.Visible = true;
+            this.gridColumn13.VisibleIndex = 1;
+            this.gridColumn13.Width = 300;
+            // 
             // gridColumn14
             // 
             this.gridColumn14.AppearanceHeader.Options.UseTextOptions = true;
@@ -1059,8 +1077,8 @@ namespace KClinic2._1.View.TiepNhan
             this.gridColumn14.Name = "gridColumn14";
             this.gridColumn14.OptionsColumn.AllowEdit = false;
             this.gridColumn14.Visible = true;
-            this.gridColumn14.VisibleIndex = 1;
-            this.gridColumn14.Width = 504;
+            this.gridColumn14.VisibleIndex = 2;
+            this.gridColumn14.Width = 219;
             // 
             // gridColumn15
             // 
@@ -1076,8 +1094,8 @@ namespace KClinic2._1.View.TiepNhan
             this.gridColumn15.Name = "gridColumn15";
             this.gridColumn15.OptionsColumn.AllowEdit = false;
             this.gridColumn15.Visible = true;
-            this.gridColumn15.VisibleIndex = 2;
-            this.gridColumn15.Width = 103;
+            this.gridColumn15.VisibleIndex = 3;
+            this.gridColumn15.Width = 137;
             // 
             // gridColumn18
             // 
@@ -1093,8 +1111,8 @@ namespace KClinic2._1.View.TiepNhan
             this.gridColumn18.Name = "gridColumn18";
             this.gridColumn18.OptionsColumn.AllowEdit = false;
             this.gridColumn18.Visible = true;
-            this.gridColumn18.VisibleIndex = 3;
-            this.gridColumn18.Width = 150;
+            this.gridColumn18.VisibleIndex = 4;
+            this.gridColumn18.Width = 205;
             // 
             // gridColumn16
             // 
@@ -1137,7 +1155,7 @@ namespace KClinic2._1.View.TiepNhan
             this.txtNamSinh.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtNamSinh.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
             this.txtNamSinh.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtNamSinh.Location = new System.Drawing.Point(109, 84);
+            this.txtNamSinh.Location = new System.Drawing.Point(114, 84);
             this.txtNamSinh.Margin = new System.Windows.Forms.Padding(5);
             this.txtNamSinh.Name = "txtNamSinh";
             this.txtNamSinh.PasswordChar = '\0';
@@ -1163,13 +1181,13 @@ namespace KClinic2._1.View.TiepNhan
             this.txtSoThe.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtSoThe.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtSoThe.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
-            this.txtSoThe.Location = new System.Drawing.Point(109, 9);
+            this.txtSoThe.Location = new System.Drawing.Point(114, 9);
             this.txtSoThe.Margin = new System.Windows.Forms.Padding(5);
             this.txtSoThe.Name = "txtSoThe";
             this.txtSoThe.PasswordChar = '\0';
             this.txtSoThe.PlaceholderText = "";
             this.txtSoThe.SelectedText = "";
-            this.txtSoThe.Size = new System.Drawing.Size(189, 31);
+            this.txtSoThe.Size = new System.Drawing.Size(184, 31);
             this.txtSoThe.TabIndex = 0;
             this.txtSoThe.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSoThe_KeyDown);
             this.txtSoThe.Validated += new System.EventHandler(this.txtSoThe_Validated);
@@ -1180,10 +1198,10 @@ namespace KClinic2._1.View.TiepNhan
             this.guna2Panel3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(209)))), ((int)(((byte)(55)))));
             this.guna2Panel3.BorderThickness = 2;
             this.guna2Panel3.Controls.Add(this.CbbPTuVan);
-            this.guna2Panel3.Location = new System.Drawing.Point(111, 209);
+            this.guna2Panel3.Location = new System.Drawing.Point(114, 209);
             this.guna2Panel3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.guna2Panel3.Name = "guna2Panel3";
-            this.guna2Panel3.Size = new System.Drawing.Size(205, 32);
+            this.guna2Panel3.Size = new System.Drawing.Size(202, 32);
             this.guna2Panel3.TabIndex = 16;
             // 
             // CbbPTuVan
@@ -1294,10 +1312,10 @@ namespace KClinic2._1.View.TiepNhan
             this.pnNgaySinh.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(209)))), ((int)(((byte)(55)))));
             this.pnNgaySinh.BorderThickness = 2;
             this.pnNgaySinh.Controls.Add(this.txtNgaySinh);
-            this.pnNgaySinh.Location = new System.Drawing.Point(109, 124);
+            this.pnNgaySinh.Location = new System.Drawing.Point(114, 124);
             this.pnNgaySinh.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pnNgaySinh.Name = "pnNgaySinh";
-            this.pnNgaySinh.Size = new System.Drawing.Size(173, 34);
+            this.pnNgaySinh.Size = new System.Drawing.Size(168, 34);
             this.pnNgaySinh.TabIndex = 10;
             // 
             // txtNgaySinh
@@ -1315,7 +1333,7 @@ namespace KClinic2._1.View.TiepNhan
             this.txtNgaySinh.Location = new System.Drawing.Point(2, 2);
             this.txtNgaySinh.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtNgaySinh.Name = "txtNgaySinh";
-            this.txtNgaySinh.Size = new System.Drawing.Size(169, 30);
+            this.txtNgaySinh.Size = new System.Drawing.Size(163, 30);
             this.txtNgaySinh.TabIndex = 10;
             this.txtNgaySinh.Validated += new System.EventHandler(this.txtNgaySinh_Validated);
             // 
@@ -1375,7 +1393,7 @@ namespace KClinic2._1.View.TiepNhan
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.label1.Location = new System.Drawing.Point(310, 13);
+            this.label1.Location = new System.Drawing.Point(308, 13);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(67, 23);
             this.label1.TabIndex = 0;
@@ -1416,13 +1434,13 @@ namespace KClinic2._1.View.TiepNhan
             this.txtHoTen.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtHoTen.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.txtHoTen.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
-            this.txtHoTen.Location = new System.Drawing.Point(109, 46);
+            this.txtHoTen.Location = new System.Drawing.Point(114, 46);
             this.txtHoTen.Margin = new System.Windows.Forms.Padding(5);
             this.txtHoTen.Name = "txtHoTen";
             this.txtHoTen.PasswordChar = '\0';
             this.txtHoTen.PlaceholderText = "";
             this.txtHoTen.SelectedText = "";
-            this.txtHoTen.Size = new System.Drawing.Size(504, 31);
+            this.txtHoTen.Size = new System.Drawing.Size(499, 31);
             this.txtHoTen.TabIndex = 4;
             this.txtHoTen.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBox_KeyDown);
             // 
@@ -1441,13 +1459,13 @@ namespace KClinic2._1.View.TiepNhan
             this.txtDiaChi.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtDiaChi.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
             this.txtDiaChi.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtDiaChi.Location = new System.Drawing.Point(109, 169);
+            this.txtDiaChi.Location = new System.Drawing.Point(114, 169);
             this.txtDiaChi.Margin = new System.Windows.Forms.Padding(5);
             this.txtDiaChi.Name = "txtDiaChi";
             this.txtDiaChi.PasswordChar = '\0';
             this.txtDiaChi.PlaceholderText = "";
             this.txtDiaChi.SelectedText = "";
-            this.txtDiaChi.Size = new System.Drawing.Size(504, 31);
+            this.txtDiaChi.Size = new System.Drawing.Size(499, 31);
             this.txtDiaChi.TabIndex = 14;
             this.txtDiaChi.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBox_KeyDown);
             // 
@@ -1501,13 +1519,13 @@ namespace KClinic2._1.View.TiepNhan
             this.txtMaYTe.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtMaYTe.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtMaYTe.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
-            this.txtMaYTe.Location = new System.Drawing.Point(382, 9);
+            this.txtMaYTe.Location = new System.Drawing.Point(385, 9);
             this.txtMaYTe.Margin = new System.Windows.Forms.Padding(5);
             this.txtMaYTe.Name = "txtMaYTe";
             this.txtMaYTe.PasswordChar = '\0';
             this.txtMaYTe.PlaceholderText = "";
             this.txtMaYTe.SelectedText = "";
-            this.txtMaYTe.Size = new System.Drawing.Size(189, 31);
+            this.txtMaYTe.Size = new System.Drawing.Size(186, 31);
             this.txtMaYTe.TabIndex = 2;
             this.txtMaYTe.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtMaYTe_KeyDown);
             // 
@@ -1796,6 +1814,14 @@ namespace KClinic2._1.View.TiepNhan
             this.alertControl1.FormShowingEffect = DevExpress.XtraBars.Alerter.AlertFormShowingEffect.SlideVertical;
             this.alertControl1.ShowPinButton = false;
             // 
+            // gridColumn21
+            // 
+            this.gridColumn21.Caption = "LoaiThe_Id";
+            this.gridColumn21.FieldName = "LoaiThe_Id";
+            this.gridColumn21.MinWidth = 25;
+            this.gridColumn21.Name = "gridColumn21";
+            this.gridColumn21.Width = 94;
+            // 
             // TiepNhanTheThanhVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1963,5 +1989,7 @@ namespace KClinic2._1.View.TiepNhan
         private Guna.UI2.WinForms.Guna2Panel guna2Panel5;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn20;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn12;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn13;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn21;
     }
 }
