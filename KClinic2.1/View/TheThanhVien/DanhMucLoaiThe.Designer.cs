@@ -575,12 +575,12 @@ namespace KClinic2._1.View.TheThanhVien
             this.btnThem.AppearanceDisabled.Options.UseForeColor = true;
             this.btnThem.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
             this.btnThem.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnThem.ImageOptions.SvgImage")));
-            this.btnThem.Location = new System.Drawing.Point(512, 56);
+            this.btnThem.Location = new System.Drawing.Point(485, 56);
             this.btnThem.Margin = new System.Windows.Forms.Padding(4);
             this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(105, 78);
+            this.btnThem.Size = new System.Drawing.Size(145, 78);
             this.btnThem.TabIndex = 5;
-            this.btnThem.Text = "Đăng ký";
+            this.btnThem.Text = "Thêm/Sửa loại thẻ";
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // label1

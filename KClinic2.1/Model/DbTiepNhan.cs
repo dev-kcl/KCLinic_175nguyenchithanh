@@ -655,6 +655,7 @@ namespace KClinic2._1.Model
             , string _CLSYeuCau_Cha_Id
             , string _PhongBan_Id
             , string _The_Id = "null"
+            , string _LoaiThe_Id = "null"
             , string _NhomBenh_Id = "null"
             )
         {
@@ -686,16 +687,21 @@ namespace KClinic2._1.Model
                     + "@CLSYeuCau_Cha_Id = " + _CLSYeuCau_Cha_Id + ","
                     + "@PhongBan_Id = " + _PhongBan_Id + ","
                     + "@The_Id = " + _The_Id + ","
+                    + "@LoaiThe_Id = " + _LoaiThe_Id + ","
                     + "@NhomBenh_Id = " + _NhomBenh_Id
                     ;
                 con.Open();
                 table1.Load(cmd_Show.ExecuteReader(CommandBehavior.CloseConnection));
-                con.Close();
+                
                 return table1;
             }
-            catch
+            catch(Exception ex)
             {
-                return null;
+                throw ex;
+            }
+            finally
+            {
+                con.Close();
             }
         }
         public static DataTable InsertCLSYeuCau_PhieuDangNhap(string _PhienDangNhap, string _clsyeucau, string _DichVu_id, string _ThaoTac)

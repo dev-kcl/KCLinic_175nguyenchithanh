@@ -48,6 +48,8 @@ namespace KClinic2._1.View.TheThanhVien
             this.label5 = new System.Windows.Forms.Label();
             this.txtSoThe = new Guna.UI2.WinForms.Guna2TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.btnThayDoiKhach = new DevExpress.XtraEditors.SimpleButton();
             this.btnUpdateDV = new DevExpress.XtraEditors.SimpleButton();
             this.label10 = new System.Windows.Forms.Label();
             this.cbbLoaiThe = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
@@ -79,7 +81,6 @@ namespace KClinic2._1.View.TheThanhVien
             this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.alertControl1 = new DevExpress.XtraBars.Alerter.AlertControl(this.components);
-            this.btnThayDoiKhach = new DevExpress.XtraEditors.SimpleButton();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cbbSoThang)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -154,7 +155,6 @@ namespace KClinic2._1.View.TheThanhVien
             // 
             // 
             this.txtHieuLuc.DropDownCalendar.FirstMonth = new System.DateTime(2023, 1, 1, 0, 0, 0, 0);
-            this.txtHieuLuc.Enabled = false;
             this.txtHieuLuc.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.txtHieuLuc.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
             this.txtHieuLuc.IsNullDate = true;
@@ -288,6 +288,7 @@ namespace KClinic2._1.View.TheThanhVien
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.label11);
             this.groupBox2.Controls.Add(this.btnThayDoiKhach);
             this.groupBox2.Controls.Add(this.btnUpdateDV);
             this.groupBox2.Controls.Add(this.label10);
@@ -314,6 +315,33 @@ namespace KClinic2._1.View.TheThanhVien
             this.groupBox2.TabIndex = 104;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thông tin khách hàng";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.label11.ForeColor = System.Drawing.Color.Red;
+            this.label11.Location = new System.Drawing.Point(116, 273);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(20, 28);
+            this.label11.TabIndex = 114;
+            this.label11.Text = "*";
+            // 
+            // btnThayDoiKhach
+            // 
+            this.btnThayDoiKhach.Appearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(209)))), ((int)(((byte)(55)))));
+            this.btnThayDoiKhach.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btnThayDoiKhach.Appearance.Options.UseBorderColor = true;
+            this.btnThayDoiKhach.Appearance.Options.UseFont = true;
+            this.btnThayDoiKhach.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnThayDoiKhach.ImageOptions.Image")));
+            this.btnThayDoiKhach.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
+            this.btnThayDoiKhach.Location = new System.Drawing.Point(405, 27);
+            this.btnThayDoiKhach.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnThayDoiKhach.Name = "btnThayDoiKhach";
+            this.btnThayDoiKhach.Size = new System.Drawing.Size(261, 44);
+            this.btnThayDoiKhach.TabIndex = 113;
+            this.btnThayDoiKhach.Text = "Thay đổi khách mới cho thẻ";
+            this.btnThayDoiKhach.Click += new System.EventHandler(this.btnThayDoiKhach_Click);
             // 
             // btnUpdateDV
             // 
@@ -722,7 +750,7 @@ namespace KClinic2._1.View.TheThanhVien
             this.gridColumn1.OptionsColumn.AllowEdit = false;
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 0;
-            this.gridColumn1.Width = 64;
+            this.gridColumn1.Width = 61;
             // 
             // gridColumn2
             // 
@@ -736,7 +764,7 @@ namespace KClinic2._1.View.TheThanhVien
             this.gridColumn2.OptionsColumn.AllowEdit = false;
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 1;
-            this.gridColumn2.Width = 130;
+            this.gridColumn2.Width = 127;
             // 
             // gridColumn3
             // 
@@ -750,7 +778,7 @@ namespace KClinic2._1.View.TheThanhVien
             this.gridColumn3.OptionsColumn.AllowEdit = false;
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 2;
-            this.gridColumn3.Width = 238;
+            this.gridColumn3.Width = 233;
             // 
             // gridColumn5
             // 
@@ -761,13 +789,15 @@ namespace KClinic2._1.View.TheThanhVien
             this.gridColumn5.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridColumn5.AppearanceHeader.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.gridColumn5.Caption = "Ngày hiệu lực";
+            this.gridColumn5.DisplayFormat.FormatString = "dd/MM/yyyy";
+            this.gridColumn5.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.gridColumn5.FieldName = "NgayHieuLuc";
             this.gridColumn5.MinWidth = 27;
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.OptionsColumn.AllowEdit = false;
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 3;
-            this.gridColumn5.Width = 120;
+            this.gridColumn5.Width = 180;
             // 
             // gridColumn10
             // 
@@ -798,22 +828,6 @@ namespace KClinic2._1.View.TheThanhVien
             this.alertControl1.AppearanceText.Options.UseFont = true;
             this.alertControl1.FormShowingEffect = DevExpress.XtraBars.Alerter.AlertFormShowingEffect.SlideVertical;
             this.alertControl1.ShowPinButton = false;
-            // 
-            // btnThayDoiKhach
-            // 
-            this.btnThayDoiKhach.Appearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(209)))), ((int)(((byte)(55)))));
-            this.btnThayDoiKhach.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.btnThayDoiKhach.Appearance.Options.UseBorderColor = true;
-            this.btnThayDoiKhach.Appearance.Options.UseFont = true;
-            this.btnThayDoiKhach.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
-            this.btnThayDoiKhach.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
-            this.btnThayDoiKhach.Location = new System.Drawing.Point(405, 27);
-            this.btnThayDoiKhach.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnThayDoiKhach.Name = "btnThayDoiKhach";
-            this.btnThayDoiKhach.Size = new System.Drawing.Size(261, 44);
-            this.btnThayDoiKhach.TabIndex = 113;
-            this.btnThayDoiKhach.Text = "Thay đổi khách mới cho thẻ";
-            this.btnThayDoiKhach.Click += new System.EventHandler(this.btnThayDoiKhach_Click);
             // 
             // ThongTinThe
             // 
@@ -889,5 +903,6 @@ namespace KClinic2._1.View.TheThanhVien
         private System.Windows.Forms.Label label2;
         private DevExpress.XtraEditors.SimpleButton btnUpdateDV;
         private DevExpress.XtraEditors.SimpleButton btnThayDoiKhach;
+        private System.Windows.Forms.Label label11;
     }
 }
