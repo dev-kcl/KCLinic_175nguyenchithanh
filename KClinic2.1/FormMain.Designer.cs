@@ -51,6 +51,7 @@
             this.barButtonItem60 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem61 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem62 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem63 = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
@@ -135,7 +136,8 @@
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
-            this.barButtonItem63 = new DevExpress.XtraBars.BarButtonItem();
+            this.ribbonPageGroup26 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.barButtonItem64 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
@@ -167,10 +169,11 @@
             this.barButtonItem60,
             this.barButtonItem61,
             this.barButtonItem62,
-            this.barButtonItem63});
+            this.barButtonItem63,
+            this.barButtonItem64});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
             this.ribbonControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ribbonControl1.MaxItemId = 67;
+            this.ribbonControl1.MaxItemId = 68;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1,
@@ -332,6 +335,15 @@
             this.barButtonItem62.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem62.ImageOptions.LargeImage")));
             this.barButtonItem62.Name = "barButtonItem62";
             this.barButtonItem62.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem62_ItemClick);
+            // 
+            // barButtonItem63
+            // 
+            this.barButtonItem63.Caption = "Danh mục Loại thẻ";
+            this.barButtonItem63.Id = 66;
+            this.barButtonItem63.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem63.ImageOptions.Image")));
+            this.barButtonItem63.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem63.ImageOptions.LargeImage")));
+            this.barButtonItem63.Name = "barButtonItem63";
+            this.barButtonItem63.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem63_ItemClick);
             // 
             // ribbonPage1
             // 
@@ -759,7 +771,8 @@
             this.ribbonPage5.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup24,
             this.ribbonPageGroup13,
-            this.ribbonPageGroup14});
+            this.ribbonPageGroup14,
+            this.ribbonPageGroup26});
             this.ribbonPage5.Name = "ribbonPage5";
             this.ribbonPage5.Text = "Hệ thống báo cáo";
             // 
@@ -1044,14 +1057,18 @@
             this.xtraTabbedMdiManager1.PinPageButtonShowMode = DevExpress.XtraTab.PinPageButtonShowMode.InActiveTabPageHeader;
             this.xtraTabbedMdiManager1.ShowToolTips = DevExpress.Utils.DefaultBoolean.True;
             // 
-            // barButtonItem63
+            // ribbonPageGroup26
             // 
-            this.barButtonItem63.Caption = "Danh mục Loại thẻ";
-            this.barButtonItem63.Id = 66;
-            this.barButtonItem63.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem63.ImageOptions.Image")));
-            this.barButtonItem63.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem63.ImageOptions.LargeImage")));
-            this.barButtonItem63.Name = "barButtonItem63";
-            this.barButtonItem63.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem63_ItemClick);
+            this.ribbonPageGroup26.ItemLinks.Add(this.barButtonItem64);
+            this.ribbonPageGroup26.Name = "ribbonPageGroup26";
+            this.ribbonPageGroup26.Text = "Thống kê thẻ thành viên";
+            // 
+            // barButtonItem64
+            // 
+            this.barButtonItem64.Caption = "Báo cáo sử dụng dịch vụ thẻ";
+            this.barButtonItem64.Id = 67;
+            this.barButtonItem64.Name = "barButtonItem64";
+            this.barButtonItem64.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem64_ItemClick);
             // 
             // FormMain
             // 
@@ -1192,6 +1209,8 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem62;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup25;
         private DevExpress.XtraBars.BarButtonItem barButtonItem63;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem64;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup26;
     }
 }
 

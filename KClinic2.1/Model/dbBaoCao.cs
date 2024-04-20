@@ -238,5 +238,33 @@ namespace KClinic2._1.Model
                 return null;
             }
         }
+
+        public static DataTable SP_BaoCao_016_BaoCaoSuDungDichVuThe(string _TuNgay, string _DenNgay, string _SoThe, string _NguoiBaoCao)
+        {
+            try
+            {
+                DataTable table1 = new DataTable();
+                SqlCommand cmd_Show = con.CreateCommand();
+                cmd_Show.CommandTimeout = timeout_connecttion;
+                cmd_Show.CommandText = "exec SP_BaoCao_016_BaoCaoSuDungDichVuThe "
+                    + "@TuNgay = " + _TuNgay + ","
+                    + "@DenNgay = " + _DenNgay + ","
+                    + "@SoThe = " + _SoThe + ","
+                    + "@NguoiBaoCao = N'" + _NguoiBaoCao + "'"
+                    ;
+                con.Open();
+                table1.Load(cmd_Show.ExecuteReader(CommandBehavior.CloseConnection));
+                
+                return table1;
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
     }
 }
