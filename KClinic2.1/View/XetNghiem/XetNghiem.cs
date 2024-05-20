@@ -1076,130 +1076,137 @@ namespace KClinic2._1.View.XetNghiem
 
         public void LoadBatThuong(DataTable tb_KetQuaXetNghiem)
         {
-            tb_KetQuaXetNghiem.Columns["BatThuong"].ReadOnly = false;
-            foreach (DataRow row in tb_KetQuaXetNghiem.Rows)
+            try
             {
-                if (row["GiaTriChuan"] == DBNull.Value || row["KetQua"] == DBNull.Value)
+                tb_KetQuaXetNghiem.Columns["BatThuong"].ReadOnly = false;
+                foreach (DataRow row in tb_KetQuaXetNghiem.Rows)
                 {
-                    continue;
-                }
-                if (row["GiaTriChuan"].ToString() == "" || row["KetQua"].ToString() == "")
-                {
-                    continue;
-                }
-
-                string giatrichuan = row["GiaTriChuan"].ToString();
-
-                if (giatrichuan.Contains(symbol_FromTo))
-                {
-                    int symbolIndex = giatrichuan.IndexOf(symbol_FromTo);
-                    string leftSubstring = (symbolIndex >= 0) ? giatrichuan.Substring(0, symbolIndex) : giatrichuan;
-                    string rightSubstring = (symbolIndex >= 0) ? giatrichuan.Substring(symbolIndex + 1) : string.Empty;
-
-                    decimal FromValue = Decimal.Parse(leftSubstring.Trim());
-                    decimal ToValue = Decimal.Parse(rightSubstring.Trim());
-
-                    string str_ketqua = row["KetQua"].ToString().Trim();
-                    if (str_ketqua.Contains(","))
+                    if (row["GiaTriChuan"] == DBNull.Value || row["KetQua"] == DBNull.Value)
                     {
-                        str_ketqua = str_ketqua.Replace(",", ".");
+                        continue;
                     }
-
-                    bool chk_isNumber = Microsoft.VisualBasic.Information.IsNumeric(str_ketqua);
-                    if (chk_isNumber == false)
+                    if (row["GiaTriChuan"].ToString() == "" || row["KetQua"].ToString() == "")
                     {
                         continue;
                     }
 
-                    decimal Result = Decimal.Parse(str_ketqua);
-                    
-                    if (FromValue <= Result && Result <= ToValue)
+                    string giatrichuan = row["GiaTriChuan"].ToString();
+
+                    if (giatrichuan.Contains(symbol_FromTo))
                     {
-                        continue;
+                        int symbolIndex = giatrichuan.IndexOf(symbol_FromTo);
+                        string leftSubstring = (symbolIndex >= 0) ? giatrichuan.Substring(0, symbolIndex) : giatrichuan;
+                        string rightSubstring = (symbolIndex >= 0) ? giatrichuan.Substring(symbolIndex + 1) : string.Empty;
+
+                        decimal FromValue = Decimal.Parse(leftSubstring.Trim());
+                        decimal ToValue = Decimal.Parse(rightSubstring.Trim());
+
+                        string str_ketqua = row["KetQua"].ToString().Trim();
+                        if (str_ketqua.Contains(","))
+                        {
+                            str_ketqua = str_ketqua.Replace(",", ".");
+                        }
+
+                        bool chk_isNumber = Microsoft.VisualBasic.Information.IsNumeric(str_ketqua);
+                        if (chk_isNumber == false)
+                        {
+                            continue;
+                        }
+
+                        decimal Result = Decimal.Parse(str_ketqua);
+
+                        if (FromValue <= Result && Result <= ToValue)
+                        {
+                            continue;
+                        }
+                        else
+                        {
+                            if (Result < FromValue)
+                            {
+                                row["BatThuong"] = "2";
+                            }
+                            else
+                            {
+                                row["BatThuong"] = "1";
+                            }
+                        }
                     }
-                    else
+                    else if (giatrichuan.Contains(symbol_OnlyMin))
                     {
-                        if (Result < FromValue)
+                        int symbolIndex = giatrichuan.IndexOf(symbol_OnlyMin);
+                        string rightSubstring = (symbolIndex >= 0) ? giatrichuan.Substring(symbolIndex + 1) : string.Empty;
+
+                        decimal minValue = Decimal.Parse(rightSubstring.Trim());
+
+                        string str_ketqua = row["KetQua"].ToString().Trim();
+                        if (str_ketqua.Contains(","))
+                        {
+                            str_ketqua = str_ketqua.Replace(",", ".");
+                        }
+
+                        bool chk_isNumber = Microsoft.VisualBasic.Information.IsNumeric(str_ketqua);
+                        if (chk_isNumber == false)
+                        {
+                            continue;
+                        }
+
+                        decimal Result = Decimal.Parse(str_ketqua);
+
+                        if (Result >= minValue)
+                        {
+                            continue;
+                        }
+                        else
                         {
                             row["BatThuong"] = "2";
+                        }
+                    }
+                    else if (giatrichuan.Contains(symbol_OnlyMax))
+                    {
+                        int symbolIndex = giatrichuan.IndexOf(symbol_OnlyMax);
+                        string rightSubstring = (symbolIndex >= 0) ? giatrichuan.Substring(symbolIndex + 1) : string.Empty;
+
+                        decimal maxValue = Decimal.Parse(rightSubstring.Trim());
+
+                        string str_ketqua = row["KetQua"].ToString().Trim();
+                        if (str_ketqua.Contains(","))
+                        {
+                            str_ketqua = str_ketqua.Replace(",", ".");
+                        }
+
+                        bool chk_isNumber = Microsoft.VisualBasic.Information.IsNumeric(str_ketqua);
+                        if (chk_isNumber == false)
+                        {
+                            continue;
+                        }
+
+                        decimal Result = Decimal.Parse(str_ketqua);
+
+                        if (Result <= maxValue)
+                        {
+                            continue;
                         }
                         else
                         {
                             row["BatThuong"] = "1";
                         }
                     }
-                }
-                else if (giatrichuan.Contains(symbol_OnlyMin))
-                {
-                    int symbolIndex = giatrichuan.IndexOf(symbol_OnlyMin);
-                    string rightSubstring = (symbolIndex >= 0) ? giatrichuan.Substring(symbolIndex + 1) : string.Empty;
-
-                    decimal minValue = Decimal.Parse(rightSubstring.Trim());
-
-                    string str_ketqua = row["KetQua"].ToString().Trim();
-                    if (str_ketqua.Contains(","))
-                    {
-                        str_ketqua = str_ketqua.Replace(",", ".");
-                    }
-
-                    bool chk_isNumber = Microsoft.VisualBasic.Information.IsNumeric(str_ketqua);
-                    if (chk_isNumber == false)
-                    {
-                        continue;
-                    }
-
-                    decimal Result = Decimal.Parse(str_ketqua);
-
-                    if (Result >= minValue)
-                    {
-                        continue;
-                    }
                     else
                     {
-                        row["BatThuong"] = "2";
+                        if (row["KetQua"].ToString().Trim() == row["GiaTriChuan"].ToString().Trim())
+                        {
+                            continue;
+                        }
+                        else
+                        {
+                            row["BatThuong"] = "3";
+                        }
                     }
                 }
-                else if (giatrichuan.Contains(symbol_OnlyMax))
-                {
-                    int symbolIndex = giatrichuan.IndexOf(symbol_OnlyMax);
-                    string rightSubstring = (symbolIndex >= 0) ? giatrichuan.Substring(symbolIndex + 1) : string.Empty;
-
-                    decimal maxValue = Decimal.Parse(rightSubstring.Trim());
-
-                    string str_ketqua = row["KetQua"].ToString().Trim();
-                    if (str_ketqua.Contains(","))
-                    {
-                        str_ketqua = str_ketqua.Replace(",", ".");
-                    }
-
-                    bool chk_isNumber = Microsoft.VisualBasic.Information.IsNumeric(str_ketqua);
-                    if (chk_isNumber == false)
-                    {
-                        continue;
-                    }
-
-                    decimal Result = Decimal.Parse(str_ketqua);
-
-                    if (Result <= maxValue)
-                    {
-                        continue;
-                    }
-                    else
-                    {
-                        row["BatThuong"] = "1";
-                    }
-                }
-                else
-                {
-                    if (row["KetQua"].ToString().Trim() == row["GiaTriChuan"].ToString().Trim())
-                    {
-                        continue;
-                    }
-                    else
-                    {
-                        row["BatThuong"] = "3";
-                    }
-                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
             }
         }
 

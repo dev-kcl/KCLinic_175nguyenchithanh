@@ -527,6 +527,12 @@
     <Compile Include="View\HeThongBaoCao\BaoCaoBSThucHienDichVu.Designer.cs">
       <DependentUpon>BaoCaoBSThucHienDichVu.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\HeThongBaoCao\BaoCaoKhachHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\HeThongBaoCao\BaoCaoKhachHang.Designer.cs">
+      <DependentUpon>BaoCaoKhachHang.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\HeThongBaoCao\BaoCaoSoLuongChiDinh.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1040,6 +1046,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\HeThongBaoCao\BaoCaoBSThucHienDichVu.resx">
       <DependentUpon>BaoCaoBSThucHienDichVu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\HeThongBaoCao\BaoCaoKhachHang.resx">
+      <DependentUpon>BaoCaoKhachHang.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\HeThongBaoCao\BaoCaoSoLuongChiDinh.resx">
       <DependentUpon>BaoCaoSoLuongChiDinh.cs</DependentUpon>
