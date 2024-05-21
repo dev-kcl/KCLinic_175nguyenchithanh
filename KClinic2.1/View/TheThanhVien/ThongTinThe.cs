@@ -412,7 +412,7 @@ namespace KClinic2._1.View.TheThanhVien
             string NamSinh = "'" + txtNamSinh.Text + "'";
             string SoDienThoai = "N'" + txtSoDienThoai.Text.Replace("'", "''") + "'";
 
-            DataTable UpdateBenhNhan = Model.dbTheThanhVien.UpdateBenhNhan(
+            DataTable UpdateBenhNhan = Model.dbTheThanhVien.UpdateBenhNhan_The(
                       BenhNhan_Id
                     , Hoten
                     , GioiTinh

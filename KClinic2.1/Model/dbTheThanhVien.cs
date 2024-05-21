@@ -951,7 +951,44 @@ namespace KClinic2._1.Model
                 con.Close();
             }
         }
+        public static DataTable UpdateBenhNhan_The(
+              string _BenhNhan_Id
+            , string _TenBenhNhan
+            , string _GioiTinh
+            , string _NamSinh
+            , string _SoDienThoai
+            , string _NguoiCapNhat
+            , string _NgayCapNhat
+            )
+        {
+            try
+            {
+                DataTable table1 = new DataTable();
+                SqlCommand cmd_Show = con.CreateCommand();
+                cmd_Show.CommandTimeout = timeout_connecttion;
+                cmd_Show.CommandText = "exec SP_002_TiepNhan @Action = N'UpdateBenhNhan_The',"
+                    + "@BenhNhan_Id = " + _BenhNhan_Id + ","
+                    + "@TenBenhNhan = " + _TenBenhNhan + ","
+                    + "@GioiTinh = " + _GioiTinh + ","
+                    + "@NamSinh = " + _NamSinh + ","
+                    + "@SoDienThoai = " + _SoDienThoai + ","
+                    + "@NguoiCapNhat = " + _NguoiCapNhat + ","
+                    + "@NgayCapNhat = " + _NgayCapNhat + ""
+                    ;
+                con.Open();
+                table1.Load(cmd_Show.ExecuteReader(CommandBehavior.CloseConnection));
 
+                return table1;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
         public static DataTable SoThangHieuLucThe()
         {
             try
