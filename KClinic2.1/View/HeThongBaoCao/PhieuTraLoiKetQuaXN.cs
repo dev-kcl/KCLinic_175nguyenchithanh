@@ -16,6 +16,9 @@ namespace KClinic2._1.View.HeThongBaoCao
     public partial class PhieuTraLoiKetQuaXN : DevExpress.XtraEditors.XtraForm
     {
         View.XetNghiem.XetNghiem tn;
+
+        ReportDocument rptDoca = new ReportDocument();
+
         public PhieuTraLoiKetQuaXN(View.XetNghiem.XetNghiem tn)
         {
             InitializeComponent();
@@ -39,101 +42,109 @@ namespace KClinic2._1.View.HeThongBaoCao
 
         private void PhieuTraLoiKetQuaXN_Load(object sender, EventArgs e)
         {
-            DataTable table1 = Model.dbXetNghiem.SP_BaoCao_004_PhieuKetQuaXetNghiem(tn.CLSKetQua_Id, tn.ListRowPrint);
-            if (table1 != null)
+            try
             {
-                if (table1.Rows.Count > 0)
+                DataTable table1 = Model.dbXetNghiem.SP_BaoCao_004_PhieuKetQuaXetNghiem(tn.CLSKetQua_Id, tn.ListRowPrint);
+                if (table1 != null)
                 {
-                    table1.Columns.Add("BarcodeMaYTe", System.Type.GetType("System.Byte[]"));
-                    table1.Columns.Add("Logo", System.Type.GetType("System.Byte[]"));
-                    table1.Columns.Add("ChuKy", System.Type.GetType("System.Byte[]"));
-                    table1.Columns.Add("TenBenhVien", System.Type.GetType("System.String"));
-                    table1.Columns.Add("DiaChiBenhVien", System.Type.GetType("System.String"));
-                    table1.Columns.Add("DienThoai", System.Type.GetType("System.String"));
-                    byte[] Image = null;
-                    byte[] ImageLogo = null;
-                    byte[] ImageChuKy = null;
-                    string TenBenhVien = "", DiaChiBenhVien = "", DienThoai = "";
-                    if (table1.Rows[0]["MaYTe"].ToString() != "")
+                    if (table1.Rows.Count > 0)
                     {
-                        DataTable DuongDanHinhAnh = Model.db.DuongDanHinhAnh();
-                        string HinhAnhBarcode = DuongDanHinhAnh.Rows[0][0].ToString() + table1.Rows[0]["MaYTe"].ToString() + ".png";
-
-                        if (File.Exists(HinhAnhBarcode))
+                        table1.Columns.Add("BarcodeMaYTe", System.Type.GetType("System.Byte[]"));
+                        table1.Columns.Add("Logo", System.Type.GetType("System.Byte[]"));
+                        table1.Columns.Add("ChuKy", System.Type.GetType("System.Byte[]"));
+                        table1.Columns.Add("TenBenhVien", System.Type.GetType("System.String"));
+                        table1.Columns.Add("DiaChiBenhVien", System.Type.GetType("System.String"));
+                        table1.Columns.Add("DienThoai", System.Type.GetType("System.String"));
+                        byte[] Image = null;
+                        byte[] ImageLogo = null;
+                        byte[] ImageChuKy = null;
+                        string TenBenhVien = "", DiaChiBenhVien = "", DienThoai = "";
+                        if (table1.Rows[0]["MaYTe"].ToString() != "")
                         {
-                            FileStream fs = new FileStream(HinhAnhBarcode, System.IO.FileMode.Open, System.IO.FileAccess.Read);
-                            Image = new byte[fs.Length];
-                            fs.Read(Image, 0, Convert.ToInt32(fs.Length));
-                            fs.Close();
-                        }
+                            DataTable DuongDanHinhAnh = Model.db.DuongDanHinhAnh();
+                            string HinhAnhBarcode = DuongDanHinhAnh.Rows[0][0].ToString() + table1.Rows[0]["MaYTe"].ToString() + ".png";
 
-                        DataTable SelectSettingTheoSettingCode2 = Model.db.SelectSettingTheoSettingCode("logo");
-                        if (SelectSettingTheoSettingCode2 != null)
-                        {
-                            if (SelectSettingTheoSettingCode2.Rows.Count > 0)
+                            if (File.Exists(HinhAnhBarcode))
                             {
-                                string Logo = SelectSettingTheoSettingCode2.Rows[0]["NoiDung"].ToString();
+                                FileStream fs = new FileStream(HinhAnhBarcode, System.IO.FileMode.Open, System.IO.FileAccess.Read);
+                                Image = new byte[fs.Length];
+                                fs.Read(Image, 0, Convert.ToInt32(fs.Length));
+                                fs.Close();
+                            }
 
-                                if (File.Exists(Logo))
+                            DataTable SelectSettingTheoSettingCode2 = Model.db.SelectSettingTheoSettingCode("logo");
+                            if (SelectSettingTheoSettingCode2 != null)
+                            {
+                                if (SelectSettingTheoSettingCode2.Rows.Count > 0)
                                 {
-                                    FileStream fsLogo = new FileStream(Logo, System.IO.FileMode.Open, System.IO.FileAccess.Read);
-                                    ImageLogo = new byte[fsLogo.Length];
-                                    fsLogo.Read(ImageLogo, 0, Convert.ToInt32(fsLogo.Length));
-                                    fsLogo.Close();
+                                    string Logo = SelectSettingTheoSettingCode2.Rows[0]["NoiDung"].ToString();
+
+                                    if (File.Exists(Logo))
+                                    {
+                                        FileStream fsLogo = new FileStream(Logo, System.IO.FileMode.Open, System.IO.FileAccess.Read);
+                                        ImageLogo = new byte[fsLogo.Length];
+                                        fsLogo.Read(ImageLogo, 0, Convert.ToInt32(fsLogo.Length));
+                                        fsLogo.Close();
+                                    }
                                 }
                             }
-                        }
 
-                        DataTable SelectSettingTheoSettingCode3 = Model.db.SelectSettingTheoSettingCode("chuky");
-                        if (SelectSettingTheoSettingCode3 != null)
-                        {
-                            if (SelectSettingTheoSettingCode3.Rows.Count > 0)
+                            DataTable SelectSettingTheoSettingCode3 = Model.db.SelectSettingTheoSettingCode("chuky");
+                            if (SelectSettingTheoSettingCode3 != null)
                             {
-                                string ChuKy = SelectSettingTheoSettingCode3.Rows[0]["NoiDung"].ToString();
-
-                                if (File.Exists(ChuKy))
+                                if (SelectSettingTheoSettingCode3.Rows.Count > 0)
                                 {
-                                    FileStream fsChuKy = new FileStream(ChuKy, System.IO.FileMode.Open, System.IO.FileAccess.Read);
-                                    ImageChuKy = new byte[fsChuKy.Length];
-                                    fsChuKy.Read(ImageChuKy, 0, Convert.ToInt32(fsChuKy.Length));
-                                    fsChuKy.Close();
+                                    string ChuKy = SelectSettingTheoSettingCode3.Rows[0]["NoiDung"].ToString();
+
+                                    if (File.Exists(ChuKy))
+                                    {
+                                        FileStream fsChuKy = new FileStream(ChuKy, System.IO.FileMode.Open, System.IO.FileAccess.Read);
+                                        ImageChuKy = new byte[fsChuKy.Length];
+                                        fsChuKy.Read(ImageChuKy, 0, Convert.ToInt32(fsChuKy.Length));
+                                        fsChuKy.Close();
+                                    }
                                 }
                             }
-                        }
 
-                        DataTable BenhVien = Model.db.BenhVien(Login.MaBenhVien);
-                        if (BenhVien != null)
-                        {
-                            if (BenhVien.Rows.Count > 0)
+                            DataTable BenhVien = Model.db.BenhVien(Login.MaBenhVien);
+                            if (BenhVien != null)
                             {
-                                TenBenhVien = BenhVien.Rows[0]["TenBenhVien"].ToString();
-                                DiaChiBenhVien = BenhVien.Rows[0]["DiaChiBenhVien"].ToString();
-                                DienThoai = BenhVien.Rows[0]["DienThoai"].ToString();
+                                if (BenhVien.Rows.Count > 0)
+                                {
+                                    TenBenhVien = BenhVien.Rows[0]["TenBenhVien"].ToString();
+                                    DiaChiBenhVien = BenhVien.Rows[0]["DiaChiBenhVien"].ToString();
+                                    DienThoai = BenhVien.Rows[0]["DienThoai"].ToString();
+                                }
+                            }
+
+                            for (int i = 0; i < table1.Rows.Count; i++)
+                            {
+                                table1.Rows[i]["BarcodeMaYTe"] = Image;
+                                table1.Rows[i]["Logo"] = ImageLogo;
+                                table1.Rows[i]["ChuKy"] = ImageChuKy;
+                                table1.Rows[i]["TenBenhVien"] = TenBenhVien;
+                                table1.Rows[i]["DiaChiBenhVien"] = DiaChiBenhVien;
+                                table1.Rows[i]["DienThoai"] = DienThoai;
                             }
                         }
 
-                        for (int i = 0; i < table1.Rows.Count; i++)
-                        {
-                            table1.Rows[i]["BarcodeMaYTe"] = Image;
-                            table1.Rows[i]["Logo"] = ImageLogo;
-                            table1.Rows[i]["ChuKy"] = ImageChuKy;
-                            table1.Rows[i]["TenBenhVien"] = TenBenhVien;
-                            table1.Rows[i]["DiaChiBenhVien"] = DiaChiBenhVien;
-                            table1.Rows[i]["DienThoai"] = DienThoai;
-                        }
+                        tn.LoadBatThuong(table1);
                     }
-
-                    tn.LoadBatThuong(table1);
                 }
+
+
+                
+                DataTable ShowDuongDan = Model.db.ShowDuongDan();
+                string DuongDan = @"" + ShowDuongDan.Rows[0][0].ToString() + @"BC002_PhieuKetQuaXetNghiem.rpt";
+                rptDoca.Load(DuongDan);
+                rptDoca.SetDataSource(table1);
+                crystalReportViewer1.ReportSource = rptDoca;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
             }
 
-
-            ReportDocument rptDoca = new ReportDocument();
-            DataTable ShowDuongDan = Model.db.ShowDuongDan();
-            string DuongDan = @"" + ShowDuongDan.Rows[0][0].ToString() + @"BC002_PhieuKetQuaXetNghiem.rpt";
-            rptDoca.Load(DuongDan);
-            rptDoca.SetDataSource(table1);
-            crystalReportViewer1.ReportSource = rptDoca;
         }
 
         private void crystalReportViewer1_KeyDown(object sender, KeyEventArgs e)
@@ -178,8 +189,12 @@ namespace KClinic2._1.View.HeThongBaoCao
                     tn.btnLuu_Click(sender, e);
                 }
             }
+        }
 
-
+        private void PhieuTraLoiKetQuaXN_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            rptDoca.Close();
+            //rptDoca.Dispose();
         }
     }
 }
