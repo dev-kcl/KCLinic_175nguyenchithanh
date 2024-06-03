@@ -1098,6 +1098,11 @@ namespace KClinic2._1.View.XetNghiem
                         string leftSubstring = (symbolIndex >= 0) ? giatrichuan.Substring(0, symbolIndex) : giatrichuan;
                         string rightSubstring = (symbolIndex >= 0) ? giatrichuan.Substring(symbolIndex + 1) : string.Empty;
 
+                        if (!Microsoft.VisualBasic.Information.IsNumeric(leftSubstring) || !Microsoft.VisualBasic.Information.IsNumeric(rightSubstring))
+                        {
+                            continue;
+                        }
+
                         decimal FromValue = Decimal.Parse(leftSubstring.Trim());
                         decimal ToValue = Decimal.Parse(rightSubstring.Trim());
 
@@ -1136,6 +1141,11 @@ namespace KClinic2._1.View.XetNghiem
                         int symbolIndex = giatrichuan.IndexOf(symbol_OnlyMin);
                         string rightSubstring = (symbolIndex >= 0) ? giatrichuan.Substring(symbolIndex + 1) : string.Empty;
 
+                        if (!Microsoft.VisualBasic.Information.IsNumeric(rightSubstring))
+                        {
+                            continue;
+                        }
+
                         decimal minValue = Decimal.Parse(rightSubstring.Trim());
 
                         string str_ketqua = row["KetQua"].ToString().Trim();
@@ -1165,6 +1175,11 @@ namespace KClinic2._1.View.XetNghiem
                     {
                         int symbolIndex = giatrichuan.IndexOf(symbol_OnlyMax);
                         string rightSubstring = (symbolIndex >= 0) ? giatrichuan.Substring(symbolIndex + 1) : string.Empty;
+
+                        if (!Microsoft.VisualBasic.Information.IsNumeric(rightSubstring))
+                        {
+                            continue;
+                        }
 
                         decimal maxValue = Decimal.Parse(rightSubstring.Trim());
 
