@@ -499,6 +499,8 @@ namespace KClinic2._1.View.TongHop
                 rptDoca.Load(DuongDan);
                 rptDoca.SetDataSource(table1);
                 rptDoca.PrintToPrinter(1, false, 0, 0);
+
+                rptDoca.Close();
             }
         }
 
