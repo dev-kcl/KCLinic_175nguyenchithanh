@@ -16,6 +16,8 @@ namespace KClinic2._1.View.HeThongBaoCao
     public partial class HoaDonBanHang : DevExpress.XtraEditors.XtraForm
     {
         View.TongHop.BanThuocTaiQuay tn;
+        ReportDocument rptDoca = new ReportDocument();
+
         public HoaDonBanHang(View.TongHop.BanThuocTaiQuay tn)
         {
             InitializeComponent();
@@ -90,12 +92,17 @@ namespace KClinic2._1.View.HeThongBaoCao
                 }
             }
 
-            ReportDocument rptDoca = new ReportDocument();
+            //rptDoca = new ReportDocument();
             DataTable ShowDuongDan = Model.db.ShowDuongDan();
             string DuongDan = @"" + ShowDuongDan.Rows[0][0].ToString() + @"BC014_BangKePhiDichVu.rpt";
             rptDoca.Load(DuongDan);
             rptDoca.SetDataSource(table1);
             crystalReportViewer1.ReportSource = rptDoca;
+        }
+
+        private void HoaDonBanHang_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            rptDoca.Close();
         }
     }
 }
