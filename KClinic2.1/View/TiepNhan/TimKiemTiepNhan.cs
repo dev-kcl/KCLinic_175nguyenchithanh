@@ -22,23 +22,37 @@ namespace KClinic2._1.View.TiepNhan
 
         private void TimKiemTiepNhan_Load(object sender, EventArgs e)
         {
+
+            DataTable PhongTuVan = Model.DbTiepNhan.CbbPhongTuVan();
+            cbbPhongTuVan.DataSource = PhongTuVan;
+            cbbPhongTuVan.ValueMember = "FieldCode";
+            cbbPhongTuVan.DisplayMember = "FieldName";
+            cbbPhongTuVan.SelectedValue = "4";
+
             dtmTuNgay.Focus();
-            DataTable Search_TiepNhan = Model.db.Search_TiepNhan( txtSoTiepNhan.Text, dtmTuNgay.Value, dtmDenNgay.Value, txtMaYTe.Text,txtTenBN.Text, txtNamSinh.Text,txtSDT.Text);
+            DataTable Search_TiepNhan = Model.db.Search_TiepNhanPhongTuVan( txtSoTiepNhan.Text, dtmTuNgay.Value, dtmDenNgay.Value, txtMaYTe.Text,txtTenBN.Text, txtNamSinh.Text,txtSDT.Text, cbbPhongTuVan.SelectedValue.ToString());
             gridDS.DataSource = Search_TiepNhan;
+        
+
         }
 
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
-            DataTable Search_TiepNhan = Model.db.Search_TiepNhan(txtSoTiepNhan.Text, dtmTuNgay.Value, dtmDenNgay.Value, txtMaYTe.Text, txtTenBN.Text, txtNamSinh.Text, txtSDT.Text);
+            DataTable Search_TiepNhan = Model.db.Search_TiepNhanPhongTuVan(txtSoTiepNhan.Text, dtmTuNgay.Value, dtmDenNgay.Value, txtMaYTe.Text, txtTenBN.Text, txtNamSinh.Text, txtSDT.Text, cbbPhongTuVan.SelectedValue.ToString());
             gridDS.DataSource = Search_TiepNhan;
+
+         
         }
 
         private void txtTimKiem_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
             {
-                DataTable Search_TiepNhan = Model.db.Search_TiepNhan(txtSoTiepNhan.Text, dtmTuNgay.Value, dtmDenNgay.Value, txtMaYTe.Text, txtTenBN.Text, txtNamSinh.Text, txtSDT.Text);
+                DataTable Search_TiepNhan = Model.db.Search_TiepNhanPhongTuVan(txtSoTiepNhan.Text, dtmTuNgay.Value, dtmDenNgay.Value, txtMaYTe.Text, txtTenBN.Text, txtNamSinh.Text, txtSDT.Text, cbbPhongTuVan.SelectedValue.ToString());
                 gridDS.DataSource = Search_TiepNhan;
+          
+
+
             }
         }
 

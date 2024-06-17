@@ -231,6 +231,45 @@ namespace KClinic2._1.Model
             }
         }
 
+        public static DataTable Search_TiepNhanPhongTuVan(
+           string _SoTiepNhan
+           , DateTime _TuNgay
+           , DateTime _DenNgay
+           , string _MaYTe
+           , string _TenBenhNhan
+           , string _NamSinh
+           , string _SDT
+           , string _PhongTuVan_Id = null
+
+           )
+        {
+            try
+            {
+                DataTable table1 = new DataTable();
+                SqlCommand cmd_Show = con.CreateCommand();
+                cmd_Show.CommandTimeout = timeout_connecttion;
+                cmd_Show.CommandText = "exec SP_001_Users @Action = N'Search_TiepNhanPhongTuVan',"
+                    + "@SoTiepNhan = N'" + _SoTiepNhan + "',"
+                    + "@TuNgay = '" + _TuNgay.ToString("yyyy-MM-dd") + "',"
+                    + "@DenNgay = '" + _DenNgay.ToString("yyyy-MM-dd") + " 23:59:59',"
+                    + "@MaYTe = N'" + _MaYTe + "',"
+                    + "@TenBenhNhan = N'" + _TenBenhNhan + "',"
+                    + "@NamSinh = N'" + _NamSinh + "',"
+                    + "@SDT = N'" + _SDT +  "',"
+                    + "@PhongTuVan_Id =" + _PhongTuVan_Id
+                    ;
+                con.Open();
+                table1.Load(cmd_Show.ExecuteReader(CommandBehavior.CloseConnection));
+                con.Close();
+                return table1;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+
         public static DataTable Search_TiepNhan_The(
             string _SoTiepNhan
             , DateTime _TuNgay
