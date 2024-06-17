@@ -289,5 +289,29 @@ namespace KClinic2._1.Model
                 return null;
             }
         }
+
+        public static DataTable SP_BaoCao_019_BaoCaoKhachHangPhongTuVan(string _TuNgay, string _DenNgay, string _PhongTuVan_Id, string _NguoiBaoCao)
+        {
+            try
+            {
+                DataTable table1 = new DataTable();
+                SqlCommand cmd_Show = con.CreateCommand();
+                cmd_Show.CommandTimeout = timeout_connecttion;
+                cmd_Show.CommandText = "exec SP_BaoCao_019_BaoCaoThongKeTiepNhanPhongTuVan "
+                    + "@TuNgay = " + _TuNgay + ","
+                    + "@DenNgay = " + _DenNgay + ","
+                       + "@PhongTuVan_Id = " + _PhongTuVan_Id + ","
+                    + "@NguoiBaoCao = N'" + _NguoiBaoCao + "'"
+                    ;
+                con.Open();
+                table1.Load(cmd_Show.ExecuteReader(CommandBehavior.CloseConnection));
+                con.Close();
+                return table1;
+            }
+            catch
+            {
+                return null;
+            }
+        }
     }
 }

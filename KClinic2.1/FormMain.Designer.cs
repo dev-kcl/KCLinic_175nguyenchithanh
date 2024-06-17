@@ -53,6 +53,7 @@
             this.barButtonItem62 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem63 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem64 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem65 = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
@@ -138,7 +139,7 @@
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
-            this.barButtonItem65 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem66 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
@@ -172,10 +173,11 @@
             this.barButtonItem62,
             this.barButtonItem63,
             this.barButtonItem64,
-            this.barButtonItem65});
+            this.barButtonItem65,
+            this.barButtonItem66});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ribbonControl1.MaxItemId = 69;
+            this.ribbonControl1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.ribbonControl1.MaxItemId = 70;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1,
@@ -184,7 +186,7 @@
             this.ribbonPage4,
             this.ribbonPage5,
             this.ribbonPage6});
-            this.ribbonControl1.Size = new System.Drawing.Size(1547, 193);
+            this.ribbonControl1.Size = new System.Drawing.Size(1038, 158);
             this.ribbonControl1.Click += new System.EventHandler(this.ribbonControl1_Click);
             // 
             // barButtonItem43
@@ -353,6 +355,13 @@
             this.barButtonItem64.Id = 67;
             this.barButtonItem64.Name = "barButtonItem64";
             this.barButtonItem64.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem64_ItemClick);
+            // 
+            // barButtonItem65
+            // 
+            this.barButtonItem65.Caption = "Báo cáo khách hàng";
+            this.barButtonItem65.Id = 68;
+            this.barButtonItem65.Name = "barButtonItem65";
+            this.barButtonItem65.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem65_ItemClick);
             // 
             // ribbonPage1
             // 
@@ -819,6 +828,7 @@
             this.ribbonPageGroup14.ItemLinks.Add(this.barButtonItem46);
             this.ribbonPageGroup14.ItemLinks.Add(this.barButtonItem55);
             this.ribbonPageGroup14.ItemLinks.Add(this.barButtonItem60);
+            this.ribbonPageGroup14.ItemLinks.Add(this.barButtonItem66);
             this.ribbonPageGroup14.Name = "ribbonPageGroup14";
             this.ribbonPageGroup14.Text = "Thống kê cho bác sĩ";
             // 
@@ -1020,17 +1030,17 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.barDockControlTop.Size = new System.Drawing.Size(1547, 0);
+            this.barDockControlTop.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.barDockControlTop.Size = new System.Drawing.Size(1038, 0);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 652);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 530);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.barDockControlBottom.Size = new System.Drawing.Size(1547, 29);
+            this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1038, 23);
             // 
             // barDockControlLeft
             // 
@@ -1038,17 +1048,17 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 652);
+            this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 530);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1547, 0);
+            this.barDockControlRight.Location = new System.Drawing.Point(1038, 0);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 652);
+            this.barDockControlRight.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 530);
             // 
             // xtraTabbedMdiManager1
             // 
@@ -1073,21 +1083,21 @@
             this.xtraTabbedMdiManager1.PinPageButtonShowMode = DevExpress.XtraTab.PinPageButtonShowMode.InActiveTabPageHeader;
             this.xtraTabbedMdiManager1.ShowToolTips = DevExpress.Utils.DefaultBoolean.True;
             // 
-            // barButtonItem65
+            // barButtonItem66
             // 
-            this.barButtonItem65.Caption = "Báo cáo khách hàng";
-            this.barButtonItem65.Id = 68;
-            this.barButtonItem65.Name = "barButtonItem65";
-            this.barButtonItem65.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem65_ItemClick);
+            this.barButtonItem66.Caption = "Báo cáo số lượng tiếp nhận phòng tư vấn";
+            this.barButtonItem66.Id = 69;
+            this.barButtonItem66.Name = "barButtonItem66";
+            this.barButtonItem66.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem66_ItemClick);
             // 
             // FormMain
             // 
             this.Appearance.Options.UseImage = true;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayoutStore = System.Windows.Forms.ImageLayout.Stretch;
             this.BackgroundImageStore = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImageStore")));
-            this.ClientSize = new System.Drawing.Size(1547, 681);
+            this.ClientSize = new System.Drawing.Size(1038, 553);
             this.Controls.Add(this.ribbonControl1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
@@ -1095,7 +1105,7 @@
             this.Controls.Add(this.barDockControlTop);
             this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("FormMain.IconOptions.Image")));
             this.IsMdiContainer = true;
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Name = "FormMain";
             this.Ribbon = this.ribbonControl1;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -1222,6 +1232,7 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem64;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup26;
         private DevExpress.XtraBars.BarButtonItem barButtonItem65;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem66;
     }
 }
 

@@ -509,6 +509,12 @@
     <Compile Include="View\GiaiPhauBenh\XtraForm1.Designer.cs">
       <DependentUpon>XtraForm1.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\HeThongBaoCao\BaoCaoTiepNhanPhongTuVan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\HeThongBaoCao\BaoCaoTiepNhanPhongTuVan.Designer.cs">
+      <DependentUpon>BaoCaoTiepNhanPhongTuVan.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\HeThongBaoCao\BaoCaoDoanhThuPhongKham.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -914,6 +920,7 @@
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -1037,6 +1044,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\GiaiPhauBenh\XtraForm1.resx">
       <DependentUpon>XtraForm1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\HeThongBaoCao\BaoCaoTiepNhanPhongTuVan.resx">
+      <DependentUpon>BaoCaoTiepNhanPhongTuVan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\HeThongBaoCao\BaoCaoDoanhThuPhongKham.resx">
       <DependentUpon>BaoCaoDoanhThuPhongKham.cs</DependentUpon>
