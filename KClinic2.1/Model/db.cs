@@ -260,12 +260,16 @@ namespace KClinic2._1.Model
                     ;
                 con.Open();
                 table1.Load(cmd_Show.ExecuteReader(CommandBehavior.CloseConnection));
-                con.Close();
+                
                 return table1;
             }
-            catch
+            catch(Exception ex)
             {
-                return null;
+                throw ex;
+            }
+            finally
+            {
+                con.Close();
             }
         }
 
