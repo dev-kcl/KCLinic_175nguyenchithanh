@@ -19,6 +19,8 @@ namespace KClinic2._1.View.HeThongBaoCao
             InitializeComponent();
         }
         DataTable DuLieu;
+        DataTable TenXetNghiem;
+        DataTable PhongTuVan;
         private void BaoCaoXetNghiem_Load(object sender, EventArgs e)
         {
             panelMain.Location = new Point(
@@ -30,12 +32,12 @@ namespace KClinic2._1.View.HeThongBaoCao
             txtTuNgay.Value = DateTime.Now;
             txtDenNgay.Value = DateTime.Now;
 
-            DataTable PhongTuVan = Model.DbTiepNhan.CbbPhongTuVan();
+            PhongTuVan = Model.DbTiepNhan.CbbPhongTuVan();
             cbbPhongTuVan.DataSource = PhongTuVan;
             cbbPhongTuVan.ValueMember = "FieldCode";
             cbbPhongTuVan.DisplayMember = "FieldName";
 
-            DataTable TenXetNghiem = Model.dbXetNghiem.CBBTenXetNghiem();
+            TenXetNghiem = Model.dbXetNghiem.CBBTenXetNghiem();
             cbbXetNghiem.DataSource = TenXetNghiem;
             cbbXetNghiem.ValueMember = "FieldCode";
             cbbXetNghiem.DisplayMember = "FieldName";
@@ -49,7 +51,7 @@ namespace KClinic2._1.View.HeThongBaoCao
             if (cbbPhongTuVan.SelectedItem != null) { PhongTuVan_ID = cbbPhongTuVan.SelectedValue.ToString(); }
 
             string XetNghiem_Id = "null";
-            if (cbbXetNghiem.SelectedItem != null) { XetNghiem_Id = cbbXetNghiem.SelectedValue.ToString(); }
+            if (cbbXetNghiem.SelectedItem != null) { XetNghiem_Id = cbbXetNghiem.Value.ToString(); }
 
 
 
@@ -142,6 +144,53 @@ namespace KClinic2._1.View.HeThongBaoCao
             int previousIndex = (currentIndex - 1 + controls.Length) % controls.Length;
 
             controls[previousIndex].Focus();
+        }
+
+        private void cbbXetNghiem_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData != Keys.Tab && e.KeyData != Keys.Enter && e.KeyData != Keys.Up && e.KeyData != Keys.Down && e.KeyData != Keys.Right && e.KeyData != Keys.Left)
+            {
+                string text = cbbXetNghiem.Text;
+                if (text == "")
+                {
+                    DataTable dtResult = TenXetNghiem.AsEnumerable()
+                         .Where((row => row.Field<String>("FieldName").ToLower().Trim().Contains(text.ToLower().Trim())
+                        || row.Field<String>("MaDichVu").ToLower().Trim().Contains(text.ToLower().Trim()))).CopyToDataTable();
+                    cbbXetNghiem.DataSource = dtResult;
+                    cbbXetNghiem.DroppedDown = true;
+                }
+                else
+                {
+                    if (TenXetNghiem.AsEnumerable()
+                        .Where((row => row.Field<String>("FieldName").ToLower().Trim().Contains(text.ToLower().Trim())
+                        || row.Field<String>("MaDichVu").ToLower().Trim().Contains(text.ToLower().Trim()))).Count() > 0)
+                    {
+                        DataTable dtResult = TenXetNghiem.AsEnumerable()
+                        .Where((row => row.Field<String>("FieldName").ToLower().Trim().Contains(text.ToLower().Trim())
+                        || row.Field<String>("MaDichVu").ToLower().Trim().Contains(text.ToLower().Trim()))).CopyToDataTable();
+                        //DataTable dtResult = Dm_Duoc.Select("FieldName LIKE '%" + text + "%' or MaDuoc LIKE '%" + text + "%'").CopyToDataTable();
+                        cbbXetNghiem.DataSource = dtResult;
+                        cbbXetNghiem.DroppedDown = true;
+                    }
+                    else
+                    {
+                        cbbXetNghiem.DataSource = null;
+                        cbbXetNghiem.DroppedDown = true;
+                    }
+                }
+            }
+        }
+
+        private void cbbPhongTuVan_Click(object sender, EventArgs e)
+        {
+            cbbPhongTuVan.DataSource = PhongTuVan;
+            cbbPhongTuVan.DroppedDown = true;
+        }
+
+        private void cbbXetNghiem_Click(object sender, EventArgs e)
+        {
+            cbbXetNghiem.DataSource = TenXetNghiem;
+            cbbXetNghiem.DroppedDown = true;
         }
     }
 }
