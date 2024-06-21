@@ -313,5 +313,39 @@ namespace KClinic2._1.Model
                 return null;
             }
         }
+        public static DataTable SP_BaoCaoXetNghiem(
+            string _TuNgay,
+            string _DenNgay,
+            string _PhongTuVan_Id,
+            string _Dich_Id,
+            string _TenBenhNhan,
+            string _MaYTe,
+            string _SoTiepNhan
+            )
+        {
+            try
+            {
+                DataTable table1 = new DataTable();
+                SqlCommand cmd_Show = con.CreateCommand();
+                cmd_Show.CommandTimeout = timeout_connecttion;
+                cmd_Show.CommandText = "exec SP_BaoCaoXetNghiem "
+                    + "@TuNgay = " + _TuNgay + ","
+                    + "@DenNgay = " + _DenNgay +","
+                    + "@PhongTuVan_Id = " + _PhongTuVan_Id + ","
+                    + "@Dich_Id = " + _Dich_Id + ","
+                    + "@TenBenhNhan = '" + _TenBenhNhan + "',"
+                    + "@MaYTe = '" + _MaYTe + "',"
+                    + "@SoTiepNhan = '" + _SoTiepNhan+"'"
+                    ;
+                con.Open();
+                table1.Load(cmd_Show.ExecuteReader(CommandBehavior.CloseConnection));
+                con.Close();
+                return table1;
+            }
+            catch
+            {
+                return null;
+            }
+        }
     }
 }

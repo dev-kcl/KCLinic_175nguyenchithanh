@@ -140,6 +140,8 @@
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
+            this.ribbonPageGroup27 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.barButtonItem67 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
@@ -174,10 +176,11 @@
             this.barButtonItem63,
             this.barButtonItem64,
             this.barButtonItem65,
-            this.barButtonItem66});
+            this.barButtonItem66,
+            this.barButtonItem67});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
             this.ribbonControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ribbonControl1.MaxItemId = 70;
+            this.ribbonControl1.MaxItemId = 71;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1,
@@ -797,7 +800,8 @@
             this.ribbonPageGroup24,
             this.ribbonPageGroup13,
             this.ribbonPageGroup14,
-            this.ribbonPageGroup26});
+            this.ribbonPageGroup26,
+            this.ribbonPageGroup27});
             this.ribbonPage5.Name = "ribbonPage5";
             this.ribbonPage5.Text = "Hệ thống báo cáo";
             // 
@@ -1089,6 +1093,19 @@
             this.xtraTabbedMdiManager1.PinPageButtonShowMode = DevExpress.XtraTab.PinPageButtonShowMode.InActiveTabPageHeader;
             this.xtraTabbedMdiManager1.ShowToolTips = DevExpress.Utils.DefaultBoolean.True;
             // 
+            // ribbonPageGroup27
+            // 
+            this.ribbonPageGroup27.ItemLinks.Add(this.barButtonItem67);
+            this.ribbonPageGroup27.Name = "ribbonPageGroup27";
+            this.ribbonPageGroup27.Text = "Báo cáo xét nghiệm";
+            // 
+            // barButtonItem67
+            // 
+            this.barButtonItem67.Caption = "Báo cáo kết quả xét nghiệm";
+            this.barButtonItem67.Id = 70;
+            this.barButtonItem67.Name = "barButtonItem67";
+            this.barButtonItem67.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem67_ItemClick);
+            // 
             // FormMain
             // 
             this.Appearance.Options.UseImage = true;
@@ -1232,6 +1249,8 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup26;
         private DevExpress.XtraBars.BarButtonItem barButtonItem65;
         private DevExpress.XtraBars.BarButtonItem barButtonItem66;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem67;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup27;
     }
 }
 

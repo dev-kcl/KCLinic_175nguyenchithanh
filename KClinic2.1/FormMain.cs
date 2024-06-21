@@ -756,5 +756,15 @@ namespace KClinic2._1
                 frm.Show();
             }
         }
+
+        private void barButtonItem67_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            if (ActivateThisChild("BaoCaoKetQuaXetNghiem") == false)
+            {
+                View.HeThongBaoCao.BaoCaoXetNghiem frm = new View.HeThongBaoCao.BaoCaoXetNghiem();
+                frm.MdiParent = this;
+                frm.Show();
+            }
+        }
     }
 }
