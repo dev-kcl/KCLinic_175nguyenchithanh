@@ -99,7 +99,12 @@ namespace KClinic2._1.View.TiepNhan
             CbbPTuVan.DisplayMember = "FieldName";
             CbbPTuVan.Value = 4;
 
-            DM_NVGioiThieu = Model.dbXetNghiem.KTVThucHien();
+            //DM_NVGioiThieu = Model.dbXetNghiem.KTVThucHien();
+            //cbbNVGioiThieu.DataSource = DM_NVGioiThieu;
+            //cbbNVGioiThieu.ValueMember = "FieldCode";
+            //cbbNVGioiThieu.DisplayMember = "FieldName";
+
+            DM_NVGioiThieu = Model.DbTiepNhan.CbbNguoiGioiThieu();
             cbbNVGioiThieu.DataSource = DM_NVGioiThieu;
             cbbNVGioiThieu.ValueMember = "FieldCode";
             cbbNVGioiThieu.DisplayMember = "FieldName";
