@@ -1142,5 +1142,30 @@ namespace KClinic2._1.Model
                 con.Close();
             }
         }
+
+        public static DataTable CbbNguoiGioiThieu()
+        {
+            try
+            {
+                DataTable table1 = new DataTable();
+                SqlCommand cmd_Show = con.CreateCommand();
+                cmd_Show.CommandTimeout = timeout_connecttion;
+                cmd_Show.CommandText = "select FieldCode=Dictionary_Id,FieldName=Dictionary_Name from K_Dictionary where Dictionary_Code like 'NGUOIGIOITHIEU' order by Dictionary_Name_Id"
+                ;
+
+                con.Open();
+                table1.Load(cmd_Show.ExecuteReader(CommandBehavior.CloseConnection));
+                
+                return table1;
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
     }
 }
