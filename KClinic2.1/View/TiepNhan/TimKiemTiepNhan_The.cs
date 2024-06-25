@@ -23,15 +23,26 @@ namespace KClinic2._1.View.TiepNhan
 
         private void TimKiemTiepNhan_The_Load(object sender, EventArgs e)
         {
+            DataTable PhongTuVan = Model.DbTiepNhan.CbbPhongTuVan();
+            cbbPhongTuVan.DataSource = PhongTuVan;
+            cbbPhongTuVan.ValueMember = "FieldCode";
+            cbbPhongTuVan.DisplayMember = "FieldName";
+
             txtSoThe.Focus();
 
-            DataTable Search_TiepNhan = Model.db.Search_TiepNhan_The(txtSoTiepNhan.Text, dtmTuNgay.Value, dtmDenNgay.Value, txtMaYTe.Text, txtTenBN.Text, txtNamSinh.Text, txtSDT.Text, txtSoThe.Text);
+            DataTable Search_TiepNhan = Model.db.Search_TiepNhan_The(txtSoTiepNhan.Text, dtmTuNgay.Value, dtmDenNgay.Value, txtMaYTe.Text, txtTenBN.Text, txtNamSinh.Text, txtSDT.Text, txtSoThe.Text, "null");
             gridDS.DataSource = Search_TiepNhan;
         }
 
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
-            DataTable Search_TiepNhan = Model.db.Search_TiepNhan_The(txtSoTiepNhan.Text, dtmTuNgay.Value, dtmDenNgay.Value, txtMaYTe.Text, txtTenBN.Text, txtNamSinh.Text, txtSDT.Text, txtSoThe.Text);
+            string phongtuvan = "null";
+            if (cbbPhongTuVan.SelectedValue != null || cbbPhongTuVan.Text != "")
+            {
+                phongtuvan = cbbPhongTuVan.SelectedValue.ToString();
+            }
+
+            DataTable Search_TiepNhan = Model.db.Search_TiepNhan_The(txtSoTiepNhan.Text, dtmTuNgay.Value, dtmDenNgay.Value, txtMaYTe.Text, txtTenBN.Text, txtNamSinh.Text, txtSDT.Text, txtSoThe.Text, phongtuvan);
             gridDS.DataSource = Search_TiepNhan;
         }
 
@@ -39,7 +50,13 @@ namespace KClinic2._1.View.TiepNhan
         {
             if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
             {
-                DataTable Search_TiepNhan = Model.db.Search_TiepNhan_The(txtSoTiepNhan.Text, dtmTuNgay.Value, dtmDenNgay.Value, txtMaYTe.Text, txtTenBN.Text, txtNamSinh.Text, txtSDT.Text, txtSoThe.Text);
+                string phongtuvan = "null";
+                if (cbbPhongTuVan.SelectedValue != null || cbbPhongTuVan.Text != "")
+                {
+                    phongtuvan = cbbPhongTuVan.SelectedValue.ToString();
+                }
+
+                DataTable Search_TiepNhan = Model.db.Search_TiepNhan_The(txtSoTiepNhan.Text, dtmTuNgay.Value, dtmDenNgay.Value, txtMaYTe.Text, txtTenBN.Text, txtNamSinh.Text, txtSDT.Text, txtSoThe.Text, phongtuvan);
                 gridDS.DataSource = Search_TiepNhan;
             }
         }

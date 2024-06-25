@@ -54,6 +54,7 @@ namespace KClinic2._1.View.TongHop
 
             BenhNhan_Id = "";
             HoaDon_Id = "";
+            TiepNhan_Id = "";
             //pnTrangThai.Enabled = false;
         }
 
@@ -144,7 +145,7 @@ namespace KClinic2._1.View.TongHop
                               MaHoaDon
                               , "null" //SoHoaDonVAT
                               , "null"
-                              , "null"
+                              , TiepNhan_Id
                             , BenhNhan_Id
                             , NgayPhatSinh
                             , ThoiGianPhatSinh
@@ -825,6 +826,7 @@ namespace KClinic2._1.View.TongHop
             if (gridView2.RowCount > 0)
             {
                 BenhNhan_Id = gridView2.GetRowCellValue(n, "BenhNhan_Id").ToString();
+                TiepNhan_Id = gridView2.GetRowCellValue(n, "TiepNhan_Id").ToString();
                 HoaDon_Id = "";
                 RefreshForm();
             }

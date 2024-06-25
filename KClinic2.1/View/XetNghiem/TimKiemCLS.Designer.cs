@@ -61,7 +61,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1029, 511);
+            this.panel1.Size = new System.Drawing.Size(1298, 511);
             this.panel1.TabIndex = 5;
             // 
             // panel3
@@ -71,7 +71,7 @@
             this.panel3.Location = new System.Drawing.Point(0, 155);
             this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1029, 356);
+            this.panel3.Size = new System.Drawing.Size(1298, 356);
             this.panel3.TabIndex = 1;
             // 
             // gridDS
@@ -82,7 +82,7 @@
             this.gridDS.MainView = this.gridView1;
             this.gridDS.Margin = new System.Windows.Forms.Padding(4);
             this.gridDS.Name = "gridDS";
-            this.gridDS.Size = new System.Drawing.Size(1029, 356);
+            this.gridDS.Size = new System.Drawing.Size(1298, 356);
             this.gridDS.TabIndex = 1;
             this.gridDS.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -201,7 +201,7 @@
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1029, 155);
+            this.panel2.Size = new System.Drawing.Size(1298, 155);
             this.panel2.TabIndex = 0;
             // 
             // cbbLoai
@@ -263,7 +263,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1029, 511);
+            this.ClientSize = new System.Drawing.Size(1298, 511);
             this.Controls.Add(this.panel1);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "TimKiemCLS";
