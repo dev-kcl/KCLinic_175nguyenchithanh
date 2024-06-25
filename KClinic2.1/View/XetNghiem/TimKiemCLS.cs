@@ -26,7 +26,7 @@ namespace KClinic2._1.View.XetNghiem
             cbbLoai.DataSource = LoaiTimKiemKetQuaXetNghiem;
             cbbLoai.DisplayMember = "Loai";
             cbbLoai.ValueMember = "ID";
-            cbbLoai.SelectedValue = "4";
+            cbbLoai.SelectedValue = "3";
             //txtTimKiem.Text = DateTime.Now.ToString("dd/MM/yyyy");
             txtTimKiem.Focus();
             DataTable Search_TiepNhanCLS_DaThucHien = Model.db.Search_TiepNhanCLS_DaThucHien(cbbLoai.SelectedValue.ToString(), txtTimKiem.Text,Login.PhongBan_Id);

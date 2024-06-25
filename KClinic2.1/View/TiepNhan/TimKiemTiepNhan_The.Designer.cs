@@ -53,9 +53,12 @@ namespace KClinic2._1.View.TiepNhan
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridDS = new DevExpress.XtraGrid.GridControl();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.cbbPhongTuVan = new Janus.Windows.EditControls.UIComboBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtSoThe = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -72,7 +75,7 @@ namespace KClinic2._1.View.TiepNhan
             this.stn.AutoSize = true;
             this.stn.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.stn.ForeColor = System.Drawing.Color.Black;
-            this.stn.Location = new System.Drawing.Point(56, 111);
+            this.stn.Location = new System.Drawing.Point(56, 112);
             this.stn.Name = "stn";
             this.stn.Size = new System.Drawing.Size(118, 22);
             this.stn.TabIndex = 41;
@@ -82,7 +85,7 @@ namespace KClinic2._1.View.TiepNhan
             // 
             this.txtSoTiepNhan.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSoTiepNhan.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSoTiepNhan.Location = new System.Drawing.Point(213, 108);
+            this.txtSoTiepNhan.Location = new System.Drawing.Point(213, 109);
             this.txtSoTiepNhan.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtSoTiepNhan.Name = "txtSoTiepNhan";
             this.txtSoTiepNhan.Size = new System.Drawing.Size(631, 30);
@@ -166,7 +169,7 @@ namespace KClinic2._1.View.TiepNhan
             this.TenBN.AutoSize = true;
             this.TenBN.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TenBN.ForeColor = System.Drawing.Color.Black;
-            this.TenBN.Location = new System.Drawing.Point(56, 197);
+            this.TenBN.Location = new System.Drawing.Point(56, 202);
             this.TenBN.Name = "TenBN";
             this.TenBN.Size = new System.Drawing.Size(131, 22);
             this.TenBN.TabIndex = 43;
@@ -176,7 +179,7 @@ namespace KClinic2._1.View.TiepNhan
             // 
             this.txtTenBN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtTenBN.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTenBN.Location = new System.Drawing.Point(213, 194);
+            this.txtTenBN.Location = new System.Drawing.Point(213, 199);
             this.txtTenBN.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtTenBN.Name = "txtTenBN";
             this.txtTenBN.Size = new System.Drawing.Size(631, 30);
@@ -208,7 +211,7 @@ namespace KClinic2._1.View.TiepNhan
             // 
             // btnTimKiem
             // 
-            this.btnTimKiem.Location = new System.Drawing.Point(415, 292);
+            this.btnTimKiem.Location = new System.Drawing.Point(486, 290);
             this.btnTimKiem.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnTimKiem.Name = "btnTimKiem";
             this.btnTimKiem.Size = new System.Drawing.Size(230, 32);
@@ -220,7 +223,7 @@ namespace KClinic2._1.View.TiepNhan
             // 
             this.txtMaYTe.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtMaYTe.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMaYTe.Location = new System.Drawing.Point(213, 151);
+            this.txtMaYTe.Location = new System.Drawing.Point(213, 153);
             this.txtMaYTe.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtMaYTe.Name = "txtMaYTe";
             this.txtMaYTe.Size = new System.Drawing.Size(631, 30);
@@ -233,7 +236,7 @@ namespace KClinic2._1.View.TiepNhan
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(56, 155);
+            this.label5.Location = new System.Drawing.Point(56, 157);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(79, 22);
             this.label5.TabIndex = 42;
@@ -253,34 +256,34 @@ namespace KClinic2._1.View.TiepNhan
             // 
             this.gridColumn4.Caption = "Số điện thoại";
             this.gridColumn4.FieldName = "SoDienThoai";
-            this.gridColumn4.MinWidth = 26;
+            this.gridColumn4.MinWidth = 100;
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.OptionsColumn.AllowEdit = false;
             this.gridColumn4.Visible = true;
             this.gridColumn4.VisibleIndex = 6;
-            this.gridColumn4.Width = 150;
+            this.gridColumn4.Width = 104;
             // 
             // gridColumn3
             // 
             this.gridColumn3.Caption = "Năm sinh";
             this.gridColumn3.FieldName = "NamSinh";
-            this.gridColumn3.MinWidth = 26;
+            this.gridColumn3.MinWidth = 120;
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.OptionsColumn.AllowEdit = false;
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 5;
-            this.gridColumn3.Width = 138;
+            this.gridColumn3.Width = 124;
             // 
             // gridColumn5
             // 
             this.gridColumn5.Caption = "Tuổi";
             this.gridColumn5.FieldName = "Tuoi";
-            this.gridColumn5.MinWidth = 26;
+            this.gridColumn5.MinWidth = 100;
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.OptionsColumn.AllowEdit = false;
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 4;
-            this.gridColumn5.Width = 138;
+            this.gridColumn5.Width = 104;
             // 
             // gridColumn2
             // 
@@ -291,7 +294,7 @@ namespace KClinic2._1.View.TiepNhan
             this.gridColumn2.OptionsColumn.AllowEdit = false;
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 3;
-            this.gridColumn2.Width = 200;
+            this.gridColumn2.Width = 197;
             // 
             // gridColumn1
             // 
@@ -302,18 +305,18 @@ namespace KClinic2._1.View.TiepNhan
             this.gridColumn1.OptionsColumn.AllowEdit = false;
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 1;
-            this.gridColumn1.Width = 154;
+            this.gridColumn1.Width = 147;
             // 
             // gridColumn8
             // 
             this.gridColumn8.Caption = "Ngày tiếp nhận";
             this.gridColumn8.FieldName = "NgayTiepNhan";
-            this.gridColumn8.MinWidth = 26;
+            this.gridColumn8.MinWidth = 120;
             this.gridColumn8.Name = "gridColumn8";
             this.gridColumn8.OptionsColumn.AllowEdit = false;
             this.gridColumn8.Visible = true;
             this.gridColumn8.VisibleIndex = 2;
-            this.gridColumn8.Width = 154;
+            this.gridColumn8.Width = 120;
             // 
             // gridColumn7
             // 
@@ -324,7 +327,7 @@ namespace KClinic2._1.View.TiepNhan
             this.gridColumn7.OptionsColumn.AllowEdit = false;
             this.gridColumn7.Visible = true;
             this.gridColumn7.VisibleIndex = 0;
-            this.gridColumn7.Width = 154;
+            this.gridColumn7.Width = 147;
             // 
             // gridView1
             // 
@@ -336,11 +339,23 @@ namespace KClinic2._1.View.TiepNhan
             this.gridColumn5,
             this.gridColumn3,
             this.gridColumn4,
+            this.gridColumn9,
             this.gridColumn6});
             this.gridView1.DetailHeight = 431;
             this.gridView1.GridControl = this.gridDS;
             this.gridView1.Name = "gridView1";
             this.gridView1.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gridView1_RowCellClick);
+            // 
+            // gridColumn9
+            // 
+            this.gridColumn9.Caption = "Phòng tư vấn";
+            this.gridColumn9.FieldName = "PhongTuVan";
+            this.gridColumn9.MinWidth = 25;
+            this.gridColumn9.Name = "gridColumn9";
+            this.gridColumn9.OptionsColumn.AllowEdit = false;
+            this.gridColumn9.Visible = true;
+            this.gridColumn9.VisibleIndex = 7;
+            this.gridColumn9.Width = 150;
             // 
             // gridDS
             // 
@@ -367,6 +382,8 @@ namespace KClinic2._1.View.TiepNhan
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.cbbPhongTuVan);
+            this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.txtSoThe);
             this.panel2.Controls.Add(this.stn);
@@ -390,6 +407,28 @@ namespace KClinic2._1.View.TiepNhan
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1123, 333);
             this.panel2.TabIndex = 0;
+            // 
+            // cbbPhongTuVan
+            // 
+            this.cbbPhongTuVan.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbbPhongTuVan.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbbPhongTuVan.Location = new System.Drawing.Point(213, 290);
+            this.cbbPhongTuVan.Margin = new System.Windows.Forms.Padding(4);
+            this.cbbPhongTuVan.Name = "cbbPhongTuVan";
+            this.cbbPhongTuVan.Size = new System.Drawing.Size(230, 30);
+            this.cbbPhongTuVan.TabIndex = 70;
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Black;
+            this.label2.Location = new System.Drawing.Point(56, 294);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(112, 22);
+            this.label2.TabIndex = 69;
+            this.label2.Text = "Phòng tư vấn";
             // 
             // label1
             // 
@@ -478,5 +517,8 @@ namespace KClinic2._1.View.TiepNhan
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtSoThe;
+        private Janus.Windows.EditControls.UIComboBox cbbPhongTuVan;
+        private System.Windows.Forms.Label label2;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
     }
 }

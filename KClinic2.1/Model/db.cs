@@ -283,6 +283,7 @@ namespace KClinic2._1.Model
             , string _NamSinh
             , string _SDT
             , string _SoThe
+            , string _PhongTuVan_Id
             )
         {
             try
@@ -298,7 +299,8 @@ namespace KClinic2._1.Model
                     + "@TenBenhNhan = N'" + _TenBenhNhan + "',"
                     + "@NamSinh = N'" + _NamSinh + "',"
                     + "@SDT = N'" + _SDT + "',"
-                    + "@SoTheThanhVien = N'" + _SoThe + "'"
+                    + "@SoTheThanhVien = N'" + _SoThe + "',"
+                    + "@PhongTuVan_Id =" + _PhongTuVan_Id
                     ;
                 con.Open();
                 table1.Load(cmd_Show.ExecuteReader(CommandBehavior.CloseConnection));

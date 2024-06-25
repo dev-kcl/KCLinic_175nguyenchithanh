@@ -43,6 +43,7 @@
             this.repositoryItemCheckEdit3 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit4 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
@@ -72,7 +73,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1263, 565);
+            this.panel1.Size = new System.Drawing.Size(1376, 565);
             this.panel1.TabIndex = 6;
             // 
             // panel3
@@ -82,7 +83,7 @@
             this.panel3.Location = new System.Drawing.Point(0, 155);
             this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1263, 410);
+            this.panel3.Size = new System.Drawing.Size(1376, 410);
             this.panel3.TabIndex = 1;
             // 
             // gridDS
@@ -98,7 +99,7 @@
             this.repositoryItemCheckEdit2,
             this.repositoryItemCheckEdit3,
             this.repositoryItemCheckEdit4});
-            this.gridDS.Size = new System.Drawing.Size(1263, 410);
+            this.gridDS.Size = new System.Drawing.Size(1376, 410);
             this.gridDS.TabIndex = 1;
             this.gridDS.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -115,6 +116,7 @@
             this.gridColumn5,
             this.gridColumn6,
             this.gridColumn9,
+            this.gridColumn12,
             this.gridColumn10,
             this.gridColumn11});
             this.gridView1.DetailHeight = 431;
@@ -126,12 +128,12 @@
             // 
             this.gridColumn1.Caption = "Mã y tế";
             this.gridColumn1.FieldName = "MaYTe";
-            this.gridColumn1.MinWidth = 27;
+            this.gridColumn1.MinWidth = 120;
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.OptionsColumn.AllowEdit = false;
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 0;
-            this.gridColumn1.Width = 155;
+            this.gridColumn1.Width = 120;
             // 
             // gridColumn2
             // 
@@ -148,23 +150,23 @@
             // 
             this.gridColumn4.Caption = "Số điện thoại";
             this.gridColumn4.FieldName = "SoDienThoai";
-            this.gridColumn4.MinWidth = 27;
+            this.gridColumn4.MinWidth = 100;
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.OptionsColumn.AllowEdit = false;
             this.gridColumn4.Visible = true;
             this.gridColumn4.VisibleIndex = 2;
-            this.gridColumn4.Width = 121;
+            this.gridColumn4.Width = 100;
             // 
             // gridColumn3
             // 
             this.gridColumn3.Caption = "Năm sinh";
             this.gridColumn3.FieldName = "NamSinh";
-            this.gridColumn3.MinWidth = 27;
+            this.gridColumn3.MinWidth = 100;
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.OptionsColumn.AllowEdit = false;
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 3;
-            this.gridColumn3.Width = 115;
+            this.gridColumn3.Width = 100;
             // 
             // gridColumn7
             // 
@@ -181,12 +183,12 @@
             // 
             this.gridColumn8.Caption = "Thời gian thu tiền";
             this.gridColumn8.FieldName = "ThoiGianPhatSinh";
-            this.gridColumn8.MinWidth = 27;
+            this.gridColumn8.MinWidth = 120;
             this.gridColumn8.Name = "gridColumn8";
             this.gridColumn8.OptionsColumn.AllowEdit = false;
             this.gridColumn8.Visible = true;
             this.gridColumn8.VisibleIndex = 5;
-            this.gridColumn8.Width = 160;
+            this.gridColumn8.Width = 120;
             // 
             // gridColumn5
             // 
@@ -206,9 +208,10 @@
             this.gridColumn6.FieldName = "HuyHoaDon";
             this.gridColumn6.MinWidth = 27;
             this.gridColumn6.Name = "gridColumn6";
+            this.gridColumn6.OptionsColumn.AllowEdit = false;
             this.gridColumn6.Visible = true;
             this.gridColumn6.VisibleIndex = 7;
-            this.gridColumn6.Width = 100;
+            this.gridColumn6.Width = 107;
             // 
             // repositoryItemCheckEdit3
             // 
@@ -224,9 +227,10 @@
             this.gridColumn9.FieldName = "HoanTra";
             this.gridColumn9.MinWidth = 27;
             this.gridColumn9.Name = "gridColumn9";
+            this.gridColumn9.OptionsColumn.AllowEdit = false;
             this.gridColumn9.Visible = true;
             this.gridColumn9.VisibleIndex = 8;
-            this.gridColumn9.Width = 100;
+            this.gridColumn9.Width = 107;
             // 
             // repositoryItemCheckEdit4
             // 
@@ -234,6 +238,17 @@
             this.repositoryItemCheckEdit4.Name = "repositoryItemCheckEdit4";
             this.repositoryItemCheckEdit4.ValueChecked = 1;
             this.repositoryItemCheckEdit4.ValueUnchecked = 0;
+            // 
+            // gridColumn12
+            // 
+            this.gridColumn12.Caption = "Phòng tư vấn";
+            this.gridColumn12.FieldName = "PhongTuVan";
+            this.gridColumn12.MinWidth = 25;
+            this.gridColumn12.Name = "gridColumn12";
+            this.gridColumn12.OptionsColumn.AllowEdit = false;
+            this.gridColumn12.Visible = true;
+            this.gridColumn12.VisibleIndex = 9;
+            this.gridColumn12.Width = 94;
             // 
             // gridColumn10
             // 
@@ -280,7 +295,7 @@
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1263, 155);
+            this.panel2.Size = new System.Drawing.Size(1376, 155);
             this.panel2.TabIndex = 0;
             // 
             // cbbLoai
@@ -342,7 +357,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1263, 565);
+            this.ClientSize = new System.Drawing.Size(1376, 565);
             this.Controls.Add(this.panel1);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "DanhSachThuTien";
@@ -390,5 +405,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit3;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit4;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn12;
     }
 }

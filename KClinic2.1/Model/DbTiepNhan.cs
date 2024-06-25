@@ -768,6 +768,29 @@ namespace KClinic2._1.Model
                 return null;
             }
         }
+
+        public static DataTable Delete_ClsYeuCau_PhienDangNhap_List(string _List_ClsYeuCau_Id, string _NguoiCapNhat)
+        {
+            try
+            {
+                DataTable table1 = new DataTable();
+                SqlCommand cmd_Show = con.CreateCommand();
+                cmd_Show.CommandTimeout = timeout_connecttion;
+                cmd_Show.CommandText = "exec SP_002_TiepNhan @Action = N'Delete_ClsYeuCau_PhienDangNhap_List' ,"
+                    + "@List_ClsYeuCau_Id = " + _List_ClsYeuCau_Id + ","
+                    + "@NguoiCapNhat = " + _NguoiCapNhat
+                    ;
+                con.Open();
+                table1.Load(cmd_Show.ExecuteReader(CommandBehavior.CloseConnection));
+                con.Close();
+                return table1;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
         public static DataTable CheckClsYeuCauPhienDangNhap(string _PhienDangNhap)
         {
             try
@@ -992,6 +1015,28 @@ namespace KClinic2._1.Model
                 return null;
             }
         }
+
+        public static DataTable CheckDichVuDaThucHien_List(string _ListClsYeuCau_Id)
+        {
+            try
+            {
+                DataTable table1 = new DataTable();
+                SqlCommand cmd_Show = con.CreateCommand();
+                cmd_Show.CommandTimeout = timeout_connecttion;
+                cmd_Show.CommandText = "exec SP_002_TiepNhan @Action = N'CheckDichVuDaThucHien_List', "
+                    + "@List_ClsYeuCau_Id =" + _ListClsYeuCau_Id
+                    ;
+                con.Open();
+                table1.Load(cmd_Show.ExecuteReader(CommandBehavior.CloseConnection));
+                con.Close();
+                return table1;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
         public static DataTable CheckDaChiDinhDichVu(string _Idx)
         {
             try

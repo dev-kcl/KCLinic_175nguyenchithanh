@@ -68,6 +68,7 @@ namespace KClinic2._1.View.TiepNhan
             this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn20 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn21 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.pnNhomBenh = new Guna.UI2.WinForms.Guna2Panel();
             this.cbbNhomBenh = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
@@ -144,7 +145,6 @@ namespace KClinic2._1.View.TiepNhan
             this.btnSua = new DevExpress.XtraEditors.SimpleButton();
             this.btnThem = new DevExpress.XtraEditors.SimpleButton();
             this.alertControl1 = new DevExpress.XtraBars.Alerter.AlertControl(this.components);
-            this.gridColumn21 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panelContent.SuspendLayout();
             this.panelDuLieu.SuspendLayout();
             this.panelChiTiet.SuspendLayout();
@@ -190,7 +190,7 @@ namespace KClinic2._1.View.TiepNhan
             this.gridColumn6.Name = "gridColumn6";
             this.gridColumn6.OptionsColumn.AllowEdit = false;
             this.gridColumn6.Visible = true;
-            this.gridColumn6.VisibleIndex = 4;
+            this.gridColumn6.VisibleIndex = 5;
             this.gridColumn6.Width = 82;
             // 
             // panelContent
@@ -447,6 +447,8 @@ namespace KClinic2._1.View.TiepNhan
             this.gridView1.OptionsBehavior.AllowFixedGroups = DevExpress.Utils.DefaultBoolean.True;
             this.gridView1.OptionsBehavior.AutoExpandAllGroups = true;
             this.gridView1.OptionsFind.AlwaysVisible = true;
+            this.gridView1.OptionsSelection.MultiSelect = true;
+            this.gridView1.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CheckBoxRowSelect;
             this.gridView1.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gridColumn1, DevExpress.Data.ColumnSortOrder.Ascending)});
             this.gridView1.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gridView1_RowCellClick);
@@ -477,7 +479,7 @@ namespace KClinic2._1.View.TiepNhan
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.OptionsColumn.AllowEdit = false;
             this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 0;
+            this.gridColumn2.VisibleIndex = 1;
             this.gridColumn2.Width = 180;
             // 
             // gridColumn3
@@ -491,7 +493,7 @@ namespace KClinic2._1.View.TiepNhan
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.OptionsColumn.AllowEdit = false;
             this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 1;
+            this.gridColumn3.VisibleIndex = 2;
             this.gridColumn3.Width = 102;
             // 
             // gridColumn4
@@ -505,7 +507,7 @@ namespace KClinic2._1.View.TiepNhan
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.OptionsColumn.AllowEdit = false;
             this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 2;
+            this.gridColumn4.VisibleIndex = 3;
             this.gridColumn4.Width = 469;
             // 
             // gridColumn5
@@ -519,7 +521,7 @@ namespace KClinic2._1.View.TiepNhan
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.OptionsColumn.AllowEdit = false;
             this.gridColumn5.Visible = true;
-            this.gridColumn5.VisibleIndex = 3;
+            this.gridColumn5.VisibleIndex = 4;
             this.gridColumn5.Width = 82;
             // 
             // gridCol_TL_ChietKhau
@@ -533,7 +535,7 @@ namespace KClinic2._1.View.TiepNhan
             this.gridCol_TL_ChietKhau.Name = "gridCol_TL_ChietKhau";
             this.gridCol_TL_ChietKhau.OptionsColumn.AllowEdit = false;
             this.gridCol_TL_ChietKhau.Visible = true;
-            this.gridCol_TL_ChietKhau.VisibleIndex = 5;
+            this.gridCol_TL_ChietKhau.VisibleIndex = 6;
             this.gridCol_TL_ChietKhau.Width = 61;
             // 
             // gridCol_ChietKhau
@@ -547,7 +549,7 @@ namespace KClinic2._1.View.TiepNhan
             this.gridCol_ChietKhau.Name = "gridCol_ChietKhau";
             this.gridCol_ChietKhau.OptionsColumn.AllowEdit = false;
             this.gridCol_ChietKhau.Visible = true;
-            this.gridCol_ChietKhau.VisibleIndex = 6;
+            this.gridCol_ChietKhau.VisibleIndex = 7;
             this.gridCol_ChietKhau.Width = 100;
             // 
             // gridColumn7
@@ -561,7 +563,7 @@ namespace KClinic2._1.View.TiepNhan
             this.gridColumn7.Name = "gridColumn7";
             this.gridColumn7.OptionsColumn.AllowEdit = false;
             this.gridColumn7.Visible = true;
-            this.gridColumn7.VisibleIndex = 7;
+            this.gridColumn7.VisibleIndex = 8;
             this.gridColumn7.Width = 137;
             // 
             // gridColumn9
@@ -574,7 +576,7 @@ namespace KClinic2._1.View.TiepNhan
             this.gridColumn9.MinWidth = 25;
             this.gridColumn9.Name = "gridColumn9";
             this.gridColumn9.Visible = true;
-            this.gridColumn9.VisibleIndex = 8;
+            this.gridColumn9.VisibleIndex = 9;
             this.gridColumn9.Width = 96;
             // 
             // gridColumn8
@@ -596,7 +598,7 @@ namespace KClinic2._1.View.TiepNhan
             this.gridColumn10.MinWidth = 29;
             this.gridColumn10.Name = "gridColumn10";
             this.gridColumn10.Visible = true;
-            this.gridColumn10.VisibleIndex = 9;
+            this.gridColumn10.VisibleIndex = 10;
             this.gridColumn10.Width = 129;
             // 
             // gridColumn11
@@ -610,7 +612,7 @@ namespace KClinic2._1.View.TiepNhan
             this.gridColumn11.Name = "gridColumn11";
             this.gridColumn11.OptionsColumn.AllowEdit = false;
             this.gridColumn11.Visible = true;
-            this.gridColumn11.VisibleIndex = 10;
+            this.gridColumn11.VisibleIndex = 11;
             this.gridColumn11.Width = 25;
             // 
             // gridColumn20
@@ -620,6 +622,14 @@ namespace KClinic2._1.View.TiepNhan
             this.gridColumn20.MinWidth = 25;
             this.gridColumn20.Name = "gridColumn20";
             this.gridColumn20.Width = 94;
+            // 
+            // gridColumn21
+            // 
+            this.gridColumn21.Caption = "LoaiThe_Id";
+            this.gridColumn21.FieldName = "LoaiThe_Id";
+            this.gridColumn21.MinWidth = 25;
+            this.gridColumn21.Name = "gridColumn21";
+            this.gridColumn21.Width = 94;
             // 
             // gridColumn12
             // 
@@ -1813,14 +1823,6 @@ namespace KClinic2._1.View.TiepNhan
             this.alertControl1.AppearanceText.Options.UseFont = true;
             this.alertControl1.FormShowingEffect = DevExpress.XtraBars.Alerter.AlertFormShowingEffect.SlideVertical;
             this.alertControl1.ShowPinButton = false;
-            // 
-            // gridColumn21
-            // 
-            this.gridColumn21.Caption = "LoaiThe_Id";
-            this.gridColumn21.FieldName = "LoaiThe_Id";
-            this.gridColumn21.MinWidth = 25;
-            this.gridColumn21.Name = "gridColumn21";
-            this.gridColumn21.Width = 94;
             // 
             // TiepNhanTheThanhVien
             // 

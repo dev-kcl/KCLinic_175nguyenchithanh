@@ -824,26 +824,86 @@ namespace KClinic2._1.View.TiepNhan
 
         private void btnXoaDichVu_Click(object sender, EventArgs e)
         {
-            DataTable CheckDichVuDaThucHien = Model.DbTiepNhan.CheckDichVuDaThucHien(CLSYeuCau_Id);
-            if (CheckDichVuDaThucHien != null)
-            {
-                if (CheckDichVuDaThucHien.Rows[0]["TrangThai"].ToString() == "ChuaThucHien")
-                {
-                    DataTable Delete = Model.DbTiepNhan.Delete_ClsYeuCau_PhienDangNhap(CLSYeuCau_Id, Login.User_Id);
+            //DataTable CheckDichVuDaThucHien = Model.DbTiepNhan.CheckDichVuDaThucHien(CLSYeuCau_Id);
+            //if (CheckDichVuDaThucHien != null)
+            //{
+            //    if (CheckDichVuDaThucHien.Rows[0]["TrangThai"].ToString() == "ChuaThucHien")
+            //    {
+            //        DataTable Delete = Model.DbTiepNhan.Delete_ClsYeuCau_PhienDangNhap(CLSYeuCau_Id, Login.User_Id);
 
-                    DataTable SelectClsyeucauPhienDangNhap = Model.DbTiepNhan.SelectClsyeucauPhienDangNhap(Login.PhienDangNhap_Id);
-                    gridDichVu.DataSource = SelectClsyeucauPhienDangNhap;
-                    gettongtien();
-                    CLSYeuCau_Id = "";
+            //        DataTable SelectClsyeucauPhienDangNhap = Model.DbTiepNhan.SelectClsyeucauPhienDangNhap(Login.PhienDangNhap_Id);
+            //        gridDichVu.DataSource = SelectClsyeucauPhienDangNhap;
+            //        gettongtien();
+            //        CLSYeuCau_Id = "";
+            //    }
+            //    else
+            //    {
+            //        alertControl1.Show(this, "Thông báo", "Chưa chọn phiếu cần xóa!", "");
+            //    }
+            //}
+            //else
+            //{
+            //    alertControl1.Show(this, "Thông báo", "Chưa chọn phiếu cần xóa!", "");
+            //}
+
+            DialogResult dr;
+            dr = XtraMessageBox.Show("Bạn có chắc chắn muốn xóa? ", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dr == DialogResult.Yes)
+            {
+                string ListClsYeuCau_Id = "";
+                Int32[] selectChungTuTiepNhan = gridView1.GetSelectedRows();
+                StringBuilder resultBuilder = new StringBuilder();
+
+                for (int i = 0; i < selectChungTuTiepNhan.Length; i++)
+                {
+                    int selectedRowHandle = selectChungTuTiepNhan[i];
+
+                    // Giả sử bạn muốn lấy giá trị từ cột đầu tiên
+                    // Bạn cần thay 'ColumnName' bằng tên thực sự của cột bạn muốn truy xuất
+                    object cellValue = gridView1.GetRowCellValue(selectedRowHandle, "CLSYeuCau_Id");
+
+                    // Thêm giá trị vào chuỗi, phân tách bằng dấu chấm phẩy
+                    resultBuilder.Append(cellValue);
+
+                    if (i < selectChungTuTiepNhan.Length - 1)
+                    {
+                        resultBuilder.Append(";");
+                    }
+                }
+
+                ListClsYeuCau_Id = "'" + resultBuilder.ToString() + "'";
+                if (ListClsYeuCau_Id == "''")
+                {
+                    alertControl1.Show(this, "Thông báo", "Chưa chọn dịch vụ cần xóa!", "");
                 }
                 else
                 {
-                    alertControl1.Show(this, "Thông báo", "Chưa chọn phiếu cần xóa!", "");
+                    DataTable CheckDichVuDaThucHien = Model.DbTiepNhan.CheckDichVuDaThucHien_List(ListClsYeuCau_Id);
+                    if (CheckDichVuDaThucHien != null)
+                    {
+                        //check trang thai cua dich vu
+                        foreach (DataRow row in CheckDichVuDaThucHien.Rows)
+                        {
+                            if (row["TrangThai"].ToString() != "ChuaThucHien")
+                            {
+                                alertControl1.Show(this, "Thông báo", "Trạng thái của dịch vụ không thể xóa!", "");
+                                return;
+                            }
+                        }
+
+                        //Xoa list dich vu
+                        DataTable Delete = Model.DbTiepNhan.Delete_ClsYeuCau_PhienDangNhap_List(ListClsYeuCau_Id, Login.User_Id);
+
+                        DataTable SelectClsyeucauPhienDangNhap = Model.DbTiepNhan.SelectClsyeucauPhienDangNhap(Login.PhienDangNhap_Id);
+                        gridDichVu.DataSource = SelectClsyeucauPhienDangNhap;
+                        gettongtien();
+                        CLSYeuCau_Id = "";
+                    }
+                    else
+                    {
+                        alertControl1.Show(this, "Thông báo", "Chưa chọn dịch vụ cần xóa!", "");
+                    }
                 }
-            }
-            else
-            {
-                alertControl1.Show(this, "Thông báo", "Chưa chọn phiếu cần xóa!", "");
             }
         }
 
