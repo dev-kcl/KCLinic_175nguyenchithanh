@@ -23,10 +23,10 @@ namespace KClinic2._1.View.HeThongBaoCao
         DataTable PhongTuVan;
         private void BaoCaoXetNghiem_Load(object sender, EventArgs e)
         {
-            panelMain.Location = new Point(
-            this.ClientSize.Width / 2 - panelMain.Size.Width / 2,
-            this.ClientSize.Height / 2 - panelMain.Size.Height / 2);
-            panelMain.Anchor = AnchorStyles.None;
+            //panelMain.Location = new Point(
+            //this.ClientSize.Width / 2 - panelMain.Size.Width / 2,
+            //this.ClientSize.Height / 2 - panelMain.Size.Height / 2);
+            //panelMain.Anchor = AnchorStyles.None;
 
 
             txtTuNgay.Value = DateTime.Now;
@@ -56,17 +56,13 @@ namespace KClinic2._1.View.HeThongBaoCao
 
 
             DuLieu = Model.dbBaoCao.SP_BaoCaoXetNghiem(TuNgay, DenNgay,PhongTuVan_ID,XetNghiem_Id,txtTenBenhNhan.Text,txtMaYTe.Text,txtSoTiepNhan.Text);
-        }
-        private void btnXem_Click(object sender, EventArgs e)
-        {
-            getDuLieu();
-            string TrangThai="1";
-            if(DuLieu==null)
+            string TrangThai = "1";
+            if (DuLieu == null)
             {
                 XtraMessageBox.Show("Không có dữ liệu");
                 return;
             }
-            if(DuLieu.Rows.Count==0)
+            if (DuLieu.Rows.Count == 0)
             {
                 XtraMessageBox.Show("Không có dữ liệu");
                 return;
@@ -77,7 +73,7 @@ namespace KClinic2._1.View.HeThongBaoCao
                 for (int iRow = 0; iRow < DuLieu.Rows.Count; iRow++)
                 {
                     string DuLieuNull = DuLieu.Rows[iRow][iColumns].ToString();
-                    if(DuLieuNull!="")
+                    if (DuLieuNull != "")
                     {
                         TrangThai = "2";
                         break;
@@ -104,6 +100,10 @@ namespace KClinic2._1.View.HeThongBaoCao
         // Add more mappings as needed
              };
             RenameHeaders(columnMappings);
+        }
+        private void btnXem_Click(object sender, EventArgs e)
+        {
+            getDuLieu();
             saveFileDialog1.Title = $"Báo cáo xét nghiệm";
             saveFileDialog1.FileName = $"Báo cáo xét nghiệm_{DateTime.Now.ToString("dd_MM_yyyy_HH_mm_ss")}.xlsx";
             saveFileDialog1.Filter = "Excel Files|*.xlsx"; // Chỉ hiển thị các tệp Excel
@@ -191,6 +191,13 @@ namespace KClinic2._1.View.HeThongBaoCao
         {
             cbbXetNghiem.DataSource = TenXetNghiem;
             cbbXetNghiem.DroppedDown = true;
+        }
+
+        private void Xem_Click(object sender, EventArgs e)
+        {
+            getDuLieu();
+            gridView1.Columns.Clear();
+            gridControl1.DataSource = DuLieu;
         }
     }
 }
