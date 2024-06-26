@@ -59,6 +59,7 @@ namespace KClinic2._1.View.TongHop
             if (gridView1.RowCount > 0)
             {
                 tn.BenhNhan_Id = gridView1.GetRowCellValue(n, "BenhNhan_Id").ToString();
+                tn.TiepNhan_Id = gridView1.GetRowCellValue(n, "TiepNhan_Id").ToString();
                 this.Hide();
                 tn.RefreshForm();
             }
