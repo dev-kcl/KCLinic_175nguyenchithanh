@@ -17,7 +17,7 @@ namespace KClinic2._1.View.TongHop
 {
     public partial class BanThuocTaiQuay : DevExpress.XtraEditors.XtraForm
     {
-        public static string TiepNhan_Id = "";
+        public string TiepNhan_Id = "";
         public string ThaoTac;
         public string BenhNhan_Id = "";
         public string TenBenhNhan;
