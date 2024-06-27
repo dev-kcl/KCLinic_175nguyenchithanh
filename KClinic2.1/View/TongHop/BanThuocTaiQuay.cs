@@ -137,6 +137,9 @@ namespace KClinic2._1.View.TongHop
                 string GiamGiaTyLe = "0";
                 if (cbTiLe.Checked == true) { GiamGiaTyLe = "1"; }
 
+                string strTiepNhan_Id = "null";
+                if (TiepNhan_Id != "") { strTiepNhan_Id = "N'" + TiepNhan_Id.Replace("'", "''") + "'"; }
+
                 if (ThaoTac == "Them")
                 {
                     if (BenhNhan_Id != "")
@@ -145,7 +148,7 @@ namespace KClinic2._1.View.TongHop
                               MaHoaDon
                               , "null" //SoHoaDonVAT
                               , "null"
-                              , TiepNhan_Id
+                              , strTiepNhan_Id
                             , BenhNhan_Id
                             , NgayPhatSinh
                             , ThoiGianPhatSinh
