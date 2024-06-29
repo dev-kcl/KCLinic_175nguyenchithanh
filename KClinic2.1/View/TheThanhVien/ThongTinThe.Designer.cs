@@ -35,6 +35,7 @@ namespace KClinic2._1.View.TheThanhVien
             Janus.Windows.GridEX.GridEXLayout cbbLoaiThe_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout cbbGioiTinh_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
+            Janus.Windows.GridEX.GridEXLayout cbbNVGioiThieu_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
@@ -81,6 +82,8 @@ namespace KClinic2._1.View.TheThanhVien
             this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.alertControl1 = new DevExpress.XtraBars.Alerter.AlertControl(this.components);
+            this.label18 = new System.Windows.Forms.Label();
+            this.cbbNVGioiThieu = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cbbSoThang)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -90,6 +93,7 @@ namespace KClinic2._1.View.TheThanhVien
             ((System.ComponentModel.ISupportInitialize)(this.gridTheThanhVien)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cbbNVGioiThieu)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -288,6 +292,8 @@ namespace KClinic2._1.View.TheThanhVien
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.label18);
+            this.groupBox2.Controls.Add(this.cbbNVGioiThieu);
             this.groupBox2.Controls.Add(this.label11);
             this.groupBox2.Controls.Add(this.btnThayDoiKhach);
             this.groupBox2.Controls.Add(this.btnUpdateDV);
@@ -311,7 +317,7 @@ namespace KClinic2._1.View.TheThanhVien
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.groupBox2.Location = new System.Drawing.Point(807, 114);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1052, 385);
+            this.groupBox2.Size = new System.Drawing.Size(1052, 439);
             this.groupBox2.TabIndex = 104;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thông tin khách hàng";
@@ -335,7 +341,7 @@ namespace KClinic2._1.View.TheThanhVien
             this.btnThayDoiKhach.Appearance.Options.UseFont = true;
             this.btnThayDoiKhach.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnThayDoiKhach.ImageOptions.Image")));
             this.btnThayDoiKhach.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
-            this.btnThayDoiKhach.Location = new System.Drawing.Point(405, 27);
+            this.btnThayDoiKhach.Location = new System.Drawing.Point(426, 27);
             this.btnThayDoiKhach.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnThayDoiKhach.Name = "btnThayDoiKhach";
             this.btnThayDoiKhach.Size = new System.Drawing.Size(261, 44);
@@ -351,7 +357,7 @@ namespace KClinic2._1.View.TheThanhVien
             this.btnUpdateDV.Appearance.Options.UseFont = true;
             this.btnUpdateDV.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnUpdateDV.ImageOptions.Image")));
             this.btnUpdateDV.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
-            this.btnUpdateDV.Location = new System.Drawing.Point(32, 322);
+            this.btnUpdateDV.Location = new System.Drawing.Point(32, 369);
             this.btnUpdateDV.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnUpdateDV.Name = "btnUpdateDV";
             this.btnUpdateDV.Size = new System.Drawing.Size(281, 44);
@@ -381,7 +387,7 @@ namespace KClinic2._1.View.TheThanhVien
             this.cbbLoaiThe.FlatBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(209)))), ((int)(((byte)(55)))));
             this.cbbLoaiThe.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.cbbLoaiThe.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
-            this.cbbLoaiThe.Location = new System.Drawing.Point(148, 271);
+            this.cbbLoaiThe.Location = new System.Drawing.Point(169, 271);
             this.cbbLoaiThe.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cbbLoaiThe.Name = "cbbLoaiThe";
             this.cbbLoaiThe.SelectedIndex = -1;
@@ -426,7 +432,7 @@ namespace KClinic2._1.View.TheThanhVien
             this.txtNamSinh.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtNamSinh.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtNamSinh.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
-            this.txtNamSinh.Location = new System.Drawing.Point(148, 123);
+            this.txtNamSinh.Location = new System.Drawing.Point(169, 123);
             this.txtNamSinh.Margin = new System.Windows.Forms.Padding(5);
             this.txtNamSinh.Name = "txtNamSinh";
             this.txtNamSinh.PasswordChar = '\0';
@@ -471,7 +477,7 @@ namespace KClinic2._1.View.TheThanhVien
             this.txtSoDienThoai.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtSoDienThoai.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtSoDienThoai.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
-            this.txtSoDienThoai.Location = new System.Drawing.Point(148, 220);
+            this.txtSoDienThoai.Location = new System.Drawing.Point(169, 220);
             this.txtSoDienThoai.Margin = new System.Windows.Forms.Padding(5);
             this.txtSoDienThoai.Name = "txtSoDienThoai";
             this.txtSoDienThoai.PasswordChar = '\0';
@@ -502,7 +508,7 @@ namespace KClinic2._1.View.TheThanhVien
             this.cbbGioiTinh.FlatBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(209)))), ((int)(((byte)(55)))));
             this.cbbGioiTinh.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.cbbGioiTinh.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
-            this.cbbGioiTinh.Location = new System.Drawing.Point(148, 172);
+            this.cbbGioiTinh.Location = new System.Drawing.Point(169, 172);
             this.cbbGioiTinh.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cbbGioiTinh.Name = "cbbGioiTinh";
             this.cbbGioiTinh.SelectedIndex = -1;
@@ -529,7 +535,7 @@ namespace KClinic2._1.View.TheThanhVien
             this.btnSearch_BN.Appearance.Options.UseFont = true;
             this.btnSearch_BN.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
             this.btnSearch_BN.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnSearch_BN.ImageOptions.SvgImage")));
-            this.btnSearch_BN.Location = new System.Drawing.Point(319, 29);
+            this.btnSearch_BN.Location = new System.Drawing.Point(340, 29);
             this.btnSearch_BN.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnSearch_BN.Name = "btnSearch_BN";
             this.btnSearch_BN.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light;
@@ -580,7 +586,7 @@ namespace KClinic2._1.View.TheThanhVien
             this.txtMaYTe.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtMaYTe.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.txtMaYTe.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
-            this.txtMaYTe.Location = new System.Drawing.Point(148, 36);
+            this.txtMaYTe.Location = new System.Drawing.Point(169, 36);
             this.txtMaYTe.Margin = new System.Windows.Forms.Padding(5);
             this.txtMaYTe.Name = "txtMaYTe";
             this.txtMaYTe.PasswordChar = '\0';
@@ -615,7 +621,7 @@ namespace KClinic2._1.View.TheThanhVien
             this.txtHoTen.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtHoTen.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtHoTen.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
-            this.txtHoTen.Location = new System.Drawing.Point(148, 79);
+            this.txtHoTen.Location = new System.Drawing.Point(169, 79);
             this.txtHoTen.Margin = new System.Windows.Forms.Padding(5);
             this.txtHoTen.Name = "txtHoTen";
             this.txtHoTen.PasswordChar = '\0';
@@ -829,6 +835,36 @@ namespace KClinic2._1.View.TheThanhVien
             this.alertControl1.FormShowingEffect = DevExpress.XtraBars.Alerter.AlertFormShowingEffect.SlideVertical;
             this.alertControl1.ShowPinButton = false;
             // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.label18.Location = new System.Drawing.Point(28, 320);
+            this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(134, 23);
+            this.label18.TabIndex = 116;
+            this.label18.Text = "Người giới thiệu";
+            // 
+            // cbbNVGioiThieu
+            // 
+            this.cbbNVGioiThieu.AutoComplete = false;
+            this.cbbNVGioiThieu.BackColor = System.Drawing.Color.White;
+            this.cbbNVGioiThieu.BorderStyle = Janus.Windows.GridEX.BorderStyle.None;
+            this.cbbNVGioiThieu.ColorScheme = "";
+            cbbNVGioiThieu_DesignTimeLayout.LayoutString = resources.GetString("cbbNVGioiThieu_DesignTimeLayout.LayoutString");
+            this.cbbNVGioiThieu.DesignTimeLayout = cbbNVGioiThieu_DesignTimeLayout;
+            this.cbbNVGioiThieu.FlatBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(209)))), ((int)(((byte)(55)))));
+            this.cbbNVGioiThieu.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.cbbNVGioiThieu.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
+            this.cbbNVGioiThieu.Location = new System.Drawing.Point(169, 317);
+            this.cbbNVGioiThieu.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cbbNVGioiThieu.Name = "cbbNVGioiThieu";
+            this.cbbNVGioiThieu.SelectedIndex = -1;
+            this.cbbNVGioiThieu.SelectedItem = null;
+            this.cbbNVGioiThieu.Size = new System.Drawing.Size(299, 30);
+            this.cbbNVGioiThieu.TabIndex = 27;
+            // 
             // ThongTinThe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -852,6 +888,7 @@ namespace KClinic2._1.View.TheThanhVien
             ((System.ComponentModel.ISupportInitialize)(this.gridTheThanhVien)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.groupBox3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.cbbNVGioiThieu)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -904,5 +941,7 @@ namespace KClinic2._1.View.TheThanhVien
         private DevExpress.XtraEditors.SimpleButton btnUpdateDV;
         private DevExpress.XtraEditors.SimpleButton btnThayDoiKhach;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label18;
+        private Janus.Windows.GridEX.EditControls.MultiColumnCombo cbbNVGioiThieu;
     }
 }

@@ -1584,6 +1584,7 @@ namespace KClinic2._1.View.TiepNhan
             this.guna2Panel4.Name = "guna2Panel4";
             this.guna2Panel4.Size = new System.Drawing.Size(246, 32);
             this.guna2Panel4.TabIndex = 50;
+            this.guna2Panel4.Visible = false;
             // 
             // cbbNVGioiThieu
             // 
@@ -1614,6 +1615,7 @@ namespace KClinic2._1.View.TiepNhan
             this.label22.Size = new System.Drawing.Size(134, 23);
             this.label22.TabIndex = 20;
             this.label22.Text = "Người giới thiệu";
+            this.label22.Visible = false;
             // 
             // simpleButton1
             // 

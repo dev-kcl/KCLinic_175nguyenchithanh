@@ -631,7 +631,7 @@ namespace KClinic2._1.Model
             }
         }
 
-        public static DataTable InsertDichVuTrongThe(string _The_Id, string _BenhNhan_Id, string _LoaiThe_Id, string _NguoiTao, string _NgayTao, string _Huy)
+        public static DataTable InsertDichVuTrongThe(string _The_Id, string _BenhNhan_Id, string _LoaiThe_Id, string _NVGioiThieu_Id, string _NguoiTao, string _NgayTao, string _Huy)
         {
             try
             {
@@ -642,6 +642,7 @@ namespace KClinic2._1.Model
                     + "@The_Id = " + _The_Id + ","
                     + "@BenhNhan_Id = " + _BenhNhan_Id + ","
                     + "@LoaiThe_Id = " + _LoaiThe_Id + ","
+                    + "@NhanVienGioiThieu_Id = " + _NVGioiThieu_Id + ","
                     + "@NguoiTao = " + _NguoiTao + ","
                     + "@NgayTao = " + _NgayTao + ","
                     + "@Huy = " + _Huy
@@ -692,7 +693,7 @@ namespace KClinic2._1.Model
             }
         }
 
-        public static DataTable UpdateDichVuTrongThe(string _The_Id, string _BenhNhan_Id, string _LoaiThe_Id, string _NguoiTao, string _NgayTao, string _Huy)
+        public static DataTable UpdateDichVuTrongThe(string _The_Id, string _BenhNhan_Id, string _LoaiThe_Id, string _NVGioiThieu_Id, string _NguoiTao, string _NgayTao, string _Huy)
         {
             try
             {
@@ -703,6 +704,7 @@ namespace KClinic2._1.Model
                     + "@The_Id = " + _The_Id + ","
                     + "@BenhNhan_Id = " + _BenhNhan_Id + ","
                     + "@LoaiThe_Id = " + _LoaiThe_Id + ","
+                    + "@NhanVienGioiThieu_Id = " + _NVGioiThieu_Id + ","
                     + "@NguoiTao = " + _NguoiTao + ","
                     + "@NgayTao = " + _NgayTao + ","
                     + "@Huy = " + _Huy
