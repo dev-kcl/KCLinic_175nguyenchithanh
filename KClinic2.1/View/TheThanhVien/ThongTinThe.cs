@@ -24,6 +24,7 @@ namespace KClinic2._1.View.TheThanhVien
 
         DataTable DM_LoaiThe;
         DataTable SoThangHieuLucThe;
+        DataTable DM_NVGioiThieu;
 
         public ThongTinThe()
         {
@@ -213,6 +214,12 @@ namespace KClinic2._1.View.TheThanhVien
             cbbLoaiThe.DisplayMember = "TenLoaiThe";
             cbbLoaiThe.ValueMember = "LoaiThe_Id";
 
+            //load combobox NguoiGioiThieu
+            DM_NVGioiThieu = Model.DbTiepNhan.CbbNguoiGioiThieu();
+            cbbNVGioiThieu.DataSource = DM_NVGioiThieu;
+            cbbNVGioiThieu.ValueMember = "FieldCode";
+            cbbNVGioiThieu.DisplayMember = "FieldName";
+
             //load thong tin the
             getLayDanhSachTheThanhVien();
 
@@ -345,6 +352,16 @@ namespace KClinic2._1.View.TheThanhVien
                 if (!String.IsNullOrEmpty(LoaiThe))
                 {
                     cbbLoaiThe.Value = Int32.Parse(LoadThongTinTrongTheTheoId.Rows[0]["LoaiThe_Id"].ToString());
+                }
+
+                string NVGioiThieu = LoadThongTinTrongTheTheoId.Rows[0]["NhanVienGioiThieu_Id"].ToString();
+                if (!String.IsNullOrEmpty(NVGioiThieu))
+                {
+                    cbbNVGioiThieu.Value = Int32.Parse(LoadThongTinTrongTheTheoId.Rows[0]["NhanVienGioiThieu_Id"].ToString());
+                }
+                else
+                {
+                    cbbNVGioiThieu.Text = "";
                 }
 
                 The_Id = LoadThongTinTrongTheTheoId.Rows[0]["The_Id"].ToString();
@@ -490,11 +507,15 @@ namespace KClinic2._1.View.TheThanhVien
 
             string reLoaiThe_Id = "null";
             if (cbbLoaiThe.SelectedItem != null) { reLoaiThe_Id = cbbLoaiThe.Value.ToString(); }
+            
+            string reNVGioiThieu_Id = "null";
+            if (cbbNVGioiThieu.SelectedItem != null) { reNVGioiThieu_Id = cbbNVGioiThieu.Value.ToString(); }
 
             DataTable InsertDichVuTrongThe = Model.dbTheThanhVien.InsertDichVuTrongThe(
                    The_Id
                    , reBenhNhan_Id
                    , reLoaiThe_Id
+                   , reNVGioiThieu_Id
                    , Login.User_Id
                    , "'" + DateTime.Now.ToString("yyyyMMdd HH:mm:ss") + "'"
                    , "0"
@@ -509,6 +530,9 @@ namespace KClinic2._1.View.TheThanhVien
             string reLoaiThe_Id = "null";
             if (cbbLoaiThe.SelectedItem != null) { reLoaiThe_Id = cbbLoaiThe.Value.ToString(); }
 
+            string reNVGioiThieu_Id = "null";
+            if (cbbNVGioiThieu.SelectedItem != null) { reNVGioiThieu_Id = cbbNVGioiThieu.Value.ToString(); }
+
             DataTable DelDichVuTrongThe = Model.dbTheThanhVien.DeleteDichVuTrongThe(
                        The_Id
                        , Login.User_Id
@@ -520,6 +544,7 @@ namespace KClinic2._1.View.TheThanhVien
                    The_Id
                    , reBenhNhan_Id
                    , reLoaiThe_Id
+                   , reNVGioiThieu_Id
                    , Login.User_Id
                    , "'" + DateTime.Now.ToString("yyyyMMdd HH:mm:ss") + "'"
                    , "0"
